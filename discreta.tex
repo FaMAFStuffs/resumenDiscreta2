@@ -8,6 +8,7 @@
 \usepackage{amsmath}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
+\providecommand{\abs}[1]{\lvert#1\rvert}
 \author{Agustin Curto, agucurto95@gmail.com}
 \title{Resumen de teoremas para el final \\ de Matemática Discreta  II}
 \date{2016}
@@ -21,13 +22,140 @@
 
 	\section{La complejidad de EDMONS-KARP}
 	
+		\textbf{\underline{Teorema:}} La complejidad de $\langle E-K \rangle$ con $n = \abs{V}$ y $m = \abs{E}$ es $\mathcal{O}(nm^{2})$.
 	
+		\textbf{\underline{Prueba:}} Probaremos primer un hecho por inducción para enunciarlo, sean:
+		
+		\begin{center}
+			$f_{0}, f_{1}, f_{2}, \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$.
+		\end{center}
+		
+		El paso \textit{k} es el paso que crea $f_{k}$. Definimos funciones:
+		
+		\begin{itemize}
+			\item $d_{k}(x) = distancia^{1}$ entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
+			\item $b_{k}(x) =$ distancia entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
+		\end{itemize}
+	
+		Observación:
+			\begin{itemize}
+				\item $d_{k}(s) = 0$
+				\item $b_{k}(t) = 0$
+			\end{itemize}
+	
+		\underline{Lema interno:} queremos probar que
+		\begin{enumerate}
+			\item $d_{k}(x) \leq d_{k+1}(x)$
+			\item $b_{k}(x) \leq b_{k+1}(x)$
+		\end{enumerate}
+		
+		\underline{Prueba:} lo probaremos por inducción y solo para $d_{k}$ ya que para $b_{k}$ la prueba es análoga.
+		
+		\begin{center}
+			HI: $H(i) = \lbrace\forall_{z}: d_{k+1}(z) \leq \textit{i}, \, d_{k}(z) \leq d_{k+1}(z)  \rbrace$
+		\end{center}
+		
+		\begin{enumerate}
+			\item $H(0) = \lbrace\forall_{z}: d_{k+1}(z) \leq 0, \, d_{k}(z) \leq d_{k+1}(z)  \rbrace$
+			
+			Pero $d_{k+1} \leq 0 \Rightarrow $
+		\end{enumerate}
+		
+		
 	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
 
 	
 	\section{La complejidad de DINIC}
 
-	
+		\underline{Teorema:} La complejidad del algoritmo de Dinic es $\mathcal{O}(n^{2}m)$.
+		
+		\underline{Prueba:} Como la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
+		
+		Notación: llamemos PB al proceso de hallar paso bloqueante en un network auxiliar con Dinic.
+
+		Luego la complejidad de Dinic es $ \; \mathcal{O}(n)$ compl(PB). Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que compl(PB) = $\mathcal{O}(nm)$.
+
+		Para hallar un flujo bloqueante:
+		\begin{enumerate}
+			\item Crear un NA: Como es con BFS es $\mathcal{O}(m)$
+			\item Hallar bloqueante, denotemos:
+				\begin{itemize}
+					\item A: avanzar
+					\item R: retorceder
+					\item I: inicializar e incrementar
+				\end{itemize}
+		\end{enumerate}
+		
+		El paso bloqueante de Dinic luce de la forma:
+		\begin{center}
+			AA...AIAAARA...AIAARAAARR...IA...
+		\end{center}
+		
+		subdiviadmoslo en palabras del tipo:
+		\begin{center}
+			\begin{itemize}
+				\item AA...AI
+				\item AA...AR
+			\end{itemize}
+		\end{center}
+		
+		donde las primeras son todas A pudiendo ser 0 la cantidad de la misma.
+		
+		Debemos determinar:
+		\begin{enumerate}
+			\item Cual es la complejidad de cada subpalabra.
+				
+				Recordemos que:
+		\begin{itemize}
+			\item A:  \{ $P[i+1] =$ algún elemento de $\Gamma^{+}(P[i])$ \\
+						  $i = i+1$ \\
+						$\Rightarrow$ A es $\mathcal{O}(1)$
+						
+			\item R: \{ borrar $P[i-1]$ del NA \\
+						  $i = i-1$ \\
+						$\Rightarrow$ R es $\mathcal{O}(1)$
+						
+			\item I: \{ Recorre dos veces un camino de longitud \textit{d} $=$ \textit{d(\textit{t})} \\
+						$\Rightarrow$ R es $\mathcal{O}(\textit{d})$
+		\end{itemize}
+		
+		Por lo tanto:
+		\begin{equation}
+			compl(A...AR) = \mathcal{O}(1) + ... \mathcal{O}(1) + \mathcal{O}(1)
+									= \mathcal{O}(j)
+		\end{equation}
+		
+		Pero como cada A hace $ i = i+1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \Rightarrow \textit{j} \leq \textit{d}.$
+		
+		\begin{center}
+			$ \; \therefore compl(A...AR) = \mathcal{O}(\textit{d})$
+		\end{center}
+		
+		Similarmente: 		
+		\begin{equation}
+			compl(A...AI) = \mathcal{O}(1) + ... \mathcal{O}(1) + \mathcal{O}(1) \\
+									= \mathcal{O}(d) + \mathcal{O}(d) \\
+									= \mathcal{O}(d)
+		\end{equation}
+		
+		Pero como cada A hace $ i = i+1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \Rightarrow \textit{j} \leq \textit{d}.$
+		
+		\begin{center}
+			$ \; \therefore compl(A...AR) = \mathcal{O}(\textit{d})$
+		\end{center}			
+			
+
+			\item Cuantas palabras hay de cada tipo.
+			
+				
+		\end{enumerate}
+		
+		
+		
+		
+		
+		
+		
 	\section{La complejidad de WAVE}
 
 	
