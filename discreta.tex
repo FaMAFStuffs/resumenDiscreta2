@@ -9,6 +9,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
 \providecommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\QED}{\hfill \textit{\textbf{Q.E.D.}}}
 \author{Agustin Curto, agucurto95@gmail.com}
 \title{Resumen de teoremas para el final \\ de Matemática Discreta  II}
 \date{2016}
@@ -24,25 +25,86 @@
 	
 		\textbf{\underline{Teorema:}} La complejidad de $\langle E-K \rangle$ con $n = \abs{V}$ y $m = \abs{E}$ es $\mathcal{O}(nm^{2})$.
 	
-		\textbf{\underline{Prueba:}} Probaremos primer un hecho por inducción para enunciarlo, sean:
+		\textbf{\underline{Prueba:}} Sean: $f_{0}, f_{1}, f_{2}, \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
 		
-		\begin{center}
-			$f_{0}, f_{1}, f_{2}, \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$.
-		\end{center}
-		
-		El paso \textit{k} es el paso que crea $f_{k}$. Definimos funciones:
+		\vspace{5mm}
+		Para cada \textit{k} definimos funciones:
 		
 		\begin{itemize}
-			\item $d_{k}(x) = distancia^{1}$ entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
+			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright$\;$entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
 			\item $b_{k}(x) =$ distancia entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
 		\end{itemize}
 	
-		Observación:
-			\begin{itemize}
-				\item $d_{k}(s) = 0$
-				\item $b_{k}(t) = 0$
-			\end{itemize}
-	
+		\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
+		
+		\vspace{5mm}
+		Observaciónes:
+			\begin{enumerate}
+				\item
+					\begin{itemize}
+						\item $d_{k}(s) = 0$
+						\item $b_{k}(t) = 0$
+					\end{itemize}
+				\item Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil en esta demostración llamaremos $\circledast$ a la demostración de:
+			\begin{center}
+				$d_{k}(x) \leq d_{k+1}(x)$
+			\end{center}
+			\end{enumerate}
+
+		Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k+1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura o \textit{yx} se vacía en el paso \textit{k}.
+		
+		Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsb$ x,y $\dotsb$ \textit{t} se usa para construir $f_{k}$.
+
+		\begin{eqnarray}
+			 d_{k}(\textit{t}) & = & d_{k}(x)+ b_{k}(x) \\
+			\nonumber & = & d_{k}(x)+b_{k}(y)+1
+		\end{eqnarray}
+		
+		 Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{j} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y,x $\dotsb$ \textit{t} se usa para construir $f_{j}$.
+		
+		\begin{eqnarray}
+			d_{j}(\textit{t}) & = & d_{j}(x)+ b_{j}(x) \\
+			\nonumber & = & d_{j}(y)+1+b_{j}(x)
+		\end{eqnarray}
+		
+		Es decir:
+		
+		\begin{equation*}
+			\textup{De \textcircled{1} y \textcircled{2}} \Rightarrow
+  			\left\lbrace
+  			\begin{array}{l}
+    		 d_{j}(x) = d_{j}(y)+1 \\
+     		 d_{k}(y) = d_{k}(x)+1 \\
+  			\end{array}
+ 			 \right.
+		\end{equation*}
+		
+		Luego:
+
+		\begin{eqnarray}
+			d_{j}(\textit{t}) & = & d_{j}(x)+ b_{j}(x) \\
+			& = & d_{j}(y)+1+b_{j}(x) \\
+			& \geq & d_{k}(y)+1+b_{k}(x) \\
+			& = & d_{k}(x)+1+1+b_{k}(x) \\
+			& = & d_{k}(\textit{t})+2 \\
+			\Rightarrow d_{\ell}(\textit{t}) & \geq & d_{k}(\textit{t})+2
+		\end{eqnarray}
+		
+		Por lo tanto cuando un lado se vuelve crítico recien puede volver a saturarse cuando la distancia de \textit{s} a \textit{t} haya aumentado en por lo menos 2. Puede existir $\mathcal{O}(n/t)$ tales aumentos, es decir:
+		
+		\begin{center}
+			\# Veces que un lado puede volverse crítico $= \mathcal{O}(n)$. 
+		\end{center}				
+		
+		\begin{eqnarray}
+			 \nonumber \; \therefore Complejidad(\langle E-K \rangle) &=& (\# pasos) * Complej(\textit{paso}) \\
+			 \nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Complej(BFS) \\
+			\nonumber  &=& \mathcal{O}(n) * \mathcal{O}(m)* \mathcal{O}(m) \\
+			\nonumber &=& \mathcal{O}(nm^{2})
+		\end{eqnarray}
+			
+		
+	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
 		\underline{Lema interno:} queremos probar que
 		\begin{enumerate}
 			\item $d_{k}(x) \leq d_{k+1}(x)$
@@ -60,10 +122,6 @@
 			
 			Pero $d_{k+1} \leq 0 \Rightarrow $
 		\end{enumerate}
-		
-		
-	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
-
 	
 	\section{La complejidad de DINIC}
 
