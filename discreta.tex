@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{lmodern}
 \usepackage{amsmath}
+\usepackage{enumerate}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
 \providecommand{\abs}[1]{\lvert#1\rvert}
@@ -105,13 +106,23 @@
 			
 		
 	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
-		\underline{Lema interno:} queremos probar que
+		\underline{Teorema:} Sean: $f_{0}, f_{1}, f_{2}, \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$, \textit{i.e} el paso \textit{k} crea $f_{k}$. Para cada \textit{k} definimos funciones:
+		
+		\begin{itemize}
+			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright$\;$entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
+			\item $b_{k}(x) =$ distancia entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
+		\end{itemize}
+	
+		\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
+		
+		\vspace{5mm}
+		Queremos probar que:
 		\begin{enumerate}
 			\item $d_{k}(x) \leq d_{k+1}(x)$
 			\item $b_{k}(x) \leq b_{k+1}(x)$
 		\end{enumerate}
 		
-		\underline{Prueba:} lo probaremos por inducción y solo para $d_{k}$ ya que para $b_{k}$ la prueba es análoga.
+		\underline{Prueba:} Lo probaremos por inducción y solo para $d_{k}$ ya que para $b_{k}$ la prueba es análoga.
 		
 		\begin{center}
 			HI: $H(i) = \lbrace\forall_{z}: d_{k+1}(z) \leq \textit{i}, \, d_{k}(z) \leq d_{k+1}(z)  \rbrace$
@@ -226,20 +237,196 @@
 	\section{2-COLOR es polinomial}
 	
 	
-	\section{Probar que:}
-	
-		\subsection{El valor de todo flujo es menor o igual que la capacidad de todo corte.}
+	\section{Teorema Max-Flow Min-Cut}
+		\underline{Teorema:}
+		\begin{enumerate}[a)]
+			\item Si \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).
+			\item Si V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.
+			\item Si \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).
+		\end{enumerate}
 		
-		\subsection{Si el valor de un flujo es igual a la capacidad de un corte entonces el flujo es maximal y el corte minimal.}
+		\underline{Prueba:} Demostraremos primero que $V(\textit{f}) = f(S, \overline{S}) - f(\overline{S},S)$ donde \textit{f} es un flujo y S un corte. Esto nos ayudará en la demostración del ítem \textcircled{a}.
 		
-		\subsection{Si un flujo es maximal entonces existe un corte con capacidad igual al valor del flujo.}
-	
-	
+		\underline{Observemos que:}
+		\begin{itemize}
+			\item $f(A \cup B, C) = f(A,C) + f(B,C):$ A y B disjuntos.
+			\item $f(A, B \cup C) = f(A,B) + f(A,C):$ B y C disjuntos.
+			\item $f(A,B) = \underset {\underset {y \in B} {x \in A}} \sum f(x,y).$
+		\end{itemize}
+		
+		Sea x $\in$ S $\Rightarrow$ x $\neq$ \textit{t}.
+		\begin{equation*}
+			\textup{f(x, V) - f(V, x)} =
+  			\left\lbrace
+  			\begin{array}{l}
+    		 V(f) \; Si \; x= \textit{s} \\
+     		 0 \; \; \; \; \; \; \;  Si \; x \neq \textit{s} \; pues \; \textit{t} \notin S \\
+  			\end{array}
+ 			 \right.
+		\end{equation*}
+		
+		Luego:
+		\begin{equation}
+			\sum_{x \in S}(f(x, V) - f(V, x)) = 0 + 0 \dotsb + V(f) = V(f) \\
+		\end{equation}
+		\begin{equation}
+			\vspace{5mm} \\
+			V(f) = \sum_{x \in S}f(x, V) - \sum_{x \in S}f(V, x) \\
+		\end{equation}
+		\begin{equation}
+			= f(S, V) - f(V, S) \\
+		\end{equation}
+        \begin{equation}
+           = f(S, S \cup \overline{S}) - f(S \cup \overline{S}, S) \\
+        \end{equation}
+		\begin{equation}
+			= f(S, S) + f(S, \overline{S}) - f(S, S) -  f(\overline{S}, S) \\
+		\end{equation}
+				
+		\subsubsection{a) V(\textit{f}) $\leq$ Cap(S)}
+			
+		
+		
+		
+		
+		
 	\section{Complejidad del Hungaro es $\mathcal{O}(n^{4})$}
+	
+		\underline{Teorema:} La complejidad del algoritmo Húngaro es $\mathcal{O}(n^{4})$.
+		
+		\underline{Prueba:} 
+		
+			\begin{enumerate}
+				\item La complejidad del matching inicial es $\mathcal{O}(n^{2})$, ya que:
+				
+					Restar mínimo de cada fila:
+					\begin{center}
+						$(\mathcal{O}(n^{2}) + \mathcal{O}(n^{2})) * n = \mathcal{O}(n^{2})$
+						Idem para las columnas.
+					\end{center}
+				
+				\item Llamemos \textbf{extender} el matching, a incrementar su número de filas en 1, i.e agregar una fila más al matching.
+				\begin{center}
+					$ \# \; extensiones \; de \; matching = \mathcal{O}(n)$
+				\end{center}
+				
+				Resta ver la complejidad de cada \textbf{extender}.
+				
+				\item En cada extensión vamos a ir revisando filas y columnas, donde escanear una fila es $\mathcal{O}(n)$ y se realizan \textit{n} escaneos, por lo que sería $\mathcal{O}(n^{2})$ sin considerar que se debe realizar un cambio de matriz.
+				
+				Hacer un cambio de matriz es $\mathcal{O}(n^{2})$.				
+				\begin{itemize}
+					\item Buscar $\textit{m} = \min S \; x \; \overline{\Gamma(S)} \rightarrow \mathcal{O}(n^{2})$
+					\item Restar \textit{m} de $S \rightarrow \mathcal{O}(n^{2})$
+					\item Sumar \textit{m} a $\Gamma(S) \rightarrow \mathcal{O}(n^{2})$
+				\end{itemize}
+				
+				Luego la implementación NAIVE lanzaría nuevamente el algoritmo desde cero. La forma correcta es continuar con el matching que teniamos, ya que el mismo no se pierde.
+				\begin{center}
+				$
+				\begin{bmatrix}
+				A & A \\
+				B  & C \\
+				\end{bmatrix}					
+				$
+				\end{center}
+				
+				TO DO
+				
+				Debemos ver cuantos Cambios de matriz hay antes de extender nuevamente un matching
+				
+				\underline{\textbf{Lema Interno:}} Luego de un cambio de matriz, se extiende el matching (i.e se termina el \textbf{extender}), o bien se aumenta S.
+				
+				\underline{\textbf{Prueba:}} 
+				
+				\begin{center}
+				$
+				\begin{bmatrix}
+				A & A \\
+				B  & C \\
+				\end{bmatrix}					
+				$
+				\end{center}				
+				
+				Al restar $\textit{m} = \min S \; \Gamma(S)$ de las filas de S, habrá un nuevo cero en alguna fila \textit{i} ($\in S$) y columna \textit{j} ($\in \Gamma(S)$) entonces la columna se etiquetará con \textit{i} y se revisará.
+				Tenemos dos resultados posible:
+				\begin{enumerate}
+					\item \textit{j} está libre (i.e no forma parte del matching) $\Rightarrow$ extendemos el matching.
+					\item \textit{j} forma parte de matching $\Rightarrow \exists$ fila \textit{k} matcheada con \textit{j}. En este caso, la fila \textit{k} se etiquetará con \textit{j}, por lo que el "nuevo" $\; S \geq S \cup \{\textit{k}\}$.
+					
+					\vspace{5mm}
+					Entonces se termina con una extensión o se produce un nuevo S de cardinalidad, al menos $\lvert S \rvert + 1$.
+				\end{enumerate}
+				
+				\textbf{Fin lema interno}
+				
+				Luego como $\lvert S \rvert$ solo puede crecer $\mathcal{O}(n)$ veces, tenemos que hay a lo sumo \textit{n} \textbf{cambios de matriz} antes de extender el matching. Entonces:
+				
+							\begin{center}
+								Complejidad(1 Extensión) $= \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Compl(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas }$ \\
+								\vspace{5mm}
+								$\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching inicial} + \underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Compl(extension)}$
+							\end{center}				
+			\end{enumerate}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	\section{Teorema de Hall}
 	
+		\underline{Teorema:} Sea G = (x $\cup$ y, E) grafo bipartito $\Rightarrow \exists$ matching completo de X a Y $\Leftrightarrow \; \lvert S \rvert = \lvert \Gamma(S) \rvert \forall S \subseteq X$.
+		
+		\underline{Prueba:}
+
+			$\Rightarrow)$ Si M es matching comple de X a Y entonces oberservemos que M induce una función inyectiva de X a Y.
+			
+			\begin{center}
+				$f(x) = $ único y : xy $\in$ M.
+			\end{center}
+			
+			\begin{enumerate}
+				\item Si $S \subseteq X \Rightarrow \lvert S \rvert = \lvert \Gamma(S) \rvert$. \\
+				
+				Además por definición de f, $f(x) \in \Gamma(x)$.
+				\item Si $x \in S \Rightarrow f(x) \in \Gamma(S)
+				\Rightarrow f(S) \subseteq \Gamma(S)$.
+			\end{enumerate}
+			
+			De \textcircled{1} y \textcircled{2} $\Rightarrow \lvert S \rvert \leq \lvert \Gamma(S) \rvert$.
+			
+			\vspace{5mm}
+			$\Leftarrow)$ Supongamos que no es cierto, entonces G es bipartito con $\lvert S \rvert \leq \lvert \Gamma \rvert \; \forall \; S \subseteq X$ pero no tiene matching completo de X a Y. Es equivalente a ver que: Si $\nexists$ un matching completo $\Rightarrow \exists \; S \subseteq X : \lvert S \rvert > \lvert \Gamma(S) \rvert$.
+			
+			\vspace{5 mm}
+			Corramos el algoritmo para hallar matching. Al finalizar habrá filas sin matcher (las de \textit{s}).
+			
+			Sean:
+			\begin{itemize}
+				\item 
+			\end{itemize}
 	
 	\section{Teorema del matrimonio}
 	

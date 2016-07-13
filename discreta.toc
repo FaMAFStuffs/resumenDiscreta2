@@ -6,24 +6,22 @@
 \contentsline {section}{\numberline {1.4}La complejidad de WAVE}{5}
 \contentsline {section}{\numberline {1.5}La distancia entre NA sucesivos aumenta}{5}
 \contentsline {chapter}{\numberline {2}Parte B}{6}
-\contentsline {section}{\numberline {2.1}2-COLOR es polinomial}{7}
-\contentsline {section}{\numberline {2.2}Probar que:}{7}
-\contentsline {subsection}{\numberline {2.2.1}El valor de todo flujo es menor o igual que la capacidad de todo corte.}{7}
-\contentsline {subsection}{\numberline {2.2.2}Si el valor de un flujo es igual a la capacidad de un corte entonces el flujo es maximal y el corte minimal.}{7}
-\contentsline {subsection}{\numberline {2.2.3}Si un flujo es maximal entonces existe un corte con capacidad igual al valor del flujo.}{7}
+\contentsline {section}{\numberline {2.1}2-COLOR es polinomial}{6}
+\contentsline {section}{\numberline {2.2}Teorema Max-Flow Min-Cut}{6}
+\contentsline {subsubsection}{a) V(\textit {f}) $\leq $ Cap(S)}{7}
 \contentsline {section}{\numberline {2.3}Complejidad del Hungaro es $\mathcal {O}(n^{4})$}{7}
-\contentsline {section}{\numberline {2.4}Teorema de Hall}{7}
-\contentsline {section}{\numberline {2.5}Teorema del matrimonio}{7}
-\contentsline {section}{\numberline {2.6}Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}{7}
-\contentsline {section}{\numberline {2.7}Teorema cota de Hamming}{7}
-\contentsline {section}{\numberline {2.8}Sea H una matriz de chequeo de un c\IeC {\'o}digo C, pruebe que:}{7}
-\contentsline {subsection}{\numberline {2.8.1}$\delta (C) =$ m\IeC {\'\i }nimo n\IeC {\'u}mero de columnas linealmente dependientes de H}{7}
-\contentsline {subsection}{\numberline {2.8.2}Si H no tiene la columna cero ni columnas respetidas $\Rightarrow $ C corrige al menos un error}{7}
-\contentsline {section}{\numberline {2.9}Sea C un c\IeC {\'o}digo c\IeC {\'\i }clico de dimensi\IeC {\'o}n \textit {k} y longitud \textit {n} y sea $g(x)$ su polinomio generador, probar que:}{7}
-\contentsline {subsection}{\numberline {2.9.1}C est\IeC {\'a} formado por los m\IeC {\'u}ltiplos de $g(x)$ de grado menor a \textit {n}}{7}
-\contentsline {subsection}{\numberline {2.9.2}El grado de $g(x)$ es $n-k$}{7}
-\contentsline {subsection}{\numberline {2.9.3}$g(x)$ divide a $1+x^{n}$}{7}
-\contentsline {chapter}{\numberline {3}Parte C}{8}
-\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{8}
-\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{8}
-\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{8}
+\contentsline {section}{\numberline {2.4}Teorema de Hall}{8}
+\contentsline {section}{\numberline {2.5}Teorema del matrimonio}{9}
+\contentsline {section}{\numberline {2.6}Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}{9}
+\contentsline {section}{\numberline {2.7}Teorema cota de Hamming}{9}
+\contentsline {section}{\numberline {2.8}Sea H una matriz de chequeo de un c\IeC {\'o}digo C, pruebe que:}{9}
+\contentsline {subsection}{\numberline {2.8.1}$\delta (C) =$ m\IeC {\'\i }nimo n\IeC {\'u}mero de columnas linealmente dependientes de H}{9}
+\contentsline {subsection}{\numberline {2.8.2}Si H no tiene la columna cero ni columnas respetidas $\Rightarrow $ C corrige al menos un error}{9}
+\contentsline {section}{\numberline {2.9}Sea C un c\IeC {\'o}digo c\IeC {\'\i }clico de dimensi\IeC {\'o}n \textit {k} y longitud \textit {n} y sea $g(x)$ su polinomio generador, probar que:}{9}
+\contentsline {subsection}{\numberline {2.9.1}C est\IeC {\'a} formado por los m\IeC {\'u}ltiplos de $g(x)$ de grado menor a \textit {n}}{9}
+\contentsline {subsection}{\numberline {2.9.2}El grado de $g(x)$ es $n-k$}{9}
+\contentsline {subsection}{\numberline {2.9.3}$g(x)$ divide a $1+x^{n}$}{9}
+\contentsline {chapter}{\numberline {3}Parte C}{10}
+\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{10}
+\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{10}
+\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{10}
