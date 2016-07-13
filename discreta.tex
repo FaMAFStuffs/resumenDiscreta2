@@ -9,6 +9,8 @@
 \usepackage{enumerate}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
+\renewcommand{\theequation}{\arabic{equation}}
+\newcounter{neq}
 \providecommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\QED}{\hfill \textit{\textbf{Q.E.D.}}}
 \author{Agustin Curto, agucurto95@gmail.com}
@@ -26,14 +28,14 @@
 	
 		\textbf{\underline{Teorema:}} La complejidad de $\langle E-K \rangle$ con $n = \abs{V}$ y $m = \abs{E}$ es $\mathcal{O}(nm^{2})$.
 	
-		\textbf{\underline{Prueba:}} Sean: $f_{0}, f_{1}, f_{2}, \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
+		\textbf{\underline{Prueba:}} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
 		
 		\vspace{5mm}
 		Para cada \textit{k} definimos funciones:
 		
 		\begin{itemize}
-			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright$\;$entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
-			\item $b_{k}(x) =$ distancia entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
+			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
+			\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
 		\end{itemize}
 	
 		\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
@@ -46,13 +48,14 @@
 						\item $d_{k}(s) = 0$
 						\item $b_{k}(t) = 0$
 					\end{itemize}
-				\item Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil en esta demostración llamaremos $\circledast$ a la demostración de:
+				\item Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil para esta demostración llamaremos $\circledast$ a la demostración de:
 			\begin{center}
-				$d_{k}(x) \leq d_{k+1}(x)$
+				$d_{k}(x) \leq d_{k+1}(x)$ \\
+				$b_{k}(x) \leq b_{k+1}(x)$
 			\end{center}
 			\end{enumerate}
 
-		Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k+1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura o \textit{yx} se vacía en el paso \textit{k}.
+		Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k+1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura ó \textit{yx} se vacía en el paso \textit{k}.
 		
 		Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsb$ x,y $\dotsb$ \textit{t} se usa para construir $f_{k}$.
 
@@ -68,29 +71,30 @@
 			\nonumber & = & d_{j}(y)+1+b_{j}(x)
 		\end{eqnarray}
 		
-		Es decir:
+		Entonces:
 		
 		\begin{equation*}
-			\textup{De \textcircled{1} y \textcircled{2}} \Rightarrow
-  			\left\lbrace
+			\textup{De (1) y (2)} \Rightarrow
+  			\left \lbrace
   			\begin{array}{l}
-    		 d_{j}(x) = d_{j}(y)+1 \\
-     		 d_{k}(y) = d_{k}(x)+1 \\
+    		 d_{j}(x) = d_{j}(y)+1 \; \; \star \\
+     		 d_{k}(y) = d_{k}(x)+1 \; \; \dag\\
   			\end{array}
- 			 \right.
+  			\right.
 		\end{equation*}
 		
 		Luego:
 
 		\begin{eqnarray}
-			d_{j}(\textit{t}) & = & d_{j}(x)+ b_{j}(x) \\
-			& = & d_{j}(y)+1+b_{j}(x) \\
-			& \geq & d_{k}(y)+1+b_{k}(x) \\
-			& = & d_{k}(x)+1+1+b_{k}(x) \\
-			& = & d_{k}(\textit{t})+2 \\
-			\Rightarrow d_{\ell}(\textit{t}) & \geq & d_{k}(\textit{t})+2
+			\nonumber d_{j}(\textit{t}) & = & d_{j}(x)+ b_{j}(x) \\
+			\nonumber & = & d_{j}(y)+1+b_{j}(x) \qquad\qquad\qquad\text{Por } \dag\\
+			\nonumber & \geq & d_{k}(y)+1+b_{k}(x) \qquad\qquad\qquad\text{Por} \circledast \\
+			\nonumber & = & d_{k}(x)+1+1+b_{k}(x) \;\qquad\qquad\text{Por} \star \\
+			\nonumber & = & d_{k}(\textit{t})+2 \\
+			\nonumber \Rightarrow d_{j}(\textit{t}) & \geq & d_{k}(\textit{t})+2
 		\end{eqnarray}
 		
+		\vspace{5mm}
 		Por lo tanto cuando un lado se vuelve crítico recien puede volver a saturarse cuando la distancia de \textit{s} a \textit{t} haya aumentado en por lo menos 2. Puede existir $\mathcal{O}(n/t)$ tales aumentos, es decir:
 		
 		\begin{center}
@@ -98,8 +102,8 @@
 		\end{center}				
 		
 		\begin{eqnarray}
-			 \nonumber \; \therefore Complejidad(\langle E-K \rangle) &=& (\# pasos) * Complej(\textit{paso}) \\
-			 \nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Complej(BFS) \\
+			 \nonumber \; \therefore Complejidad(\langle E-K \rangle) &=& (\# pasos) * Compl(1 \; \textit{paso}) \\
+			 \nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Compl(BFS) \\
 			\nonumber  &=& \mathcal{O}(n) * \mathcal{O}(m)* \mathcal{O}(m) \\
 			\nonumber &=& \mathcal{O}(nm^{2})
 		\end{eqnarray}
