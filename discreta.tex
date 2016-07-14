@@ -213,7 +213,7 @@
 
 		\underline{Teorema:} La complejidad del algoritmo de Dinic es $\mathcal{O}(n^{2}m)$.
 		
-		\underline{Prueba:}Vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
+		\underline{Prueba:} Como Dinic es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
 
 		\begin{center}
 			Complejidad(Dinic)$ = \mathcal{O}(n) *$ Compl(Hallar un flujo bloqueante en un NA con Dinic)
@@ -347,6 +347,110 @@
 
 	\section{La complejidad de WAVE}
 
+		\underline{Teorema:} La complejidad del algoritmo de Wave es $\mathcal{O}(n^{3})$.
+		
+		\underline{Prueba:} Como Wave es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
+
+		\begin{center}
+			Complejidad(Wave)$ = \mathcal{O}(n) *$ Compl(Hallar un flujo bloqueante en un NA con Wave)
+		\end{center}
+		
+		Para probar que la complejidad de Wave es $\mathcal{O}(n^{3})$ debemos probar que complejidad del paso bloqueante es $\mathcal{O}(n^{2})$. El paso bloqueante de Wave consiste en una serie de:
+		
+		\begin{itemize}
+			\item Olas hacia adelante: Sucesión de \textbf{forwrdbalance} (FB)
+			\item Olas hacia atrás: Sucesión de \textbf{backwardbalance} (BB)
+		\end{itemize}
+		
+		Cada FB y BB es una sucesión de \textquotedblleft \textbf{buscar vecinos}\textquotedblright y \textquotedblleft \textbf{procesar}\textquotedblright el lado resultante. Estos "procesamientos" \; son complicados pero $ \mathcal{O}(1)$.
+		
+		\begin{center}
+		$ \therefore \; Compl(Paso \; Bloqueante) = \# "procesamientos"$ de lados
+		\end{center}
+	
+		Los "procesamientos" \; de lados los podemos dividir en dos categorías:
+		\begin{enumerate}
+			\item Aquellos procesamientos que saturan o vacian el lado. Denotaremos \textquotedblleft T\textquotedblright \; al número de estos procesamientos.
+			\item Aquellos procesamientos que no saturan ni vacian el lado. Denotaremos \textquotedblleft Q\textquotedblright \; al número de estos procesamientos.
+		\end{enumerate}
+	
+		Por lo tantos queremos acotar $T + Q$.
+		
+		\vspace{5mm}
+		\textbf{Complejidad de T:}
+		\begin{itemize}
+			\item ¿Puede un lado \textit{xy} saturado volver a saturarse?
+			
+			Para poder volver a \underline{saturarse} primero tiene que vaciarse auque sea un poco, es decir, antes de poder volver a saturarlo \textquotedblleft \textit{y}\textquotedblright \; debe devolver flujo a \textquotedblleft \textit{x}\textquotedblright \;, pero para que en Wave \textquotedblleft \textit{y}\textquotedblright \; le devuelva flujo a \textquotedblleft \textit{x}\textquotedblright \;  debe ocurrir que \textquotedblleft \textit{y}\textquotedblright \; este bloqueado (porque BB(y) solo se ejecuta si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado), pero si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado \textquotedblleft \textit{x}\textquotedblright \; no puede mandarle flujo nunca más.
+			
+			\begin{center}
+				$ \therefore \;$ \textit{xy} no puede resaturarse
+			\end{center}
+			
+			\underline{Conclusión 1:} Los lados se saturan solo una vez.
+			
+			\item ¿Puede un lado \textit{xy} vaciado completamente volver a vaciarse?
+			
+			Para poder volver a \underline{vaciarse} como está vacío completamente, primero hay que mandar flujo, pero si lo vacié \textquotedblleft \textit{y}\textquotedblright \; está bloqueado por lo que \textquotedblleft \textit{x}\textquotedblright \; no puede mandar flujo.
+			
+			\begin{center}
+				$ \therefore \;$ \textit{xy} no puede volver a vaciarse
+			\end{center}
+			
+			\underline{Conclusión 2:} Los lados se vacían completamente a lo sumo una vez.
+			
+			Las conclusiones (1) y (2) implican que \begin{tabular}{|c|} \hline $T \leq 2 \; m$ \\ \hline \end{tabular}
+		\end{itemize}
+	
+		\textbf{Complejidad de Q:}
+	
+			En cada FB a lo sumo un lado no se satura y en cada BB a lo sumo un lado no se vacía completamente.
+			
+			\vspace{2mm}
+			$\therefore \;$ Q $\leq \#$ Total de FB's y BB's 
+	
+			\begin{itemize}
+				\item $\#$ FB's en cada ola hacia adelante es $\leq$ \textit{n} (un FB por vértice)
+				\item $\#$ BB's en cada ola hacia atrás es $\leq$ \textit{n}
+
+				$\therefore$ Total de FB's y BB's $\leq 2 \; n \; \#$Total de ciclos de \textquotedblleft ola adelante $-$ ola hacia atrás\textquotedblright
+ 			\end{itemize}
+	
+			Ahora bien, en cada ola hacia adelante, pueden o no, bloquearse algunos vértices. Si no se bloquea ningún vértice entonces todos los vértices ($\neq$ \textit{s, t}) quedan balaceados por lo que estamos en la última ola. Luego en toda ola que no sea la última se bloquea al menos un vértice ($\neq$ \textit{s, t}).
+			
+			\begin{center}
+			$\therefore \; \#$Total de ciclos es $\leq (n-2)+1 = n-1$ \\
+			$\Rightarrow$ \begin{tabular}{|c|} \hline $Q \; \leq 2 n (n-1) = \mathcal{O}(n^{2})$ \\ \hline \end{tabular}
+			\end{center}
+	
+			\begin{eqnarray}
+				\nonumber \therefore \; T + Q & \leq & 2 m + \mathcal{O}(n^{2}) \\
+				\nonumber & = & \mathcal{O}(m) + \mathcal{O}(n^{2}) \\
+				\nonumber & = & \mathcal{O}(n^{2})
+			\end{eqnarray}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	\section{La distancia entre NA sucesivos aumenta}
 	
