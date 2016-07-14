@@ -9,6 +9,7 @@
 \usepackage{enumerate}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
+\usepackage{algpseudocode}
 \renewcommand{\theequation}{\arabic{equation}}
 \newcounter{neq}
 \providecommand{\abs}[1]{\lvert#1\rvert}
@@ -208,104 +209,142 @@
 		\end{enumerate}
 
 
-
-
-
-
-
-
-
 	\section{La complejidad de DINIC}
 
 		\underline{Teorema:} La complejidad del algoritmo de Dinic es $\mathcal{O}(n^{2}m)$.
 		
-		\underline{Prueba:} Como la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
-		
-		Notación: llamemos PB al proceso de hallar paso bloqueante en un network auxiliar con Dinic.
+		\underline{Prueba:}Vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
 
-		Luego la complejidad de Dinic es $ \; \mathcal{O}(n)$ compl(PB). Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que compl(PB) = $\mathcal{O}(nm)$.
-
-		Para hallar un flujo bloqueante:
-		\begin{enumerate}
-			\item Crear un NA: Como es con BFS es $\mathcal{O}(m)$
-			\item Hallar bloqueante, denotemos:
-				\begin{itemize}
-					\item A: avanzar
-					\item R: retorceder
-					\item I: inicializar e incrementar
-				\end{itemize}
-		\end{enumerate}
-		
-		El paso bloqueante de Dinic luce de la forma:
 		\begin{center}
-			AA...AIAAARA...AIAARAAARR...IA...
+			Complejidad(Dinic)$ = \mathcal{O}(n) *$ Compl(Hallar un flujo bloqueante en un NA con Dinic)
 		\end{center}
 		
-		subdiviadmoslo en palabras del tipo:
+		Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que complejidad del paso bloqueante es $\mathcal{O}(nm)$.
+		
+		Sea:
+		\begin{itemize}
+			\item A $=$ Avanzar()
+			\item R $=$ Retroceder()
+			\item I $=$ Incrementar\_Flujo + Inicialización ($\mathcal{O}(1)$) 
+		\end{itemize}
+
+		Una corrida de Dinic luce como:
+		\begin{center}
+			AA$\; \dotsc \;$AIAAARA$\; \dotsc \;$AIAARAAARR$\; \dotsc \;$IA$\; \dotsc \;$
+		\end{center}
+		
+		Dividamos la corrida en subpalabras del tipo:
 		\begin{center}
 			\begin{itemize}
-				\item AA...AI
-				\item AA...AR
+				\item[$*$] $\underbrace{AA \; \dotsc \; A}_{Todas A's}I$
+				\item[$*$] $\underbrace{AA \; \dotsc \; A}_{Todas A's}R$
 			\end{itemize}
 		\end{center}
 		
-		donde las primeras son todas A pudiendo ser 0 la cantidad de la misma.
+		Nota: el número de A's puede ser 0.
 		
 		Debemos determinar:
 		\begin{enumerate}
 			\item Cual es la complejidad de cada subpalabra.
-				
-				Recordemos que:
-		\begin{itemize}
-			\item A:  \{ $P[i+1] =$ algún elemento de $\Gamma^{+}(P[i])$ \\
-						  $i = i+1$ \\
-						$\Rightarrow$ A es $\mathcal{O}(1)$
-						
-			\item R: \{ borrar $P[i-1]$ del NA \\
-						  $i = i-1$ \\
-						$\Rightarrow$ R es $\mathcal{O}(1)$
-						
-			\item I: \{ Recorre dos veces un camino de longitud \textit{d} $=$ \textit{d(\textit{t})} \\
-						$\Rightarrow$ R es $\mathcal{O}(\textit{d})$
-		\end{itemize}
+			\item Cuantas palabras hay de cada tipo.
+		\end{enumerate}
+		
+		\textbf{Complejidad de cada subpalabra}
+		
+		Recordemos que:
+		\begin{equation*}
+			\textup{A:}
+  			\left[
+  			\begin{array}{l}
+    		 P[i+1] = \textup{algún elemento de } \Gamma^{+}(P[i]) \\
+     		 i = i+1\\
+  			\end{array}
+  			\right.
+		\end{equation*}
+		\begin{center}
+			$\Rightarrow$ A es $\mathcal{O}(1)$
+		\end{center}
+		
+		\begin{equation*}
+			\textup{R:}
+  			\left[
+  			\begin{array}{l}
+    		 P[i+1] = \textup{borrar } P[i-1]P[i] \textup{ del NA} \\
+     		 i = i-1\\
+  			\end{array}
+  			\right.
+		\end{equation*}
+		\begin{center}
+			$\Rightarrow$ R es $\mathcal{O}(1)$
+		\end{center}
+		
+		\begin{equation*}
+			\textup{I:}
+  			\left[
+  			\begin{array}{l}
+    		 P[i+1] = \textup{recorre 2 veces, un camino de longitud } d = d(t)
+  			\end{array}
+  			\right.
+		\end{equation*}
+		\begin{center}
+			$\Rightarrow$ I es $\mathcal{O}(d)$
+		\end{center}
 		
 		Por lo tanto:
-		\begin{equation}
-			compl(A...AR) = \mathcal{O}(1) + ... \mathcal{O}(1) + \mathcal{O}(1)
-									= \mathcal{O}(j)
-		\end{equation}
+		\begin{eqnarray}
+			\nonumber Compl(\underbrace{A \; \dotsc \; A}_{j \; veces}R) & = & \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{j \; veces} + \mathcal{O}(1) \\
+			\nonumber & = & \mathcal{O}(j) + \mathcal{O}(1) \\
+			\nonumber & = & \mathcal{O}(j)
+		\end{eqnarray}
 		
-		Pero como cada A hace $ i = i+1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \Rightarrow \textit{j} \leq \textit{d}.$
+		Pero como cada A hace $ i = i+1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \; \Rightarrow \; \textit{j} \leq \textit{d}.$
 		
 		\begin{center}
-			$ \; \therefore compl(A...AR) = \mathcal{O}(\textit{d})$
+			$\therefore \; Compl(A \; \dotsc \; AR) = \mathcal{O}(\textit{d})$
 		\end{center}
 		
 		Similarmente: 		
-		\begin{equation}
-			compl(A...AI) = \mathcal{O}(1) + ... \mathcal{O}(1) + \mathcal{O}(1) \\
-									= \mathcal{O}(d) + \mathcal{O}(d) \\
-									= \mathcal{O}(d)
-		\end{equation}
-		
-		Pero como cada A hace $ i = i+1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \Rightarrow \textit{j} \leq \textit{d}.$
-		
-		\begin{center}
-			$ \; \therefore compl(A...AR) = \mathcal{O}(\textit{d})$
-		\end{center}			
-			
-
-			\item Cuantas palabras hay de cada tipo.
-			
+		\begin{eqnarray}
+			\nonumber Compl(A \; \dotsc \; AI) & = & \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{\leq \; d \; veces} + \mathcal{O}(1) \\
+			\nonumber & = & \mathcal{O}(d) + \mathcal{O}(1) \\
+			\nonumber & = & \mathcal{O}(d)
+		\end{eqnarray}
 				
-		\end{enumerate}
+		\textbf{Cantidad de subpalabras}
+		\begin{itemize}
+			\item R tiene la instrucción "\textbf{borrar lado}". Como los lados borrados quedan borrados hay a lo sumo \textit{m} R's, es decir:
+			\begin{center}
+				$ \therefore \; \# (A \; \dotsc \; AR's) \leq m $
+			\end{center}
+			
+			\item I tiene también línes de la forma:
+				\begin{algorithmic}
+					\If{$\dotsc$}
+    					\State{borrar lado}
+    				\EndIf
+				\end{algorithmic}
+			 	
+			 	Lo que está dentro del \textbf{if} se cumple al menos una vez, es decir:
+			 	\begin{center}
+					$ \therefore \; \# (A \; \dotsc \; AI's) \leq m $
+				\end{center}
+			
+			Este análisis muestra que:
+			\begin{center}
+					$ \therefore \; \# (A \; \dotsc \; AR's) + \# (A \; \dotsc \; AI's) \leq m $
+				\end{center}
+			
+			Por lo tanto hay $\leq m$ palabras, cada una de complejidad $\mathcal{O}(d)$.
+
+			\begin{eqnarray}
+			\nonumber \therefore \;  Compl(Paso \; Bloqueante) & = & \mathcal{O}(m) + \mathcal{O}(md) \\
+			\nonumber & = & \mathcal{O}(mn)
+		\end{eqnarray}
 		
+		ya que $d \leq n$.			
+		\end{itemize}
 		
-		
-		
-		
-		
-		
+
 	\section{La complejidad de WAVE}
 
 	
