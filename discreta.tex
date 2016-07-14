@@ -429,31 +429,77 @@
 				\nonumber & = & \mathcal{O}(n^{2})
 			\end{eqnarray}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	\section{La distancia entre NA sucesivos aumenta}
 	
+		\underline{Teorema:} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean d(x) y $d^{*}(x)$ las distancias de \textit{s} a \textit{t} en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
+		
+		\underline{Prueba:} Como A y $A^{*}$ se construyen con BFS sabemos que $d(t) \leq d^{*}(t)$ pero queremos ver el $<$.
+		
+		Sea:
+		\begin{center}
+			$s = x_{0}, \; x_{1}, \; \dotsc \; t = x_{r}$
+		\end{center}
+	
+		un camino dirigido en $A^{*}$.
+	
+		Ese camino \begin{tabular}{|c|} \hline No existe \\ \hline \end{tabular} en A ya que para pasar de A a $A^{*}$ debemos bloquear todos los caminos dirigidos de A. Por lo tanto si ese camino estuviese en A, Dinic lo habría bloqueado y no estaría en $A^{*}$.
+		
+		\textbf{¿Cuáles son las razones posibles para que no esté en A?}
+		\begin{enumerate}
+			\item Puede faltar un vértice, es decir $\exists \; i \; : \; x_{i} \; \nexists \; V(A)$ entonces:
+			\begin{eqnarray}
+				\nonumber d(t) & \leq & d(x_{i}) \\
+				\nonumber & \leq & d^{*}(x_{i}) \\
+				\nonumber & = & i < r \\
+				\nonumber & = & d^{*}(t) \\
+				\nonumber \begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\ \hline \end{tabular}
+			\end{eqnarray}
+			
+			\item Están todos los vértices pero falta una arista, es decir $\exists \; i \; : \; x_{i}x_{i+1} \; \nexists \; E(A)$.
+			\begin{enumerate}[a)]
+				\item $x_{i}x_{i+1}$ no está porque corresponde a un lado vacío o saturado en NA, es decir $x_{i}x_{i+1}$ no está en el recidual que dá origen a A pero si está en el residual que dá origen a $A^{*}$.
+				
+				Para que esto pase se tiene que haber usado el lado $x_{i+1}x_{i}$ en A. Luego podemos cocluir, por la prueba de $\langle E-K \rangle$ que:
+				\begin{center}
+					$\qquad \; d^{*}(t) \geq d(t) + 2 > d(t) $
+					
+					\vspace{2mm}
+					\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\ \hline \end{tabular}
+				\end{center}
+				
+				\item $x_{i}x_{i+1}$ si está en el residual pero:
+				\begin{tabular}{|c|} \hline $d(x_{i+1}) \neq d(x_{i}) +1 $ \\ \hline \end{tabular} (1)
+				
+				\vspace{5mm}
+				Pero como $x_{i}x_{i+1}$ está en el residual entonces:
+				\begin{tabular}{|c|} \hline $d(x_{i+1}) \leq d(x_{i}) +1 $ \\ \hline \end{tabular} (2)
+				
+				\vspace{5mm}
+				De (1) y (2) tenemos que: \begin{tabular}{|c|} \hline $d(x_{i+1}) < d(x_{i}) +1 $ \\ \hline \end{tabular} $\circledast$
+			
+				Entonces:
+				\begin{eqnarray}
+				\nonumber d(t) & = & d(x_{i+1}) + b(x_{i+1}) \qquad\;\;\;\;\;\textup{Por }\langle E-K \rangle\\
+				\nonumber & \leq & d(x_{i+1}) + b^{*}(x_{i+1}) \qquad\;\;\;\;\textup{Por }\langle E-K \rangle\\
+				\nonumber & < & d(x_{i}) +1 + b^{*}(x_{i+1}) \qquad\;\textup{Por } \circledast \\
+				\nonumber & \leq & d^{*}(x_{i}) + 1 + b^{*}(x_{i+1}) \qquad\textup{Por }\langle E-K \rangle \\
+				\nonumber & = & d^{*}(x_{i+1}) + b^{*}(x_{i+1}) \qquad\;\;\;\textup{Por } (\dag) \\
+				\nonumber & = & d^{*}(t)
+				\end{eqnarray}
+				$\qquad\qquad\qquad\;\;\;$
+				\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\ \hline \end{tabular}
+
+				($\dag$): Ya que $s, \; x_{1}, \; \dotsc \; x_{r}$
+			\end{enumerate}
+		\end{enumerate}
+	
+	
+	
+
+
+
+
 
 
 \chapter{Parte B}
@@ -469,15 +515,16 @@
 			\item Si \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).
 		\end{enumerate}
 		
-		\underline{Prueba:} Demostraremos primero que $V(\textit{f}) = f(S, \overline{S}) - f(\overline{S},S)$ donde \textit{f} es un flujo y S un corte. Esto nos ayudará en la demostración del ítem \textcircled{a}.
+		\underline{Prueba:} Demostraremos primero que $V(\textit{f}) = f(S, \overline{S}) - f(\overline{S},S)$ donde \textit{f} es un flujo y S un corte. Esto nos ayudará en la demostración del ítem a).
 		
 		\underline{Observemos que:}
 		\begin{itemize}
 			\item $f(A \cup B, C) = f(A,C) + f(B,C):$ A y B disjuntos.
 			\item $f(A, B \cup C) = f(A,B) + f(A,C):$ B y C disjuntos.
-			\item $f(A,B) = \underset {\underset {y \in B} {x \in A}} \sum f(x,y).$
+			\item $f(A, B) = \sum_{\begin{subarray}{l} x \in A\\
+y \in B\end{subarray}} f(x, y)$.
 		\end{itemize}
-		
+
 		Sea x $\in$ S $\Rightarrow$ x $\neq$ \textit{t}.
 		\begin{equation*}
 			\textup{f(x, V) - f(V, x)} =
@@ -490,27 +537,41 @@
 		\end{equation*}
 		
 		Luego:
-		\begin{equation}
-			\sum_{x \in S}(f(x, V) - f(V, x)) = 0 + 0 \dotsb + V(f) = V(f) \\
-		\end{equation}
-		\begin{equation}
-			\vspace{5mm} \\
-			V(f) = \sum_{x \in S}f(x, V) - \sum_{x \in S}f(V, x) \\
-		\end{equation}
-		\begin{equation}
-			= f(S, V) - f(V, S) \\
-		\end{equation}
-        \begin{equation}
-           = f(S, S \cup \overline{S}) - f(S \cup \overline{S}, S) \\
-        \end{equation}
-		\begin{equation}
-			= f(S, S) + f(S, \overline{S}) - f(S, S) -  f(\overline{S}, S) \\
-		\end{equation}
-				
-		\subsubsection{a) V(\textit{f}) $\leq$ Cap(S)}
+		\begin{eqnarray}
+			\nonumber \sum_{x \in S}(f(x, V) - f(V, x)) & = & 0 + 0 \dotsb + V(f) \\
+			\nonumber & = & V(f)
+		\end{eqnarray}
+		
+			\begin{eqnarray}
+			\nonumber V(f) & = & \sum_{x \in S}f(x, V) - \sum_{x \in S}f(V, x) \\
+			\nonumber & = & f(S, V) - f(V, S) \;\;\qquad\qquad\qquad\qquad\qquad\qquad\text{Por observación} \\
+			\nonumber & = & f(S, S \cup \overline{S}) - f(S \cup \overline{S}, S) \;\;\;\;\qquad\qquad\qquad\qquad\text{Ya que } V = S \cup \overline{S} \\
+           \nonumber & = & f(S, S) + f(S, \overline{S}) - f(S, S) -  f(\overline{S}, S) \qquad\qquad\text{Por observación} \\
+           \nonumber & = & \begin{tabular}{|c|} \hline $f(S, \overline{S} - f(\overline{S}, S))$ \\ \hline \end{tabular} \; \star
+		\end{eqnarray}
+
+		\textbf{a) \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).}
+		
+			\begin{center}
+				$V(f) =_{\star} f(S, \overline{S})\underbrace{-\underbrace{f(\overline{S}, S)}_{\geq 0}}_{\leq 0}$ \\
+				\vspace{5mm}
+				$\Rightarrow V(f ) \leq f(S, \overline{S}) \leq C(S, \overline{S}) =$ Cap(S)
+			\end{center}
 			
+		\textbf{b) V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.}
+
+			\vspace{5mm}
+			Supongamos que V(\textit{f}) $=$ Cap(S).
+			
+			Sea \textit{g} un flujo cualquiera y T un corte cualquiera.
+			\begin{itemize}
+				\item $V(g) \leq_{a)} Cap(S) = V(f) \Rightarrow$ f es maximal 
+				\item $Cap(T) \leq_{a)} V(f) = Cap(S) \Rightarrow$ S es minimal
+			\end{itemize}
+			
+		\textbf{c) \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).}
 		
-		
+		\vspace{5mm}
 		
 		
 		
