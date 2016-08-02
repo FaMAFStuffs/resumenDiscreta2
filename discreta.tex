@@ -628,24 +628,7 @@ y \in B\end{subarray}} f(x, y)$.
 				\nonumber &=& Cap(S) - 0 \\
 				\nonumber &=& Cap(S)				
 			\end{eqnarray}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	\section{Complejidad del Hungaro es $\mathcal{O}(n^{4})$}
 	
 		\underline{Teorema:} La complejidad del algoritmo Húngaro es $\mathcal{O}(n^{4})$.
@@ -657,9 +640,10 @@ y \in B\end{subarray}} f(x, y)$.
 				
 					Restar mínimo de cada fila:
 					\begin{center}
-						$(\mathcal{O}(n^{2}) + \mathcal{O}(n^{2})) * n = \mathcal{O}(n^{2})$
-						Idem para las columnas.
+						$(\underbrace{\mathcal{O}(n)}_{calcular \; min} + \underbrace{\mathcal{O}(n)}_{restar \; min}) * \underbrace{n}_{\# filas} = \mathcal{O}(n^{2})$
 					\end{center}
+				
+				Idem para las columnas.
 				
 				\item Llamemos \textbf{extender} el matching, a incrementar su número de filas en 1, i.e agregar una fila más al matching.
 				\begin{center}
@@ -670,7 +654,7 @@ y \in B\end{subarray}} f(x, y)$.
 				
 				\item En cada extensión vamos a ir revisando filas y columnas, donde escanear una fila es $\mathcal{O}(n)$ y se realizan \textit{n} escaneos, por lo que sería $\mathcal{O}(n^{2})$ sin considerar que se debe realizar un cambio de matriz.
 				
-				Hacer un cambio de matriz es $\mathcal{O}(n^{2})$.				
+				Hacer un \textbf{cambio de matriz} es $\mathcal{O}(n^{2})$, ya que:				
 				\begin{itemize}
 					\item Buscar $\textit{m} = \min S \; x \; \overline{\Gamma(S)} \rightarrow \mathcal{O}(n^{2})$
 					\item Restar \textit{m} de $S \rightarrow \mathcal{O}(n^{2})$
@@ -678,31 +662,32 @@ y \in B\end{subarray}} f(x, y)$.
 				\end{itemize}
 				
 				Luego la implementación NAIVE lanzaría nuevamente el algoritmo desde cero. La forma correcta es continuar con el matching que teniamos, ya que el mismo no se pierde.
-				\begin{center}
-				$
-				\begin{bmatrix}
-				A & A \\
-				B  & C \\
-				\end{bmatrix}					
+				
+				Si lo hacems así, ¿Cuántos \textbf{cambios de matriz} habrá antes de extender un matching nuevamente?
+				
+				\underline{\textbf{Lema Interno:}} Luego de un \textbf{cambio de matriz}, se extiende el matching o bien se aumenta S.
+				
+				\underline{\textbf{Prueba:}} 			
+				
+				\begin{center}$
+				\; \; \left(
+				\begin{array}{r | r}
+					\text{{\huge A}} & \text{{\huge A}} \\
+					\hline
+					\text{{\huge B}} & \text{{\huge C}}
+				\end{array}
+				\right)
+				{\begin{subarray}{l} \; \overline{\text{{\large S}}} \\ \\ \; {\text{{\large S}}} \end{subarray}} \linebreak
+				\overline{\Gamma(S)} \; \Gamma(S)
 				$
 				\end{center}
 				
-				TO DO
-				
-				Debemos ver cuantos Cambios de matriz hay antes de extender nuevamente un matching
-				
-				\underline{\textbf{Lema Interno:}} Luego de un cambio de matriz, se extiende el matching (i.e se termina el \textbf{extender}), o bien se aumenta S.
-				
-				\underline{\textbf{Prueba:}} 
-				
-				\begin{center}
-				$
-				\begin{bmatrix}
-				A & A \\
-				B  & C \\
-				\end{bmatrix}					
-				$
-				\end{center}				
+				\underline{Referencias:}
+				\begin{itemize}
+					\item A: puede haber ceros.
+					\item B: no hay ceros, no hay matching.
+					\item C: ceros del matching.
+				\end{itemize}						
 				
 				Al restar $\textit{m} = \min S \; \Gamma(S)$ de las filas de S, habrá un nuevo cero en alguna fila \textit{i} ($\in S$) y columna \textit{j} ($\in \Gamma(S)$) entonces la columna se etiquetará con \textit{i} y se revisará.
 				Tenemos dos resultados posible:
@@ -714,14 +699,14 @@ y \in B\end{subarray}} f(x, y)$.
 					Entonces se termina con una extensión o se produce un nuevo S de cardinalidad, al menos $\lvert S \rvert + 1$.
 				\end{enumerate}
 				
-				\textbf{Fin lema interno}
+				\textbf{Fin Lema Interno}
 				
 				Luego como $\lvert S \rvert$ solo puede crecer $\mathcal{O}(n)$ veces, tenemos que hay a lo sumo \textit{n} \textbf{cambios de matriz} antes de extender el matching. Entonces:
 				
 							\begin{center}
 								Complejidad(1 Extensión) $= \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Compl(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas }$ \\
 								\vspace{5mm}
-								$\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching inicial} + \underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Compl(extension)}$
+								$\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching \; inicial} + \underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Compl(extension)}) = \; \mathcal{O}(n^{4})$
 							\end{center}				
 			\end{enumerate}
 	
