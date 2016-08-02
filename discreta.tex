@@ -10,6 +10,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{algpseudocode}
+\usepackage{stackrel}
 \renewcommand{\theequation}{\arabic{equation}}
 \newcounter{neq}
 \providecommand{\abs}[1]{\lvert#1\rvert}
@@ -495,12 +496,6 @@
 		\end{enumerate}
 	
 	
-	
-
-
-
-
-
 
 \chapter{Parte B}
 
@@ -517,6 +512,7 @@
 		
 		\underline{Prueba:} Demostraremos primero que $V(\textit{f}) = f(S, \overline{S}) - f(\overline{S},S)$ donde \textit{f} es un flujo y S un corte. Esto nos ayudará en la demostración del ítem a).
 		
+		\vspace{5mm}
 		\underline{Observemos que:}
 		\begin{itemize}
 			\item $f(A \cup B, C) = f(A,C) + f(B,C):$ A y B disjuntos.
@@ -542,36 +538,111 @@ y \in B\end{subarray}} f(x, y)$.
 			\nonumber & = & V(f)
 		\end{eqnarray}
 		
+		\begin{flushright}
 			\begin{eqnarray}
 			\nonumber V(f) & = & \sum_{x \in S}f(x, V) - \sum_{x \in S}f(V, x) \\
 			\nonumber & = & f(S, V) - f(V, S) \;\;\qquad\qquad\qquad\qquad\qquad\qquad\text{Por observación} \\
 			\nonumber & = & f(S, S \cup \overline{S}) - f(S \cup \overline{S}, S) \;\;\;\;\qquad\qquad\qquad\qquad\text{Ya que } V = S \cup \overline{S} \\
            \nonumber & = & f(S, S) + f(S, \overline{S}) - f(S, S) -  f(\overline{S}, S) \qquad\qquad\text{Por observación} \\
-           \nonumber & = & \begin{tabular}{|c|} \hline $f(S, \overline{S} - f(\overline{S}, S))$ \\ \hline \end{tabular} \; \star
+           \nonumber & = & \begin{tabular}{|c|} \hline $f(S, \overline{S}) - f(\overline{S}, S)$ \\ \hline \end{tabular} \; (\star)
 		\end{eqnarray}
-
+		\end{flushright}
+		
 		\textbf{a) \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).}
 		
 			\begin{center}
-				$V(f) =_{\star} f(S, \overline{S})\underbrace{-\underbrace{f(\overline{S}, S)}_{\geq 0}}_{\leq 0}$ \\
+				$V(f) \stackbin{Por \; (\star)}{=} f(S, \overline{S})\underbrace{-\underbrace{f(\overline{S}, S)}_{\geq 0}}_{\leq 0}$ \\
+				
 				\vspace{5mm}
 				$\Rightarrow V(f ) \leq f(S, \overline{S}) \leq C(S, \overline{S}) =$ Cap(S)
 			\end{center}
 			
 		\textbf{b) V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.}
-
-			\vspace{5mm}
-			Supongamos que V(\textit{f}) $=$ Cap(S).
 			
-			Sea \textit{g} un flujo cualquiera y T un corte cualquiera.
+			\vspace{2mm}
+			Supongamos que V(\textit{f}) $=$ Cap(S). Sea \textit{g} un flujo cualquiera y T un corte cualquiera.
 			\begin{itemize}
-				\item $V(g) \leq_{a)} Cap(S) = V(f) \Rightarrow$ f es maximal 
-				\item $Cap(T) \leq_{a)} V(f) = Cap(S) \Rightarrow$ S es minimal
+				\item $V(g) \stackbin{Por \; a)}{\leq} Cap(S) = V(f) \Rightarrow$ f es maximal 
+				\item $Cap(T) \stackbin{Por \; a)}{\leq} V(f) = Cap(S) \Rightarrow$ S es minimal
 			\end{itemize}
-			
-		\textbf{c) \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).}
 		
 		\vspace{5mm}
+		\textbf{c) \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).}
+			
+			\vspace{2mm}
+			Sea $S = \{s\} \cup \{x \; : \; \exists \;$ camino aumentante realtivo a \textit{f} entre \textit{s} y \textit{t}$\}$
+			
+			\vspace{5mm}
+			¿$t \in S$?
+
+			\underline{Si \textit{t} estuviera en S:} existiría un camino aumentante entre \textit{s} y \textit{t}.
+				
+				Por el teorema del camino aumentante podemos construir un  flujo \textit{g} tal que:
+				\begin{center}
+					$V(g) = V(f) + \epsilon \textup{ para algun } \epsilon > 0$
+					
+					$\therefore V(g) > V(f)$ \textbf{Absurdo} pues \textit{f} es maximal.
+				\end{center}
+				
+				$\therefore t \notin S \Rightarrow S$ es corte.
+				
+				\begin{center}
+					Solo resta ver que: $V(f) = Cap(S)$
+				\end{center}
+				
+				Por $(\star): \; V(f) =  \underbrace{f(S, \overline{S})}_{(1)} - \underbrace{f(\overline{S}, S)}_{(2)}$
+				
+				\vspace{2mm}
+				Analicemos (1) y (2)
+			\begin{enumerate}[(1)]
+				\item $f(S, \overline{S}) = \sum_{\begin{subarray}{l} \; x \in S\\
+\; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
+
+				$x \in S \Rightarrow \exists$ camino aumentante $ x_{0} = s, \; x_{1}, \dotsc x_{r} = x$.
+
+				$y \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{y}. En particular $x_{0} = s, x_{1}= x, \dotsc y$ no es camino aumentante.
+				
+				\vspace{3mm}
+				$\Rightarrow f(\overrightarrow{xy}) = Cap(\overrightarrow{xy}) \qquad \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E.$ 
+				
+				\vspace{3mm}
+				$\Rightarrow f(S, \overline{S}) = \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) = \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} Cap(\overrightarrow{xy}) = Cap(S, \overline{S}) = Cap(S)$				
+
+				\item $f(\overline{S}, S) = \sum_{\begin{subarray}{l} \; x \in \overline{S}\\
+\; y \in S \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
+
+				$x \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{x}.
+
+				$y \in S \Rightarrow \exists$ camino aumentante $ y_{0} = s, \; y_{1}, \dotsc y_{r} = y$.
+				
+				En particular $s \dotsc y, y \dotsc x$ no es camino aumentante. $\Rightarrow f(\overrightarrow{xy}) = 0 \qquad \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E$.
+				
+				\vspace{3mm}
+				$\Rightarrow f(\overline{S}, S) = 0$
+			\end{enumerate}
+			
+			Luego de (1) y (2)
+			
+			\begin{eqnarray}
+				\nonumber V(f) &=& f(S, \overline{S}) - f(\overline{S}, S)\\
+				\nonumber &=& Cap(S) - 0 \\
+				\nonumber &=& Cap(S)				
+			\end{eqnarray}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
