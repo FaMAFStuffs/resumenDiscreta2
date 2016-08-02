@@ -10,17 +10,17 @@
 \contentsline {section}{\numberline {2.2}Teorema Max-Flow Min-Cut}{10}
 \contentsline {section}{\numberline {2.3}Complejidad del Hungaro es $\mathcal {O}(n^{4})$}{12}
 \contentsline {section}{\numberline {2.4}Teorema de Hall}{13}
-\contentsline {section}{\numberline {2.5}Teorema del matrimonio}{14}
-\contentsline {section}{\numberline {2.6}Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}{14}
-\contentsline {section}{\numberline {2.7}Teorema cota de Hamming}{14}
-\contentsline {section}{\numberline {2.8}Sea H una matriz de chequeo de un c\IeC {\'o}digo C, pruebe que:}{14}
-\contentsline {subsection}{\numberline {2.8.1}$\delta (C) =$ m\IeC {\'\i }nimo n\IeC {\'u}mero de columnas linealmente dependientes de H}{14}
-\contentsline {subsection}{\numberline {2.8.2}Si H no tiene la columna cero ni columnas respetidas $\Rightarrow $ C corrige al menos un error}{14}
-\contentsline {section}{\numberline {2.9}Sea C un c\IeC {\'o}digo c\IeC {\'\i }clico de dimensi\IeC {\'o}n \textit {k} y longitud \textit {n} y sea $g(x)$ su polinomio generador, probar que:}{14}
-\contentsline {subsection}{\numberline {2.9.1}C est\IeC {\'a} formado por los m\IeC {\'u}ltiplos de $g(x)$ de grado menor a \textit {n}}{14}
-\contentsline {subsection}{\numberline {2.9.2}El grado de $g(x)$ es $n-k$}{14}
-\contentsline {subsection}{\numberline {2.9.3}$g(x)$ divide a $1+x^{n}$}{14}
-\contentsline {chapter}{\numberline {3}Parte C}{15}
-\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{15}
-\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{15}
-\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{15}
+\contentsline {section}{\numberline {2.5}Teorema del matrimonio}{15}
+\contentsline {section}{\numberline {2.6}Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}{15}
+\contentsline {section}{\numberline {2.7}Teorema cota de Hamming}{15}
+\contentsline {section}{\numberline {2.8}Sea H una matriz de chequeo de un c\IeC {\'o}digo C, pruebe que:}{15}
+\contentsline {subsection}{\numberline {2.8.1}$\delta (C) =$ m\IeC {\'\i }nimo n\IeC {\'u}mero de columnas linealmente dependientes de H}{15}
+\contentsline {subsection}{\numberline {2.8.2}Si H no tiene la columna cero ni columnas respetidas $\Rightarrow $ C corrige al menos un error}{15}
+\contentsline {section}{\numberline {2.9}Sea C un c\IeC {\'o}digo c\IeC {\'\i }clico de dimensi\IeC {\'o}n \textit {k} y longitud \textit {n} y sea $g(x)$ su polinomio generador, probar que:}{15}
+\contentsline {subsection}{\numberline {2.9.1}C est\IeC {\'a} formado por los m\IeC {\'u}ltiplos de $g(x)$ de grado menor a \textit {n}}{15}
+\contentsline {subsection}{\numberline {2.9.2}El grado de $g(x)$ es $n-k$}{15}
+\contentsline {subsection}{\numberline {2.9.3}$g(x)$ divide a $1+x^{n}$}{15}
+\contentsline {chapter}{\numberline {3}Parte C}{16}
+\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{16}
+\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{16}
+\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{16}

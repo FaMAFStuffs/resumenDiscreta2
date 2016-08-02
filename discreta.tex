@@ -687,7 +687,7 @@ y \in B\end{subarray}} f(x, y)$.
 					\item A: puede haber ceros.
 					\item B: no hay ceros, no hay matching.
 					\item C: ceros del matching.
-				\end{itemize}						
+				\end{itemize}
 				
 				Al restar $\textit{m} = \min S \; \Gamma(S)$ de las filas de S, habrá un nuevo cero en alguna fila \textit{i} ($\in S$) y columna \textit{j} ($\in \Gamma(S)$) entonces la columna se etiquetará con \textit{i} y se revisará.
 				Tenemos dos resultados posible:
@@ -712,19 +712,20 @@ y \in B\end{subarray}} f(x, y)$.
 	
 	\section{Teorema de Hall}
 	
-		\underline{Teorema:} Sea G = (x $\cup$ y, E) grafo bipartito $\Rightarrow \exists$ matching completo de X a Y $\Leftrightarrow \; \lvert S \rvert = \lvert \Gamma(S) \rvert \forall S \subseteq X$.
+		\underline{Teorema:} Sea G = (X $\cup$ Y, E) grafo bipartito $\Rightarrow \exists$ matching completo de X a Y $\Leftrightarrow \; \lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$.
 		
+		\vspace{3mm}
 		\underline{Prueba:}
 
-			$\Rightarrow)$ Si M es matching comple de X a Y entonces oberservemos que M induce una función inyectiva de X a Y.
+			$\Rightarrow)$ Si M es matching completo de X a Y entonces oberservemos que M induce una función inyectiva de X a Y.
 			
 			\begin{center}
 				$f(x) = $ único y : xy $\in$ M.
 			\end{center}
 			
 			\begin{enumerate}
-				\item Si $S \subseteq X \Rightarrow \lvert S \rvert = \lvert \Gamma(S) \rvert$. \\
-				
+				\item Si $S \subseteq X \Rightarrow \lvert S \rvert = \lvert \Gamma(S) \rvert$. 
+
 				Además por definición de f, $f(x) \in \Gamma(x)$.
 				\item Si $x \in S \Rightarrow f(x) \in \Gamma(S)
 				\Rightarrow f(S) \subseteq \Gamma(S)$.
@@ -733,16 +734,66 @@ y \in B\end{subarray}} f(x, y)$.
 			De \textcircled{1} y \textcircled{2} $\Rightarrow \lvert S \rvert \leq \lvert \Gamma(S) \rvert$.
 			
 			\vspace{5mm}
-			$\Leftarrow)$ Supongamos que no es cierto, entonces G es bipartito con $\lvert S \rvert \leq \lvert \Gamma \rvert \; \forall \; S \subseteq X$ pero no tiene matching completo de X a Y. Es equivalente a ver que: Si $\nexists$ un matching completo $\Rightarrow \exists \; S \subseteq X : \lvert S \rvert > \lvert \Gamma(S) \rvert$.
+			$\Leftarrow)$ Supongamos que no es cierto, entonces G es bipartito con $\lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$ pero no tiene matching completo de X a Y. Esto equivalente a ver que: Si $\nexists$ un matching completo $\Rightarrow \exists \; S \subseteq X : \lvert S \rvert > \lvert \Gamma(S) \rvert$.
 			
 			\vspace{5 mm}
 			Corramos el algoritmo para hallar matching. Al finalizar habrá filas sin matcher (las de \textit{s}).
 			
+			\vspace{5mm}
 			Sean:
 			\begin{itemize}
-				\item 
+				\item $S_{0} =$ filas sin matchear.
+				\item $T_{1} = \Gamma(S_{0})$, columnas etiquetadas por las filas de $S_{0}$. Todas las columnas de $T_{1}$ están matcheadas, pues si no se podría agregar alguna alguna fila de $S_{0}$ al matching.
+				\item $S_{1} =$ filas etiquetadas por las columnas de $T_{1}$.
+				\item $T_{2} = \Gamma(S_{1}) - T_{1}$, columnas etiquetadas por las filas de $S_{1}$. 
 			\end{itemize}
 	
+			En general:
+			\begin{center}
+			\begin{itemize}
+				\item $S_{i} =$ filas matcheadas con $T_{i}$.
+				\item $T_{i+1} = \Gamma(S_{i}) - (T_{1} \cup T_{2} \cup \dotsc T_{i}$.
+			\end{itemize}
+			\end{center}
+			
+			Como el algoritmo para sin hayar matching, entonces $\forall i \; T_{i} \neq \emptyset $, produce un $S_{i}$  (i.e $S_{i} \neq \emptyset$).
+			
+			$\therefore$ La única forma de parar es en un \textit{k}, tal que $T_{k+1} = \emptyset$.
+			
+			\underline{Observaciones:}
+			\begin{enumerate}
+				\item $\lvert S_{j} \rvert = \lvert T_{j} \rvert$, pues $S_{j}$ son las filas matcheadas con $T_{j}$.
+				\item $\Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) = T_{1} \cup T_{2} \cup \dotsc T_{j+1}$
+				
+					\underline{Por inducción en \textit{j}:}
+					\begin{itemize}
+						\item Caso Base: $j = 0$ vale.
+						\item Caso Inductivo: Supongamos que vale para \textit{j}, veamos para \textit{j+1}.
+						
+						\begin{eqnarray}
+							\nonumber T_{1} \cup T_{2} \dotsc T_{j+2} &=& T_{1} \cup T_{2} \cup \dotsc T_{j+1} \cup \underbrace{(\Gamma(S_{i+1}) - (T_{1} \cup T_{2} \dotsc T_{j+1}))}_{T_{j+1}} \\
+							\nonumber &=& T_{1} \cup T_{2} \cup \dotsc T_{j+1} \cup (\Gamma(S_{i+1}) \\
+							\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) \cup \Gamma(S_{i+1}) \qquad \text{Por H.I} \\
+							\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j} \cup S_{j+1}) 
+						\end{eqnarray}
+					\end{itemize}
+					
+				\item Por construcción, los $S_{i}$ y $T_{i}$ son todos distintos.
+				
+					Sea $S = S_{0} \cup S_{1} \cup \dotsc S_{k}$
+					
+					\begin{eqnarray}
+						\nonumber \lvert \Gamma(S) \rvert &=& \lvert \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{k}) \rvert \\
+						\nonumber &=& \lvert T_{1} \cup T_{2} \cup \dotsc \underbrace{T_{k+1}}_{= \; \emptyset} \rvert \qquad \; \text{Por 3} \\
+						\nonumber &=& \lvert T_{1} \cup T_{2} \cup \dotsc T_{k} \rvert \\
+						\nonumber &=& \lvert T_{1} \rvert + \lvert T_{2} \rvert + \dotsc \lvert T_{k} \rvert \qquad \text{Por 2} \\
+						\nonumber &=& \lvert S_{1} \rvert + \lvert S_{2} \rvert + \dotsc \lvert S_{k} \rvert \qquad \text{Por 1} \\
+						\nonumber &=& \lvert S \rvert - \lvert S_{0} \rvert \qquad \qquad \qquad \; \; \text{Por 2} \\
+						\nonumber &<& \lvert S \rvert \qquad \text{Absurdo!}
+					\end{eqnarray}
+			\end{enumerate}
+			
+			
 	\section{Teorema del matrimonio}
 	
 	
