@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  3 AUG 2016 11:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  3 AUG 2016 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,42 +639,42 @@ m/n/12 = \OML/lmm/m/it/12 z[];  z[];  []  z[];  z[] \OT1/lmr/m/n/12 =
 Cap\'{\i }tulo 2.
 [10
 
-] [11]
+]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 632.
- [12]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 734.
+(Font)              <17.28> on input line 597.
+ [11] [12]
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 705.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 734.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 705.
 
 [13] [14]
 
-LaTeX Font Warning: Command \huge invalid in math mode on input line 836.
+LaTeX Font Warning: Command \huge invalid in math mode on input line 814.
 
 [15]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 907
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 888
 .
  (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 907.
- [16]
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 888.
+
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 924.
+(amsmath)                 on input line 907.
 
-[17] [18] [19] [20]
+[16] [17] [18] [19] [20]
 Cap\'{\i }tulo 3.
 [21
 
 ]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 1114.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 1097.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -717,7 +717,7 @@ sy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on discreta.pdf (23 pages, 335718 bytes).
+Output written on discreta.pdf (23 pages, 333803 bytes).
 PDF statistics:
  165 PDF objects out of 1000 (max. 8388607)
  118 compressed objects within 2 object streams
