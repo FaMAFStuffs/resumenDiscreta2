@@ -793,8 +793,68 @@ y \in B\end{subarray}} f(x, y)$.
 					\end{eqnarray}
 			\end{enumerate}
 			
-			
 	\section{Teorema del matrimonio}
+	
+		\underline{Teorema:} Todo grafo regular bipartito tiene un matching perfecto.
+		
+		\underline{Prueba:} Sea $G = (X \cup Y, E) bipartito regular \forall w \subseteq V(G)$, definimos:
+		
+		\begin{eqnarray}
+			\nonumber E_{W} &=& \left\lbrace xy \in E(G): x \in W \; o \ y \in W \right\rbrace \\
+			\nonumber &=& \text{lados con un extremo en W}
+		\end{eqnarray}
+		
+		Como G es regular, $\exists \; \Delta = \delta > 0 : d(z) = \Delta \forall \; z \Rightarrow \forall w \in \; W \exists$ al menos un lado \textit{wv}.
+		
+		\vspace{5mm}
+		Supongamos que $w \subseteq X$ (de igual forma para $w \subseteq Y$)
+		
+		\begin{eqnarray}
+			\nonumber \lvert E_{w} \rvert &=& \lvert \left\lbrace xy \in E: x \in W \right\rbrace \rvert \\
+			\nonumber &=&\ \sum_{x \in W} \lvert \left\lbrace y : xy \in E \right\rbrace \rvert \\
+			\nonumber &=& \sum_{x \in w} \; \underbrace{d(x)}_{\Delta} \\
+			\nonumber &=& \Delta * \lvert W \rvert
+		\end{eqnarray}
+		
+		Es decir, a cada \textit{w} le corresponden $\Delta$ lados distintos. En particular $\lvert E_{x} \rvert = \Delta * \lvert x \rvert$ y $\lvert E_{y} \rvert = \Delta * \lvert y \rvert$ pero $E_{x} = E = E_{y}$ pues G es bipartito.
+		
+		\vspace{5mm}
+		Por lo tanto:
+		
+		$ \lvert E_{x} \rvert = \lvert E_{y} \rvert \Rightarrow \Delta * \lvert x \rvert = \Delta * \lvert y \rvert \Rightarrow \lvert x \rvert = \lvert y \rvert \qquad \therefore$ Todo matching completo es perfecto.
+		
+	
+		Basta ver que existe un matching comple de X a Y, \textit{i.e} que se cumple la condición de Hall.
+		
+		\vspace{5mm}
+		Sea $S \subseteq X$:
+		
+		\begin{equation*}
+			\text{Sea} 
+			\underbrace{xy}_{\begin{subarray}{l} \; x \in X \\
+	\; y \in Y \end{subarray}} \in E_{s} \Rightarrow
+			{\Huge \exists}
+  			\left\lbrace
+  			\begin{array}{l}
+    		 x \in S \\
+     		 y \in \Gamma(x) \\
+  			\end{array}
+ 			 \right\rbrace
+ 			 \Rightarrow y \in \Gamma(S) \Rightarrow xy \in E_{\Gamma(s)}
+		\end{equation*}		
+		
+		\vspace{3mm}
+		Es decir, hemos probado que:
+		
+		\begin{eqnarray}
+			\nonumber E_{s} & \subseteq & E_{\Gamma(S)} \\
+			\nonumber \lvert E_{S} \rvert &\leq & \lvert E_{\Gamma(S)} \rvert \\
+			\nonumber \Delta \; \lvert S \rvert & \leq & \Delta \; \lvert \Gamma(S) \rvert \\
+			\nonumber \lvert S \rvert & \leq & \Gamma(S)
+		\end{eqnarray}
+		
+		
+		
 	
 	
 	\section{Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}

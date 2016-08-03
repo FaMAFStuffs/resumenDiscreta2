@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  2 AUG 2016 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  2 AUG 2016 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -651,15 +651,19 @@ File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 734.
 
-[13] [14] [15]
+[13] [14]
+
+LaTeX Font Warning: Command \huge invalid in math mode on input line 836.
+
+[15] [16]
 Cap\'{\i }tulo 3.
-[16
+[17
 
 ]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 834.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 894.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [17
+) [18
 
 ]
 (./discreta.aux
@@ -697,10 +701,10 @@ onts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
 lmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbo
 ls/msam10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/s
 ymbols/msbm10.pfb>
-Output written on discreta.pdf (18 pages, 295658 bytes).
+Output written on discreta.pdf (19 pages, 300725 bytes).
 PDF statistics:
- 148 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
+ 152 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
