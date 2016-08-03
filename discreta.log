@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  2 AUG 2016 23:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  3 AUG 2016 08:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -603,7 +603,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./disc
-reta.toc)
+reta.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 3.
+)
 \tf@toc=\write3
 \openout3 = `discreta.toc'.
 
@@ -612,12 +621,6 @@ reta.toc)
 
 ]
 Cap\'{\i }tulo 1.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 31.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 31.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 31.
 [2
 
 ]
@@ -666,61 +669,57 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 924.
 
-[17]
+[17] [18]
 Cap\'{\i }tulo 3.
-[18
+[19
 
 ]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 961.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 998.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [19
+) [20
 
 ]
 (./discreta.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+) ) 
 Here is how much of TeX's memory you used:
- 4615 strings out of 493089
- 62648 string characters out of 6134842
- 141916 words of memory out of 5000000
- 7982 multiletter control sequences out of 15000+600000
+ 4616 strings out of 493089
+ 62664 string characters out of 6134842
+ 141924 words of memory out of 5000000
+ 7983 multiletter control sequences out of 15000+600000
  85663 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  32i,16n,30p,774b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rmsc.enc}{/usr/loca
-l/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/
-2015/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2015/texmf-d
-ist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/
-dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/l
-m-mathex.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/la
-txfont/lasy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmb
-x12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/lm/lmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr1
-2.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/lm/lmri8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/lm/lmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lm
-sy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on discreta.pdf (20 pages, 326597 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rmsc.enc}{/usr/loc
+al/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive
+/2015/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2015/texmf-
+dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc
+/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/
+lm-mathex.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/l
+atxfont/lasy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lm
+bx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/lm/lmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr
+12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr17.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/lm/lmri8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/lm/lmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/l
+msy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on discreta.pdf (21 pages, 332664 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 163 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

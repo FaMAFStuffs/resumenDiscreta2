@@ -925,8 +925,45 @@ y \in B\end{subarray}} f(x, y)$.
 			\nonumber &=& \sum_{i = 1}^{t} {n \choose i}
 		\end{eqnarray}
 		
-		\underline{Prueba:}
+		\underline{Prueba:} Sea $ A = \cup_{x \in C} B_{t}(x)$, como ya dijimos C corrigue \textit{t} errores $\Rightarrow B_{t}(x) \cap B_{t}(y) \neq \emptyset \; \forall x, y \in C : x \neq y. \; \therefore$ La unión en A es disjunta y $\#A = \sum_{x \in C} B_{t}(x)$.
 		
+		\vspace{3mm}
+		Sea $S_{r}(x) = \left\lbrace y \in Z_{2}^{n} : d(x, y)^{*} = r \right\rbrace$
+		
+		\vspace{3mm}
+		$\therefore B_{t}(x) = \cup_{r = 0}^{t}S_{r}(x)$ y la unión es disjunta. Además $\#B_{t}(x) = \sum_{r = 0}^{t}\#S_{r}(x)$
+		
+		\vspace{3mm}
+		\textbf{¿Cuánto vale $S_{r}(x)$}
+		\begin{eqnarray}
+			\nonumber y \in S_{r}(x) & \Leftrightarrow & d(x, y) = r \\
+			\nonumber & \Leftrightarrow & \lvert x \oplus y \rvert = r \text{ donde defino } (x \oplus y) = \epsilon \\
+			\nonumber & \Leftarrow & \exists \underbrace{\epsilon : \lvert \epsilon \rvert = r}_{\in S_{r}(0)} : y = x \oplus \epsilon
+		\end{eqnarray}
+		
+		$\therefore S_{r}(x) = x \oplus S_{r}(0) \Rightarrow \#S_{r}(x) = \#S_{r}(0)$
+		
+		\vspace{3mm}
+		Luego
+		\begin{eqnarray}
+			\nonumber \#S_{r}(x) &=& \#S_{r}(0) \\
+			\nonumber &=& \# \text{ vectores de longitud n con r unos } \\
+			\nonumber &=& {n \choose r} 
+		\end{eqnarray}
+		
+		\begin{eqnarray}
+			\nonumber \therefore \# A &=& \sum_{x \in C} \# B_{t}(x) \\
+			\nonumber &=& \sum_{x \in C} \; \sum_{r= 0}^{t} \#S_{r}(x) \\
+			\nonumber &=& \sum_{x \in C} \; \sum_{r = 0}^{t} {n \choose r} \\
+			\nonumber &=& \sum_{r = 0}^{t} {n \choose r} * \# C
+		\end{eqnarray}
+		
+		Como $A \in Z_{2}^{n} \Rightarrow \# A \leq 2^{n}$, entonces:
+		
+		\begin{eqnarray}
+			\nonumber \lvert \sum_{r = 0}^{t} {n \choose r} * \# C \leq 2^{n} \\
+			\nonumber \Rightarrow \# C \leq \frac{2^{n}}{\sum_{r = 0}^{t} {n \choose r}}
+		\end{eqnarray}
 		 
 	
 	
