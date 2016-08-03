@@ -14,11 +14,8 @@
 \contentsline {section}{\numberline {2.6}Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}{16}
 \contentsline {section}{\numberline {2.7}Teorema cota de Hamming}{17}
 \contentsline {section}{\numberline {2.8}Teorema de la matriz de chequeo de c\IeC {\'o}digos lineales}{18}
-\contentsline {section}{\numberline {2.9}Sea C un c\IeC {\'o}digo c\IeC {\'\i }clico de dimensi\IeC {\'o}n \textit {k} y longitud \textit {n} y sea $g(x)$ su polinomio generador, probar que:}{19}
-\contentsline {subsection}{\numberline {2.9.1}C est\IeC {\'a} formado por los m\IeC {\'u}ltiplos de $g(x)$ de grado menor a \textit {n}}{19}
-\contentsline {subsection}{\numberline {2.9.2}El grado de $g(x)$ es $n-k$}{19}
-\contentsline {subsection}{\numberline {2.9.3}$g(x)$ divide a $1+x^{n}$}{19}
-\contentsline {chapter}{\numberline {3}Parte C}{20}
-\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{20}
-\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{20}
-\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{20}
+\contentsline {section}{\numberline {2.9}Teorema del polinomio generador de c\IeC {\'o}digos c\IeC {\'\i }clicos}{19}
+\contentsline {chapter}{\numberline {3}Parte C}{21}
+\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{21}
+\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{21}
+\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{21}

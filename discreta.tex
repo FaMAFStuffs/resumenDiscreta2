@@ -1029,16 +1029,76 @@ y \in B\end{subarray}} f(x, y)$.
 			Luego $\delta \leq 3 \Rightarrow t = \lfloor \frac{\delta-1}{2} \rfloor \leq 1$, es decir, C corrigue al menos un error.
 		\end{itemize}
 	
+	\section{Teorema del polinomio generador de códigos cíclicos}
 	
-	\section{Sea C un código cíclico de dimensión \textit{k} y longitud \textit{n} y sea $g(x)$ su polinomio generador, probar que:}
+		\underline{Teorema:} Sea C un código cíclico de dimensión \textit{k} y longitud \textit{n} y sea $g(x)$ su polinomio generador, entonces:
+		
+		\begin{itemize}
+			\item C está formado por los múltiplos de $g(x)$ de grado menor a \textit{n}.
+			\item El grado de $g(x)$ es $n-k$.
+			\item $g(x)$ divide a $1+x^{n}$
+		\end{itemize}
 	
-		\subsection{C está formado por los múltiplos de $g(x)$ de grado menor a \textit{n}}
+		\underline{Prueba:}
 		
-		\subsection{El grado de $g(x)$ es $n-k$}
+		\textbf{a)} Sea $v(x) \in C$, dividamos v por g(x). Entonces $\exists$ q(x) y r(x) con $gr(r) < gr(g)$ tal que: 
 		
-		\subsection{$g(x)$ divide a $1+x^{n}$}
+		\begin{eqnarray}
+			\nonumber v(x) &=& q(x) g(x) + r(x) \\
+			\nonumber & \Rightarrow & \begin{tabular}{|c|} \hline $q(x) g(x) = v(x) + r(x) $ \\ \hline \end{tabular} (1)
+		\end{eqnarray}.
 		
+		Como $v \in C \Rightarrow gr(v) < n$ y $gr(r) \underbrace{<}_{g \in C} n $ con lo que concluimos que  \begin{tabular}{|c|} \hline $gr(v + r) < n $ \\ \hline \end{tabular} (2).
 		
+		Luego de (1) y (2) deducimos: \begin{tabular}{|c|} \hline $gr(q \; g) < n $ \\ \hline \end{tabular}.
+		
+		\vspace{3mm}
+		Recordemos que si $p \in C$ y $gr(p) < n$ entonces: \begin{tabular}{|c|} \hline $p \mod (1+ x^{n}) = p$ \\ \hline \end{tabular}.
+		
+		\vspace{3mm}
+		Por lo tanto $q(x) g(x) \mod (1 + x^{n}) = q(x) g(x)$, es decir: \begin{tabular}{|c|} \hline $ q(x) \odot g(x) = q(x) g(x) $ \\ \hline \end{tabular} (A). Además como $g(x) \in C \Rightarrow$ \begin{tabular}{|c|} \hline $q(x) \odot g(x) \in C $ \\ \hline \end{tabular} (B).
+		
+		\vspace{3mm}
+		De (A) y (B) resuta que $q(x) g(x) \in C \Rightarrow v(x) + r(x) \in C$. Además dijimos que $v(x) \in C$ y como C es lineal $\Rightarrow$ \begin{tabular}{|c|} \hline $r(x) \in C$ \\ \hline \end{tabular} $(\dag)$. Llamemos \begin{tabular}{|c|} \hline $gr(r) < gr(g) $ \\ \hline \end{tabular} $(\star)$.
+		
+		\vspace{5mm}
+		De $(\dag)$ y $(\star)$ deducimos $r = 0 \Rightarrow v(x) = q(x) g(x)$.
+		
+		\vspace{5mm}
+		\textbf{b)} Recordemos que si $ v(x) \in C \Rightarrow \exists \mu(x) : v(x) = \mu(x) g(x)$. Entonces para que $gr(\mu g) < n$ debe darse que $gr(\mu) + gr(g) < n$, es decir, $gr(\mu) < n - gr(g)$.
+		
+		\vspace{3mm}
+		Sea
+		\begin{eqnarray}
+			\nonumber C = \left\lbrace v(x) : \exists \mu(x), gr(\mu) < n - gr(g), v(x) = \mu(x) g(x) \right\rbrace
+		\end{eqnarray}
+		
+		Entonces existe una bitección entre C y el conjunto: $\left\lbrace \mu(x) :  gr(\mu) < n - gr(g) \right\rbrace$.
+		
+		\begin{eqnarray}
+			\nonumber \therefore \; \lvert C \rvert &=& \lvert \left\lbrace \mu(x) : gr(\mu) < n - gr(g) \right\rbrace \rvert \\
+			\nonumber 2^{k} &=& 2^{n - gr(g)} \\
+			\nonumber k &=& n -gr(g) \\
+			\nonumber gr(g) &=& n - k
+		\end{eqnarray}
+		
+		\textbf{c)} Recordemos que si $g(x)$ es polinomio generador, la $ROT^{k}(g) = x^{k} \odot g(x)$. Como $g(x) \in C \Rightarrow ROT^{k}(g) \in C$. Además $x^{k} \odot g(x) = x^{k} g(x) \mod (1 + x^{n}).$
+		
+		Sea $p(x)$ tal que:
+		\begin{eqnarray}
+			\nonumber \underbrace{x^{k} g(x)}_{gr = k + (n - k)} = \underbrace{p(x) (1 + x^{n})}_{gr = gr(p) + n} + \underbrace{x^{k} \odot g(x)}_{gr < n}
+		\end{eqnarray}
+		
+		Luego para que la igualdad valga, debe valer que $gr(p)	= 0$, es decir, $p = 1$. Entonces: \begin{tabular}{|c|} \hline $ x^{k} g(x) = (1 + x^{n}) + x^{k} \odot g(x) $ \\ \hline \end{tabular} (1), pero $x^{k} \odot g(x) \in C \Rightarrow \exists \mu(x) :$ \begin{tabular}{|c|} \hline $ x^{k} \odot g(x) = \mu(x) g(x) $ \\ \hline \end{tabular} (2)
+		
+		\vspace{3mm}
+		De (1) y (2)	:
+		\begin{eqnarray}
+			\nonumber x^{k} g(x) &=& (1 + x^{n}) + \mu(x) g(x) \\
+			\nonumber 1 + x^{n} &=& x^{k} g(x) + \mu(x) g(x) \\
+			\nonumber &=& (x^{k} + \mu(x)) g(x) \\
+			\nonumber & \therefore & g | 1 + x^{n}
+		\end{eqnarray}
 
 \chapter{Parte C}
 
@@ -1050,9 +1110,6 @@ y \in B\end{subarray}} f(x, y)$.
 	
 	
 \begin{thebibliography}{X}
-\bibitem{Dan} \textsc{Curto Agustín },
-<<Matemática Discreta II, apuntes de clase>>,
-\textit{FaMAF, UNC}.
 \bibitem{Baz} \textsc{Maximiliano Illbele},
 <<Resumen de Discreta II, 16 de agosto de 2012>>,
 \textit{FaMAF, UNC}.
