@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  3 AUG 2016 08:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.22)  3 AUG 2016 09:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -669,15 +669,16 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 924.
 
-[17] [18]
+[17] [18] [19]
 Cap\'{\i }tulo 3.
-[19
+[20
 
 ]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 998.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 1054.
+
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [20
+) [21
 
 ]
 (./discreta.aux
@@ -716,10 +717,10 @@ msy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/lo
 cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on discreta.pdf (21 pages, 332664 bytes).
+Output written on discreta.pdf (22 pages, 336745 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
+ 166 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

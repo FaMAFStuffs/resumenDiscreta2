@@ -13,14 +13,12 @@
 \contentsline {section}{\numberline {2.5}Teorema del matrimonio}{15}
 \contentsline {section}{\numberline {2.6}Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}{16}
 \contentsline {section}{\numberline {2.7}Teorema cota de Hamming}{17}
-\contentsline {section}{\numberline {2.8}Sea H una matriz de chequeo de un c\IeC {\'o}digo C, pruebe que:}{18}
-\contentsline {subsection}{\numberline {2.8.1}$\delta (C) =$ m\IeC {\'\i }nimo n\IeC {\'u}mero de columnas linealmente dependientes de H}{18}
-\contentsline {subsection}{\numberline {2.8.2}Si H no tiene la columna cero ni columnas respetidas $\Rightarrow $ C corrige al menos un error}{18}
-\contentsline {section}{\numberline {2.9}Sea C un c\IeC {\'o}digo c\IeC {\'\i }clico de dimensi\IeC {\'o}n \textit {k} y longitud \textit {n} y sea $g(x)$ su polinomio generador, probar que:}{18}
-\contentsline {subsection}{\numberline {2.9.1}C est\IeC {\'a} formado por los m\IeC {\'u}ltiplos de $g(x)$ de grado menor a \textit {n}}{18}
-\contentsline {subsection}{\numberline {2.9.2}El grado de $g(x)$ es $n-k$}{18}
-\contentsline {subsection}{\numberline {2.9.3}$g(x)$ divide a $1+x^{n}$}{18}
-\contentsline {chapter}{\numberline {3}Parte C}{19}
-\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{19}
-\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{19}
-\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{19}
+\contentsline {section}{\numberline {2.8}Teorema de la matriz de chequeo de c\IeC {\'o}digos lineales}{18}
+\contentsline {section}{\numberline {2.9}Sea C un c\IeC {\'o}digo c\IeC {\'\i }clico de dimensi\IeC {\'o}n \textit {k} y longitud \textit {n} y sea $g(x)$ su polinomio generador, probar que:}{19}
+\contentsline {subsection}{\numberline {2.9.1}C est\IeC {\'a} formado por los m\IeC {\'u}ltiplos de $g(x)$ de grado menor a \textit {n}}{19}
+\contentsline {subsection}{\numberline {2.9.2}El grado de $g(x)$ es $n-k$}{19}
+\contentsline {subsection}{\numberline {2.9.3}$g(x)$ divide a $1+x^{n}$}{19}
+\contentsline {chapter}{\numberline {3}Parte C}{20}
+\contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{20}
+\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{20}
+\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{20}

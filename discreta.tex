@@ -965,15 +965,71 @@ y \in B\end{subarray}} f(x, y)$.
 			\nonumber \Rightarrow \# C \leq \frac{2^{n}}{\sum_{r = 0}^{t} {n \choose r}}
 		\end{eqnarray}
 		 
+	\section{Teorema de la matriz de chequeo de códigos lineales}
 	
-	
-	\section{Sea H una matriz de chequeo de un código C, pruebe que:}
-	
-		\subsection{$\delta (C) =$ mínimo número de columnas linealmente dependientes de H}
+		\underline{Teorema:} Sea C un código lineal con matriz de chequeo H, entonces:
+		\begin{itemize}
+			\item[a)] $\delta(C) = \min \left\lbrace \lvert x \rvert : x \in C , x \neq 0 \right\rbrace (\#$ columas LD de H).		
+			\item[b)] Si H no tiene columnas 0, ni columnas repetidas, entonces $\delta \geq 3$ y corrigue al menos un error.
+		\end{itemize}
 		
-		\subsection{Si H no tiene la columna cero ni columnas respetidas $\Rightarrow$ C corrige al menos un error}
-
-
+		\underline{Prueba:} Sean:
+		\begin{itemize}
+			\item $w : \min \#$ columnas LD de H.
+			\item $e_{i} = 000 \dotsc \underbrace{1}_{i} 0 \dotsc 0$ 
+		\end{itemize}
+		
+		\textbf{a)} \begin{tabular}{|c|} \hline $w \geq \delta \; $ \\ \hline \end{tabular} $ \; \; Sea \; v \in C , v \neq 0 \; y \; \lvert v \rvert = \delta \Rightarrow v$ tiene $\delta$ unos.
+		
+		\vspace{3mm}
+		Es decir; $\exists j_{1}, j_{2} \dotsc j_{\delta}$ tal que:
+		\begin{eqnarray}
+			\nonumber v = e_{j_{1}} + e_{j_{2}} + \dotsc e_{j_{\delta}}
+		\end{eqnarray}
+		
+		Como $ v \in C \Rightarrow v =$ NU(H) entonces $Hv^{t} = 0$.
+		
+		\begin{eqnarray}
+			\nonumber \Rightarrow 0 = Hv^{t} &=& H(e_{j_{1}}^{t} + e_{j_{2}}^{t} + \dotsc e_{j_{\delta}}^{t}) \\
+			\nonumber &=& H e_{j_{1}}^{t} + H e_{j_{2}}^{t} + \dotsc H e_{j_{\delta}}^{t} \\
+			\nonumber &=& H^{j_{1}} + H^{j_{2}} + \dotsc H^{j_{\delta}}
+		\end{eqnarray}
+		
+		$\therefore \left\lbrace H^{j_{1}} + H^{j_{2}} + \dotsc H^{j_{\delta}} \right\rbrace$ es LD $\Rightarrow w \geq \delta$.
+		
+		\vspace{3mm}
+		\begin{tabular}{|c|} \hline $w \leq \delta $ \\ \hline \end{tabular} Sea ahora $\left\lbrace H^{i_{1}} + H^{i_{2}} + \dotsc H^{i_{w}} \right\rbrace$ un conjunto LD, entonces $\exists$ constantes $c_{w} \in Z_{2}^{n}$ no todas nulas, tales que:
+		
+		\begin{eqnarray}
+			\nonumber c_{1} H^{i_{1}} + c_{2} H^{i_{2}} + \dotsc c_{w} H^{i_{w}} = 0 
+		\end{eqnarray}
+		
+		Sea $v = c_{1} e_{i_{1}} + c_{2} e_{i_{2}} + \dotsc c_{w} e_{i_{w}} , \; v \neq 0$ ya que dijimos que no todos los $c_{i}$ eran nulos.
+		
+		Luego:
+		
+		\begin{eqnarray}
+			\nonumber H v^{t} &=& H (c_{1} e_{i_{1}}^{t} + c_{2} e_{i_{2}}^{t} + \dotsc c_{w} e_{i_{w}}^{t}) \\
+			\nonumber &=& H c_{1} e_{i_{1}}^{t} + H c_{2} e_{i_{2}}^{t} + \dotsc H c_{w} e_{i_{w}}^{t} \\
+			\nonumber &=& H^{e_{i_{1}}} + H^{e_{i_{2}}} + \dotsc H^{e_{i_{w}}} \\
+			\nonumber &=& 0
+		\end{eqnarray}
+		
+		$\Rightarrow v \in C \; y \; \lvert v \rvert = w$. Como $\delta$ es la menor distancia, tenemos que $\delta \leq \lvert v \rvert = w$. 
+		
+		\vspace{5mm}		
+		Por lo tanto vale \begin{tabular}{|c|} \hline $w \leq \delta $ \\ \hline \end{tabular} y \begin{tabular}{|c|} \hline $w \geq \delta $ \\ \hline \end{tabular} $\Rightarrow$ \begin{tabular}{|c|} \hline $w = \delta $ \\ \hline \end{tabular}.
+		
+		\vspace{5mm}
+		\textbf{b)}
+		\begin{itemize}
+			\item Si H no tiene columnas ceros $\Rightarrow w \leq 2$.
+			\item Si H no tiene columnas repetidas $\Rightarrow \nexists i,j : i \neq j$ y $H^{i} = H^{j}$. Como no puede pasar que $H{i} = H{j}$ tampoco $H{i} + H{j} = 0$, es decir, $H{i} + H{j} \neq 0 \forall i,j : i \neq j$ por lo que $\nexists$ conjuntos de columnas LD $\Rightarrow w \leq 3$.
+			
+			Luego $\delta \leq 3 \Rightarrow t = \lfloor \frac{\delta-1}{2} \rfloor \leq 1$, es decir, C corrigue al menos un error.
+		\end{itemize}
+	
+	
 	\section{Sea C un código cíclico de dimensión \textit{k} y longitud \textit{n} y sea $g(x)$ su polinomio generador, probar que:}
 	
 		\subsection{C está formado por los múltiplos de $g(x)$ de grado menor a \textit{n}}
