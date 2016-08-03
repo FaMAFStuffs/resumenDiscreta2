@@ -853,14 +853,81 @@ y \in B\end{subarray}} f(x, y)$.
 			\nonumber \lvert S \rvert & \leq & \Gamma(S)
 		\end{eqnarray}
 		
-		
-		
-	
-	
 	\section{Si G es bipartito $\Rightarrow \chi '(G) = \Delta $}
-
 	
+		\underline{Prueba:} 
+		
+		\textbf{Lema Interno:} Todo grafo bipartito es subgrafo de un grafo bipartito regular con el mismo $\Delta$, es decir:
+		
+		\begin{center}
+			G bipartito $\Rightarrow \exists$ H bipartito regular con G $\subseteq$ H y $\Delta(G) = \Delta(H)$ 
+		\end{center}
+		
+		\underline{Prueba:} Sean:
+		
+		\begin{itemize}
+			\item $G = (V = X \cup Y, E)$ grafo bipartito
+			\item $G^{\star} = (V^{\star}, E^{\star})$ una copia de G
+			\item $E^{\dag} = {vv^{\star} : d_{G} < \Delta(G)}$
+			\item $\overline{G} = (\overline{V}, \overline{E})$ con:
+				\begin{itemize}
+					\item $\overline{V} = V \cup V^{\star}$
+					\item $\overline{E} = E \cup E^{\star} \cup E^{\dag}$
+				\end{itemize}
+		\end{itemize}
+		
+		Propiedades de $\overline{G}$:
+		\begin{enumerate}
+			\item $\overline{G}$ es bipartito, sus partes son:
+				\begin{itemize}
+					\item $X \cup Y^{\star}$
+					\item $X \cup Y$
+				\end{itemize}
+				
+			No existen lados entre $x \leftrightarrow x, \; y^{\star} \leftrightarrow y^{\star}, \; x \leftrightarrow y^{\star}$.
+			
+			\item Sea v $\in$ V tal que $d_{G}(v) = \Delta = \Delta(G)$ entonces V no es part de ningún lado de $E^{\dag}$.
+			
+			$\Rightarrow d_{\overline{G}}(v) = d_{\overline{G}}()v^{\star} = \Delta$ 
+			
+			\vspace{5mm}
+			Sea v $\in$ V tal que $d_{G}(v) < \Delta \Rightarrow$ forma parte de un nuevo lado. 
+			
+			$\therefore d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star)} = d_{G}(v) + 1$
+			
+			\underline{Conclusión:} $ \Delta(\overline{G}) = \Delta(G) \; y \; \delta(\overline{G}) = \delta(G) + 1$
+			
+			Repitiendo este proceso, \textit{i.e} $G \rightarrow \overline{G} \rightarrow \overline{\overline{G}} \rightarrow \overline{\overline{\overline{G}}} \dotsc $ evenatualmente llegaremos a un $G^{\blacktriangle}$ tal que $\delta(G^{\blacktriangle}) = \Delta \therefore$ regular.
+		\end{enumerate}
+		
+		\textbf{Fin del Lema Interno}
+		
+		\vspace{5mm}
+		\begin{itemize}
+			\item Sea H bipartito regular con $G \subseteq H$ y $\Delta(G) = \Delta(H)$. Como H es bipartito regular $\stackbin{Por \; 1.}{\Rightarrow} \exists$ un matching perfecto en H, llamado M. Coloriemos todos los lados de M con \textbf{\texttt{Color 1}}.
+
+			\item Sea $H_{1} = H - $ los lados del matching M. Como M es matching perfecto, $H_{1}$ sigue siendo regular y $\delta_{H_{1}}(x) = \delta_{h}(x) - 1 = \Delta - 1$. Como $H_{1}$ es bipartito regular $\stackbin{Por \; 1.}{\Rightarrow} \exists$ un matching perfecto en $H_{1}$, llamado $M_{1}$. Coloriemos todos los lados de $M_{1}$ con \textbf{\texttt{Color 2}}. 
+			
+			\item Sea $H_{2} = H_{1} - $ los lados del matching $M_{1}$. Luego $\delta_{H_{2}}(x) = \delta_{H_{1}}(x) - 1 = \Delta - 2$. 
+			
+			
+			Siguiendo así $H_{\Delta - 1}$ seguirá siendo regular con $ \delta_{H_{\Delta - 1}}(x) = 1$. En total obtuvimos $ \Delta $ matchings y $ \Delta $ colores. $\therefore \chi '(H) = \Delta$
+			
+			$\Rightarrow \chi ' (G) = \Delta$ pues $G \subseteq H$.
+		\end{itemize}
+			
 	\section{Teorema cota de Hamming}
+		
+		\underline{Teorema:} Sea C un código de longitud \textit{n} y sea $ t = \lfloor \frac{\delta - 1}{2} \rfloor$ la cantidad de errores que corrigue, entonces:
+		
+		\begin{eqnarray}
+			\nonumber \lvert C \rvert &\leq & \frac{2^{n}}{1 + n + {n \choose 2} + \dotsc {n \choose t}} \\
+			\nonumber &=& \sum_{i = 1}^{t} {n \choose i}
+		\end{eqnarray}
+		
+		\underline{Prueba:}
+		
+		 
 	
 	
 	\section{Sea H una matriz de chequeo de un código C, pruebe que:}
