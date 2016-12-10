@@ -10,6 +10,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
 % \usepackage{algorithmicx}
+\usepackage{mathtools}
 \usepackage{stackrel}
 \renewcommand{\theequation}{\arabic{equation}}
 \newcounter{neq}
@@ -1093,6 +1094,9 @@
 \chapter{Parte C}
 
 	\section{4-COLOR $\leq_{\textit{p}}$ SAT}
+		\underline{Teorema:} 4-COLOR $\leq_{p}$ SAT.
+
+		\underline{Prueba:}
 		Sea G un grafo con vértices $v_{1}, v_{2}, \dotsc v_{n}$, queremos construir (en tiempo polinomial) una expresión booleana B en CNF (\textit{forma conjuntiva normal}), tal que:
 
 		\[ \chi(G) \leq 4 \Leftrightarrow B \; es \; satisfacible \]
@@ -1206,8 +1210,102 @@
 		\vspace{3mm}
 		Luego, definimos:
 		\[ C(v_{i}) = \textup{unico j con } b_{i, j} = 1\] 
-	\section{3-SAT es NP-Completo}
 
+
+	\section{3-SAT es NP-Completo}
+		\underline{Teorema:} 3-SAT es NP-Completo.
+
+		\vspace{3mm}
+		\underline{Prueba:} Probaremos que SAT $\leq_{p}$ 3-SAT, pues 3-SAT es NP Completo.
+		
+		\vspace{3mm}
+		Sea
+		\begin{eqnarray}
+			B &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \textup{ con variables } x_{1}, \dotsc x_{n} \\
+			\nonumber \\
+			D_{i} &=& L_{i, 1} \vee L_{i, 2} \dotsc \vee L_{i, k_{i}} \\
+			\nonumber \\
+			l_{i, j} &=& \textup{literales}
+		\end{eqnarray}
+		
+		Para cada$D_{i}$ construiremos $E_{i}$, que serán conjunciones de disyunciones de 3 literales, con variables extras, y luego tomaremos:
+		
+		\[ B' = E_{1} \wedge E_{2} \dotsc \wedge E_{n} \]
+		
+		\underline{Construcción:}
+		\begin{itemize}
+			\item Si D tiene 3 literales, es decir, $K_{i} = 3 \Rightarrow E_{i} = D_{i}$
+			\item Si D tiene 2 literales, es decir, $K_{i} = 2 \Rightarrow$ tomo una variable extra $y_{i, 1}$ y defino:
+				\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \wedge (l_{i, 1} \vee l_{i, 2} \vee \overline{y_{i, 1}}) \]			
+			\item Si D tiene 1 literales, es decir, $K_{i} = 1 \Rightarrow$ tomo dos variables extras $y_{i, 1}$ y $y_{i, 2}$ y defino:
+				\[ E_{i} = (l_{i, 1} \vee y_{i, 1} \vee y_{i, 2}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \wedge (l_{i, 1} \vee y_{i, 1} \vee \overline{y_{i, 2}}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee \overline{y_{i, 2}}) \]		
+			\item Si D tiene más de 3 literales, es decir, $K_{i} > 4 \Rightarrow$ agrego $k_{i-3}$ variables extras y defino:
+				\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \; \wedge \; (l_{i, 3} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \; \wedge \; (l_{i, 4} \vee \overline{y_{i, 2}} \vee y_{i, 3}) \; \wedge \]
+				\[ \dotsc (l_{i, k_{i-2}} \vee \overline{y_{i, k_{i-4}}} \vee y_{i, k_{i-3}}) \wedge (l_{i, k_{i-1}} \vee l_{i, k_{i}} \vee \overline{i, k_{i-3}}) \]
+		\end{itemize}
+		
+		Queremos ver:
+		\[ B(\overrightarrow{b}) = 1 \Leftrightarrow \exists \overrightarrow{a} : B'(\overrightarrow{b}, \overrightarrow{a}) = 1 \]
+		
+		\vspace{5mm}
+		\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
+
+		\underline{Casos:}
+			\begin{itemize}
+				\item si $k_{i} = 3$ Absurdo! pues $D_{i} = E_{i}$
+				\item si $k_{i} = 2$
+					\begin{eqnarray}
+						\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
+						\nonumber &=& (\underbrace{l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b})}_{= 0} \vee a_{i, 1}) \wedge (\underbrace{l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b})}_{= 0} \vee \overline{a_{i, 1}}) \\
+						\nonumber &=& a_{i, 1} \wedge \overline{a_{i, 1}} \\
+						\nonumber &=& 0 \textup{ Absurdo! }
+					\end{eqnarray}
+				\item si $k_{i} = 1$
+					\begin{eqnarray}
+						\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
+						\nonumber &=& (a_{i, 1} \vee a_{i, 2}) \wedge (\overline{a_{i, 1}} \vee a_{i, 2}) \wedge (a_{i, 1} \vee \overline{a_{i, 2}}) \wedge (\overline{a_{i, 1}} \vee \overline{a_{i, 2}}) \\
+						\nonumber &=& 0 \textup{ Absurdo! }
+					\end{eqnarray}
+				\item si $k_{i} > 4$
+					
+					$D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, j}(\overline{b}) = 0 \; \forall j$.
+					
+					\begin{eqnarray}
+						\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
+						\nonumber &=& a_{i, j} \wedge (\overline{a_{i, 1}} \vee a_{i, 2}) \wedge (\overline{a_{i, 2}} \vee a_{i, 3}) \wedge \dotsc  	(\overline{a_{i, k_{i-4}}} \vee a_{i, k_{i-3}}) \wedge \overline{a_{i, k_{i-3}}} \\
+						\nonumber &=& a_{i, 1} \wedge (a_{i, 1} \Rightarrow a_{i, 2}) \wedge (a_{i, 2}\Rightarrow a_{i, 3}) \wedge 	\dotsc (a_{i, k_{i-4}} \Rightarrow a_{i, k_{i-3}}) \wedge \overline{a_{i, k_{i-3}}} \textup{ Absurdo! } 
+					\end{eqnarray}
+					
+					Pues tendría $a_{i, 1} = a_{i, 2} = \dotsc a_{i, k_{i-3}} = 1$ pero $\overline{a_{i, k_{i-3}}} = 1$. 
+			\end{itemize}
+
+		\vspace{5mm}
+		\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
+		
+			\underline{Casos:}
+			\begin{itemize}
+				\item Si $k_{i} = 3 \Rightarrow E_{i}(\overrightarrow{b}, \overrightarrow{a}) = D_{i}(\overrightarrow{b}) = 1$
+				\item Si $k_{i} = 1 \textup{ ó } k_{i} = 2 \textup{ defino } a_{i, j} = 0, \textup{ luego } E_{i}(\overrightarrow{b}, 0) = 1$
+				\item Si $k_{i} > 4 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \Rightarrow \exists j : l_{i, j}(\overrightarrow{b}) = 1$
+				
+					Definimos
+						\[ a_{i, 1} = a_{i, 2} = \dotsc a_{i, j-2} = 1 \]
+						\[ a_{i, j-1} = a_{i, j} = \dotsc a_{i, k-3} = 0 \]
+					
+					Luego
+					\begin{eqnarray}
+						\nonumber E_{i}(\overrightarrow{b}, \overrightarrow{a}) &=& (l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b}) \vee a_{i, 1}) \\
+						\nonumber &\wedge & (l_{i, 3}(\overrightarrow{b}) \vee \overline{a_{i, 1}} \vee a_{i, 2}) \\
+						\nonumber &\vdotswithin{\ldots}& \\
+						\nonumber &\wedge & (l_{i, j-1}(\overrightarrow{b}) \vee \overline{a_{i, j-3}} \vee a_{i, j-2}) \\
+						\nonumber &\wedge & (l_{i, j}(\overrightarrow{b}) \vee \overline{a_{i, j-2}} \vee a_{i, j-1}) \\
+						\nonumber &\wedge & (l_{i, j+1}(\overrightarrow{b}) \vee \overline{a_{i, j-1}} \vee a_{i, j}) \\ 
+						\nonumber &\vdotswithin{\ldots}& \\
+						\nonumber &\wedge & (l_{i, k_{i-1}}(\overrightarrow{b}) \vee l_{i, k_{i}}(\overrightarrow{b}) \vee \overline{a_{i, k_{i-3}}}) \\
+						\nonumber &\therefore & E_{i} = 1
+					\end{eqnarray}
+			\end{itemize}
+		
 	\section{3-COLOR es NP-Completo}
 
 
