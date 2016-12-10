@@ -17,5 +17,5 @@
 \contentsline {section}{\numberline {2.9}Teorema del polinomio generador de c\IeC {\'o}digos c\IeC {\'\i }clicos}{19}
 \contentsline {chapter}{\numberline {3}Parte C}{21}
 \contentsline {section}{\numberline {3.1}4-COLOR $\leq _{\textit {p}}$ SAT}{21}
-\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{21}
-\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{21}
+\contentsline {section}{\numberline {3.2}3-SAT es NP-Completo}{23}
+\contentsline {section}{\numberline {3.3}3-COLOR es NP-Completo}{23}

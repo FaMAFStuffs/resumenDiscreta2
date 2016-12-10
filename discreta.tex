@@ -9,7 +9,7 @@
 \usepackage{enumerate}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx}
-\usepackage{algpseudocode}
+% \usepackage{algorithmicx}
 \usepackage{stackrel}
 \renewcommand{\theequation}{\arabic{equation}}
 \newcounter{neq}
@@ -27,23 +27,23 @@
 \chapter{Parte A}
 
 	\section{La complejidad de EDMONS-KARP}
-	
+
 		\textbf{\underline{Teorema:}} La complejidad de $\langle E-K \rangle$ con $n = \abs{V}$ y $m = \abs{E}$ es $\mathcal{O}(nm^{2})$.
-	
+
 		\textbf{\underline{Prueba:}} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
-		
+
 		\vspace{5mm}
 		Para cada \textit{k} definimos funciones:
-		
+
 		\begin{itemize}
-			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
-			\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
+			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre \textit{s} y x en el paso \textit{k}, en caso de existir, si no $\infty$.
+			\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre x y \textit{t} en el paso \textit{k}, en caso de existir, si no $\infty$.
 		\end{itemize}
-	
+
 		\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
-		
+
 		\vspace{5mm}
-		Observaciónes:
+		Observaciones:
 			\begin{enumerate}
 				\item
 					\begin{itemize}
@@ -58,23 +58,23 @@
 			\end{enumerate}
 
 		Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k+1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura ó \textit{yx} se vacía en el paso \textit{k}.
-		
+
 		Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsc$ x,y $\dotsc$ \textit{t} se usa para construir $f_{k}$.
 
 		\begin{eqnarray}
 			 d_{k}(\textit{t}) & = & d_{k}(x)+ b_{k}(x) \\
 			\nonumber & = & d_{k}(x)+b_{k}(y)+1
 		\end{eqnarray}
-		
+
 		 Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{j} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y,x $\dotsb$ \textit{t} se usa para construir $f_{j}$.
-		
+
 		\begin{eqnarray}
 			d_{j}(\textit{t}) & = & d_{j}(x)+ b_{j}(x) \\
 			\nonumber & = & d_{j}(y)+1+b_{j}(x)
 		\end{eqnarray}
-		
+
 		Entonces:
-		
+
 		\begin{equation*}
 			\textup{De (1) y (2)} \Rightarrow
   			\left \lbrace
@@ -84,7 +84,7 @@
   			\end{array}
   			\right.
 		\end{equation*}
-		
+
 		Luego:
 
 		\begin{eqnarray}
@@ -95,53 +95,53 @@
 			\nonumber & = & d_{k}(\textit{t})+2 \\
 			\nonumber \Rightarrow d_{j}(\textit{t}) & \geq & d_{k}(\textit{t})+2
 		\end{eqnarray}
-		
+
 		\vspace{5mm}
 		Por lo tanto cuando un lado se vuelve crítico recien puede volver a saturarse cuando la distancia de \textit{s} a \textit{t} haya aumentado en por lo menos 2. Puede existir $\mathcal{O}(n/t)$ tales aumentos, es decir:
-		
+
 		\begin{center}
-			\# Veces que un lado puede volverse crítico $= \mathcal{O}(n)$. 
-		\end{center}				
-		
+			\# Veces que un lado puede volverse crítico $= \mathcal{O}(n)$.
+		\end{center}
+
 		\begin{eqnarray}
 			 \nonumber \; \therefore Complejidad(\langle E-K \rangle) &=& (\# pasos) * Compl(1 \; \textit{paso}) \\
 			 \nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Compl(BFS) \\
 			\nonumber  &=& \mathcal{O}(n) * \mathcal{O}(m)* \mathcal{O}(m) \\
 			\nonumber &=& \mathcal{O}(nm^{2})
 		\end{eqnarray}
-			
-		
+
+
 	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
 		\underline{Teorema:} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
-		
+
 		\vspace{5mm}
 		Para cada \textit{k} definimos funciones:
-		
+
 		\begin{itemize}
 			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
 			\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
 		\end{itemize}
-	
+
 		\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
-		
+
 		\vspace{5mm}
 		Queremos probar que:
 		\begin{enumerate}
 			\item $d_{k}(x) \leq d_{k+1}(x)$
 			\item $b_{k}(x) \leq b_{k+1}(x)$
 		\end{enumerate}
-		
+
 		\underline{Prueba:} Lo probaremos por inducción y solo para $d_{k}$ ya que para $b_{k}$ la prueba es análoga.
-		
+
 		\begin{center}
 			HI: $H(i) = \lbrace\forall_{z}: d_{k+1}(z) \leq \textit{i}, \, vale \; d_{k}(z) \leq d_{k+1}(z)  \rbrace$
 		\end{center}
-		
+
 		\begin{enumerate}
 			\item Caso Base: \begin{tabular}{|c|} \hline i = 0 \\ \hline \end{tabular} \qquad	$H(0) = \lbrace\forall_{z}: d_{k+1}(z) \leq 0, \, d_{k}(z) \leq d_{k+1}(z)  \rbrace$
-			
+
 			Pero $d_{k+1}(z) \leq 0 \Rightarrow z = \textit{s}$
-			
+
 			\begin{eqnarray}
 				\nonumber d_{k}(z) & = & d_{k}(\textit{s}) \\
 				\nonumber & = & 0 \\
@@ -149,56 +149,56 @@
 				\nonumber & \leq & d_{k+1}(z) \\
 				\nonumber \Rightarrow d_{k}(z) & \leq & d_{k+1}(z)
 			\end{eqnarray}
-			
+
 			\item Caso Inductivo: Supongamos ahora que vale H(\textit{i}), veamos que vale H(\textit{)i+1}.
-			
-			Sea \textit{z} con $d_{k+1}(z) \leq \textit{i+1}$, si $d_{k+1}(z) \leq \textit{i}$ vale H(\textit{i}) para \textit{z}. 
-			
+
+			Sea \textit{z} con $d_{k+1}(z) \leq \textit{i+1}$, si $d_{k+1}(z) \leq \textit{i}$ vale H(\textit{i}) para \textit{z}.
+
 			\begin{center} $\therefore \; d_{k+1}(z) \leq d_{k+1}(z) $ \end{center}
-			
+
 			Supongamos que \begin{tabular}{|c|} \hline $d_{k+1}(z) = i+1$ \\ \hline \end{tabular}
-			
+
 			Entonces existe un camino aumentante, relativo a $f_{k}$, de la forma: $s = z_{0}, \; z_{1}, \; \dotsc \; z_{i}, \; z_{i+1} = z$.
-			
+
 			Sea \begin{tabular}{|c|} \hline $x = z_{i}$ \\ \hline \end{tabular}
-			
+
 			\begin{itemize}
 				\item \underline{Caso 1:} Existe algun camino aumentante, relativo a $f_{k-1}$ de la forma $s, \; \dotsc \; x, \; z$.
 				$\Rightarrow \begin{tabular}{|c|} \hline $d_{k}(x) \leq d_{k}(x) + 1$ \\ \hline \end{tabular}$
-				
+
 				\vspace{2mm}
 				Pues al haber un camino $\underbrace{s, \; \dotsc \; x,}_{d_{k}(x)} \; z$, llamemosle A, de longitud $d_{k}(x) + 1$ entre \textit{s} y \textit{z}, sabemos que el minimo de todos los caminos de \textit{s} a \textit{z} seran $\leq$ A.
-				
+
 				\item Caso 2: No existe un camino aumentante, relativo a $f_{k-1}$, pero si existe un camino aumentante relativo a $f_{k}$. Por lo tanto el lado \textit{xz} no esta \textquotedblleft disponible\textquotedblright \; en el paso \textit{k}, ya que \textit{xz} está saturado \textit{zx} está vacío relativo a $f_{k-1}$. Para construir $f_{k}$ usamos un camino de la forma $s, \; \dotsc \; z, \; x$. Es decir:
-				
+
 				\begin{enumerate}[1)]
 					\item $f_{k-1}(xz) = C(xz)$ pero $f_{k}(xz) < C(xz), \; f_{k}$ devuelve flujo por \textit{xz} ó
 					\item $f_{k-1}(zx) = 0$ pero $f_{k}(zx) > 0, \; f_{k}$ manda flujo por \textit{zx}.
 				\end{enumerate}
-				
+
 				Como $\langle E-K \rangle$ funciona con BFS, ese camino usado pra construir $f_{k}$ debe ser de longitud mínima. Es decir: \; $d_{k}(x) = d_{k}(z) + 1$
-				
+
 				\begin{eqnarray}
 					\nonumber d_{k}(z) & = & d_{k}(x) - 1 \\
 					\nonumber & \leq & d_{k}(x) + 1
-				\end{eqnarray}				
+				\end{eqnarray}
 			\end{itemize}
-			
+
 			\underline{Conclusión:} En cualquiera de los dos casos tenemos:
 			\begin{center}
 			\begin{tabular}{|c|} \hline $d_{k}(x) \leq d_{k}(x) + 1$ \\ \hline \end{tabular}
 			\end{center}
-			
+
 			Ahora bien: \qquad $d_{k+1}(x) = d_{k+1}(z_{i}) = i \; \; \Rightarrow \; \;$ vale H(\textit{i}) para x. \\
 			$ \; \qquad \qquad \therefore d_{k}(z) \leq d_{k+1}(x)$
-			
+
 			\begin{eqnarray}
 					\nonumber d_{k+1}(x) & = & d_{k+1}(z_{i}) \\
 					\nonumber & = & i \\
 					\nonumber & \Rightarrow & \textup{H(\textit{i}) vale para x.} \\
 					\nonumber \therefore \; d_{k}(z) & \leq & d_{k+1}(x)
 				\end{eqnarray}
-			
+
 			Por lo tanto:
 			\begin{eqnarray}
 					\nonumber d_{k}(z) & \leq & d_{k}(x) + 1 \\
@@ -213,27 +213,27 @@
 	\section{La complejidad de DINIC}
 
 		\underline{Teorema:} La complejidad del algoritmo de Dinic es $\mathcal{O}(n^{2}m)$.
-		
+
 		\underline{Prueba:} Como Dinic es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
 
 		\begin{center}
 			Complejidad(Dinic)$ = \mathcal{O}(n) *$ Compl(Hallar un flujo bloqueante en un NA con Dinic)
 		\end{center}
-		
+
 		Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que complejidad del paso bloqueante es $\mathcal{O}(nm)$.
-		
+
 		Sea:
 		\begin{itemize}
 			\item A $=$ Avanzar()
 			\item R $=$ Retroceder()
-			\item I $=$ Incrementar\_Flujo + Inicialización ($\mathcal{O}(1)$) 
+			\item I $=$ Incrementar\_Flujo + Inicialización ($\mathcal{O}(1)$)
 		\end{itemize}
 
 		Una corrida de Dinic luce como:
 		\begin{center}
 			AA$\; \dotsc \;$AIAAARA$\; \dotsc \;$AIAARAAARR$\; \dotsc \;$IA$\; \dotsc \;$
 		\end{center}
-		
+
 		Dividamos la corrida en subpalabras del tipo:
 		\begin{center}
 			\begin{itemize}
@@ -241,17 +241,17 @@
 				\item[$*$] $\underbrace{AA \; \dotsc \; A}_{Todas A's}R$
 			\end{itemize}
 		\end{center}
-		
+
 		Nota: el número de A's puede ser 0.
-		
+
 		Debemos determinar:
 		\begin{enumerate}
 			\item Cual es la complejidad de cada subpalabra.
 			\item Cuantas palabras hay de cada tipo.
 		\end{enumerate}
-		
+
 		\textbf{Complejidad de cada subpalabra}
-		
+
 		Recordemos que:
 		\begin{equation*}
 			\textup{A:}
@@ -265,7 +265,7 @@
 		\begin{center}
 			$\Rightarrow$ A es $\mathcal{O}(1)$
 		\end{center}
-		
+
 		\begin{equation*}
 			\textup{R:}
   			\left[
@@ -278,7 +278,7 @@
 		\begin{center}
 			$\Rightarrow$ R es $\mathcal{O}(1)$
 		\end{center}
-		
+
 		\begin{equation*}
 			\textup{I:}
   			\left[
@@ -290,140 +290,140 @@
 		\begin{center}
 			$\Rightarrow$ I es $\mathcal{O}(d)$
 		\end{center}
-		
+
 		Por lo tanto:
 		\begin{eqnarray}
 			\nonumber Compl(\underbrace{A \; \dotsc \; A}_{j \; veces}R) & = & \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{j \; veces} + \mathcal{O}(1) \\
 			\nonumber & = & \mathcal{O}(j) + \mathcal{O}(1) \\
 			\nonumber & = & \mathcal{O}(j)
 		\end{eqnarray}
-		
+
 		Pero como cada A hace $ i = i+1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \; \Rightarrow \; \textit{j} \leq \textit{d}.$
-		
+
 		\begin{center}
 			$\therefore \; Compl(A \; \dotsc \; AR) = \mathcal{O}(\textit{d})$
 		\end{center}
-		
-		Similarmente: 		
+
+		Similarmente:
 		\begin{eqnarray}
 			\nonumber Compl(A \; \dotsc \; AI) & = & \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{\leq \; d \; veces} + \mathcal{O}(1) \\
 			\nonumber & = & \mathcal{O}(d) + \mathcal{O}(1) \\
 			\nonumber & = & \mathcal{O}(d)
 		\end{eqnarray}
-				
+
 		\textbf{Cantidad de subpalabras}
 		\begin{itemize}
 			\item R tiene la instrucción "\textbf{borrar lado}". Como los lados borrados quedan borrados hay a lo sumo \textit{m} R's, es decir:
 			\begin{center}
 				$ \therefore \; \# (A \; \dotsc \; AR's) \leq m $
 			\end{center}
-			
+
 			\item I tiene también línes de la forma:
-				\begin{algorithmic}
-					\If{$\dotsc$}
-    					\State{borrar lado}
-    				\EndIf
-				\end{algorithmic}
-			 	
+				% \begin{algorithmic}
+				% 	\If{$\dotsc$}
+    		% 			\State{borrar lado}
+    		% 		\EndIf
+				% \end{algorithmic}
+
 			 	Lo que está dentro del \textbf{if} se cumple al menos una vez, es decir:
 			 	\begin{center}
 					$ \therefore \; \# (A \; \dotsc \; AI's) \leq m $
 				\end{center}
-			
+
 			Este análisis muestra que:
 			\begin{center}
 					$ \therefore \; \# (A \; \dotsc \; AR's) + \# (A \; \dotsc \; AI's) \leq m $
 				\end{center}
-			
+
 			Por lo tanto hay $\leq m$ palabras, cada una de complejidad $\mathcal{O}(d)$.
 
 			\begin{eqnarray}
 			\nonumber \therefore \;  Compl(Paso \; Bloqueante) & = & \mathcal{O}(m) + \mathcal{O}(md) \\
 			\nonumber & = & \mathcal{O}(mn)
 		\end{eqnarray}
-		
-		ya que $d \leq n$.			
+
+		ya que $d \leq n$.
 		\end{itemize}
-		
+
 
 	\section{La complejidad de WAVE}
 
 		\underline{Teorema:} La complejidad del algoritmo de Wave es $\mathcal{O}(n^{3})$.
-		
+
 		\underline{Prueba:} Como Wave es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n-1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
 
 		\begin{center}
 			Complejidad(Wave)$ = \mathcal{O}(n) *$ Compl(Hallar un flujo bloqueante en un NA con Wave)
 		\end{center}
-		
+
 		Para probar que la complejidad de Wave es $\mathcal{O}(n^{3})$ debemos probar que complejidad del paso bloqueante es $\mathcal{O}(n^{2})$. El paso bloqueante de Wave consiste en una serie de:
-		
+
 		\begin{itemize}
 			\item Olas hacia adelante: Sucesión de \textbf{forwrdbalance} (FB)
 			\item Olas hacia atrás: Sucesión de \textbf{backwardbalance} (BB)
 		\end{itemize}
-		
+
 		Cada FB y BB es una sucesión de \textquotedblleft \textbf{buscar vecinos}\textquotedblright y \textquotedblleft \textbf{procesar}\textquotedblright el lado resultante. Estos "procesamientos" \; son complicados pero $ \mathcal{O}(1)$.
-		
+
 		\begin{center}
 		$ \therefore \; Compl(Paso \; Bloqueante) = \# "procesamientos"$ de lados
 		\end{center}
-	
+
 		Los "procesamientos" \; de lados los podemos dividir en dos categorías:
 		\begin{enumerate}
 			\item Aquellos procesamientos que saturan o vacian el lado. Denotaremos \textquotedblleft T\textquotedblright \; al número de estos procesamientos.
 			\item Aquellos procesamientos que no saturan ni vacian el lado. Denotaremos \textquotedblleft Q\textquotedblright \; al número de estos procesamientos.
 		\end{enumerate}
-	
+
 		Por lo tantos queremos acotar $T + Q$.
-		
+
 		\vspace{5mm}
 		\textbf{Complejidad de T:}
 		\begin{itemize}
 			\item ¿Puede un lado \textit{xy} saturado volver a saturarse?
-			
+
 			Para poder volver a \underline{saturarse} primero tiene que vaciarse auque sea un poco, es decir, antes de poder volver a saturarlo \textquotedblleft \textit{y}\textquotedblright \; debe devolver flujo a \textquotedblleft \textit{x}\textquotedblright \;, pero para que en Wave \textquotedblleft \textit{y}\textquotedblright \; le devuelva flujo a \textquotedblleft \textit{x}\textquotedblright \;  debe ocurrir que \textquotedblleft \textit{y}\textquotedblright \; este bloqueado (porque BB(y) solo se ejecuta si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado), pero si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado \textquotedblleft \textit{x}\textquotedblright \; no puede mandarle flujo nunca más.
-			
+
 			\begin{center}
 				$ \therefore \;$ \textit{xy} no puede resaturarse
 			\end{center}
-			
+
 			\underline{Conclusión 1:} Los lados se saturan solo una vez.
-			
+
 			\item ¿Puede un lado \textit{xy} vaciado completamente volver a vaciarse?
-			
+
 			Para poder volver a \underline{vaciarse} como está vacío completamente, primero hay que mandar flujo, pero si lo vacié \textquotedblleft \textit{y}\textquotedblright \; está bloqueado por lo que \textquotedblleft \textit{x}\textquotedblright \; no puede mandar flujo.
-			
+
 			\begin{center}
 				$ \therefore \;$ \textit{xy} no puede volver a vaciarse
 			\end{center}
-			
+
 			\underline{Conclusión 2:} Los lados se vacían completamente a lo sumo una vez.
-			
+
 			Las conclusiones (1) y (2) implican que \begin{tabular}{|c|} \hline $T \leq 2 \; m$ \\ \hline \end{tabular}
 		\end{itemize}
-	
+
 		\textbf{Complejidad de Q:}
-	
+
 			En cada FB a lo sumo un lado no se satura y en cada BB a lo sumo un lado no se vacía completamente.
-			
+
 			\vspace{2mm}
-			$\therefore \;$ Q $\leq \#$ Total de FB's y BB's 
-	
+			$\therefore \;$ Q $\leq \#$ Total de FB's y BB's
+
 			\begin{itemize}
 				\item $\#$ FB's en cada ola hacia adelante es $\leq$ \textit{n} (un FB por vértice)
 				\item $\#$ BB's en cada ola hacia atrás es $\leq$ \textit{n}
 
 				$\therefore$ Total de FB's y BB's $\leq 2 \; n \; \#$Total de ciclos de \textquotedblleft ola adelante $-$ ola hacia atrás\textquotedblright
  			\end{itemize}
-	
+
 			Ahora bien, en cada ola hacia adelante, pueden o no, bloquearse algunos vértices. Si no se bloquea ningún vértice entonces todos los vértices ($\neq$ \textit{s, t}) quedan balaceados por lo que estamos en la última ola. Luego en toda ola que no sea la última se bloquea al menos un vértice ($\neq$ \textit{s, t}).
-			
+
 			\begin{center}
 			$\therefore \; \#$Total de ciclos es $\leq (n-2)+1 = n-1$ \\
 			$\Rightarrow$ \begin{tabular}{|c|} \hline $Q \; \leq 2 n (n-1) = \mathcal{O}(n^{2})$ \\ \hline \end{tabular}
 			\end{center}
-	
+
 			\begin{eqnarray}
 				\nonumber \therefore \; T + Q & \leq & 2 m + \mathcal{O}(n^{2}) \\
 				\nonumber & = & \mathcal{O}(m) + \mathcal{O}(n^{2}) \\
@@ -432,20 +432,20 @@
 
 
 	\section{La distancia entre NA sucesivos aumenta}
-	
+
 		\underline{Teorema:} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean d(x) y $d^{*}(x)$ las distancias de \textit{s} a \textit{t} en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
-		
+
 		\underline{Prueba:} Como A y $A^{*}$ se construyen con BFS sabemos que $d(t) \leq d^{*}(t)$ pero queremos ver el $<$.
-		
+
 		Sea:
 		\begin{center}
 			$s = x_{0}, \; x_{1}, \; \dotsc \; t = x_{r}$
 		\end{center}
-	
+
 		un camino dirigido en $A^{*}$.
-	
+
 		Ese camino \begin{tabular}{|c|} \hline No existe \\ \hline \end{tabular} en A ya que para pasar de A a $A^{*}$ debemos bloquear todos los caminos dirigidos de A. Por lo tanto si ese camino estuviese en A, Dinic lo habría bloqueado y no estaría en $A^{*}$.
-		
+
 		\textbf{¿Cuáles son las razones posibles para que no esté en A?}
 		\begin{enumerate}
 			\item Puede faltar un vértice, es decir $\exists \; i \; : \; x_{i} \; \nexists \; V(A)$ entonces:
@@ -456,29 +456,29 @@
 				\nonumber & = & d^{*}(t) \\
 				\nonumber \begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\ \hline \end{tabular}
 			\end{eqnarray}
-			
+
 			\item Están todos los vértices pero falta una arista, es decir $\exists \; i \; : \; x_{i}x_{i+1} \; \nexists \; E(A)$.
 			\begin{enumerate}[a)]
 				\item $x_{i}x_{i+1}$ no está porque corresponde a un lado vacío o saturado en NA, es decir $x_{i}x_{i+1}$ no está en el recidual que dá origen a A pero si está en el residual que dá origen a $A^{*}$.
-				
+
 				Para que esto pase se tiene que haber usado el lado $x_{i+1}x_{i}$ en A. Luego podemos cocluir, por la prueba de $\langle E-K \rangle$ que:
 				\begin{center}
 					$\qquad \; d^{*}(t) \geq d(t) + 2 > d(t) $
-					
+
 					\vspace{2mm}
 					\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\ \hline \end{tabular}
 				\end{center}
-				
+
 				\item $x_{i}x_{i+1}$ si está en el residual pero:
 				\begin{tabular}{|c|} \hline $d(x_{i+1}) \neq d(x_{i}) +1 $ \\ \hline \end{tabular} (1)
-				
+
 				\vspace{5mm}
 				Pero como $x_{i}x_{i+1}$ está en el residual entonces:
 				\begin{tabular}{|c|} \hline $d(x_{i+1}) \leq d(x_{i}) +1 $ \\ \hline \end{tabular} (2)
-				
+
 				\vspace{5mm}
 				De (1) y (2) tenemos que: \begin{tabular}{|c|} \hline $d(x_{i+1}) < d(x_{i}) +1 $ \\ \hline \end{tabular} $\circledast$
-			
+
 				Entonces:
 				\begin{eqnarray}
 				\nonumber d(t) & = & d(x_{i+1}) + b(x_{i+1}) \qquad\;\;\;\;\;\textup{Por }\langle E-K \rangle\\
@@ -494,14 +494,14 @@
 				($\dag$): Ya que $s, \; x_{1}, \; \dotsc \; x_{r}$
 			\end{enumerate}
 		\end{enumerate}
-	
-	
+
+
 
 \chapter{Parte B}
 
 	\section{2-COLOR es polinomial}
-	
-	
+
+
 	\section{Teorema Max-Flow Min-Cut}
 		\textbf{\underline{Teorema:}}
 		\begin{enumerate}[a)]
@@ -509,54 +509,54 @@
 			\item Si V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.
 			\item Si \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).
 		\end{enumerate}
-		
+
 		\textbf{\underline{Prueba:}} Denotemos \begin{tabular}{|c|} \hline $V(\textit{f}) = f(S, \overline{S}) - f(\overline{S},S)$ \\ \hline \end{tabular} $(\star)$
-		
+
 		\vspace{5mm}
 		\textbf{a) \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).}
-		
+
 			\begin{center}
 				$V(f) \stackbin{Por \; (\star)}{=} f(S, \overline{S})\underbrace{-\underbrace{f(\overline{S}, S)}_{\geq 0}}_{\leq 0}$ \\
-				
+
 				\vspace{5mm}
 				$\Rightarrow V(f ) \leq f(S, \overline{S}) \leq Cap(S, \overline{S}) =$ Cap(S)
 			\end{center}
-			
+
 		\textbf{b) V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.}
-			
+
 			\vspace{2mm}
 			Supongamos que V(\textit{f}) $=$ Cap(S). Sea \textit{g} un flujo cualquiera y T un corte cualquiera.
 			\begin{itemize}
-				\item $V(g) \stackbin{Por \; a)}{\leq} Cap(S) = V(f) \Rightarrow$ f es maximal. 
+				\item $V(g) \stackbin{Por \; a)}{\leq} Cap(S) = V(f) \Rightarrow$ f es maximal.
 				\item $Cap(T) \stackbin{Por \; a)}{\geq} V(f) = Cap(S) \Rightarrow$ S es minimal.
 			\end{itemize}
-		
+
 		\vspace{5mm}
 		\textbf{c) \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).}
-			
+
 			\vspace{2mm}
 			Sea $S = \{s\} \cup \{x \; : \; \exists \;$ camino aumentante realtivo a \textit{f} entre \textit{s} y \textit{t}$\}$
-			
+
 			\vspace{5mm}
 			¿$t \in S$?
 
 			\underline{Si \textit{t} estuviera en S:} existiría un camino aumentante entre \textit{s} y \textit{t}.
-				
+
 				Por el teorema del camino aumentante podemos construir un  flujo \textit{g} tal que:
 				\begin{center}
 					$V(g) = V(f) + \epsilon \textup{ para algun } \epsilon > 0$
-					
+
 					$\therefore V(g) > V(f)$ \textbf{Absurdo} pues \textit{f} es maximal.
 				\end{center}
-				
+
 				$\therefore t \notin S \Rightarrow S$ es corte.
-				
+
 				\begin{center}
 					Solo resta ver que: $V(f) = Cap(S)$
 				\end{center}
-				
+
 				Por $(\star): \; V(f) =  \underbrace{f(S, \overline{S})}_{(1)} - \underbrace{f(\overline{S}, S)}_{(2)}$
-				
+
 				\vspace{2mm}
 				Analicemos (1) y (2)
 			\begin{enumerate}[(1)]
@@ -566,10 +566,10 @@
 				$x \in S \Rightarrow \exists$ camino aumentante $ s, \dotsc x$.
 
 				$y \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{y}. En particular $s, 	\dotsc x, \dotsc y$ no es camino aumentante, por lo que no puede darse que $f(\overrightarrow{xy}) < Cap(\overrightarrow{xy})$.
-				
+
 				\vspace{3mm}
-				$\Rightarrow f(\overrightarrow{xy}) = Cap(\overrightarrow{xy}) \qquad \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E.$ 
-				
+				$\Rightarrow f(\overrightarrow{xy}) = Cap(\overrightarrow{xy}) \qquad \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E.$
+
 				\vspace{3mm}
 				$\Rightarrow$ \begin{tabular}{|c|} \hline $f(S, \overline{S})$ \\ \hline \end{tabular} $= \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) = \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} Cap(\overrightarrow{xy}) = Cap(S, \overline{S}) =$ \begin{tabular}{|c|} \hline $ Cap(S) $ \\ \hline \end{tabular}
 
@@ -579,61 +579,61 @@
 				$x \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{x}.
 
 				$y \in S \Rightarrow \exists$ camino aumentante $ s, \dotsc y$.
-				
+
 				En particular $s \dotsc y, y \dotsc x$ no es camino aumentante $\Rightarrow f(\overrightarrow{xy}) = 0  \; \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E$.
-				
+
 				\vspace{3mm}
 				$\therefore$ \begin{tabular}{|c|} \hline $ f(\overline{S}, S) = 0 $ \\ \hline \end{tabular}
 			\end{enumerate}
-			
+
 			Luego de (1) y (2)
-			
+
 			\begin{eqnarray}
 				\nonumber V(f) &=& f(S, \overline{S}) - f(\overline{S}, S)\\
 				\nonumber &=& Cap(S) - 0 \\
-				\nonumber &=& Cap(S)				
+				\nonumber &=& Cap(S)
 			\end{eqnarray}
 
 	\section{Complejidad del Hungaro es $\mathcal{O}(n^{4})$}
-	
+
 		\textbf{\underline{Teorema:}} La complejidad del algoritmo Húngaro es $\mathcal{O}(n^{4})$.
-		
-		\textbf{\underline{Prueba:}} 
-		
+
+		\textbf{\underline{Prueba:}}
+
 			\begin{enumerate}
 				\item La complejidad del matching inicial es $\mathcal{O}(n^{2})$, ya que:
-				
+
 					Restar mínimo de cada fila:
 					\begin{center}
 						$(\underbrace{\mathcal{O}(n)}_{calcular \; min} + \underbrace{\mathcal{O}(n)}_{restar \; min}) * \underbrace{n}_{\# filas} = \mathcal{O}(n^{2})$
 					\end{center}
-				
+
 				Idem para las columnas.
-				
+
 				\item Llamemos \textbf{extender} el matching, a incrementar su número de filas en 1, es decir, agregar una fila más al matching.
 				\begin{center}
 					$\#$ extensiones de matching $= \mathcal{O}(n)$
 				\end{center}
-				
+
 				Resta ver la complejidad de cada \textbf{extender}.
-				
+
 				\item En cada extensión vamos a ir revisando filas y columnas, donde escanear una fila es $\mathcal{O}(n)$ y se realizan \textit{n} escaneos, por lo que sería $\mathcal{O}(n^{2})$ sin considerar que se debe realizar un cambio de matriz.
-				
-				Hacer un \textbf{cambio de matriz} es $\mathcal{O}(n^{2})$, ya que:				
+
+				Hacer un \textbf{cambio de matriz} es $\mathcal{O}(n^{2})$, ya que:
 				\begin{itemize}
 					\item Buscar $\textit{m} = \min S$ x $\overline{\Gamma(S)} \rightarrow \mathcal{O}(n^{2})$
 					\item Restar \textit{m} de $S \rightarrow \mathcal{O}(n^{2})$
 					\item Sumar \textit{m} a $\Gamma(S) \rightarrow \mathcal{O}(n^{2})$
 				\end{itemize}
-				
+
 				Luego la implementación NAIVE lanzaría nuevamente el algoritmo desde cero. La forma correcta es continuar con el matching que teniamos, ya que el mismo no se pierde.
-				
+
 				Si lo hacems así, ¿Cuántos \textbf{cambios de matriz} habrá antes de extender un matching nuevamente?
-				
+
 				\underline{\textbf{Lema Interno:}} Luego de un \textbf{cambio de matriz}, se extiende el matching o bien se aumenta S.
-				
-				\underline{\textbf{Prueba:}} 			
-				
+
+				\underline{\textbf{Prueba:}}
+
 				\begin{center}$
 				\; \; \left(
 				\begin{array}{r | r}
@@ -646,79 +646,79 @@
 				\Gamma(S) \; \overline{\Gamma(S)}
 				$
 				\end{center}
-				
+
 				\underline{Referencias:}
 				\begin{itemize}
 					\item A: puede haber ceros.
 					\item B: ceros del matching.
 					\item C: no hay ceros, no hay matching.
 				\end{itemize}
-				
+
 				Al restar $\textit{m} = \min S$ x $\overline{\Gamma(S)}$ de las filas de S, habrá un nuevo cero en alguna fila \textit{i} ($\in S$) y columna \textit{j} ($\in \overline{\Gamma(S)}$) entonces la columna se etiquetará con \textit{i} y se revisará.
 				Tenemos dos resultados posible:
 				\begin{enumerate}
 					\item \textit{j} está libre (i.e no forma parte del matching) $\Rightarrow$ extendemos el matching.
 					\item \textit{j} forma parte de matching $\Rightarrow \exists$ fila \textit{k} matcheada con \textit{j}. En este caso, la fila \textit{k} se etiquetará con \textit{j}, por lo que el "nuevo" $\; S \geq S \cup \{\textit{k}\}$.
-					
+
 					\vspace{5mm}
 					Entonces se termina con una extensión o se produce un nuevo S de cardinalidad, al menos $\lvert S \rvert + 1$.
 				\end{enumerate}
-				
+
 				\textbf{Fin Lema Interno}
-				
+
 				Luego como $\lvert S \rvert$ solo puede crecer $\mathcal{O}(n)$ veces, tenemos que hay a lo sumo \textit{n} \textbf{cambios de matriz} antes de extender el matching. Entonces:
-				
+
 							\begin{center}
 								Complejidad(1 Extensión) $= \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Compl(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas }$ \\
 								\vspace{5mm}
 								$\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching \; inicial} + \; (\underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Compl(extension)}) = \; \mathcal{O}(n^{4})$
-							\end{center}				
+							\end{center}
 			\end{enumerate}
-	
+
 	\section{Teorema de Hall}
-	
+
 		\textbf{\underline{Teorema:}} Sea G = (X $\cup$ Y, E) grafo bipartito $\Rightarrow \exists$ matching completo de X a Y $\Leftrightarrow \; \lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$.
-		
+
 		\vspace{3mm}
 		\textbf{\underline{Prueba:}}
 
 			$\Rightarrow)$ Si M es matching completo de X a Y entonces oberservemos que M induce una función inyectiva de X a Y.
-			
+
 			\begin{center}
 				$f(x) = $ único y : xy $\in E(M)$.
 			\end{center}
-			
+
 			\begin{enumerate}
 				\item Si $S \subseteq X \Rightarrow \lvert S \rvert \leq \lvert \Gamma(S) \rvert$
 
-				
+
 				\item Además por definición de f, $f(x) \in \Gamma(x)$
-				
+
 				\begin{eqnarray}
 					\nonumber \text{Si x} \in S & \Rightarrow & f(x) \in \Gamma(S) \\
 					\nonumber & \Rightarrow & f(S) \subseteq \Gamma(S) \\
 					\nonumber &\therefore & \lvert f(S) \rvert \leq \lvert \Gamma(S) \rvert
 				\end{eqnarray}
-				
+
 			\end{enumerate}
-			
+
 			De \textcircled{1} y \textcircled{2} $\Rightarrow \lvert S \rvert \leq \lvert \Gamma(S) \rvert$.
-			
+
 			\vspace{5mm}
 			$\Leftarrow)$ Supongamos que no es cierto, entonces G es bipartito con $\lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$ pero no tiene matching completo de X a Y. Esto equivalente a ver que: si $\nexists$ un matching completo de X a Y $\Rightarrow \exists \; S \subseteq X : \lvert S \rvert > \lvert \Gamma(S) \rvert$.
-			
+
 			\vspace{5 mm}
 			Corramos el algoritmo para hallar matching. Al finalizar habrá filas sin matcher (las de \textit{s}).
-			
+
 			\vspace{5mm}
 			Sean:
 			\begin{itemize}
 				\item $S_{0} =$ filas sin matchear.
 				\item $T_{1} = \Gamma(S_{0})$, es decir, las columnas etiquetadas por las filas de $S_{0}$. Todas las columnas de $T_{1}$ están matcheadas, pues si no, se podría agregar alguna alguna fila de $S_{0}$ al matching.
 				\item $S_{1} =$ filas etiquetadas por las columnas de $T_{1}$.
-				\item $T_{2} = \Gamma(S_{1}) - T_{1}$, es decir, columnas etiquetadas por las filas de $S_{1}$. 
+				\item $T_{2} = \Gamma(S_{1}) - T_{1}$, es decir, columnas etiquetadas por las filas de $S_{1}$.
 			\end{itemize}
-	
+
 			En general:
 			\begin{center}
 			\begin{itemize}
@@ -726,34 +726,34 @@
 				\item $T_{i+1} = \Gamma(S_{i}) - (T_{1} \cup T_{2} \cup \dotsc T_{i})$.
 			\end{itemize}
 			\end{center}
-			
+
 			Como el algoritmo para sin hayar matching, entonces $\forall i \; T_{i} \neq \emptyset $, produce un $S_{i}$  (i.e $S_{i} \neq \emptyset$).
-			
+
 			$\therefore$ La única forma de parar es en un \textit{k}, tal que $T_{k+1} = \emptyset$.
-			
+
 			\vspace{5mm}
 			\underline{Observaciones:}
 			\begin{enumerate}
 				\item $\lvert S_{j} \rvert = \lvert T_{j} \rvert$, pues $S_{j}$ son las filas matcheadas con $T_{j}$.
 				\item Por construcción, los $S_{i}$ y $T_{i}$ son todos distintos.
 				\item $\Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) = T_{1} \cup T_{2} \cup \dotsc T_{j+1}$
-				
+
 					\underline{Por inducción en \textit{j}:}
 					\begin{itemize}
 						\item Caso Base: $j = 0$ vale, ya que $T_{1} = \Gamma(S_{0})$
 						\item Caso Inductivo: Supongamos que vale para \textit{j}, veamos para \textit{j+1}.
-						
+
 						\begin{eqnarray}
 							\nonumber T_{1} \cup T_{2} \dotsc T_{j+2} &=& T_{1} \cup T_{2} \cup \dotsc T_{j+1} \cup \underbrace{(\Gamma(S_{i+1}) - (T_{1} \cup T_{2} \dotsc T_{j+1}))}_{T_{j+1}} \\
 							\nonumber &=& T_{1} \cup T_{2} \cup \dotsc T_{j+1} \cup (\Gamma(S_{i+1}) \\
 							\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) \cup \Gamma(S_{i+1}) \qquad \text{Por H.I} \\
-							\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j} \cup S_{j+1}) 
+							\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j} \cup S_{j+1})
 						\end{eqnarray}
 					\end{itemize}
 				\end{enumerate}
-				
+
 					Sea $S = S_{0} \cup S_{1} \cup \dotsc S_{k}$
-					
+
 					\begin{eqnarray}
 						\nonumber \lvert \Gamma(S) \rvert &=& \lvert \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{k}) \rvert \\
 						\nonumber &=& \lvert T_{1} \cup T_{2} \cup \dotsc \underbrace{T_{k+1}}_{= \; \emptyset} \rvert \qquad \; \text{Por Obs 3} \\
@@ -764,50 +764,50 @@
 						\nonumber &<& \lvert S \rvert \qquad \qquad \qquad \qquad \; \; \; \; \;\text{Pues } S_{0} \neq \emptyset \\
 						\nonumber & \text{Absurdo!} &
 					\end{eqnarray}
-			
+
 	\section{Teorema del matrimonio}
-	
+
 		\textbf{\underline{Teorema:}} Todo grafo regular bipartito tiene un matching perfecto.
-		
+
 		\textbf{\underline{Prueba:}} Sea $G = (X \cup Y, E)$ bipartito regular, tal que $\forall W \subseteq V(G)$, definimos:
-		
+
 		\begin{eqnarray}
 			\nonumber E_{W} &=& \left\lbrace xy \in E(G): x \in W \; o \ y \in W \right\rbrace \\
 			\nonumber &=& \text{lados con un extremo en W}
 		\end{eqnarray}
-		
+
 		Supongamos que $W \subseteq X$ (de igual forma para $W \subseteq Y$). Además, como G es regular, $\exists \; \Delta > 0 : d(z) = \Delta \; \; \forall z$.
-		
+
 		\begin{eqnarray}
 			\nonumber \lvert E_{w} \rvert &=& \lvert \left\lbrace xy \in E: x \in W \right\rbrace \rvert \\
 			\nonumber &=&\ \sum_{x \in w} \lvert \left\lbrace y : xy \in E \right\rbrace \rvert \\
 			\nonumber &=& \sum_{x \in w} \; \underbrace{d(x)}_{\Delta} \\
 			\nonumber &=& \Delta * \lvert w \rvert
 		\end{eqnarray}
-		
+
 		Es decir, a cada \textit{w} le corresponden $\Delta$ lados distintos. En particular:
-		
+
 		\begin{eqnarray}
 		\nonumber \lvert E_{x} \rvert &=& \Delta * \lvert x \rvert \\
 		\nonumber \lvert E_{y} \rvert &=& \Delta * \lvert y \rvert
 		\end{eqnarray}
-		
+
 		pero $E_{x} = E = E_{y}$ pues G es bipartito.
-		
+
 		\vspace{5mm}
 		Por lo tanto:
-		
+
 		\vspace{3mm}
 		$ \lvert E_{x} \rvert = \lvert E_{y} \rvert \Rightarrow \Delta * \lvert x \rvert = \Delta * \lvert y \rvert \Rightarrow \lvert x \rvert = \lvert y \rvert \qquad \therefore$ Todo matching completo es perfecto.
-		
-	
+
+
 		Basta ver que existe un matching completo de X a Y, es decir, que se cumple la condición de Hall.
-		
+
 		\vspace{5mm}
 		Sea $S \subseteq X$:
-		
+
 		\begin{equation*}
-			\text{Sea} 
+			\text{Sea}
 			\underbrace{xy}_{\begin{subarray}{l} \; x \in X \\
 	\; y \in Y \end{subarray}} \in E_{s} \Rightarrow
 			{\Huge \exists}
@@ -818,33 +818,33 @@
   			\end{array}
  			 \right\rbrace
  			 \Rightarrow y \in \Gamma(S) \Rightarrow xy \in E_{\Gamma(s)}
-		\end{equation*}		
-		
+		\end{equation*}
+
 		\vspace{3mm}
 		Es decir, hemos probado que:
-		
+
 		\begin{eqnarray}
 			\nonumber E_{s} & \subseteq & E_{\Gamma(S)} \\
 			\nonumber \lvert E_{S} \rvert &\leq & \lvert E_{\Gamma(S)} \rvert \\
 			\nonumber \Delta \; \lvert S \rvert & \leq & \Delta \; \lvert \Gamma(S) \rvert \\
 			\nonumber \lvert S \rvert & \leq & \Gamma(S)
 		\end{eqnarray}
-		
+
 	\section{Todo grafo bipartito es $\Delta$ coloreable}
-	
+
 		\textbf{\underline{Teorema:}} Si G es bipartito $\Rightarrow \chi '(G) = \Delta $
-	
-		\textbf{\underline{Prueba:}} 
-		
+
+		\textbf{\underline{Prueba:}}
+
 		\vspace{3mm}
 		\textbf{Lema Interno:} Todo grafo bipartito es subgrafo de un grafo bipartito regular con el mismo $\Delta$, es decir:
-		
+
 		\begin{center}
-			G bipartito $\Rightarrow \exists$ H bipartito regular con G $\subseteq$ H y $\Delta(G) = \Delta(H)$ 
+			G bipartito $\Rightarrow \exists$ H bipartito regular con G $\subseteq$ H y $\Delta(G) = \Delta(H)$
 		\end{center}
-		
+
 		\underline{Prueba:} Sean:
-		
+
 		\begin{itemize}
 			\item $G = (V = X \cup Y, E)$ grafo bipartito
 			\item $G^{\star} = (V^{\star}, E^{\star})$ una copia de G
@@ -855,7 +855,7 @@
 					\item $\overline{E} = E \cup E^{\star} \cup E^{\dag}$
 				\end{itemize}
 		\end{itemize}
-		
+
 		Propiedades de $\overline{G}$:
 		\begin{enumerate}
 			\item $\overline{G}$ es bipartito, sus partes son:
@@ -863,64 +863,64 @@
 					\item $X \cup Y^{\star}$
 					\item $X \cup Y$
 				\end{itemize}
-				
+
 			No existen lados entre $x \leftrightarrow x, \; y^{\star} \leftrightarrow y^{\star}, \; x \leftrightarrow y^{\star}$.
-			
+
 			\item Sea v $\in$ V tal que $d_{G}(v) = \Delta = \Delta(G)$ entonces V no es parte de ningún lado de $E^{\dag}$.
-			
-			$\Rightarrow d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star}) = \Delta$ 
-			
+
+			$\Rightarrow d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star}) = \Delta$
+
 			\vspace{5mm}
-			Sea v $\in$ V tal que $d_{G}(v) < \Delta \Rightarrow$ forma parte de un nuevo lado. 
-			
+			Sea v $\in$ V tal que $d_{G}(v) < \Delta \Rightarrow$ forma parte de un nuevo lado.
+
 			$\therefore d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star)} = d_{G}(v) + 1$
-			
+
 			\underline{Conclusión:} $ \Delta(\overline{G}) = \Delta(G) \; y \; \delta(\overline{G}) = \delta(G) + 1$
-			
+
 			Repitiendo este proceso, \textit{i.e} $G \rightarrow \overline{G} \rightarrow \overline{\overline{G}} \rightarrow \overline{\overline{\overline{G}}} \dotsc $ eventualmente llegaremos a un $G^{\blacktriangle}$ tal que $\delta(G^{\blacktriangle}) = \Delta \; \therefore $ regular.
 		\end{enumerate}
-		
+
 		\textbf{Fin del Lema Interno}
-		
+
 		\vspace{5mm}
 		\begin{itemize}
 			\item Sea H bipartito regular con $G \subseteq H$ y $\Delta(G) = \Delta(H)$. Como H es bipartito regular $\Rightarrow \exists$ un matching perfecto en H, llamado M. Coloreemos todos los lados de M con \textbf{\texttt{Color 1}}.
 
-			\item Sea $H_{1} = H - $ los lados del matching M. Como M es matching perfecto, $H_{1}$ sigue siendo regular y $\Delta_{H_{1}}(x) = \Delta_{H}(x) - 1 = \Delta - 1$. Como $H_{1}$ es bipartito regular $\Rightarrow \exists$ un matching perfecto en $H_{1}$, llamado $M_{1}$. Coloreemos todos los lados de $M_{1}$ con \textbf{\texttt{Color 2}}. 
-			
-			\item Sea $H_{2} = H_{1} - $ los lados del matching $M_{1}$. Luego $\Delta_{H_{2}}(x) = \Delta_{H_{1}}(x) - 1 = \Delta - 2$. 
-			
-			
+			\item Sea $H_{1} = H - $ los lados del matching M. Como M es matching perfecto, $H_{1}$ sigue siendo regular y $\Delta_{H_{1}}(x) = \Delta_{H}(x) - 1 = \Delta - 1$. Como $H_{1}$ es bipartito regular $\Rightarrow \exists$ un matching perfecto en $H_{1}$, llamado $M_{1}$. Coloreemos todos los lados de $M_{1}$ con \textbf{\texttt{Color 2}}.
+
+			\item Sea $H_{2} = H_{1} - $ los lados del matching $M_{1}$. Luego $\Delta_{H_{2}}(x) = \Delta_{H_{1}}(x) - 1 = \Delta - 2$.
+
+
 			Siguiendo así $H_{\Delta - 1}$ seguirá siendo regular con $ \Delta_{H_{\Delta - 1}}(x) = 1$. En total obtuvimos $ \Delta $ matchings y $ \Delta $ colores. $\therefore \chi '(H) = \Delta$
-			
+
 			\begin{center}
 				$\Rightarrow \chi ' (G) = \Delta$ pues $G \subseteq H$.
 			\end{center}
 		\end{itemize}
-			
+
 	\section{Cota de Hamming}
-		
+
 		\textbf{\underline{Teorema:}} Sea C un código de longitud \textit{n} y sea $ t = \lfloor \frac{\delta - 1}{2} \rfloor$ la cantidad de errores que corrigue, entonces:
-		
+
 		\begin{eqnarray}
 			\nonumber \lvert C \rvert &\leq & \frac{2^{n}}{1 + n + {n \choose 2} + \dotsc {n \choose t}}
 		\end{eqnarray}
-		
+
 		\textbf{\underline{Prueba:}} Sea \begin{tabular}{|c|} \hline $ A = \cup_{x \in C} B_{t}(x) $ \\ \hline \end{tabular}
-		
+
 		\vspace{3mm}
 		Como ya dijimos C corrigue \textit{t} errores $\Rightarrow B_{t}(x) \cap B_{t}(y) \neq \emptyset \; \forall x, y \in C : x \neq y$.
-		
+
 		\begin{center}
 		$\therefore$ La unión en A es disjunta y \begin{tabular}{|c|} \hline $ \#A = \sum_{x \in C} B_{t}(x) $ \\ \hline \end{tabular}
 		\end{center}
-		
+
 		\vspace{3mm}
 		Sea $S_{r}(x) = \left\lbrace y \in Z_{2}^{n} : d(x, y) = r \right\rbrace$
-		
+
 		\vspace{3mm}
 		$\therefore B_{t}(x) = \cup_{r = 0}^{t}S_{r}(x)$ y la unión es disjunta $\Rightarrow$ \begin{tabular}{|c|} \hline $ \#B_{t}(x) = \sum_{r = 0}^{t}\#S_{r}(x) $ \\ \hline \end{tabular}
-		
+
 		\vspace{3mm}
 		\textbf{¿Cuánto vale $S_{r}(x)$?}
 		\begin{eqnarray}
@@ -928,159 +928,159 @@
 			\nonumber & \Leftrightarrow & \lvert x \oplus y \rvert = r \text{ donde defino } (x \oplus y) = \epsilon \\
 			\nonumber & \Leftarrow & \exists \underbrace{\epsilon : \lvert \epsilon \rvert = r}_{\in S_{r}(0)} : y = x \oplus \epsilon
 		\end{eqnarray}
-		
+
 		$\therefore \; S_{r}(x) = x \oplus S_{r}(0) \Rightarrow \#S_{r}(x) = \#S_{r}(0)$
-		
+
 		\vspace{3mm}
 		Luego
 		\begin{eqnarray}
 			\nonumber \#S_{r}(x) &=& \#S_{r}(0) \\
 			\nonumber &=& \# \text{ vectores de longitud n con r unos } \\
-			\nonumber &=& {n \choose r} 
+			\nonumber &=& {n \choose r}
 		\end{eqnarray}
-		
+
 		Por lo tanto
-		
+
 		\begin{eqnarray}
 			\nonumber \# A &=& \sum_{x \in C} \# B_{t}(x) \\
 			\nonumber &=& \sum_{x \in C} \; \sum_{r= 0}^{t} \#S_{r}(x) \\
 			\nonumber &=& \sum_{x \in C} \; \sum_{r = 0}^{t} {n \choose r} \\
 			\nonumber &=& \# C * \sum_{r = 0}^{t} {n \choose r}
 		\end{eqnarray}
-		
+
 		Como $A \in Z_{2}^{n} \Rightarrow \# A \leq 2^{n}$, entonces:
-		
+
 		\begin{eqnarray}
 			\nonumber \sum_{r = 0}^{t} {n \choose r} * \# C \leq 2^{n} \\
 			\nonumber \Rightarrow \# C \leq \frac{2^{n}}{\sum_{r = 0}^{t} {n \choose r}}
 		\end{eqnarray}
-		 
+
 	\section{Teorema de la matriz de chequeo de códigos lineales}
-	
+
 		\underline{Teorema:} Sea C un código lineal con matriz de chequeo H, entonces:
 		\begin{itemize}
-			\item[a)] $\delta(C) = \min \left\lbrace \lvert x \rvert : x \in C , x \neq 0 \right\rbrace (\#$ columas LD de H).		
+			\item[a)] $\delta(C) = \min \left\lbrace \lvert x \rvert : x \in C , x \neq 0 \right\rbrace (\#$ columas LD de H).
 			\item[b)] Si H no tiene columnas 0, ni columnas repetidas, entonces $\delta \geq 3$ y corrigue al menos un error.
 		\end{itemize}
-		
+
 		\underline{Prueba:} Sean:
 		\begin{itemize}
 			\item $w : \min \#$ columnas LD de H.
-			\item $e_{i} = 000 \dotsc \underbrace{1}_{i} 0 \dotsc 0$ 
+			\item $e_{i} = 000 \dotsc \underbrace{1}_{i} 0 \dotsc 0$
 		\end{itemize}
-		
+
 		\textbf{a)} \begin{tabular}{|c|} \hline $w \geq \delta \; $ \\ \hline \end{tabular} $ \; \; Sea \; v \in C , v \neq 0 \; y \; \lvert v \rvert = \delta \Rightarrow v$ tiene $\delta$ unos.
-		
+
 		\vspace{3mm}
 		Es decir; $\exists j_{1}, j_{2} \dotsc j_{\delta}$ tal que:
 		\begin{eqnarray}
 			\nonumber v = e_{j_{1}} + e_{j_{2}} + \dotsc e_{j_{\delta}}
 		\end{eqnarray}
-		
+
 		Como $ v \in C \Rightarrow v =$ NU(H) entonces $Hv^{t} = 0$.
-		
+
 		\begin{eqnarray}
 			\nonumber \Rightarrow 0 = Hv^{t} &=& H(e_{j_{1}}^{t} + e_{j_{2}}^{t} + \dotsc e_{j_{\delta}}^{t}) \\
 			\nonumber &=& H e_{j_{1}}^{t} + H e_{j_{2}}^{t} + \dotsc H e_{j_{\delta}}^{t} \\
 			\nonumber &=& H^{j_{1}} + H^{j_{2}} + \dotsc H^{j_{\delta}}
 		\end{eqnarray}
-		
+
 		$\therefore \left\lbrace H^{j_{1}} + H^{j_{2}} + \dotsc H^{j_{\delta}} \right\rbrace$ es LD $\Rightarrow w \geq \delta$.
-		
+
 		\vspace{3mm}
 		\begin{tabular}{|c|} \hline $w \leq \delta $ \\ \hline \end{tabular} Sea ahora $\left\lbrace H^{i_{1}} + H^{i_{2}} + \dotsc H^{i_{w}} \right\rbrace$ un conjunto LD, entonces $\exists$ constantes $c_{w} \in Z_{2}^{n}$ no todas nulas, tales que:
-		
+
 		\begin{eqnarray}
-			\nonumber c_{1} H^{i_{1}} + c_{2} H^{i_{2}} + \dotsc c_{w} H^{i_{w}} = 0 
+			\nonumber c_{1} H^{i_{1}} + c_{2} H^{i_{2}} + \dotsc c_{w} H^{i_{w}} = 0
 		\end{eqnarray}
-		
+
 		Sea $v = c_{1} e_{i_{1}} + c_{2} e_{i_{2}} + \dotsc c_{w} e_{i_{w}} , \; v \neq 0$ ya que dijimos que no todos los $c_{i}$ eran nulos.
-		
+
 		Luego:
-		
+
 		\begin{eqnarray}
 			\nonumber H v^{t} &=& H (c_{1} e_{i_{1}}^{t} + c_{2} e_{i_{2}}^{t} + \dotsc c_{w} e_{i_{w}}^{t}) \\
 			\nonumber &=& H c_{1} e_{i_{1}}^{t} + H c_{2} e_{i_{2}}^{t} + \dotsc H c_{w} e_{i_{w}}^{t} \\
 			\nonumber &=& H^{e_{i_{1}}} + H^{e_{i_{2}}} + \dotsc H^{e_{i_{w}}} \\
 			\nonumber &=& 0
 		\end{eqnarray}
-		
-		$\Rightarrow v \in C \; y \; \lvert v \rvert = w$. Como $\delta$ es la menor distancia, tenemos que $\delta \leq \lvert v \rvert = w$. 
-		
-		\vspace{5mm}		
+
+		$\Rightarrow v \in C \; y \; \lvert v \rvert = w$. Como $\delta$ es la menor distancia, tenemos que $\delta \leq \lvert v \rvert = w$.
+
+		\vspace{5mm}
 		Por lo tanto vale \begin{tabular}{|c|} \hline $w \leq \delta $ \\ \hline \end{tabular} y \begin{tabular}{|c|} \hline $w \geq \delta $ \\ \hline \end{tabular} $\Rightarrow$ \begin{tabular}{|c|} \hline $w = \delta $ \\ \hline \end{tabular}.
-		
+
 		\vspace{5mm}
 		\textbf{b)}
 		\begin{itemize}
 			\item Si H no tiene columnas ceros $\Rightarrow w \leq 2$.
 			\item Si H no tiene columnas repetidas $\Rightarrow \nexists i,j : i \neq j$ y $H^{i} = H^{j}$. Como no puede pasar que $H{i} = H{j}$ tampoco $H{i} + H{j} = 0$, es decir, $H{i} + H{j} \neq 0 \forall i,j : i \neq j$ por lo que $\nexists$ conjuntos de columnas LD $\Rightarrow w \leq 3$.
-			
+
 			Luego $\delta \leq 3 \Rightarrow t = \lfloor \frac{\delta-1}{2} \rfloor \leq 1$, es decir, C corrigue al menos un error.
 		\end{itemize}
-	
+
 	\section{Teorema del polinomio generador de códigos cíclicos}
-	
+
 		\underline{Teorema:} Sea C un código cíclico de dimensión \textit{k} y longitud \textit{n} y sea $g(x)$ su polinomio generador, entonces:
-		
+
 		\begin{itemize}
 			\item C está formado por los múltiplos de $g(x)$ de grado menor a \textit{n}.
 			\item El grado de $g(x)$ es $n-k$.
 			\item $g(x)$ divide a $1+x^{n}$
 		\end{itemize}
-	
+
 		\underline{Prueba:}
-		
-		\textbf{a)} Sea $v(x) \in C$, dividamos v por g(x). Entonces $\exists$ q(x) y r(x) con $gr(r) < gr(g)$ tal que: 
-		
+
+		\textbf{a)} Sea $v(x) \in C$, dividamos v por g(x). Entonces $\exists$ q(x) y r(x) con $gr(r) < gr(g)$ tal que:
+
 		\begin{eqnarray}
 			\nonumber v(x) &=& q(x) g(x) + r(x) \\
 			\nonumber & \Rightarrow & \begin{tabular}{|c|} \hline $q(x) g(x) = v(x) + r(x) $ \\ \hline \end{tabular} (1)
 		\end{eqnarray}.
-		
+
 		Como $v \in C \Rightarrow gr(v) < n$ y $gr(r) \underbrace{<}_{g \in C} n $ con lo que concluimos que  \begin{tabular}{|c|} \hline $gr(v + r) < n $ \\ \hline \end{tabular} (2).
-		
+
 		Luego de (1) y (2) deducimos: \begin{tabular}{|c|} \hline $gr(q \; g) < n $ \\ \hline \end{tabular}.
-		
+
 		\vspace{3mm}
 		Recordemos que si $p \in C$ y $gr(p) < n$ entonces: \begin{tabular}{|c|} \hline $p \mod (1+ x^{n}) = p$ \\ \hline \end{tabular}.
-		
+
 		\vspace{3mm}
 		Por lo tanto $q(x) g(x) \mod (1 + x^{n}) = q(x) g(x)$, es decir: \begin{tabular}{|c|} \hline $ q(x) \odot g(x) = q(x) g(x) $ \\ \hline \end{tabular} (A). Además como $g(x) \in C \Rightarrow$ \begin{tabular}{|c|} \hline $q(x) \odot g(x) \in C $ \\ \hline \end{tabular} (B).
-		
+
 		\vspace{3mm}
 		De (A) y (B) resuta que $q(x) g(x) \in C \Rightarrow v(x) + r(x) \in C$. Además dijimos que $v(x) \in C$ y como C es lineal $\Rightarrow$ \begin{tabular}{|c|} \hline $r(x) \in C$ \\ \hline \end{tabular} $(\dag)$. Llamemos \begin{tabular}{|c|} \hline $gr(r) < gr(g) $ \\ \hline \end{tabular} $(\star)$.
-		
+
 		\vspace{5mm}
 		De $(\dag)$ y $(\star)$ deducimos $r = 0 \Rightarrow v(x) = q(x) g(x)$.
-		
+
 		\vspace{5mm}
 		\textbf{b)} Recordemos que si $ v(x) \in C \Rightarrow \exists \mu(x) : v(x) = \mu(x) g(x)$. Entonces para que $gr(\mu g) < n$ debe darse que $gr(\mu) + gr(g) < n$, es decir, $gr(\mu) < n - gr(g)$.
-		
+
 		\vspace{3mm}
 		Sea
 		\begin{eqnarray}
 			\nonumber C = \left\lbrace v(x) : \exists \mu(x), gr(\mu) < n - gr(g), v(x) = \mu(x) g(x) \right\rbrace
 		\end{eqnarray}
-		
+
 		Entonces existe una bitección entre C y el conjunto: $\left\lbrace \mu(x) :  gr(\mu) < n - gr(g) \right\rbrace$.
-		
+
 		\begin{eqnarray}
 			\nonumber \therefore \; \lvert C \rvert &=& \lvert \left\lbrace \mu(x) : gr(\mu) < n - gr(g) \right\rbrace \rvert \\
 			\nonumber 2^{k} &=& 2^{n - gr(g)} \\
 			\nonumber k &=& n -gr(g) \\
 			\nonumber gr(g) &=& n - k
 		\end{eqnarray}
-		
+
 		\textbf{c)} Recordemos que si $g(x)$ es polinomio generador, la $ROT^{k}(g) = x^{k} \odot g(x)$. Como $g(x) \in C \Rightarrow ROT^{k}(g) \in C$. Además $x^{k} \odot g(x) = x^{k} g(x) \mod (1 + x^{n}).$
-		
+
 		Sea $p(x)$ tal que:
 		\begin{eqnarray}
 			\nonumber \underbrace{x^{k} g(x)}_{gr = k + (n - k)} = \underbrace{p(x) (1 + x^{n})}_{gr = gr(p) + n} + \underbrace{x^{k} \odot g(x)}_{gr < n}
 		\end{eqnarray}
-		
+
 		Luego para que la igualdad valga, debe valer que $gr(p)	= 0$, es decir, $p = 1$. Entonces: \begin{tabular}{|c|} \hline $ x^{k} g(x) = (1 + x^{n}) + x^{k} \odot g(x) $ \\ \hline \end{tabular} (1), pero $x^{k} \odot g(x) \in C \Rightarrow \exists \mu(x) :$ \begin{tabular}{|c|} \hline $ x^{k} \odot g(x) = \mu(x) g(x) $ \\ \hline \end{tabular} (2)
-		
+
 		\vspace{3mm}
 		De (1) y (2)	:
 		\begin{eqnarray}
@@ -1093,12 +1093,124 @@
 \chapter{Parte C}
 
 	\section{4-COLOR $\leq_{\textit{p}}$ SAT}
-	
+		Sea G un grafo con vértices $v_{1}, v_{2}, \dotsc v_{n}$, queremos construir (en tiempo polinomial) una expresión booleana B en CNF (\textit{forma conjuntiva normal}), tal que:
+
+		\[ \chi(G) \leq 4 \Leftrightarrow B \; es \; satisfacible \]
+		
+		Sea n $=$ \#vértices de G, y sean las variables $x_{i, j} \textup{ con } i = 1, 2, \dotsc n$ y $j = 1, 2, 3, 4$
+		
+		Sean
+		\begin{eqnarray}
+			\nonumber A_{i} &=& x_{i, 1} \vee x_{i, 2} \vee x_{i, 3} \vee x_{i, 4}  \\
+			\nonumber A &=& A_{1} \wedge A_{2} \wedge \dotsc A_{n}
+		\end{eqnarray}
+		
+		Defino
+		\begin{eqnarray}
+			Q_{i, j, k, l} &=& \overline{x_{i, j}} \vee \overline{x_{k, l}}  \qquad i, k = 1 \dotsc n \qquad j, l = 1, 2, 3, 4 \\ 
+			\nonumber \\
+			D_{i} &=& Q_{i, i, 1, 2} \wedge Q_{i, i, 1, 3} \wedge Q_{i, i, 1, 4} \wedge Q_{i, i, 2, 3} \wedge Q_{i, i, 2, 4} \wedge Q_{i, i, 3, 4} \\
+			\nonumber \\
+			D &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \\
+			\nonumber \\
+			F_{i, k} &=& Q_{i, k, 1, 1} \wedge Q_{i, k, 2, 2} \wedge Q_{i, k, 3, 3} \wedge Q_{i, k, 4, 4} \\
+			\nonumber \\
+			F &=& \wedge_{\begin{subarray}{l} \; i, k \\ \; v_{i} v_{k} \in E(G) \end{subarray}} F_{i, k}
+		\end{eqnarray}
+		
+		\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
+		\vspace{3mm}
+		
+		Sea C un coloreo propio de G, con a lo sumo 4 colores. Debemos dar un asignamiento de valores a las variables $x_{i, j}$ que satisfagan B, es decir, un elemento $\overrightarrow{b} \in \mathbb{Z}^{4n}_{2}$ tal que $B(\overrightarrow{b}) = 1$.
+		
+		\vspace{5mm}
+		Definimos
+		\begin{equation*}
+			b_{i, j}
+  			\left \lbrace
+  			\begin{array}{l}
+    		 1 \textup{ si } C(v_{i}) = j \\
+     		 0 \; c.c \\
+  			\end{array}
+  			\right.
+		\end{equation*}
+		
+		Debemos probar $B(\overrightarrow{b}) = 1$, es decir, (1) $A(\overrightarrow{b}) = 1$, (2) $D(\overrightarrow{b}) = 1$ y (3) $F(\overrightarrow{b}) = 1$.
+		
+		\vspace{3mm}
+		(1) \begin{tabular}{|c|} \hline $A(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+		
+		Debemos ver que $A_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir, hay que probar:
+		\[ b_{i, 1} \vee b_{i, 2} \vee b_{i, 3} \vee b_{i, 4} = 1 \]
+		pero
+		\[ C(v_{i}) \in \lbrace 1, 2, 3, 4 \rbrace \Rightarrow \exists j \in \lbrace 1, 2, 3, 4 \rbrace \textup{ tal que } C(v_{i}) = j \Rightarrow b_{i, j} = 1\]
+		
+		\vspace{3mm}
+		(2) \begin{tabular}{|c|} \hline $D(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+		
+		Debemos ver que $D_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir, 
+		\[ Q_{i, j, j, l}(\overrightarrow{b}) = 1 \; \forall i, j, l,  j < l \] es decir:
+		
+		\[ \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1 \; \forall i, j, l, j <  l\]
+		por el absurdo, supongamos que no:
+		\begin{eqnarray}
+			\nonumber &\Rightarrow & \exists i, j, l, j < l \; : \; \overline{b_{i, j}} \vee \overline{b_{i, l}} = 0 \\
+			\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{i, l}} = 0 \\
+			\nonumber &\Rightarrow & b_{i, j} = b_{i, l} = 1 \\
+			\nonumber &\Rightarrow & C(v_{i}) = j, \; C(v_{i}) = l, \; pero \; j \neq l \; \textup{Absurdo!}
+		\end{eqnarray}
+		
+		Luego, el absurdo vino de suponer que $\overline{b_{i, j}} \vee \overline{b_{i, l}} = 0$
+		
+		\vspace{3mm}
+		$\therefore \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1$
+		
+		\vspace{3mm}
+		(3) \begin{tabular}{|c|} \hline $F(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+		\vspace{3mm}
+		
+		Por el absurdo, supongamos que no:
+		\begin{eqnarray}
+			\nonumber &\Rightarrow & \exists i, k \; : \; v_{i} v_{k} \in E(G) \textup{ tal que } F_{i, k}(\overrightarrow{b}) = 0 \\
+			\nonumber &\Rightarrow & \exists j \; \in \lbrace 1, 2, 3, 4 \rbrace : Q_{i, k, j, j}(\overrightarrow{b}) = 0 \\
+			\nonumber &\Rightarrow & \overline{b_{i, j}} \vee \overline{b_{k, j}} = 0 \\
+			\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{k, j}} = 0 \\
+			\nonumber &\Rightarrow & b_{i, j} = b_{k, j} = 1 \\
+			\nonumber &\Rightarrow & C(v_{i}) = 1\; y \; C(v_{k}) = 1\\
+			\nonumber &\Rightarrow & C(v_{i}) = C(v_{k}) \; (= j) \; \textup{Absurdo!}
+		\end{eqnarray}
+		
+		Pues, el coloreo C es propio y $v_{i} v_{k} \in E(G)$. El absurdo vino de suponer que $F(\overrightarrow{b}) = 0$
+		
+		\vspace{3mm}
+		$\therefore F(\overrightarrow{b}) = 1$
+		
+		\vspace{5mm}
+		\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
+		
+		Ahora sabemos que existe un $\overrightarrow{b}$ con $B(\overrightarrow{b}) = 1$ y debemos construir un coloreo propio, con al menos 4 colores.
+		
+		\begin{equation*}
+			B(\overrightarrow{b}) = 1\Rightarrow
+  			\left \lbrace
+  			\begin{array}{l}
+    		 A(\overrightarrow{b}) = 1 \Rightarrow A_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (1) \; \forall i \; \exists j : b_{i, j}  = 1 \\
+     		 D(\overrightarrow{b}) = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (2) \;  \forall i \; \nexists j \neq l : b_{i, j}  = 1 = b_{i, l} \\
+     		 F(\overrightarrow{b}) = 1 \Rightarrow \forall i, j \in E(G), C(v_{i}) \neq C(v_{j}) \Rightarrow \textup{C es propio}
+  			\end{array}
+  			\right.
+		\end{equation*}
+		
+		De (1) y (2) $\Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \; \exists ! j : b_{i, j} = 1$ \\ \hline \end{tabular}
+		
+		\vspace{3mm}
+		Luego, definimos:
+		\[ C(v_{i}) = \textup{unico j con } b_{i, j} = 1\] 
 	\section{3-SAT es NP-Completo}
-	
+
 	\section{3-COLOR es NP-Completo}
-	
-	
+
+
 \begin{thebibliography}{X}
 \bibitem{Baz} \textsc{Maximiliano Illbele},
 <<Resumen de Discreta II, 16 de agosto de 2012>>,
