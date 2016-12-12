@@ -56,14 +56,14 @@
 			\par Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k + 1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura ó \textit{yx} se vacía en el paso \textit{k}.
 			\par Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsc$ x, y $\dotsc$ \textit{t} se usa para construir $f_{k}$.
 			\begin{eqnarray}
-				d_{k}(\textit{t}) & = & d_{k}(x) + b_{k}(x) \\
-				\nonumber & = & d_{k}(x) + b_{k}(y) + 1
+				d_{k}(\textit{t}) &=& d_{k}(x) + b_{k}(x) \\
+				\nonumber &=& d_{k}(x) + b_{k}(y) + 1
 			\end{eqnarray}
 
 			\par Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{j} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y, x $\dotsb$ \textit{t} se usa para construir $f_{j}$.
 			\begin{eqnarray}
-				d_{j}(t) & = & d_{j}(x)+ b_{j}(x) \\
-				\nonumber & = & d_{j}(y)+1+b_{j}(x)
+				d_{j}(t) &=& d_{j}(x)+ b_{j}(x) \\
+				\nonumber &=& d_{j}(y)+1+b_{j}(x)
 			\end{eqnarray}
 
 			\par Entonces:
@@ -79,11 +79,11 @@
 
 			\par Luego:
 			\begin{eqnarray}
-				\nonumber d_{j}(t) & = & d_{j}(x) + b_{j}(x) \\
-				\nonumber & = & d_{j}(y) + 1 + b_{j}(x) \qquad\qquad\qquad\text{Por } \dag \\
+				\nonumber d_{j}(t) &=& d_{j}(x) + b_{j}(x) \\
+				\nonumber &=& d_{j}(y) + 1 + b_{j}(x) \qquad\qquad\qquad\text{Por } \dag \\
 				\nonumber & \geq & d_{k}(y) + 1 + b_{k}(x) \qquad\qquad\qquad\text{Por} \circledast \\
-				\nonumber & = & d_{k}(x) + 1 + 1 + b_{k}(x) \;\qquad\qquad\text{Por} \star \\
-				\nonumber & = & d_{k}(\textit{t}) + 2 \\
+				\nonumber &=& d_{k}(x) + 1 + 1 + b_{k}(x) \;\qquad\qquad\text{Por} \star \\
+				\nonumber &=& d_{k}(\textit{t}) + 2 \\
 				\nonumber \Rightarrow d_{j}(\textit{t}) & \geq & d_{k}(\textit{t}) + 2
 			\end{eqnarray}
 
@@ -100,102 +100,89 @@
 
 
 	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
-		\underline{Teorema:} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
+		\textbf{\underline{Teorema:}} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \; la sucesión de flujos creados por $\langle E-K\rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
 
-		\vspace{5mm}
-		Para cada \textit{k} definimos funciones:
-
-		\begin{itemize}
-			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
-			\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
-		\end{itemize}
-
-		\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
-
-		\vspace{5mm}
-		Queremos probar que:
-		\begin{enumerate}
-			\item $d_{k}(x) \leq d_{k+1}(x)$
-			\item $b_{k}(x) \leq b_{k+1}(x)$
-		\end{enumerate}
-
-		\underline{Prueba:} Lo probaremos por inducción y solo para $d_{k}$ ya que para $b_{k}$ la prueba es análoga.
-
-		\begin{center}
-			HI: $H(i) = \lbrace\forall_{z}: d_{k+1}(z) \leq \textit{i}, \, vale \; d_{k}(z) \leq d_{k+1}(z)  \rbrace$
-		\end{center}
-
-		\begin{enumerate}
-			\item Caso Base: \begin{tabular}{|c|} \hline i = 0 \\ \hline \end{tabular} \qquad	$H(0) = \lbrace\forall_{z}: d_{k+1}(z) \leq 0, \, d_{k}(z) \leq d_{k+1}(z)  \rbrace$
-
-			Pero $d_{k+1}(z) \leq 0 \Rightarrow z = \textit{s}$
-
-			\begin{eqnarray}
-				\nonumber d_{k}(z) & = & d_{k}(\textit{s}) \\
-				\nonumber & = & 0 \\
-				\nonumber & \leq & d_{k+1}(\textit{s}) \\
-				\nonumber & \leq & d_{k+1}(z) \\
-				\nonumber \Rightarrow d_{k}(z) & \leq & d_{k+1}(z)
-			\end{eqnarray}
-
-			\item Caso Inductivo: Supongamos ahora que vale H(\textit{i}), veamos que vale H(\textit{)i+1}.
-
-			Sea \textit{z} con $d_{k+1}(z) \leq \textit{i+1}$, si $d_{k+1}(z) \leq \textit{i}$ vale H(\textit{i}) para \textit{z}.
-
-			\begin{center} $\therefore \; d_{k+1}(z) \leq d_{k+1}(z) $ \end{center}
-
-			Supongamos que \begin{tabular}{|c|} \hline $d_{k+1}(z) = i+1$ \\ \hline \end{tabular}
-
-			Entonces existe un camino aumentante, relativo a $f_{k}$, de la forma: $s = z_{0}, \; z_{1}, \; \dotsc \; z_{i}, \; z_{i+1} = z$.
-
-			Sea \begin{tabular}{|c|} \hline $x = z_{i}$ \\ \hline \end{tabular}
+			\vspace{5mm}
+			\par Para cada \textit{k} definimos funciones:
 
 			\begin{itemize}
-				\item \underline{Caso 1:} Existe algun camino aumentante, relativo a $f_{k-1}$ de la forma $s, \; \dotsc \; x, \; z$.
-				$\Rightarrow \begin{tabular}{|c|} \hline $d_{k}(x) \leq d_{k}(x) + 1$ \\ \hline \end{tabular}$
-
-				\vspace{2mm}
-				Pues al haber un camino $\underbrace{s, \; \dotsc \; x,}_{d_{k}(x)} \; z$, llamemosle A, de longitud $d_{k}(x) + 1$ entre \textit{s} y \textit{z}, sabemos que el minimo de todos los caminos de \textit{s} a \textit{z} seran $\leq$ A.
-
-				\item Caso 2: No existe un camino aumentante, relativo a $f_{k-1}$, pero si existe un camino aumentante relativo a $f_{k}$. Por lo tanto el lado \textit{xz} no esta \textquotedblleft disponible\textquotedblright \; en el paso \textit{k}, ya que \textit{xz} está saturado \textit{zx} está vacío relativo a $f_{k-1}$. Para construir $f_{k}$ usamos un camino de la forma $s, \; \dotsc \; z, \; x$. Es decir:
-
-				\begin{enumerate}[1)]
-					\item $f_{k-1}(xz) = C(xz)$ pero $f_{k}(xz) < C(xz), \; f_{k}$ devuelve flujo por \textit{xz} ó
-					\item $f_{k-1}(zx) = 0$ pero $f_{k}(zx) > 0, \; f_{k}$ manda flujo por \textit{zx}.
-				\end{enumerate}
-
-				Como $\langle E-K \rangle$ funciona con BFS, ese camino usado pra construir $f_{k}$ debe ser de longitud mínima. Es decir: \; $d_{k}(x) = d_{k}(z) + 1$
-
-				\begin{eqnarray}
-					\nonumber d_{k}(z) & = & d_{k}(x) - 1 \\
-					\nonumber & \leq & d_{k}(x) + 1
-				\end{eqnarray}
+				\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright \; entre \textit{s} y x en el paso \textit{k} en caso de existir, si no $\infty$.
+				\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright \; entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
 			\end{itemize}
 
-			\underline{Conclusión:} En cualquiera de los dos casos tenemos:
-			\begin{center}
-			\begin{tabular}{|c|} \hline $d_{k}(x) \leq d_{k}(x) + 1$ \\ \hline \end{tabular}
-			\end{center}
+			\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
 
-			Ahora bien: \qquad $d_{k+1}(x) = d_{k+1}(z_{i}) = i \; \; \Rightarrow \; \;$ vale H(\textit{i}) para x. \\
-			$ \; \qquad \qquad \therefore d_{k}(z) \leq d_{k+1}(x)$
+			\vspace{5mm}
+			\par Queremos probar que:
+			\begin{enumerate}
+				\item $d_{k}(x) \leq d_{k + 1}(x)$
+				\item $b_{k}(x) \leq b_{k + 1}(x)$
+			\end{enumerate}
 
-			\begin{eqnarray}
-					\nonumber d_{k+1}(x) & = & d_{k+1}(z_{i}) \\
-					\nonumber & = & i \\
-					\nonumber & \Rightarrow & \textup{H(\textit{i}) vale para x.} \\
-					\nonumber \therefore \; d_{k}(z) & \leq & d_{k+1}(x)
+		\textbf{\underline{Prueba:}} Lo probaremos por inducción y solo para $d_{k}$ ya que para $b_{k}$ la prueba es análoga.
+			\[ \textup{HI: H(i) } = \lbrace\forall_{z}: d_{k + 1}(z) \leq \textit{i}, \textup{ vale } d_{k}(z) \leq d_{k + 1}(z)\rbrace \]
+
+			\begin{enumerate}
+				\item \underline{Caso Base:} \begin{tabular}{|c|} \hline i = 0 \\\hline \end{tabular} \qquad $H(0) = \lbrace\forall_{z}: d_{k + 1}(z) \leq 0, \textup{ vale } d_{k}(z) \leq d_{k + 1}(z)  \rbrace$
+					\par Pero $d_{k + 1}(z) \leq 0 \Rightarrow z = \textit{s}$, entonces:
+					\begin{eqnarray}
+						\nonumber d_{k}(z) &=& d_{k}(s) \\
+						\nonumber &=& 0 \\
+						\nonumber &\leq & d_{k + 1}(s) \\
+						\nonumber &\leq & d_{k + 1}(z) \\
+						\nonumber \therefore d_{k}(z) & \leq & d_{k + 1}(z)
+					\end{eqnarray}
+				\item \underline{Caso Inductivo:} Supongamos ahora que vale H(\textit{i}), veamos que vale H(\textit{i + 1}).
+					\par Sea \textit{z} con $d_{k + 1}(z) \leq \textit{i+1}$, si $d_{k + 1}(z) \leq \textit{i}$ vale H(\textit{i}) para \textit{z}.
+					\par \begin{center} $\therefore \; d_{k}(z) \leq d_{k + 1}(z) $ \end{center}
+					\par Supongamos que \begin{tabular}{|c|} \hline $d_{k + 1}(z) = i + 1$ \\\hline \end{tabular}
+					\par Entonces existe un camino aumentante, relativo a $f_{k}$, de la forma: $s = z_{0}, \; z_{1}, \; \dotsc \; z_{i}, \; z_{i + 1} = z$.
+					\par Sea \begin{tabular}{|c|} \hline $x = z_{i}$ \\ \hline \end{tabular}
+
+					\begin{itemize}
+						\item \underline{Caso 1:} Existe algun camino aumentante, relativo a $f_{k - 1}$ de la forma $s, \; \dotsc \; x, \; z$.
+							\begin{center}
+								$\therefore \begin{tabular}{|c|} \hline $d_{k}(z) \leq d_{k}(x) + 1$ \\ \hline \end{tabular}$
+							\end{center}
+
+							\vspace{2mm}
+							\par Pues al haber un camino $\underbrace{s, \; \dotsc \; x,}_{d_{k}(x)} \; z$, llamemosle A, de longitud $d_{k}(x) + 1$ entre \textit{s} y \textit{z}, sabemos que el minimo de todos los caminos de \textit{s} a \textit{z} seran $\leq$ A.
+						\item \underline{Caso 2:} No existe un camino aumentante, relativo a $f_{k - 1}$, pero si existe un camino aumentante relativo a $f_{k}$. Por lo tanto el lado \textit{xz} no esta \textquotedblleft disponible\textquotedblright \; en el paso \textit{k}, ya que \textit{xz} está saturado, o bien \textit{zx} está vacío relativo a $f_{k - 1}$. Para construir $f_{k}$ usamos un camino de la forma $s, \; \dotsc \; z, \; x$. Es decir:
+							\begin{enumerate}[1)]
+								\item $f_{k - 1}(\overrightarrow{xz}) = C(\overrightarrow{xz})$ pero $f_{k}(\overrightarrow{xz}) < C(\overrightarrow{xz}), \; f_{k}$ devuelve flujo por $\overrightarrow{xz}$ ó
+								\item $f_{k - 1}(\overrightarrow{zx}) = 0$ pero $f_{k}(\overrightarrow{zx}) > 0, \; f_{k}$ manda flujo por $\overrightarrow{zx}$.
+							\end{enumerate}
+
+							\par Como $\langle E-K \rangle$ funciona con BFS, ese camino usado para construir $f_{k}$ debe ser de longitud mínima. Es decir:
+							\begin{eqnarray}
+								\nonumber d_{k}(x) &=& d_{k}(z) + 1 \\
+								\nonumber d_{k}(z) &=& d_{k}(x) - 1 \\
+								\nonumber &\leq & d_{k}(x) + 1
+							\end{eqnarray}
+					\end{itemize}
+
+				\underline{Conclusión:} En cualquiera de los dos casos tenemos:
+				\begin{center}
+					\begin{tabular}{|c|} \hline $d_{k}(z) \leq d_{k}(x) + 1$ \\\hline \end{tabular}
+				\end{center}
+
+				\par Ahora bien:
+				\begin{eqnarray}
+					\nonumber d_{k + 1}(x) &=& d_{k + 1}(z_{i}) \\
+					\nonumber &=& i \\
+					\nonumber &\Rightarrow & \textup{H(\textit{i}) vale para x.} \\
+					\nonumber \therefore \; d_{k}(z) & \leq & d_{k + 1}(x)
 				\end{eqnarray}
 
-			Por lo tanto:
-			\begin{eqnarray}
-					\nonumber d_{k}(z) & \leq & d_{k}(x) + 1 \\
-					\nonumber & \leq & d_{k+1}(x) + 1 \\
-					\nonumber & = & i+1 \\
-					\nonumber & = & d_{k+1}(z) \\
-					\nonumber & \Rightarrow & \textup{H(\textit{i+1}) vale.}
+				\par Por lo tanto:
+				\begin{eqnarray}
+					\nonumber d_{k}(z) &\leq & d_{k}(x) + 1 \\
+					\nonumber &\leq & d_{k + 1}(x) + 1 \\
+					\nonumber &=& i + 1 \\
+					\nonumber &=& d_{k + 1}(z) \\
+					\nonumber & \Rightarrow & \textup{H(i + 1) vale.}
 				\end{eqnarray}
-		\end{enumerate}
+			\end{enumerate}
 
 
 	\section{La complejidad de DINIC}
@@ -281,9 +268,9 @@
 
 		Por lo tanto:
 		\begin{eqnarray}
-			\nonumber Compl(\underbrace{A \; \dotsc \; A}_{j \; veces}R) & = & \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{j \; veces} + \mathcal{O}(1) \\
-			\nonumber & = & \mathcal{O}(j) + \mathcal{O}(1) \\
-			\nonumber & = & \mathcal{O}(j)
+			\nonumber Compl(\underbrace{A \; \dotsc \; A}_{j \; veces}R) &=& \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{j \; veces} + \mathcal{O}(1) \\
+			\nonumber &=& \mathcal{O}(j) + \mathcal{O}(1) \\
+			\nonumber &=& \mathcal{O}(j)
 		\end{eqnarray}
 
 		Pero como cada A hace $ i = i+1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \; \Rightarrow \; \textit{j} \leq \textit{d}.$
@@ -294,9 +281,9 @@
 
 		Similarmente:
 		\begin{eqnarray}
-			\nonumber Compl(A \; \dotsc \; AI) & = & \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{\leq \; d \; veces} + \mathcal{O}(1) \\
-			\nonumber & = & \mathcal{O}(d) + \mathcal{O}(1) \\
-			\nonumber & = & \mathcal{O}(d)
+			\nonumber Compl(A \; \dotsc \; AI) &=& \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{\leq \; d \; veces} + \mathcal{O}(1) \\
+			\nonumber &=& \mathcal{O}(d) + \mathcal{O}(1) \\
+			\nonumber &=& \mathcal{O}(d)
 		\end{eqnarray}
 
 		\textbf{Cantidad de subpalabras}
@@ -326,8 +313,8 @@
 			Por lo tanto hay $\leq m$ palabras, cada una de complejidad $\mathcal{O}(d)$.
 
 			\begin{eqnarray}
-			\nonumber \therefore \;  Compl(Paso \; Bloqueante) & = & \mathcal{O}(m) + \mathcal{O}(md) \\
-			\nonumber & = & \mathcal{O}(mn)
+			\nonumber \therefore \;  Compl(Paso \; Bloqueante) &=& \mathcal{O}(m) + \mathcal{O}(md) \\
+			\nonumber &=& \mathcal{O}(mn)
 		\end{eqnarray}
 
 		ya que $d \leq n$.
@@ -414,8 +401,8 @@
 
 			\begin{eqnarray}
 				\nonumber \therefore \; T + Q & \leq & 2 m + \mathcal{O}(n^{2}) \\
-				\nonumber & = & \mathcal{O}(m) + \mathcal{O}(n^{2}) \\
-				\nonumber & = & \mathcal{O}(n^{2})
+				\nonumber &=& \mathcal{O}(m) + \mathcal{O}(n^{2}) \\
+				\nonumber &=& \mathcal{O}(n^{2})
 			\end{eqnarray}
 
 
@@ -440,8 +427,8 @@
 			\begin{eqnarray}
 				\nonumber d(t) & \leq & d(x_{i}) \\
 				\nonumber & \leq & d^{*}(x_{i}) \\
-				\nonumber & = & i < r \\
-				\nonumber & = & d^{*}(t) \\
+				\nonumber &=& i < r \\
+				\nonumber &=& d^{*}(t) \\
 				\nonumber \begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\ \hline \end{tabular}
 			\end{eqnarray}
 
@@ -469,12 +456,12 @@
 
 				Entonces:
 				\begin{eqnarray}
-				\nonumber d(t) & = & d(x_{i+1}) + b(x_{i+1}) \qquad\;\;\;\;\;\textup{Por }\langle E-K \rangle\\
+				\nonumber d(t) &=& d(x_{i+1}) + b(x_{i+1}) \qquad\;\;\;\;\;\textup{Por }\langle E-K \rangle\\
 				\nonumber & \leq & d(x_{i+1}) + b^{*}(x_{i+1}) \qquad\;\;\;\;\textup{Por }\langle E-K \rangle\\
 				\nonumber & < & d(x_{i}) +1 + b^{*}(x_{i+1}) \qquad\;\textup{Por } \circledast \\
 				\nonumber & \leq & d^{*}(x_{i}) + 1 + b^{*}(x_{i+1}) \qquad\textup{Por }\langle E-K \rangle \\
-				\nonumber & = & d^{*}(x_{i+1}) + b^{*}(x_{i+1}) \qquad\;\;\;\textup{Por } (\dag) \\
-				\nonumber & = & d^{*}(t)
+				\nonumber &=& d^{*}(x_{i+1}) + b^{*}(x_{i+1}) \qquad\;\;\;\textup{Por } (\dag) \\
+				\nonumber &=& d^{*}(t)
 				\end{eqnarray}
 				$\qquad\qquad\qquad\;\;\;$
 				\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\ \hline \end{tabular}
