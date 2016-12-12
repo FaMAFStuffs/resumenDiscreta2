@@ -28,88 +28,75 @@
 \chapter{Parte A}
 
 	\section{La complejidad de EDMONS-KARP}
-
 		\textbf{\underline{Teorema:}} La complejidad de $\langle E-K \rangle$ con $n = \abs{V}$ y $m = \abs{E}$ es $\mathcal{O}(nm^{2})$.
 
-		\textbf{\underline{Prueba:}} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \;  la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
+		\textbf{\underline{Prueba:}} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \; la sucesión de flujos creados por $\langle E-K \rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
+			\vspace{5mm}
+			\par Para cada \textit{k} definimos funciones:
+			\begin{itemize}
+				\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright \; entre \textit{s} y x en el paso \textit{k}, en caso de existir, si no $\infty$.
+				\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright \; entre x y \textit{t} en el paso \textit{k}, en caso de existir, si no $\infty$.
+			\end{itemize}
 
-		\vspace{5mm}
-		Para cada \textit{k} definimos funciones:
+			\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
 
-		\begin{itemize}
-			\item $d_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre \textit{s} y x en el paso \textit{k}, en caso de existir, si no $\infty$.
-			\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright $\;$ entre x y \textit{t} en el paso \textit{k}, en caso de existir, si no $\infty$.
-		\end{itemize}
+			\vspace{5mm}
+			\par Observaciones:
+				\begin{enumerate}
+					\item
+						\begin{itemize}
+							\item $d_{k}(s) = 0$
+							\item $b_{k}(t) = 0$
+						\end{itemize}
+					\item Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil para esta demostración llamaremos $\circledast$ a la demostración de:
+						\[ d_{k}(x) \leq d_{k+1}(x) \]
+						\[ b_{k}(x) \leq b_{k+1}(x) \]
+				\end{enumerate}
 
-		\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
+			\par Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k + 1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura ó \textit{yx} se vacía en el paso \textit{k}.
+			\par Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsc$ x, y $\dotsc$ \textit{t} se usa para construir $f_{k}$.
+			\begin{eqnarray}
+				d_{k}(\textit{t}) & = & d_{k}(x) + b_{k}(x) \\
+				\nonumber & = & d_{k}(x) + b_{k}(y) + 1
+			\end{eqnarray}
 
-		\vspace{5mm}
-		Observaciones:
-			\begin{enumerate}
-				\item
-					\begin{itemize}
-						\item $d_{k}(s) = 0$
-						\item $b_{k}(t) = 0$
-					\end{itemize}
-				\item Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil para esta demostración llamaremos $\circledast$ a la demostración de:
-			\begin{center}
-				$d_{k}(x) \leq d_{k+1}(x)$ \\
-				$b_{k}(x) \leq b_{k+1}(x)$
-			\end{center}
-			\end{enumerate}
+			\par Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{j} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y, x $\dotsb$ \textit{t} se usa para construir $f_{j}$.
+			\begin{eqnarray}
+				d_{j}(t) & = & d_{j}(x)+ b_{j}(x) \\
+				\nonumber & = & d_{j}(y)+1+b_{j}(x)
+			\end{eqnarray}
 
-		Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k+1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura ó \textit{yx} se vacía en el paso \textit{k}.
+			\par Entonces:
+			\begin{equation*}
+				\textup{De (1) y (2)} \Rightarrow
+	  		\left \lbrace
+	  		\begin{array}{l}
+					d_{k}(y) = d_{k}(x) + 1 \; \; \star \\
+	    		d_{j}(x) = d_{j}(y) + 1 \; \; \dag
+	  		\end{array}
+	  		\right.
+			\end{equation*}
 
-		Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsc$ x,y $\dotsc$ \textit{t} se usa para construir $f_{k}$.
+			\par Luego:
+			\begin{eqnarray}
+				\nonumber d_{j}(t) & = & d_{j}(x) + b_{j}(x) \\
+				\nonumber & = & d_{j}(y) + 1 + b_{j}(x) \qquad\qquad\qquad\text{Por } \dag \\
+				\nonumber & \geq & d_{k}(y) + 1 + b_{k}(x) \qquad\qquad\qquad\text{Por} \circledast \\
+				\nonumber & = & d_{k}(x) + 1 + 1 + b_{k}(x) \;\qquad\qquad\text{Por} \star \\
+				\nonumber & = & d_{k}(\textit{t}) + 2 \\
+				\nonumber \Rightarrow d_{j}(\textit{t}) & \geq & d_{k}(\textit{t}) + 2
+			\end{eqnarray}
 
-		\begin{eqnarray}
-			 d_{k}(\textit{t}) & = & d_{k}(x)+ b_{k}(x) \\
-			\nonumber & = & d_{k}(x)+b_{k}(y)+1
-		\end{eqnarray}
+			\vspace{5mm}
+			\par Por lo tanto cuando un lado se vuelve crítico recien puede volver a saturarse cuando la distancia de \textit{s} a \textit{t} haya aumentado en por lo menos 2. Puede existir $\mathcal{O}(n/t)$ tales aumentos, es decir:
+				\[ \# \textup{ Veces que un lado puede volverse crítico } = \mathcal{O}(n). \]
 
-		 Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{j} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y,x $\dotsb$ \textit{t} se usa para construir $f_{j}$.
-
-		\begin{eqnarray}
-			d_{j}(\textit{t}) & = & d_{j}(x)+ b_{j}(x) \\
-			\nonumber & = & d_{j}(y)+1+b_{j}(x)
-		\end{eqnarray}
-
-		Entonces:
-
-		\begin{equation*}
-			\textup{De (1) y (2)} \Rightarrow
-  			\left \lbrace
-  			\begin{array}{l}
-    		 d_{j}(x) = d_{j}(y)+1 \; \; \star \\
-     		 d_{k}(y) = d_{k}(x)+1 \; \; \dag\\
-  			\end{array}
-  			\right.
-		\end{equation*}
-
-		Luego:
-
-		\begin{eqnarray}
-			\nonumber d_{j}(\textit{t}) & = & d_{j}(x)+ b_{j}(x) \\
-			\nonumber & = & d_{j}(y)+1+b_{j}(x) \qquad\qquad\qquad\text{Por } \dag\\
-			\nonumber & \geq & d_{k}(y)+1+b_{k}(x) \qquad\qquad\qquad\text{Por} \circledast \\
-			\nonumber & = & d_{k}(x)+1+1+b_{k}(x) \;\qquad\qquad\text{Por} \star \\
-			\nonumber & = & d_{k}(\textit{t})+2 \\
-			\nonumber \Rightarrow d_{j}(\textit{t}) & \geq & d_{k}(\textit{t})+2
-		\end{eqnarray}
-
-		\vspace{5mm}
-		Por lo tanto cuando un lado se vuelve crítico recien puede volver a saturarse cuando la distancia de \textit{s} a \textit{t} haya aumentado en por lo menos 2. Puede existir $\mathcal{O}(n/t)$ tales aumentos, es decir:
-
-		\begin{center}
-			\# Veces que un lado puede volverse crítico $= \mathcal{O}(n)$.
-		\end{center}
-
-		\begin{eqnarray}
-			 \nonumber \; \therefore Complejidad(\langle E-K \rangle) &=& (\# pasos) * Compl(1 \; \textit{paso}) \\
-			 \nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Compl(BFS) \\
-			\nonumber  &=& \mathcal{O}(n) * \mathcal{O}(m)* \mathcal{O}(m) \\
-			\nonumber &=& \mathcal{O}(nm^{2})
-		\end{eqnarray}
+			\begin{eqnarray}
+				\nonumber \; \therefore Complejidad(\langle E-K\rangle) &=& (\# pasos) * Compl(1 \; \textit{paso}) \\
+				\nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Compl(BFS) \\
+				\nonumber  &=& \mathcal{O}(n) * \mathcal{O}(m)* \mathcal{O}(m) \\
+				\nonumber &=& \mathcal{O}(nm^{2})
+			\end{eqnarray}
 
 
 	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
@@ -502,7 +489,7 @@
 
 	\section{2-COLOR es polinomial}
 		\underline{Teorema:} "-Color es polinomial, es decir, existe un algoritmo polinomial que lo resuelve.
-		
+
 		\underline{Prueba:}
 			\par Consideremos el siguiente algoritmo con entrada $G = (V, E)$
 
@@ -522,7 +509,7 @@
 					\begin{itemize}
 						\item (1) es $\mathcal{O}(1)$.
 						\item (2) es $\mathcal{O}(m + c)$ (recorrer todos los vértices). Donde \textit{c} es una costante que significa \# vértices aislados.
-						\item (3) es $\mathcal{O}(m)$ (recorrer todos los vértices).	
+						\item (3) es $\mathcal{O}(m)$ (recorrer todos los vértices).
 						\item (4) es $\mathcal{O}(m)$ ya que chequear que un coloreo es propio, es recorrer todos los lados comprobando que los vértices tengan distintos colores.
 					\end{itemize}
 				\item Correctitud:
@@ -629,7 +616,7 @@
 				Analicemos (1) y (2)
 			\begin{enumerate}[(1)]
 				\item $f(S, \overline{S}) = \sum_{\begin{subarray}{l} \; x \in S\\
-\; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
+				\; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
 
 				$x \in S \Rightarrow \exists$ camino aumentante $ s, \dotsc x$.
 
@@ -642,7 +629,7 @@
 				$\Rightarrow$ \begin{tabular}{|c|} \hline $f(S, \overline{S})$ \\ \hline \end{tabular} $= \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) = \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} Cap(\overrightarrow{xy}) = Cap(S, \overline{S}) =$ \begin{tabular}{|c|} \hline $ Cap(S) $ \\ \hline \end{tabular}
 
 				\item $f(\overline{S}, S) = \sum_{\begin{subarray}{l} \; x \in \overline{S}\\
-\; y \in S \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
+				\; y \in S \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
 
 				$x \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{x}.
 
@@ -1158,6 +1145,8 @@
 			\nonumber & \therefore & g | 1 + x^{n}
 		\end{eqnarray}
 
+
+
 \chapter{Parte C}
 
 	\section{4-COLOR $\leq_{\textit{p}}$ SAT}
@@ -1167,18 +1156,18 @@
 		Sea G un grafo con vértices $v_{1}, v_{2}, \dotsc v_{n}$, queremos construir (en tiempo polinomial) una expresión booleana B en CNF (\textit{forma conjuntiva normal}), tal que:
 
 		\[ \chi(G) \leq 4 \Leftrightarrow B \; es \; satisfacible \]
-		
+
 		Sea n $=$ \#vértices de G, y sean las variables $x_{i, j} \textup{ con } i = 1, 2, \dotsc n$ y $j = 1, 2, 3, 4$
-		
+
 		Sean
 		\begin{eqnarray}
 			\nonumber A_{i} &=& x_{i, 1} \vee x_{i, 2} \vee x_{i, 3} \vee x_{i, 4}  \\
 			\nonumber A &=& A_{1} \wedge A_{2} \wedge \dotsc A_{n}
 		\end{eqnarray}
-		
+
 		Defino
 		\begin{eqnarray}
-			Q_{i, j, k, l} &=& \overline{x_{i, j}} \vee \overline{x_{k, l}}  \qquad i, k = 1 \dotsc n \qquad j, l = 1, 2, 3, 4 \\ 
+			Q_{i, j, k, l} &=& \overline{x_{i, j}} \vee \overline{x_{k, l}}  \qquad i, k = 1 \dotsc n \qquad j, l = 1, 2, 3, 4 \\
 			\nonumber \\
 			D_{i} &=& Q_{i, i, 1, 2} \wedge Q_{i, i, 1, 3} \wedge Q_{i, i, 1, 4} \wedge Q_{i, i, 2, 3} \wedge Q_{i, i, 2, 4} \wedge Q_{i, i, 3, 4} \\
 			\nonumber \\
@@ -1188,12 +1177,12 @@
 			\nonumber \\
 			F &=& \wedge_{\begin{subarray}{l} \; i, k \\ \; v_{i} v_{k} \in E(G) \end{subarray}} F_{i, k}
 		\end{eqnarray}
-		
+
 		\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
 		\vspace{3mm}
-		
+
 		Sea C un coloreo propio de G, con a lo sumo 4 colores. Debemos dar un asignamiento de valores a las variables $x_{i, j}$ que satisfagan B, es decir, un elemento $\overrightarrow{b} \in \mathbb{Z}^{4n}_{2}$ tal que $B(\overrightarrow{b}) = 1$.
-		
+
 		\vspace{5mm}
 		Definimos
 		\begin{equation*}
@@ -1205,23 +1194,23 @@
   			\end{array}
   			\right.
 		\end{equation*}
-		
+
 		Debemos probar $B(\overrightarrow{b}) = 1$, es decir, (1) $A(\overrightarrow{b}) = 1$, (2) $D(\overrightarrow{b}) = 1$ y (3) $F(\overrightarrow{b}) = 1$.
-		
+
 		\vspace{3mm}
 		(1) \begin{tabular}{|c|} \hline $A(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
-		
+
 		Debemos ver que $A_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir, hay que probar:
 		\[ b_{i, 1} \vee b_{i, 2} \vee b_{i, 3} \vee b_{i, 4} = 1 \]
 		pero
 		\[ C(v_{i}) \in \lbrace 1, 2, 3, 4 \rbrace \Rightarrow \exists j \in \lbrace 1, 2, 3, 4 \rbrace \textup{ tal que } C(v_{i}) = j \Rightarrow b_{i, j} = 1\]
-		
+
 		\vspace{3mm}
 		(2) \begin{tabular}{|c|} \hline $D(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
-		
-		Debemos ver que $D_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir, 
+
+		Debemos ver que $D_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir,
 		\[ Q_{i, j, j, l}(\overrightarrow{b}) = 1 \; \forall i, j, l,  j < l \] es decir:
-		
+
 		\[ \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1 \; \forall i, j, l, j <  l\]
 		por el absurdo, supongamos que no:
 		\begin{eqnarray}
@@ -1230,16 +1219,16 @@
 			\nonumber &\Rightarrow & b_{i, j} = b_{i, l} = 1 \\
 			\nonumber &\Rightarrow & C(v_{i}) = j, \; C(v_{i}) = l, \; pero \; j \neq l \; \textup{Absurdo!}
 		\end{eqnarray}
-		
+
 		Luego, el absurdo vino de suponer que $\overline{b_{i, j}} \vee \overline{b_{i, l}} = 0$
-		
+
 		\vspace{3mm}
 		$\therefore \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1$
-		
+
 		\vspace{3mm}
 		(3) \begin{tabular}{|c|} \hline $F(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
 		\vspace{3mm}
-		
+
 		Por el absurdo, supongamos que no:
 		\begin{eqnarray}
 			\nonumber &\Rightarrow & \exists i, k \; : \; v_{i} v_{k} \in E(G) \textup{ tal que } F_{i, k}(\overrightarrow{b}) = 0 \\
@@ -1250,17 +1239,17 @@
 			\nonumber &\Rightarrow & C(v_{i}) = 1\; y \; C(v_{k}) = 1\\
 			\nonumber &\Rightarrow & C(v_{i}) = C(v_{k}) \; (= j) \; \textup{Absurdo!}
 		\end{eqnarray}
-		
+
 		Pues, el coloreo C es propio y $v_{i} v_{k} \in E(G)$. El absurdo vino de suponer que $F(\overrightarrow{b}) = 0$
-		
+
 		\vspace{3mm}
 		$\therefore F(\overrightarrow{b}) = 1$
-		
+
 		\vspace{5mm}
 		\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
-		
+
 		Ahora sabemos que existe un $\overrightarrow{b}$ con $B(\overrightarrow{b}) = 1$ y debemos construir un coloreo propio, con al menos 4 colores.
-		
+
 		\begin{equation*}
 			B(\overrightarrow{b}) = 1\Rightarrow
   			\left \lbrace
@@ -1271,12 +1260,12 @@
   			\end{array}
   			\right.
 		\end{equation*}
-		
+
 		De (1) y (2) $\Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \; \exists ! j : b_{i, j} = 1$ \\ \hline \end{tabular}
-		
+
 		\vspace{3mm}
 		Luego, definimos:
-		\[ C(v_{i}) = \textup{unico j con } b_{i, j} = 1\] 
+		\[ C(v_{i}) = \textup{unico j con } b_{i, j} = 1\]
 
 
 	\section{3-SAT es NP-Completo}
@@ -1284,7 +1273,7 @@
 
 		\vspace{3mm}
 		\underline{Prueba:} Probaremos que SAT $\leq_{p}$ 3-SAT, pues 3-SAT es NP Completo.
-		
+
 		\vspace{3mm}
 		Sea
 		\begin{eqnarray}
@@ -1294,26 +1283,26 @@
 			\nonumber \\
 			l_{i, j} &=& \textup{literales}
 		\end{eqnarray}
-		
+
 		Para cada$D_{i}$ construiremos $E_{i}$, que serán conjunciones de disyunciones de 3 literales, con variables extras, y luego tomaremos:
-		
+
 		\[ B' = E_{1} \wedge E_{2} \dotsc \wedge E_{n} \]
-		
+
 		\underline{Construcción:}
 		\begin{itemize}
 			\item Si D tiene 3 literales, es decir, $K_{i} = 3 \Rightarrow E_{i} = D_{i}$
 			\item Si D tiene 2 literales, es decir, $K_{i} = 2 \Rightarrow$ tomo una variable extra $y_{i, 1}$ y defino:
-				\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \wedge (l_{i, 1} \vee l_{i, 2} \vee \overline{y_{i, 1}}) \]			
+				\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \wedge (l_{i, 1} \vee l_{i, 2} \vee \overline{y_{i, 1}}) \]
 			\item Si D tiene 1 literales, es decir, $K_{i} = 1 \Rightarrow$ tomo dos variables extras $y_{i, 1}$ y $y_{i, 2}$ y defino:
-				\[ E_{i} = (l_{i, 1} \vee y_{i, 1} \vee y_{i, 2}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \wedge (l_{i, 1} \vee y_{i, 1} \vee \overline{y_{i, 2}}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee \overline{y_{i, 2}}) \]		
+				\[ E_{i} = (l_{i, 1} \vee y_{i, 1} \vee y_{i, 2}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \wedge (l_{i, 1} \vee y_{i, 1} \vee \overline{y_{i, 2}}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee \overline{y_{i, 2}}) \]
 			\item Si D tiene más de 3 literales, es decir, $K_{i} > 4 \Rightarrow$ agrego $k_{i-3}$ variables extras y defino:
 				\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \; \wedge \; (l_{i, 3} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \; \wedge \; (l_{i, 4} \vee \overline{y_{i, 2}} \vee y_{i, 3}) \; \wedge \]
 				\[ \dotsc (l_{i, k_{i-2}} \vee \overline{y_{i, k_{i-4}}} \vee y_{i, k_{i-3}}) \wedge (l_{i, k_{i-1}} \vee l_{i, k_{i}} \vee \overline{i, k_{i-3}}) \]
 		\end{itemize}
-		
+
 		Queremos ver:
 		\[ B(\overrightarrow{b}) = 1 \Leftrightarrow \exists \overrightarrow{a} : B'(\overrightarrow{b}, \overrightarrow{a}) = 1 \]
-		
+
 		\vspace{5mm}
 		\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
 
@@ -1334,31 +1323,31 @@
 						\nonumber &=& 0 \textup{ Absurdo! }
 					\end{eqnarray}
 				\item si $k_{i} > 4$
-					
+
 					$D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, j}(\overline{b}) = 0 \; \forall j$.
-					
+
 					\begin{eqnarray}
 						\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
 						\nonumber &=& a_{i, j} \wedge (\overline{a_{i, 1}} \vee a_{i, 2}) \wedge (\overline{a_{i, 2}} \vee a_{i, 3}) \wedge \dotsc  	(\overline{a_{i, k_{i-4}}} \vee a_{i, k_{i-3}}) \wedge \overline{a_{i, k_{i-3}}} \\
-						\nonumber &=& a_{i, 1} \wedge (a_{i, 1} \Rightarrow a_{i, 2}) \wedge (a_{i, 2}\Rightarrow a_{i, 3}) \wedge 	\dotsc (a_{i, k_{i-4}} \Rightarrow a_{i, k_{i-3}}) \wedge \overline{a_{i, k_{i-3}}} \textup{ Absurdo! } 
+						\nonumber &=& a_{i, 1} \wedge (a_{i, 1} \Rightarrow a_{i, 2}) \wedge (a_{i, 2}\Rightarrow a_{i, 3}) \wedge 	\dotsc (a_{i, k_{i-4}} \Rightarrow a_{i, k_{i-3}}) \wedge \overline{a_{i, k_{i-3}}} \textup{ Absurdo! }
 					\end{eqnarray}
-					
-					Pues tendría $a_{i, 1} = a_{i, 2} = \dotsc a_{i, k_{i-3}} = 1$ pero $\overline{a_{i, k_{i-3}}} = 1$. 
+
+					Pues tendría $a_{i, 1} = a_{i, 2} = \dotsc a_{i, k_{i-3}} = 1$ pero $\overline{a_{i, k_{i-3}}} = 1$.
 			\end{itemize}
 
 		\vspace{5mm}
 		\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
-		
+
 			\underline{Casos:}
 			\begin{itemize}
 				\item Si $k_{i} = 3 \Rightarrow E_{i}(\overrightarrow{b}, \overrightarrow{a}) = D_{i}(\overrightarrow{b}) = 1$
 				\item Si $k_{i} = 1 \textup{ ó } k_{i} = 2 \textup{ defino } a_{i, j} = 0, \textup{ luego } E_{i}(\overrightarrow{b}, 0) = 1$
 				\item Si $k_{i} > 4 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \Rightarrow \exists j : l_{i, j}(\overrightarrow{b}) = 1$
-				
+
 					Definimos
 						\[ a_{i, 1} = a_{i, 2} = \dotsc a_{i, j-2} = 1 \]
 						\[ a_{i, j-1} = a_{i, j} = \dotsc a_{i, k-3} = 0 \]
-					
+
 					Luego
 					\begin{eqnarray}
 						\nonumber E_{i}(\overrightarrow{b}, \overrightarrow{a}) &=& (l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b}) \vee a_{i, 1}) \\
@@ -1366,35 +1355,35 @@
 						\nonumber &\vdotswithin{\ldots}& \\
 						\nonumber &\wedge & (l_{i, j-1}(\overrightarrow{b}) \vee \overline{a_{i, j-3}} \vee a_{i, j-2}) \\
 						\nonumber &\wedge & (l_{i, j}(\overrightarrow{b}) \vee \overline{a_{i, j-2}} \vee a_{i, j-1}) \\
-						\nonumber &\wedge & (l_{i, j+1}(\overrightarrow{b}) \vee \overline{a_{i, j-1}} \vee a_{i, j}) \\ 
+						\nonumber &\wedge & (l_{i, j+1}(\overrightarrow{b}) \vee \overline{a_{i, j-1}} \vee a_{i, j}) \\
 						\nonumber &\vdotswithin{\ldots}& \\
 						\nonumber &\wedge & (l_{i, k_{i-1}}(\overrightarrow{b}) \vee l_{i, k_{i}}(\overrightarrow{b}) \vee \overline{a_{i, k_{i-3}}}) \\
 						\nonumber &\therefore & E_{i} = 1
 					\end{eqnarray}
 			\end{itemize}
-		
+
 	\section{3-COLOR es NP-Completo}
 		\underline{Teorema:} 3-COLOR es NP-Completo
-		
+
 		\underline{Prueba:} Veremos que $3-SAT \leq_{p} 3-Color$, es decir, dado B en CNF con 3 literales por disjunción, debemos crear un grafo G, tal que:
-		
+
 			\[ \textup{B es satisfacible } \Leftrightarrow \chi(G) \leq 3 \]
-		
+
 		\par Sea:
 			\begin{eqnarray}
 				\nonumber B &=& D_{1}, D_{2} \dotsc D_{m} \textup{ con variables } \lbrace x_{1} \dotsc x_{m} \rbrace \\
 				\nonumber D_{i} &=& l_{i, 1} \vee l_{i, 2} \vee l_{i, 3}
 			\end{eqnarray}
-		
+
 		\vspace{3mm}
 		\underline{Construcción del grafo:}
 			\begin{itemize}
 				\item Dado un literal \textit{l}, definimos:
 					\begin{equation*}
-						\psi(l) = 
+						\psi(l) =
   						\left \lbrace
 		  				\begin{array}{l}
-    				 	v_{k} \; \textup{ si } l = x_{k} \\ 
+    				 	v_{k} \; \textup{ si } l = x_{k} \\
     		 			w_{k} \textup{ si } l = \overline{x_{k}}
 		  				\end{array}
   						\right.
@@ -1408,41 +1397,41 @@
 						\par Donde:
 							\[ F = \lbrace \mu_{i, j} \psi(l_{i, j}) \rbrace_{i = 1, \; \; j = 1, 2, 3}^{m}\]
 			\end{itemize}
-		
+
 			\begin{equation*}
 						\textup{ G tiene: }
   						\left \lbrace
 		  				\begin{array}{l}
     				 		2 + 2n + 6m \textup{ vertices} \\
-    				 		1 + 3n + 6m+ 3m + 3m \textup{ aristas}    				 		
+    				 		1 + 3n + 6m+ 3m + 3m \textup{ aristas}
 		  				\end{array}
   						\right\rbrace
   						\Rightarrow \textup{ G es polinomial}
 					\end{equation*}
-		
-		
-		
+
+
+
 		\vspace{5mm}
 		\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
-		
+
 			Como G tiene triángulos, si $\chi (G) \leq 3$, entonces debe ser $\chi (G) = 3$. Por lo tanto, existe un coloreo C de G con 3 colores.
-			
+
 			Definición:
 			\begin{equation*}
-				b_{k} = 
+				b_{k} =
   				\left \lbrace
   				\begin{array}{l}
-    		 	1 \textup{ si } C(v_{k}) = C(s) \\ 
+    		 	1 \textup{ si } C(v_{k}) = C(s) \\
     		 	0 \textup{ c.c}
   				\end{array}
   				\right.
 			\end{equation*}
-		
+
 		Para probar $B(\overrightarrow{b}) = 1$ debemos probar que $D_{i}(\overrightarrow{b}) = \forall i$.
-		
+
 		Sea $i \in \lbrace	1, 2, \dotsc m \rbrace$, como $ \lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace$ es un triángulo, entonces deben aparecer los 3 colores.
 		\par 	Por lo tanto: $\exists j : C(b_{i, j}) = C(s)$
-		\par Luego:			
+		\par Luego:
 			\begin{equation*}
   			\left.
   			\begin{array}{l}
@@ -1453,7 +1442,7 @@
  			 \right\rbrace
  			 \Rightarrow C(\mu_{i, j}) = \textup{ TERCER COLOR}
 			\end{equation*}
-			
+
 		\par Por otro lado:
 			\begin{equation*}
   			\left.
@@ -1464,36 +1453,36 @@
  			 \right\rbrace
  			 \Rightarrow C(\psi(l_{i, j}) = C(s)
 			\end{equation*}
-			
+
 		\begin{itemize}
 			\item Caso (1):
 				\begin{eqnarray}
 						\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} \\
-						\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}	
+						\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}
 				\end{eqnarray}
 				\par Entonces:
 				\begin{eqnarray}
 						\nonumber C(v_{k}) &=& C(s) \Rightarrow b_{k} = 1 \\
-						\nonumber \therefore l_{i, j}(\overrightarrow{b}) &=& 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1						
+						\nonumber \therefore l_{i, j}(\overrightarrow{b}) &=& 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1
 				\end{eqnarray}
 			\item Caso (2):
 				\begin{eqnarray}
 						\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = 	\overline{b_{k}} \\
-						\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}	
+						\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}
 				\end{eqnarray}
 				\par Entonces:
 				\begin{equation*}
   					\left.
   					\begin{array}{l}
     		 			C(w_{k}) = C(s) \\
-    		 			v_{k} w_{k} \in E(G) 
+    		 			v_{k} w_{k} \in E(G)
   					\end{array}
  			 		\right\rbrace
  			 		\Rightarrow C(v_{k}) \neq C(s) \therefore b_{k} = 0
 				\end{equation*}
 				\[ \therefore b_{k} = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \]
 		\end{itemize}
-		
+
 		\vspace{5mm}
 		\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
 			\par Acá asumimos que $\exists \overrightarrow{b} : B(\overrightarrow{b}) = 1 \Rightarrow \forall i, \; D(\overrightarrow{b}) = 1 \Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \exists j : l_{i, j}(\overrightarrow{b}) = 1$ \\ \hline \end{tabular} $(\star)$. Debemos construir un coloreo propio con 3 colores.
@@ -1502,7 +1491,7 @@
   					\left.
   					\begin{array}{l}
     		 			C(s) = \textup{ BLANCO} \\
-    		 			C(t) = \textup{ AZUL} 
+    		 			C(t) = \textup{ AZUL}
   					\end{array}
  			 		\right\rbrace
  			 		\Rightarrow s t \textup{ No Crea Problemas (NCP)}
@@ -1525,7 +1514,7 @@
     		 			\textup{BLANCO \; si } b_{k} = 0
   					\end{array}
  			 		\right\rbrace
- 			 		\Rightarrow v_{k} t  \textup { y } w_{k} t \textup{ NCP} 
+ 			 		\Rightarrow v_{k} t  \textup { y } w_{k} t \textup{ NCP}
 				\end{equation*}
 
 		\par Falta colorear las garras. Dado \textit{i}, tomemos el \textit{j} de $(\star )$ y definimos:
@@ -1539,7 +1528,7 @@
  			 		\right\rbrace
  			 		\Rightarrow \underbrace{\mu_{i, r}}_{N \; o \; A} \underbrace{s}_{B} \textup{ NCP } \forall r
 				\end{equation*}
-				
+
 		\begin{itemize}
 			\item Caso $r \neq j : \qquad \underbrace{\mu_{i, r}}_{A} \underbrace{\psi(l_{i, r})}_{B \; o \, N} \Rightarrow$ NCP
 			\item Caso $r = j$:
@@ -1557,7 +1546,7 @@
 				\end{eqnarray}
 			\end{itemize}
 		\end{itemize}
-		
+
 	\par Quedan las bases:
 		\begin{equation*}
 			C(b_{i, r}) =
@@ -1569,15 +1558,16 @@
   			\end{array}
  			\right.
 		\end{equation*}
-				
+
 	Entonces:
 	\begin{itemize}
 		\item $\lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace \textup{ NCP}$
  		\item $\underbrace{b_{i, j}}_{A} \underbrace{\mu_{i, j}}_{N} \textup{ NCP}$
  		\item $\therefore \underbrace{b_{i, r}}_{B \; o \; N} \underbrace{\mu_{i, r}}_{A} \textup{ NCP}$
-	\end{itemize}		
-				
-				
+	\end{itemize}
+
+
+
 \begin{thebibliography}{X}
 \bibitem{Baz} \textsc{Maximiliano Illbele},
 <<Resumen de Discreta II, 16 de agosto de 2012>>,
