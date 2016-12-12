@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  11 DEC 2016 20:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  12 DEC 2016 00:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -754,48 +754,48 @@ m/n/12 = \OML/lmm/m/it/12 z[];  z[];  []  z[];  z[] \OT1/lmr/m/n/12 =
 
 [4] [5] [6] [7] [8] [9]
 Cap\'{\i }tulo 2.
-[10
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 523.
 
-]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 598.
- [11] [12]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 706.
-
- (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/omslmr.fd
+(/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 706.
-[13] [14]
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 523.
+ [10
 
-LaTeX Font Warning: Command \huge invalid in math mode on input line 814.
+] [11]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <17.28> on input line 665.
 
-[15]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 888
+[12] [13] [14] [15]
+
+LaTeX Font Warning: Command \huge invalid in math mode on input line 881.
+
+[16]
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 955
 .
  (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 888.
-
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 955.
+ [17]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 907.
+(amsmath)                 on input line 974.
 
-[16] [17] [18] [19] [20]
+[18] [19] [20] [21]
 Cap\'{\i }tulo 3.
-[21
+[22
 
-] [22] [23] [24] [25] [26] [27]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 1516.
+] [23] [24] [25] [26] [27] [28]
+LaTeX Font Info:    Try loading font information for U+lasy on input line 1583.
 
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [28
+) [29
 
 ]
 (./discreta.aux
@@ -807,10 +807,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4756 strings out of 494447
- 66184 string characters out of 6166766
+ 4760 strings out of 494447
+ 66244 string characters out of 6166766
  146230 words of memory out of 5000000
- 7972 multiletter control sequences out of 15000+600000
+ 7976 multiletter control sequences out of 15000+600000
  78491 words of font info for 66 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  33i,25n,30p,774b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -839,10 +839,10 @@ texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2016basic/texmf-
 dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2016basic/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016basic/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on discreta.pdf (29 pages, 357471 bytes).
+Output written on discreta.pdf (30 pages, 363143 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
+ 187 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
