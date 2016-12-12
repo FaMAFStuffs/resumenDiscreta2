@@ -565,81 +565,72 @@
 		\textbf{\underline{Teorema:}} La complejidad del algoritmo Húngaro es $\mathcal{O}(n^{4})$.
 
 		\textbf{\underline{Prueba:}}
-
 			\begin{enumerate}
 				\item La complejidad del matching inicial es $\mathcal{O}(n^{2})$, ya que:
-
-					Restar mínimo de cada fila:
+					\par Restar mínimo de cada fila:
 					\begin{center}
 						$(\underbrace{\mathcal{O}(n)}_{calcular \; min} + \underbrace{\mathcal{O}(n)}_{restar \; min}) * \underbrace{n}_{\# filas} = \mathcal{O}(n^{2})$
 					\end{center}
-
-				Idem para las columnas.
-
+					\par Idem para las columnas.
 				\item Llamemos \textbf{extender} el matching, a incrementar su número de filas en 1, es decir, agregar una fila más al matching.
-				\begin{center}
-					$\#$ extensiones de matching $= \mathcal{O}(n)$
-				\end{center}
+					\begin{center}
+						$\#$ extensiones de matching $= \mathcal{O}(n)$
+					\end{center}
 
-				Resta ver la complejidad de cada \textbf{extender}.
-
+					\par Resta ver la complejidad de cada \textbf{extender}.
 				\item En cada extensión vamos a ir revisando filas y columnas, donde escanear una fila es $\mathcal{O}(n)$ y se realizan \textit{n} escaneos, por lo que sería $\mathcal{O}(n^{2})$ sin considerar que se debe realizar un cambio de matriz.
+					\par Hacer un \textbf{cambio de matriz} es $\mathcal{O}(n^{2})$, ya que:
+					\begin{itemize}
+						\item Buscar $\textit{m} = \min S$ x $\overline{\Gamma(S)} \rightarrow \mathcal{O}(n^{2})$
+						\item Restar \textit{m} de $S \rightarrow \mathcal{O}(n^{2})$
+						\item Sumar \textit{m} a $\Gamma(S) \rightarrow \mathcal{O}(n^{2})$
+					\end{itemize}
 
-				Hacer un \textbf{cambio de matriz} es $\mathcal{O}(n^{2})$, ya que:
-				\begin{itemize}
-					\item Buscar $\textit{m} = \min S$ x $\overline{\Gamma(S)} \rightarrow \mathcal{O}(n^{2})$
-					\item Restar \textit{m} de $S \rightarrow \mathcal{O}(n^{2})$
-					\item Sumar \textit{m} a $\Gamma(S) \rightarrow \mathcal{O}(n^{2})$
-				\end{itemize}
+					\par Luego la implementación NAIVE lanzaría nuevamente el algoritmo desde cero. La forma correcta es continuar con el matching que teniamos, ya que el mismo no se pierde.
+					\par Si lo hacems así, ¿Cuántos \textbf{cambios de matriz} habrá antes de extender un matching nuevamente?
 
-				Luego la implementación NAIVE lanzaría nuevamente el algoritmo desde cero. La forma correcta es continuar con el matching que teniamos, ya que el mismo no se pierde.
+					\underline{\textbf{Lema Interno:}} Luego de un \textbf{cambio de matriz}, se extiende el matching o bien se aumenta S.
+						\par \underline{\textbf{Prueba:}}
+						\begin{center}$
+							\; \; \left(
+							\begin{array}{r | r}
+								\text{{\huge A}} & \text{{\huge A}} \\
+								\hline
+								\text{{\huge B}} & \text{{\huge C}}
+							\end{array}
+							\right)
+							{\begin{subarray}{l} \; \overline{\text{{\large S}}} \\ \\ \; {\text{{\large S}}} \end{subarray}} \linebreak
+							\Gamma(S) \; \overline{\Gamma(S)}
+							$
+						\end{center}
 
-				Si lo hacems así, ¿Cuántos \textbf{cambios de matriz} habrá antes de extender un matching nuevamente?
+						\underline{Referencias:}
+						\begin{itemize}
+							\item A: puede haber ceros.
+							\item B: ceros del matching.
+							\item C: no hay ceros, no hay matching.
+						\end{itemize}
 
-				\underline{\textbf{Lema Interno:}} Luego de un \textbf{cambio de matriz}, se extiende el matching o bien se aumenta S.
+						\par Al restar $\textit{m} = \min S$ x $\overline{\Gamma(S)}$ de las filas de S, habrá un nuevo cero en alguna fila \textit{i} ($\in S$) y columna \textit{j} ($\in \overline{\Gamma(S)}$) entonces la columna se etiquetará con \textit{i} y se revisará.
+						Tenemos dos resultados posible:
+						\begin{enumerate}
+							\item \textit{j} está libre (i.e no forma parte del matching) $\Rightarrow$ extendemos el matching.
+							\item \textit{j} forma parte de matching $\Rightarrow \exists$ fila \textit{k} matcheada con \textit{j}. En este caso, la fila \textit{k} se etiquetará con \textit{j}, por lo que el "nuevo" $\; S \geq S \cup \{\textit{k}\}$.
 
-				\underline{\textbf{Prueba:}}
+							\vspace{5mm}
+							\par Entonces se termina con una extensión o se produce un nuevo S de cardinalidad, al menos $\lvert S \rvert + 1$.
+						\end{enumerate}
+					\textbf{Fin Lema Interno}
 
-				\begin{center}$
-				\; \; \left(
-				\begin{array}{r | r}
-					\text{{\huge A}} & \text{{\huge A}} \\
-					\hline
-					\text{{\huge B}} & \text{{\huge C}}
-				\end{array}
-				\right)
-				{\begin{subarray}{l} \; \overline{\text{{\large S}}} \\ \\ \; {\text{{\large S}}} \end{subarray}} \linebreak
-				\Gamma(S) \; \overline{\Gamma(S)}
-				$
-				\end{center}
+					\par Luego como $\lvert S \rvert$ solo puede crecer $\mathcal{O}(n)$ veces, tenemos que hay a lo sumo \textit{n} \textbf{cambios de matriz} antes de extender el matching. Entonces:
+						\begin{center}
+							\par Complejidad(1 Extensión) $= \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Compl(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas }$ \\
 
-				\underline{Referencias:}
-				\begin{itemize}
-					\item A: puede haber ceros.
-					\item B: ceros del matching.
-					\item C: no hay ceros, no hay matching.
-				\end{itemize}
-
-				Al restar $\textit{m} = \min S$ x $\overline{\Gamma(S)}$ de las filas de S, habrá un nuevo cero en alguna fila \textit{i} ($\in S$) y columna \textit{j} ($\in \overline{\Gamma(S)}$) entonces la columna se etiquetará con \textit{i} y se revisará.
-				Tenemos dos resultados posible:
-				\begin{enumerate}
-					\item \textit{j} está libre (i.e no forma parte del matching) $\Rightarrow$ extendemos el matching.
-					\item \textit{j} forma parte de matching $\Rightarrow \exists$ fila \textit{k} matcheada con \textit{j}. En este caso, la fila \textit{k} se etiquetará con \textit{j}, por lo que el "nuevo" $\; S \geq S \cup \{\textit{k}\}$.
-
-					\vspace{5mm}
-					Entonces se termina con una extensión o se produce un nuevo S de cardinalidad, al menos $\lvert S \rvert + 1$.
-				\end{enumerate}
-
-				\textbf{Fin Lema Interno}
-
-				Luego como $\lvert S \rvert$ solo puede crecer $\mathcal{O}(n)$ veces, tenemos que hay a lo sumo \textit{n} \textbf{cambios de matriz} antes de extender el matching. Entonces:
-
-							\begin{center}
-								Complejidad(1 Extensión) $= \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Compl(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas }$ \\
-								\vspace{5mm}
-								$\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching \; inicial} + \; (\underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Compl(extension)}) = \; \mathcal{O}(n^{4})$
-							\end{center}
+							\vspace{5mm}
+							\par $\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching \; inicial} + \; (\underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Compl(extension)}) = \; \mathcal{O}(n^{4})$
+						\end{center}
 			\end{enumerate}
+
 
 	\section{Teorema de Hall}
 
@@ -731,6 +722,7 @@
 						\nonumber & \text{Absurdo!} &
 					\end{eqnarray}
 
+
 	\section{Teorema del matrimonio}
 
 		\textbf{\underline{Teorema:}} Todo grafo regular bipartito tiene un matching perfecto.
@@ -775,7 +767,7 @@
 		\begin{equation*}
 			\text{Sea}
 			\underbrace{xy}_{\begin{subarray}{l} \; x \in X \\
-	\; y \in Y \end{subarray}} \in E_{s} \Rightarrow
+			\; y \in Y \end{subarray}} \in E_{s} \Rightarrow
 			{\Huge \exists}
   			\left\lbrace
   			\begin{array}{l}
@@ -795,6 +787,7 @@
 			\nonumber \Delta \; \lvert S \rvert & \leq & \Delta \; \lvert \Gamma(S) \rvert \\
 			\nonumber \lvert S \rvert & \leq & \Gamma(S)
 		\end{eqnarray}
+
 
 	\section{Todo grafo bipartito es $\Delta$ coloreable}
 

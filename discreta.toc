@@ -8,7 +8,7 @@
 \contentsline {chapter}{\numberline {2}Parte B}{10}
 \contentsline {section}{\numberline {2.1}2-COLOR es polinomial}{10}
 \contentsline {section}{\numberline {2.2}Teorema Max-Flow Min-Cut}{11}
-\contentsline {section}{\numberline {2.3}Complejidad del Hungaro es $\mathcal {O}(n^{4})$}{12}
+\contentsline {section}{\numberline {2.3}Complejidad del Hungaro es $\mathcal {O}(n^{4})$}{13}
 \contentsline {section}{\numberline {2.4}Teorema de Hall}{14}
 \contentsline {section}{\numberline {2.5}Teorema del matrimonio}{15}
 \contentsline {section}{\numberline {2.6}Todo grafo bipartito es $\Delta $ coloreable}{16}
