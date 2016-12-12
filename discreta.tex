@@ -477,98 +477,91 @@
 
 	\section{Teorema Max-Flow Min-Cut}
 		\textbf{\underline{Teorema:}}
-		\begin{enumerate}[a)]
-			\item Si \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).
-			\item Si V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.
-			\item Si \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).
-		\end{enumerate}
-
-		\textbf{\underline{Prueba:}} Denotemos \begin{tabular}{|c|} \hline $V(\textit{f}) = f(S, \overline{S}) - f(\overline{S},S)$ \\ \hline \end{tabular} $(\star)$
-
-		\vspace{5mm}
-		\textbf{a) \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).}
-
-			\begin{center}
-				$V(f) \stackbin{Por \; (\star)}{=} f(S, \overline{S})\underbrace{-\underbrace{f(\overline{S}, S)}_{\geq 0}}_{\leq 0}$ \\
-
-				\vspace{5mm}
-				$\Rightarrow V(f ) \leq f(S, \overline{S}) \leq Cap(S, \overline{S}) =$ Cap(S)
-			\end{center}
-
-		\textbf{b) V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.}
-
-			\vspace{2mm}
-			Supongamos que V(\textit{f}) $=$ Cap(S). Sea \textit{g} un flujo cualquiera y T un corte cualquiera.
-			\begin{itemize}
-				\item $V(g) \stackbin{Por \; a)}{\leq} Cap(S) = V(f) \Rightarrow$ f es maximal.
-				\item $Cap(T) \stackbin{Por \; a)}{\geq} V(f) = Cap(S) \Rightarrow$ S es minimal.
-			\end{itemize}
-
-		\vspace{5mm}
-		\textbf{c) \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).}
-
-			\vspace{2mm}
-			Sea $S = \{s\} \cup \{x \; : \; \exists \;$ camino aumentante realtivo a \textit{f} entre \textit{s} y \textit{t}$\}$
-
-			\vspace{5mm}
-			¿$t \in S$?
-
-			\underline{Si \textit{t} estuviera en S:} existiría un camino aumentante entre \textit{s} y \textit{t}.
-
-				Por el teorema del camino aumentante podemos construir un  flujo \textit{g} tal que:
-				\begin{center}
-					$V(g) = V(f) + \epsilon \textup{ para algun } \epsilon > 0$
-
-					$\therefore V(g) > V(f)$ \textbf{Absurdo} pues \textit{f} es maximal.
-				\end{center}
-
-				$\therefore t \notin S \Rightarrow S$ es corte.
-
-				\begin{center}
-					Solo resta ver que: $V(f) = Cap(S)$
-				\end{center}
-
-				Por $(\star): \; V(f) =  \underbrace{f(S, \overline{S})}_{(1)} - \underbrace{f(\overline{S}, S)}_{(2)}$
-
-				\vspace{2mm}
-				Analicemos (1) y (2)
-			\begin{enumerate}[(1)]
-				\item $f(S, \overline{S}) = \sum_{\begin{subarray}{l} \; x \in S\\
-				\; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
-
-				$x \in S \Rightarrow \exists$ camino aumentante $ s, \dotsc x$.
-
-				$y \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{y}. En particular $s, 	\dotsc x, \dotsc y$ no es camino aumentante, por lo que no puede darse que $f(\overrightarrow{xy}) < Cap(\overrightarrow{xy})$.
-
-				\vspace{3mm}
-				$\Rightarrow f(\overrightarrow{xy}) = Cap(\overrightarrow{xy}) \qquad \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E.$
-
-				\vspace{3mm}
-				$\Rightarrow$ \begin{tabular}{|c|} \hline $f(S, \overline{S})$ \\ \hline \end{tabular} $= \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) = \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} Cap(\overrightarrow{xy}) = Cap(S, \overline{S}) =$ \begin{tabular}{|c|} \hline $ Cap(S) $ \\ \hline \end{tabular}
-
-				\item $f(\overline{S}, S) = \sum_{\begin{subarray}{l} \; x \in \overline{S}\\
-				\; y \in S \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
-
-				$x \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{x}.
-
-				$y \in S \Rightarrow \exists$ camino aumentante $ s, \dotsc y$.
-
-				En particular $s \dotsc y, y \dotsc x$ no es camino aumentante $\Rightarrow f(\overrightarrow{xy}) = 0  \; \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E$.
-
-				\vspace{3mm}
-				$\therefore$ \begin{tabular}{|c|} \hline $ f(\overline{S}, S) = 0 $ \\ \hline \end{tabular}
+			\begin{enumerate}[a)]
+				\item Si \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).
+				\item Si V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.
+				\item Si \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).
 			\end{enumerate}
 
-			Luego de (1) y (2)
+		\textbf{\underline{Prueba:}} Denotemos $(\star)$, a la demostración de:
+			\begin{center}
+				\begin{tabular}{|c|} \hline $V(\textit{f}) = f(S, \overline{S}) - f(\overline{S},S)$ \\\hline \end{tabular}
+			\end{center}
 
-			\begin{eqnarray}
-				\nonumber V(f) &=& f(S, \overline{S}) - f(\overline{S}, S)\\
-				\nonumber &=& Cap(S) - 0 \\
-				\nonumber &=& Cap(S)
-			\end{eqnarray}
+			\vspace{5mm}
+			\textbf{a) \textit{f} es flujo y S es corte $\Rightarrow$ V(\textit{f}) $\leq$ Cap(S).}
+				\begin{eqnarray}
+					\nonumber V(f) &\stackbin{Por \; (\star)}{=}& f(S, \overline{S})\underbrace{-\underbrace{f(\overline{S}, S)}_{\geq 0}}_{\leq 0} \\
+					\nonumber &\leq & f(S, \overline{S}) \\
+					\nonumber &\leq & Cap(S, \overline{S}) \\
+					\nonumber &=& Cap(S)
+				\end{eqnarray}
+
+
+			\textbf{b) V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.}
+
+				\vspace{2mm}
+				\par Supongamos que V(\textit{f}) $=$ Cap(S). Sea \textit{g} un flujo cualquiera y T un corte cualquiera.
+				\begin{itemize}
+					\item $V(g) \stackbin{Por \; a)}{\leq} Cap(S) = V(f) \Rightarrow$ f es maximal.
+					\item $Cap(T) \stackbin{Por \; a)}{\geq} V(f) = Cap(S) \Rightarrow$ S es minimal.
+				\end{itemize}
+
+			\vspace{5mm}
+			\textbf{c) \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).}
+
+				\vspace{2mm}
+				\par Sea $S = \{s\} \cup \{x : \exists \;$ camino aumentante realtivo a \textit{f} entre \textit{s} y \textit{x}$\}$
+
+				\vspace{5mm}
+				\begin{tabular}{|c|} \hline ¿$t \in S$? \\\hline \end{tabular}
+				¿$t \in S$?
+
+					\vspace{3mm}
+					\underline{Si \textit{t} estuviera en S:} existiría un camino aumentante entre \textit{s} y \textit{t}.
+					\par Por el teorema del camino aumentante podemos construir un flujo \textit{g} tal que:
+
+					\begin{eqnarray}
+						\nonumber V(g) &=& V(f) + \epsilon \textup{ para algun } \epsilon > 0 \\
+						\nonumber \therefore V(g) &>& V(f) \textup{ Absurdo! pues f es maximal} \\
+						\nonumber \therefore t &\notin & S \Rightarrow \textup{ S es corte.}
+					\end{eqnarray}
+					\[ \textup{Solo resta ver que: } V(f) = Cap(S) \]
+					\par Por $(\star): \; V(f) =  \underbrace{f(S, \overline{S})}_{(1)} - \underbrace{f(\overline{S}, S)}_{(2)}$
+
+					\vspace{2mm}
+					\par Analicemos (1) y (2)
+					\begin{enumerate}[(1)]
+						\item $f(S, \overline{S}) = \sum_{\begin{subarray}{l} \; x \in S \\
+							\; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
+							\par $x \in S \Rightarrow \exists$ camino aumentante $ s, \dotsc x$.
+							\par $y \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{y}. En particular $s, \dotsc x, \dotsc y$ no es camino aumentante, por lo que no puede darse que: $f(\overrightarrow{xy}) < Cap(\overrightarrow{xy})$.
+
+							\vspace{3mm}
+							\par $\Rightarrow f(\overrightarrow{xy}) = Cap(\overrightarrow{xy}) \qquad \forall x \in S, \forall y \in \overline{S} : \overrightarrow{xy} \in E.$
+
+							\vspace{3mm}
+							\par $\Rightarrow$ \begin{tabular}{|c|} \hline $f(S, \overline{S})$ \\\hline \end{tabular} $= \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) = \sum_{\begin{subarray}{l} \; x \in S\\  \; y \in \overline{S} \\ xy \in E\end{subarray}} Cap(\overrightarrow{xy}) = Cap(S, \overline{S}) =$ \begin{tabular}{|c|} \hline $ Cap(S) $ \\ \hline \end{tabular}
+
+						\item $f(\overline{S}, S) = \sum_{\begin{subarray}{l} \; x \in \overline{S} \\
+							\; y \in S \\ xy \in E\end{subarray}} f(\overrightarrow{xy}) $
+							\par $x \in \overline{S} \Rightarrow \nexists$ camino aumentante entre \textit{s} y \textit{x}.
+							\par $y \in S \Rightarrow \exists$ camino aumentante $ s, \dotsc y$.
+							\par En particular $s \dotsc y, y \dotsc x$ no es camino aumentante $\Rightarrow f(\overrightarrow{xy}) = 0  \; \forall x \in \overline{S}, \forall y \in S : \overrightarrow{xy} \in E$.
+
+							\vspace{3mm}
+							\par $\therefore$ \begin{tabular}{|c|} \hline $ f(\overline{S}, S) = 0 $ \\\hline \end{tabular}
+					\end{enumerate}
+
+					\par Luego de (1) y (2):
+					\begin{eqnarray}
+						\nonumber V(f) &=& f(S, \overline{S}) - f(\overline{S}, S)\\
+						\nonumber &=& Cap(S) - 0 \\
+						\nonumber &=& Cap(S)
+					\end{eqnarray}
+
 
 	\section{Complejidad del Hungaro es $\mathcal{O}(n^{4})$}
-
 		\textbf{\underline{Teorema:}} La complejidad del algoritmo Húngaro es $\mathcal{O}(n^{4})$.
 
 		\textbf{\underline{Prueba:}}
