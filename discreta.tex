@@ -417,36 +417,40 @@
 \chapter{Parte B}
 
 	\section{2-COLOR es polinomial}
-		\underline{Teorema:} "-Color es polinomial, es decir, existe un algoritmo polinomial que lo resuelve.
+		\textbf{\underline{Teorema:}} 2-Color es polinomial, es decir, existe un algoritmo polinomial que lo resuelve.
 
-		\underline{Prueba:}
-			\par Consideremos el siguiente algoritmo con entrada $G = (V, E)$
+		\textbf{\underline{Prueba:}} Consideremos el siguiente algoritmo con entrada $G = (V, E)$ con $n = \abs{V}$ y $m = \abs{E}$.
 
 			\vspace{5mm}
 			\par \textbf{Algoritmo:}
-			\par For each COMPONENTE CONEXA:
+			\par Por cada COMPONENTE CONEXA:
 				\begin{enumerate}
 					\item Elegir x
 					\item Correr BFS(x)
 					\item Colorear vertices con: $\qquad	C(v) = Nivel_{BFS(x)}(v) \; mod \; 2$
-					\item Chequear que el coloreo de (3) sea propio. Si lo es, RETURN "SI", si no lo es, RETURN "NO".
+					\item Chequear que el coloreo de (3) sea propio. Si lo es, RETURN \textquotedblleft SI\textquotedblright, si no lo es, RETURN \textquotedblleft NO\textquotedblright.
 				\end{enumerate}
 
-			Veamos ahora que el algoritmo es correcto y que su complejidad es polinomial.
+			\par Veamos ahora que el algoritmo es correcto y que su complejidad es polinomial.
 			\begin{itemize}
-				\item Complejidad Polinomial:
+				\item \underline{Complejidad Polinomial:}
 					\begin{itemize}
 						\item (1) es $\mathcal{O}(1)$.
-						\item (2) es $\mathcal{O}(m + c)$ (recorrer todos los vértices). Donde \textit{c} es una costante que significa \# vértices aislados.
-						\item (3) es $\mathcal{O}(m)$ (recorrer todos los vértices).
+						\item (2) + (3) es $\mathcal{O}(m)$ (recorrer todos los vértices).
 						\item (4) es $\mathcal{O}(m)$ ya que chequear que un coloreo es propio, es recorrer todos los lados comprobando que los vértices tengan distintos colores.
 					\end{itemize}
-				\item Correctitud:
+				\item \underline{Correctitud:}
 					\begin{itemize}
-						\item Cuando dice "SI": Obviamente dice "SI", solo si el coloreo es propio y si el coloreo es propio, $\chi(G) \leq 2$.
-						\item Cuando dice "NO": Tenemos que ver que cuando dice "NO" ningún coloreo propio con 2 colores existe.
-							\par Por otro teorema visto en clase, si existe un ciclo impar $C_{2k+1} \subseteq G \Rightarrow \chi(G) \geq 3$. Por lo que bastaría ver que si el algoritmo dice "NO", entonces exista un cliclo impar en G.
-							\par Si el algoritmo dice "NO" $\Rightarrow \exists z, y : z y \in E(G) \textup{ y } C(z) = C(y) \Rightarrow Nivel_{BFS(x)}(z) = Nivel_{BFS(x)}(y)$
+						\item Cuando dice \textquotedblleft SI\textquotedblright: Obviamente dice \textquotedblleft SI\textquotedblright, solo si el coloreo es propio y si el coloreo es propio, $\chi(G) \leq 2$.
+						\item Cuando dice \textquotedblleft NO\textquotedblright: Tenemos que ver que cuando dice \textquotedblleft NO\textquotedblright ningún coloreo propio con 2 colores existe.
+
+							\vspace{5mm}
+							\par Por otro teorema visto en clase, si existe un ciclo impar $C_{2k + 1} \subseteq G \Rightarrow \chi(G) \geq 3$. Por lo que bastaría ver que si el algoritmo dice \textquotedblleft NO\textquotedblright, entonces exista un ciclo impar en G.
+
+							\vspace{5mm}
+							\par Si el algoritmo dice \textquotedblleft NO\textquotedblright $\Rightarrow \exists z, y : zy \in E(G) \textup{ y } C(z) = C(y) \Rightarrow Nivel_{BFS(x)}(z) = Nivel_{BFS(x)}(y)$
+
+							\vspace{5mm}
 							\par Sea:
 							\begin{itemize}
 								\item $x \dotsc z$ un camino en BFS(x), entre x y z.
@@ -459,31 +463,16 @@
 										\nonumber &\underbrace{x \dotsc w}_{\textup{Camino Igual}}& \; \underbrace{\dotsc y}_{\textup{Camino distinto}}
 									\end{eqnarray}
 							\end{itemize}
+
 						\par Considramos el ciclo: $w \dotsc z y \dotsc w$
-						\par Lognitud del ciclo
 						\begin{eqnarray}
-							\nonumber \textup{Longitud del ciclo } &=& (t-s) + 1 + (r-s) \\
+							\nonumber \textup{Longitud del ciclo } &=& (t - s) + 1 + (r - s) \\
 							\nonumber &=& (t+r) - 2s + 1 \\
-							\nonumber &\equiv & 0 + 0 + 1 = 1 (2) \\
+							\nonumber &\equiv & 0 + 0 + 1 = 1 \; (2) \\
 							\nonumber \therefore \textup{Es un ciclo impar}
 						\end{eqnarray}
 					\end{itemize}
 			\end{itemize}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	\section{Teorema Max-Flow Min-Cut}
