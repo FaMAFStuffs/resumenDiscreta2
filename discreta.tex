@@ -40,17 +40,9 @@
 			\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
 
 			\vspace{5mm}
-			\par Observaciones:
-				\begin{enumerate}
-					\item
-						\begin{itemize}
-							\item $d_{k}(s) = 0$
-							\item $b_{k}(t) = 0$
-						\end{itemize}
-					\item Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil para esta demostración llamaremos $\circledast$ a la demostración de:
-						\[ d_{k}(x) \leq d_{k+1}(x) \]
-						\[ b_{k}(x) \leq b_{k+1}(x) \]
-				\end{enumerate}
+			\par Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil para esta demostración llamaremos $\circledast$ a la demostración de:
+				\[ d_{k}(x) \leq d_{k+1}(x) \]
+				\[ b_{k}(x) \leq b_{k+1}(x) \]
 
 			\par Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k + 1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura ó \textit{yx} se vacía en el paso \textit{k}.
 			\par Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsc$ x, y $\dotsc$ \textit{t} se usa para construir $f_{k}$.
@@ -87,7 +79,7 @@
 			\end{eqnarray}
 
 			\vspace{5mm}
-			\par Por lo tanto cuando un lado se vuelve crítico recien puede volver a saturarse cuando la distancia de \textit{s} a \textit{t} haya aumentado en por lo menos 2. Puede existir $\mathcal{O}(n/t)$ tales aumentos, es decir:
+			\par Por lo tanto cuando un lado se vuelve crítico recien puede volver a usarse cuando la distancia de \textit{s} a \textit{t} haya aumentado en por lo menos 2. Puede existir $\mathcal{O}(n/t)$ tales aumentos, es decir:
 				\[ \# \textup{ Veces que un lado puede volverse crítico } = \mathcal{O}(n). \]
 
 			\begin{eqnarray}

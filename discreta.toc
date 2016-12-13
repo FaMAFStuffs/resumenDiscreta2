@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.1}La complejidad de EDMONS-KARP}{2}
 \contentsline {section}{\numberline {1.2}Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}{3}
 \contentsline {section}{\numberline {1.3}La complejidad de DINIC}{5}
-\contentsline {section}{\numberline {1.4}La complejidad de WAVE}{7}
+\contentsline {section}{\numberline {1.4}La complejidad de WAVE}{6}
 \contentsline {section}{\numberline {1.5}La distancia entre NA sucesivos aumenta}{8}
 \contentsline {chapter}{\numberline {2}Parte B}{10}
 \contentsline {section}{\numberline {2.1}2-COLOR es polinomial}{10}
