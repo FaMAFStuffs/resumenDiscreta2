@@ -182,13 +182,14 @@
 		\textbf{\underline{Teorema:}} La complejidad del algoritmo de Dinic es $\mathcal{O}(n^{2}m)$.
 
 		\textbf{\underline{Prueba:}} Como Dinic es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n - 1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
-			\[ \textup{Complejidad(Dinic) } = \mathcal{O}(n) * \textup{ Compl(Hallar un flujo bloqueante en un NA con Dinic)} \]
-			\par Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que complejidad del paso bloqueante es $\mathcal{O}(nm)$.
+			\[ \textup{Complejidad(Dinic) } = \mathcal{O}(n) * \textup{ Complejidad(Paso Bloqueante)} \]
+			\par Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que la complejidad del paso bloqueante es $\mathcal{O}(nm)$.
+			\vspace{3mm}
 			\par Sea:
 			\begin{itemize}
 				\item A $=$ Avanzar()
 				\item R $=$ Retroceder()
-				\item I $=$ IncrementarFlujo() + Inicialización
+				\item I $=$ IncrementarFlujo() + Inicialización()
 			\end{itemize}
 
 			\par Una corrida de Dinic luce como:
@@ -197,94 +198,81 @@
 			\end{center}
 
 			\par Dividamos la corrida en subpalabras del tipo:
-			\begin{center}
-				\begin{itemize}
-					\item[$*$] $\underbrace{AA \; \dotsc \; A}_{Todas \; A's}I$
-					\item[$*$] $\underbrace{AA \; \dotsc \; A}_{Todas \; A's}R$
-				\end{itemize}
-			\end{center}
+			\begin{equation*}
+		  	\left.
+		  	\begin{array}{l}
+		    	\underbrace{AA \; \dotsc \; A}_{Todas \; A's}I \\
+		    	\underbrace{AA \; \dotsc \; A}_{Todas \; A's}R
+		  	\end{array}
+		  	\right\rbrace
+		  	\textup{ Sea X = I o R}
+			\end{equation*}
 
 			\par \textbf{Nota:} el número de A's puede ser 0.
 			\vspace{5mm}
 			\par Debemos determinar:
 			\begin{enumerate}
-				\item Cual es la complejidad de cada subpalabra.
-				\item Cuantas palabras hay de cada tipo.
+				\item \textbf{Cantidad de subpalabras}
+					\begin{equation*}
+						\left.
+						\begin{array}{l}
+							X = R: \textup{ borramos un lado} \\
+							X = I \; : \textup{ borramos al menos un lado}
+						\end{array}
+						\right\rbrace
+						\Rightarrow \textup{ Cada X borra al menos un lado}
+					\end{equation*}
+					\begin{center}
+						$\therefore$ hay $\leq m$ palabras de la forma $A \dotsc A X$
+					\end{center}
+				\item \textbf{Complejidad de cada subpalabra}
+					\par Recordemos que:
+					\begin{equation*}
+						\textup{A:}
+						\left[
+						\begin{array}{l}
+							P[i + 1] = \textup{algún elemento de } \Gamma^{+}(P[i]) \\
+						\end{array}
+						\right.
+					\end{equation*}
+					\[ \Rightarrow \textup{ A es } \mathcal{O}(1) \]
+
+					\begin{equation*}
+						\textup{R:}
+						\left[
+						\begin{array}{l}
+							\textup{Borrar } P[i - 1]P[i] \textup{ del NA} \\
+						\end{array}
+						\right.
+					\end{equation*}
+					\[ \Rightarrow \textup{ R es } \mathcal{O}(1) \]
+
+					\begin{equation*}
+						\textup{I:}
+						\left[
+						\begin{array}{l}
+							\textup{Recorre un camino de longitud } \leq n
+						\end{array}
+						\right.
+					\end{equation*}
+					\[ \Rightarrow \textup{ I es } \mathcal{O}(n) \]
+
+					\par Luego:
+					\begin{eqnarray}
+						\nonumber Complejidad(X) &=& \mathcal{O}(n) \\
+						\nonumber \Rightarrow Complejidad (\underbrace{A \; \dotsc \; A}_{j \; veces}X) &=& \underbrace{\mathcal{O}(j) + \mathcal{O}(n)}
+					\end{eqnarray}
+
+					\par Como cada Avanzar() mueve el pivote unnivel más cerca de \textit{t} entonces hay a lo sumo \textit{n} Avanzar() antes de un R o un I $\Rightarrow$ r $\leq$ n.
+					\[ \therefore \; Complejidad(A \dotsc AX) = \mathcal{O}(n) + \mathcal{O}(n) = \mathcal{O}(n)\]
 			\end{enumerate}
 
-			\textbf{Complejidad de cada subpalabra}
-				\par Recordemos que:
-				\begin{equation*}
-					\textup{A:}
-		  		\left[
-		  		\begin{array}{l}
-		    		P[i + 1] = \textup{algún elemento de } \Gamma^{+}(P[i]) \\
-		     		i = i + 1
-		  		\end{array}
-		  		\right.
-				\end{equation*}
-
-				\[ \Rightarrow \textup{ A es } \mathcal{O}(1) \]
-
-				\begin{equation*}
-					\textup{R:}
-		  		\left[
-		  		\begin{array}{l}
-		    		\textup{Borrar } P[i - 1]P[i] \textup{ del NA} \\
-		     		i = i - 1
-		  		\end{array}
-		  		\right.
-				\end{equation*}
-
-				\[ \Rightarrow \textup{ R es } \mathcal{O}(1) \]
-
-				\begin{equation*}
-					\textup{I:}
-		  		\left[
-		  		\begin{array}{l}
-		    		\textup{Recorre 2 veces, un camino de longitud } d = d(t)
-		  		\end{array}
-		  		\right.
-				\end{equation*}
-
-				\[ \Rightarrow \textup{ I es } \mathcal{O}(d) \]
-
-				\par Por lo tanto:
-				\begin{eqnarray}
-					\nonumber Compl(\underbrace{A \; \dotsc \; A}_{j \; veces}R) &=& \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{j \; veces} + \mathcal{O}(1) \\
-					\nonumber &=& \mathcal{O}(j) + \mathcal{O}(1) \\
-					\nonumber &=& \mathcal{O}(j)
-				\end{eqnarray}
-
-				\par Pero como cada A hace $ i = i + 1$ y tenemos $ 0 \leq \textit{i} \leq \textit{d} \; \Rightarrow \; \textit{j} \leq \textit{d}.$
-
-				\[ \therefore \textup{ Compl(A } \dotsc \textup{ AR } = \mathcal{O}(d) \]
-
-				\par Similarmente:
-				\begin{eqnarray}
-					\nonumber Compl(A \; \dotsc \; AI) &=& \underbrace{\mathcal{O}(1) + \; \dotsc \; \mathcal{O}(1)}_{\leq \; d \; veces} + \mathcal{O}(1) \\
-					\nonumber &=& \mathcal{O}(d) + \mathcal{O}(1) \\
-					\nonumber &=& \mathcal{O}(d)
-				\end{eqnarray}
-
-			\textbf{Cantidad de subpalabras}
-				\begin{itemize}
-					\item R tiene la instrucción "\textbf{borrar lado}". Como los lados borrados quedan borrados hay a lo sumo \textit{m} R's, es decir:
-					\[ \therefore \textup{ A } \dotsc \textup{ AR's } \leq m \]
-					\item I tiene también línes de la forma:
-						\textit{if} ($\dotsc$) \textit{then} Borrar lado
-					 	\par Lo que está dentro del \textbf{if} se cumple al menos una vez, es decir:
-						\[ \therefore \textup{ (A } \dotsc \textup{ AI's }) \leq m \]
-
-					\par Este análisis muestra que:
-					\[ \therefore \# \textup{ (A } \dotsc \textup{ AI's }) + \# \textup{ (A } \dotsc \textup{ AR's }) \leq m \]
-					\par Por lo tanto hay $\leq m$ palabras, cada una de complejidad $\mathcal{O}(d)$.
-					\begin{eqnarray}
-						\nonumber \therefore \;  Compl(Paso \; Bloqueante) &=& \mathcal{O}(m) + \mathcal{O}(md) \\
-						\nonumber &=& \mathcal{O}(md)
-				\end{eqnarray}
-				\par Como $d \leq n$, queda entonces demostrado.
-				\end{itemize}
+			\par De (1) y (2):
+			\begin{eqnarray}
+				\nonumber \textup{Complejidad(Paso Bloqueante)} &=& \# \textup{ Cantidad de palabras} * \textup{ Complejidad de la palabra} \\
+				\nonumber &=& m * \mathcal{O}(n) \\
+				\nonumber &=& \mathcal{O}(m*n)
+			\end{eqnarray}
 
 
 	\section{La complejidad de WAVE}
@@ -350,7 +338,7 @@
 					\nonumber &=& \mathcal{O}(n^{2})
 				\end{eqnarray}
 
-
+	\pagebreak
 	\section{La distancia entre NA sucesivos aumenta}
 		\textbf{\underline{Teorema:}} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean d(x) y $d^{*}(x)$ las distancias de \textit{s} a \textit{t} en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
 
