@@ -633,60 +633,49 @@
 
 
 	\section{Teorema de Hall}
-
 		\textbf{\underline{Teorema:}} Sea G = (X $\cup$ Y, E) grafo bipartito $\Rightarrow \exists$ matching completo de X a Y $\Leftrightarrow \; \lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$.
 
 		\vspace{3mm}
 		\textbf{\underline{Prueba:}}
-
-			$\Rightarrow)$ Si M es matching completo de X a Y entonces oberservemos que M induce una función inyectiva de X a Y.
-
-			\begin{center}
-				$f(x) = $ único y : xy $\in E(M)$.
-			\end{center}
+			\par $\Rightarrow)$ Si M es matching completo de X a Y entonces observemos que M induce una función inyectiva de X a Y.
+			\[ f(x) = \textup{ unico } y : xy \in E(M) \]
 
 			\begin{enumerate}
-				\item Si $S \subseteq X \Rightarrow \lvert S \rvert \leq \lvert \Gamma(S) \rvert$
-
-
+				\item Si $S \subseteq X \Rightarrow \lvert S \rvert = \lvert f(S) \rvert$
 				\item Además por definición de f, $f(x) \in \Gamma(x)$
-
-				\begin{eqnarray}
-					\nonumber \text{Si x} \in S & \Rightarrow & f(x) \in \Gamma(S) \\
-					\nonumber & \Rightarrow & f(S) \subseteq \Gamma(S) \\
-					\nonumber &\therefore & \lvert f(S) \rvert \leq \lvert \Gamma(S) \rvert
-				\end{eqnarray}
-
+					\begin{eqnarray}
+						\nonumber \text{Si x} \in S &\Rightarrow & f(x) \in \Gamma(S) \\
+						\nonumber &\Rightarrow & f(S) \subseteq \Gamma(S) \\
+						\nonumber &\therefore & \lvert f(S) \rvert \leq \lvert \Gamma(S) \rvert
+					\end{eqnarray}
 			\end{enumerate}
-
-			De \textcircled{1} y \textcircled{2} $\Rightarrow \lvert S \rvert \leq \lvert \Gamma(S) \rvert$.
+			\par De (1) y (2) $\Rightarrow \lvert S \rvert \leq \lvert \Gamma(S) \rvert$.
 
 			\vspace{5mm}
-			$\Leftarrow)$ Supongamos que no es cierto, entonces G es bipartito con $\lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$ pero no tiene matching completo de X a Y. Esto equivalente a ver que: si $\nexists$ un matching completo de X a Y $\Rightarrow \exists \; S \subseteq X : \lvert S \rvert > \lvert \Gamma(S) \rvert$.
+			\par $\Leftarrow)$ Supongamos que no es cierto, entonces G es bipartito con $\lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$ pero no tiene matching completo de X a Y. Esto equivalente a ver que: si $\nexists$ un matching completo de X a Y $\Rightarrow \exists \; S \subseteq X : \lvert S \rvert > \lvert \Gamma(S) \rvert$.
 
 			\vspace{5 mm}
-			Corramos el algoritmo para hallar matching. Al finalizar habrá filas sin matcher (las de \textit{s}).
+			\par Corramos el algoritmo para hallar matching. Al finalizar habrá filas sin matcher (las de \textit{s}).
 
 			\vspace{5mm}
-			Sean:
+			\par Sean:
 			\begin{itemize}
-				\item $S_{0} =$ filas sin matchear.
+				\item $S_{0} = \lbrace \textup{filas sin matchear} \rbrace$.
 				\item $T_{1} = \Gamma(S_{0})$, es decir, las columnas etiquetadas por las filas de $S_{0}$. Todas las columnas de $T_{1}$ están matcheadas, pues si no, se podría agregar alguna alguna fila de $S_{0}$ al matching.
-				\item $S_{1} =$ filas etiquetadas por las columnas de $T_{1}$.
+				\item $S_{1} = \lbrace \textup{filas etiquetadas por las columnas de } T_{1}\rbrace$.
 				\item $T_{2} = \Gamma(S_{1}) - T_{1}$, es decir, columnas etiquetadas por las filas de $S_{1}$.
 			\end{itemize}
 
-			En general:
+			\par En general:
 			\begin{center}
-			\begin{itemize}
-				\item $S_{i} =$ filas matcheadas con $T_{i}$.
-				\item $T_{i+1} = \Gamma(S_{i}) - (T_{1} \cup T_{2} \cup \dotsc T_{i})$.
-			\end{itemize}
+				\begin{itemize}
+					\item $S_{i} = \lbrace \textup{filas matcheadas con } T_{i}\rbrace$.
+					\item $T_{i+1} = \Gamma(S_{i}) - (T_{1} \cup T_{2} \cup \dotsc T_{i})$.
+				\end{itemize}
 			\end{center}
 
-			Como el algoritmo para sin hayar matching, entonces $\forall i \; T_{i} \neq \emptyset $, produce un $S_{i}$  (i.e $S_{i} \neq \emptyset$).
-
-			$\therefore$ La única forma de parar es en un \textit{k}, tal que $T_{k+1} = \emptyset$.
+			\par Como el algoritmo para sin hayar matching, entonces $\forall i \; T_{i} \neq \emptyset $, produce un $S_{i}$  (i.e $S_{i} \neq \emptyset$).
+			\par $\therefore$ La única forma de parar es en un \textit{k}, tal que $T_{k+1} = \emptyset$.
 
 			\vspace{5mm}
 			\underline{Observaciones:}
@@ -694,37 +683,35 @@
 				\item $\lvert S_{j} \rvert = \lvert T_{j} \rvert$, pues $S_{j}$ son las filas matcheadas con $T_{j}$.
 				\item Por construcción, los $S_{i}$ y $T_{i}$ son todos distintos.
 				\item $\Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) = T_{1} \cup T_{2} \cup \dotsc T_{j+1}$
+					\par \underline{Por inducción en \textit{j}:}
+						\begin{itemize}
+							\item Caso Base: $j = 0$ vale, ya que $T_{1} = \Gamma(S_{0})$
+							\item Caso Inductivo: Supongamos que vale para \textit{j}, veamos para \textit{j+1}.
+								\begin{eqnarray}
+									\nonumber T_{1} \cup T_{2} \dotsc T_{j + 1} &=& T_{1} \cup T_{2} \cup \dotsc T_{j + 1} \cup \underbrace{(\Gamma(S_{j + 1}) - (T_{1} \cup T_{2} \dotsc T_{j + 1}))}_{T_{j + 2}} \\
+									\nonumber &=& T_{1} \cup T_{2} \cup \dotsc T_{j + 1} \cup (\Gamma(S_{j + 1}) \\
+									\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) \cup \Gamma(S_{j + 1}) \qquad \text{Por H.I} \\
+									\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j} \cup S_{j + 1})
+								\end{eqnarray}
+						\end{itemize}
+			\end{enumerate}
 
-					\underline{Por inducción en \textit{j}:}
-					\begin{itemize}
-						\item Caso Base: $j = 0$ vale, ya que $T_{1} = \Gamma(S_{0})$
-						\item Caso Inductivo: Supongamos que vale para \textit{j}, veamos para \textit{j+1}.
+			\par Sea $S = S_{0} \cup S_{1} \cup \dotsc S_{k}$
+				\begin{eqnarray}
+					\nonumber \lvert \Gamma(S) \rvert &=& \lvert \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{k}) \rvert \\
+					\nonumber &=& \lvert T_{1} \cup T_{2} \cup \dotsc \underbrace{T_{k+1}}_{= \; \emptyset} \rvert \qquad \; \text{Por Obs 3} \\
+					\nonumber &=& \lvert T_{1} \cup T_{2} \cup \dotsc T_{k} \rvert \\
+					\nonumber &=& \lvert T_{1} \rvert + \lvert T_{2} \rvert + \dotsc \lvert T_{k} \rvert \qquad \text{Por Obs 2} \\
+					\nonumber &=& \lvert S_{1} \rvert + \lvert S_{2} \rvert + \dotsc \lvert S_{k} \rvert \qquad \text{Por Obs 1} \\
+					\nonumber &=& \lvert S \rvert - \lvert S_{0} \rvert \qquad \qquad \qquad \; \; \text{Por Obs 2} \\
+					\nonumber &<& \lvert S \rvert \qquad \qquad \qquad \qquad \; \; \; \; \;\text{Pues } S_{0} \neq \emptyset \\
+					\nonumber & \text{Absurdo!} &
+				\end{eqnarray}
 
-						\begin{eqnarray}
-							\nonumber T_{1} \cup T_{2} \dotsc T_{j+2} &=& T_{1} \cup T_{2} \cup \dotsc T_{j+1} \cup \underbrace{(\Gamma(S_{i+1}) - (T_{1} \cup T_{2} \dotsc T_{j+1}))}_{T_{j+1}} \\
-							\nonumber &=& T_{1} \cup T_{2} \cup \dotsc T_{j+1} \cup (\Gamma(S_{i+1}) \\
-							\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) \cup \Gamma(S_{i+1}) \qquad \text{Por H.I} \\
-							\nonumber &=& \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j} \cup S_{j+1})
-						\end{eqnarray}
-					\end{itemize}
-				\end{enumerate}
-
-					Sea $S = S_{0} \cup S_{1} \cup \dotsc S_{k}$
-
-					\begin{eqnarray}
-						\nonumber \lvert \Gamma(S) \rvert &=& \lvert \Gamma(S_{0} \cup S_{1} \cup \dotsc S_{k}) \rvert \\
-						\nonumber &=& \lvert T_{1} \cup T_{2} \cup \dotsc \underbrace{T_{k+1}}_{= \; \emptyset} \rvert \qquad \; \text{Por Obs 3} \\
-						\nonumber &=& \lvert T_{1} \cup T_{2} \cup \dotsc T_{k} \rvert \\
-						\nonumber &=& \lvert T_{1} \rvert + \lvert T_{2} \rvert + \dotsc \lvert T_{k} \rvert \qquad \text{Por Obs 2} \\
-						\nonumber &=& \lvert S_{1} \rvert + \lvert S_{2} \rvert + \dotsc \lvert S_{k} \rvert \qquad \text{Por Obs 1} \\
-						\nonumber &=& \lvert S \rvert - \lvert S_{0} \rvert \qquad \qquad \qquad \; \; \text{Por Obs 2} \\
-						\nonumber &<& \lvert S \rvert \qquad \qquad \qquad \qquad \; \; \; \; \;\text{Pues } S_{0} \neq \emptyset \\
-						\nonumber & \text{Absurdo!} &
-					\end{eqnarray}
+			\par El absurdo vino de suponer que G es bipartito con $\lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X$ pero que no tiene matching completo de X a Y.
 
 
 	\section{Teorema del matrimonio}
-
 		\textbf{\underline{Teorema:}} Todo grafo regular bipartito tiene un matching perfecto.
 
 		\textbf{\underline{Prueba:}} Sea $G = (X \cup Y, E)$ bipartito regular, tal que $\forall W \subseteq V(G)$, definimos:
