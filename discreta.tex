@@ -133,21 +133,23 @@
 					\begin{itemize}
 						\item \underline{Caso 1:} Existe algun camino aumentante, relativo a $f_{k - 1}$ de la forma $s, \; \dotsc \; x, \; z$.
 							\begin{center}
-								$\therefore \begin{tabular}{|c|} \hline $d_{k}(z) \leq d_{k}(x) + 1$ \\ \hline \end{tabular}$
+								$\therefore d_{k}(z) \leq d_{k}(x) + 1$
 							\end{center}
 
 							\vspace{2mm}
-							\par Pues al haber un camino $\underbrace{s, \; \dotsc \; x,}_{d_{k}(x)} \; z$, llamemosle A, de longitud $d_{k}(x) + 1$ entre \textit{s} y \textit{z}, sabemos que el minimo de todos los caminos de \textit{s} a \textit{z} seran $\leq$ A.
+							\par Pues al haber un camino $\underbrace{s, \; \dotsc \; x,}_{d_{k}(x)} \; z$, llamemosle A, de longitud $d_{k}(x) + 1$ entre \textit{s} y \textit{z}, sabemos que el mínimo de todos los caminos de \textit{s} a \textit{z} será $\leq$ A.
 						\item \underline{Caso 2:} No existe un camino aumentante, relativo a $f_{k - 1}$, pero si existe un camino aumentante relativo a $f_{k}$. Por lo tanto el lado \textit{xz} no esta \textquotedblleft disponible\textquotedblright \; en el paso \textit{k}, ya que \textit{xz} está saturado, o bien \textit{zx} está vacío relativo a $f_{k - 1}$. Para construir $f_{k}$ usamos un camino de la forma $s, \; \dotsc \; z, \; x$. Es decir:
+							\vspace{5mm}
 							\begin{enumerate}[1)]
-								\item $f_{k - 1}(\overrightarrow{xz}) = C(\overrightarrow{xz})$ pero $f_{k}(\overrightarrow{xz}) < C(\overrightarrow{xz}), \; f_{k}$ devuelve flujo por $\overrightarrow{xz}$ ó
+								\item $f_{k - 1}(\overrightarrow{xz}) = Cap(\overrightarrow{xz})$ pero $f_{k}(\overrightarrow{xz}) < Cap(\overrightarrow{xz}), \; f_{k}$ devuelve flujo por $\overrightarrow{xz}$ ó
 								\item $f_{k - 1}(\overrightarrow{zx}) = 0$ pero $f_{k}(\overrightarrow{zx}) > 0, \; f_{k}$ manda flujo por $\overrightarrow{zx}$.
 							\end{enumerate}
 
+							\vspace{5mm}
 							\par Como $\langle E-K \rangle$ funciona con BFS, ese camino usado para construir $f_{k}$ debe ser de longitud mínima. Es decir:
 							\begin{eqnarray}
 								\nonumber d_{k}(x) &=& d_{k}(z) + 1 \\
-								\nonumber d_{k}(z) &=& d_{k}(x) - 1 \\
+								\nonumber \Rightarrow d_{k}(z) &=& d_{k}(x) - 1 \\
 								\nonumber &\leq & d_{k}(x) + 1
 							\end{eqnarray}
 					\end{itemize}
