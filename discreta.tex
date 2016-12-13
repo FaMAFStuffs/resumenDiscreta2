@@ -1037,122 +1037,113 @@
 \chapter{Parte C}
 
 	\section{4-COLOR $\leq_{\textit{p}}$ SAT}
-		\underline{Teorema:} 4-COLOR $\leq_{p}$ SAT.
+		\textbf{\underline{Teorema:}} 4-COLOR $\leq_{p}$ SAT.
 
-		\underline{Prueba:}
-		Sea G un grafo con vértices $v_{1}, v_{2}, \dotsc v_{n}$, queremos construir (en tiempo polinomial) una expresión booleana B en CNF (\textit{forma conjuntiva normal}), tal que:
+		\textbf{\underline{Prueba:}} Sea G un grafo con vértices $v_{1}, v_{2}, \dotsc v_{n}$, queremos construir (en tiempo polinomial) una expresión booleana B en CNF (\textit{forma conjuntiva normal}), tal que:
+			\[ \chi(G) \leq 4 \Leftrightarrow \textup{ B es satisfacible} \]
+			\par Sea n $=$ \#vértices de G, y sean las variables $x_{i, j} \textup{ con } i = 1, 2, \dotsc n$ y $j = 1, 2, 3, 4$
 
-		\[ \chi(G) \leq 4 \Leftrightarrow B \; es \; satisfacible \]
+			\vspace{3mm}
+			\par Sean
+			\begin{eqnarray}
+				\nonumber A_{i} &=& x_{i, 1} \vee x_{i, 2} \vee x_{i, 3} \vee x_{i, 4}  \\
+				\nonumber A &=& A_{1} \wedge A_{2} \wedge \dotsc A_{n}
+			\end{eqnarray}
 
-		Sea n $=$ \#vértices de G, y sean las variables $x_{i, j} \textup{ con } i = 1, 2, \dotsc n$ y $j = 1, 2, 3, 4$
+			\par Defino
+			\begin{eqnarray}
+				Q_{i, j, k, l} &=& \overline{x_{i, j}} \vee \overline{x_{k, l}}  \qquad i, k = 1 \dotsc n \qquad j, l = 1, 2, 3, 4 \\
+				\nonumber \\
+				D_{i} &=& Q_{i, i, 1, 2} \wedge Q_{i, i, 1, 3} \wedge Q_{i, i, 1, 4} \wedge Q_{i, i, 2, 3} \wedge Q_{i, i, 2, 4} \wedge Q_{i, i, 3, 4} \\
+				\nonumber \\
+				D &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \\
+				\nonumber \\
+				F_{i, k} &=& Q_{i, k, 1, 1} \wedge Q_{i, k, 2, 2} \wedge Q_{i, k, 3, 3} \wedge Q_{i, k, 4, 4} \\
+				\nonumber \\
+				F &=& \wedge_{\begin{subarray}{l} \; i, k \\ \; v_{i} v_{k} \in E(G) \end{subarray}} F_{i, k}
+			\end{eqnarray}
 
-		Sean
-		\begin{eqnarray}
-			\nonumber A_{i} &=& x_{i, 1} \vee x_{i, 2} \vee x_{i, 3} \vee x_{i, 4}  \\
-			\nonumber A &=& A_{1} \wedge A_{2} \wedge \dotsc A_{n}
-		\end{eqnarray}
+			\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
+				\vspace{3mm}
 
-		Defino
-		\begin{eqnarray}
-			Q_{i, j, k, l} &=& \overline{x_{i, j}} \vee \overline{x_{k, l}}  \qquad i, k = 1 \dotsc n \qquad j, l = 1, 2, 3, 4 \\
-			\nonumber \\
-			D_{i} &=& Q_{i, i, 1, 2} \wedge Q_{i, i, 1, 3} \wedge Q_{i, i, 1, 4} \wedge Q_{i, i, 2, 3} \wedge Q_{i, i, 2, 4} \wedge Q_{i, i, 3, 4} \\
-			\nonumber \\
-			D &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \\
-			\nonumber \\
-			F_{i, k} &=& Q_{i, k, 1, 1} \wedge Q_{i, k, 2, 2} \wedge Q_{i, k, 3, 3} \wedge Q_{i, k, 4, 4} \\
-			\nonumber \\
-			F &=& \wedge_{\begin{subarray}{l} \; i, k \\ \; v_{i} v_{k} \in E(G) \end{subarray}} F_{i, k}
-		\end{eqnarray}
+				\par Sea C un coloreo propio de G, con a lo sumo 4 colores. Debemos dar un asignamiento de valores a las variables $x_{i, j}$ que satisfagan B, es decir, un elemento $\overrightarrow{b} \in \mathbb{Z}^{4n}_{2}$ tal que $B(\overrightarrow{b}) = 1$.
 
-		\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
-		\vspace{3mm}
+				\vspace{5mm}
+				\par Definimos
+				\begin{equation*}
+					b_{i, j}
+		  			\left \lbrace
+		  			\begin{array}{l}
+		    		 1 \textup{ si } C(v_{i}) = j \\
+		     		 0 \; c.c \\
+		  			\end{array}
+		  			\right.
+				\end{equation*}
+				\par Debemos probar $B(\overrightarrow{b}) = 1$, es decir, (1) $A(\overrightarrow{b}) = 1$, (2) $D(\overrightarrow{b}) = 1$ y (3) $F(\overrightarrow{b}) = 1$.
 
-		Sea C un coloreo propio de G, con a lo sumo 4 colores. Debemos dar un asignamiento de valores a las variables $x_{i, j}$ que satisfagan B, es decir, un elemento $\overrightarrow{b} \in \mathbb{Z}^{4n}_{2}$ tal que $B(\overrightarrow{b}) = 1$.
+				\vspace{3mm}
+				(1) \begin{tabular}{|c|} \hline $A(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+					\par Debemos ver que $A_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir, hay que probar:
+					\[ b_{i, 1} \vee b_{i, 2} \vee b_{i, 3} \vee b_{i, 4} = 1 \]
+					pero
+					\[ C(v_{i}) \in \lbrace 1, 2, 3, 4 \rbrace \Rightarrow \exists j \in \lbrace 1, 2, 3, 4 \rbrace \textup{ tal que } C(v_{i}) = j \Rightarrow b_{i, j} = 1\]
 
-		\vspace{5mm}
-		Definimos
-		\begin{equation*}
-			b_{i, j}
-  			\left \lbrace
-  			\begin{array}{l}
-    		 1 \textup{ si } C(v_{i}) = j \\
-     		 0 \; c.c \\
-  			\end{array}
-  			\right.
-		\end{equation*}
+				\vspace{3mm}
+				(2) \begin{tabular}{|c|} \hline $D(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+					\par Debemos ver que $D_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir,
+					\[ Q_{i, j, j, l}(\overrightarrow{b}) = 1 \; \forall i, j, l,  j < l \] es decir:
 
-		Debemos probar $B(\overrightarrow{b}) = 1$, es decir, (1) $A(\overrightarrow{b}) = 1$, (2) $D(\overrightarrow{b}) = 1$ y (3) $F(\overrightarrow{b}) = 1$.
+					\[ \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1 \; \forall i, j, l, j <  l\]
+					por el absurdo, supongamos que no:
+					\begin{eqnarray}
+						\nonumber &\Rightarrow & \exists i, j, l, j < l \; : \; \overline{b_{i, j}} \vee \overline{b_{i, l}} = 0 \\
+						\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{i, l}} = 0 \\
+						\nonumber &\Rightarrow & b_{i, j} = b_{i, l} = 1 \\
+						\nonumber &\Rightarrow & C(v_{i}) = j, \; C(v_{i}) = l, \; pero \; j \neq l \; \textup{Absurdo!}
+					\end{eqnarray}
+					\par Luego, el absurdo vino de suponer que $\overline{b_{i, j}} \vee \overline{b_{i, l}} = 0$
 
-		\vspace{3mm}
-		(1) \begin{tabular}{|c|} \hline $A(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+					\vspace{3mm}
+					$\therefore \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1$
 
-		Debemos ver que $A_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir, hay que probar:
-		\[ b_{i, 1} \vee b_{i, 2} \vee b_{i, 3} \vee b_{i, 4} = 1 \]
-		pero
-		\[ C(v_{i}) \in \lbrace 1, 2, 3, 4 \rbrace \Rightarrow \exists j \in \lbrace 1, 2, 3, 4 \rbrace \textup{ tal que } C(v_{i}) = j \Rightarrow b_{i, j} = 1\]
+				\vspace{3mm}
+				(3) \begin{tabular}{|c|} \hline $F(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+				\vspace{3mm}
 
-		\vspace{3mm}
-		(2) \begin{tabular}{|c|} \hline $D(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
+					\par Por el absurdo, supongamos que no:
+					\begin{eqnarray}
+						\nonumber &\Rightarrow & \exists i, k \; : \; v_{i} v_{k} \in E(G) \textup{ tal que } F_{i, k}(\overrightarrow{b}) = 0 \\
+						\nonumber &\Rightarrow & \exists j \; \in \lbrace 1, 2, 3, 4 \rbrace : Q_{i, k, j, j}(\overrightarrow{b}) = 0 \\
+						\nonumber &\Rightarrow & \overline{b_{i, j}} \vee \overline{b_{k, j}} = 0 \\
+						\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{k, j}} = 0 \\
+						\nonumber &\Rightarrow & b_{i, j} = b_{k, j} = 1 \\
+						\nonumber &\Rightarrow & C(v_{i}) = 1\; y \; C(v_{k}) = 1\\
+						\nonumber &\Rightarrow & C(v_{i}) = C(v_{k}) \; (= j) \; \textup{Absurdo!}
+					\end{eqnarray}
+					\par Pues, el coloreo C es propio y $v_{i} v_{k} \in E(G)$. El absurdo vino de suponer que $F(\overrightarrow{b}) = 0$
 
-		Debemos ver que $D_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir,
-		\[ Q_{i, j, j, l}(\overrightarrow{b}) = 1 \; \forall i, j, l,  j < l \] es decir:
+					\vspace{3mm}
+					\par $\therefore F(\overrightarrow{b}) = 1$
 
-		\[ \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1 \; \forall i, j, l, j <  l\]
-		por el absurdo, supongamos que no:
-		\begin{eqnarray}
-			\nonumber &\Rightarrow & \exists i, j, l, j < l \; : \; \overline{b_{i, j}} \vee \overline{b_{i, l}} = 0 \\
-			\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{i, l}} = 0 \\
-			\nonumber &\Rightarrow & b_{i, j} = b_{i, l} = 1 \\
-			\nonumber &\Rightarrow & C(v_{i}) = j, \; C(v_{i}) = l, \; pero \; j \neq l \; \textup{Absurdo!}
-		\end{eqnarray}
+			\vspace{5mm}
+			\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
 
-		Luego, el absurdo vino de suponer que $\overline{b_{i, j}} \vee \overline{b_{i, l}} = 0$
+				\par Ahora sabemos que existe un $\overrightarrow{b}$ con $B(\overrightarrow{b}) = 1$ y debemos construir un coloreo propio, con al menos 4 colores.
+				\begin{equation*}
+					B(\overrightarrow{b}) = 1\Rightarrow
+		  			\left \lbrace
+		  			\begin{array}{l}
+		    		 A(\overrightarrow{b}) = 1 \Rightarrow A_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (1) \; \forall i \; \exists j : b_{i, j}  = 1 \\
+		     		 D(\overrightarrow{b}) = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (2) \;  \forall i \; \nexists j \neq l : b_{i, j}  = 1 = b_{i, l} \\
+		     		 F(\overrightarrow{b}) = 1 \Rightarrow \forall i, j \in E(G), C(v_{i}) \neq C(v_{j}) \Rightarrow \textup{C es propio}
+		  			\end{array}
+		  			\right.
+				\end{equation*}
+				\par De (1) y (2) $\Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \; \exists ! j : b_{i, j} = 1$ \\ \hline \end{tabular}
 
-		\vspace{3mm}
-		$\therefore \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1$
-
-		\vspace{3mm}
-		(3) \begin{tabular}{|c|} \hline $F(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
-		\vspace{3mm}
-
-		Por el absurdo, supongamos que no:
-		\begin{eqnarray}
-			\nonumber &\Rightarrow & \exists i, k \; : \; v_{i} v_{k} \in E(G) \textup{ tal que } F_{i, k}(\overrightarrow{b}) = 0 \\
-			\nonumber &\Rightarrow & \exists j \; \in \lbrace 1, 2, 3, 4 \rbrace : Q_{i, k, j, j}(\overrightarrow{b}) = 0 \\
-			\nonumber &\Rightarrow & \overline{b_{i, j}} \vee \overline{b_{k, j}} = 0 \\
-			\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{k, j}} = 0 \\
-			\nonumber &\Rightarrow & b_{i, j} = b_{k, j} = 1 \\
-			\nonumber &\Rightarrow & C(v_{i}) = 1\; y \; C(v_{k}) = 1\\
-			\nonumber &\Rightarrow & C(v_{i}) = C(v_{k}) \; (= j) \; \textup{Absurdo!}
-		\end{eqnarray}
-
-		Pues, el coloreo C es propio y $v_{i} v_{k} \in E(G)$. El absurdo vino de suponer que $F(\overrightarrow{b}) = 0$
-
-		\vspace{3mm}
-		$\therefore F(\overrightarrow{b}) = 1$
-
-		\vspace{5mm}
-		\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
-
-		Ahora sabemos que existe un $\overrightarrow{b}$ con $B(\overrightarrow{b}) = 1$ y debemos construir un coloreo propio, con al menos 4 colores.
-
-		\begin{equation*}
-			B(\overrightarrow{b}) = 1\Rightarrow
-  			\left \lbrace
-  			\begin{array}{l}
-    		 A(\overrightarrow{b}) = 1 \Rightarrow A_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (1) \; \forall i \; \exists j : b_{i, j}  = 1 \\
-     		 D(\overrightarrow{b}) = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (2) \;  \forall i \; \nexists j \neq l : b_{i, j}  = 1 = b_{i, l} \\
-     		 F(\overrightarrow{b}) = 1 \Rightarrow \forall i, j \in E(G), C(v_{i}) \neq C(v_{j}) \Rightarrow \textup{C es propio}
-  			\end{array}
-  			\right.
-		\end{equation*}
-
-		De (1) y (2) $\Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \; \exists ! j : b_{i, j} = 1$ \\ \hline \end{tabular}
-
-		\vspace{3mm}
-		Luego, definimos:
-		\[ C(v_{i}) = \textup{unico j con } b_{i, j} = 1\]
+				\vspace{3mm}
+				\par Luego, definimos:
+				\[ C(v_{i}) = \textup{unico j con } b_{i, j} = 1\]
 
 
 	\section{3-SAT es NP-Completo}
@@ -1460,7 +1451,7 @@
 <<Resumen de Discreta II, 16 de agosto de 2012>>,
 \textit{FaMAF, UNC}.
 \bibitem{Baz} \textsc{Lucia Pappaterra},
-<<Resumen de Discreta II, 2013>>,
+<<Resumen de Discreta II, 2014>>,
 \textit{FaMAF, UNC}.
 \bibitem{Baz} \textsc{Agustín Curto},
 <<Carpeta de Clase, 2016>>,
