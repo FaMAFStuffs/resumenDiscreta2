@@ -836,61 +836,57 @@
 
 
 	\section{Cota de Hamming}
-
 		\textbf{\underline{Teorema:}} Sea C un código de longitud \textit{n} y sea $ t = \lfloor \frac{\delta - 1}{2} \rfloor$ la cantidad de errores que corrigue, entonces:
-
-		\begin{eqnarray}
-			\nonumber \lvert C \rvert &\leq & \frac{2^{n}}{1 + n + {n \choose 2} + \dotsc {n \choose t}}
-		\end{eqnarray}
+			\begin{eqnarray}
+				\nonumber \lvert C \rvert &\leq & \frac{2^{n}}{1 + n + {n \choose 2} + \dotsc {n \choose t}}
+			\end{eqnarray}
 
 		\textbf{\underline{Prueba:}} Sea \begin{tabular}{|c|} \hline $ A = \cup_{x \in C} B_{t}(x) $ \\ \hline \end{tabular}
 
-		\vspace{3mm}
-		Como ya dijimos C corrigue \textit{t} errores $\Rightarrow B_{t}(x) \cap B_{t}(y) \neq \emptyset \; \forall x, y \in C : x \neq y$.
+			\vspace{3mm}
+				\par Como ya dijimos C corrigue \textit{t} errores $\Rightarrow B_{t}(x) \cap B_{t}(y) \neq \emptyset \; \forall x, y \in C : x \neq y$.
 
-		\begin{center}
-		$\therefore$ La unión en A es disjunta y \begin{tabular}{|c|} \hline $ \#A = \sum_{x \in C} B_{t}(x) $ \\ \hline \end{tabular}
-		\end{center}
+			\begin{center}
+				$\therefore$ La unión en A es disjunta y \begin{tabular}{|c|} \hline $ \#A = \sum_{x \in C} B_{t}(x) $ \\ \hline \end{tabular}
+			\end{center}
 
-		\vspace{3mm}
-		Sea $S_{r}(x) = \left\lbrace y \in Z_{2}^{n} : d(x, y) = r \right\rbrace$
+			\vspace{3mm}
+			\par Sea $S_{r}(x) = \left\lbrace y \in Z_{2}^{n} : d(x, y) = r \right\rbrace$
 
-		\vspace{3mm}
-		$\therefore B_{t}(x) = \cup_{r = 0}^{t}S_{r}(x)$ y la unión es disjunta $\Rightarrow$ \begin{tabular}{|c|} \hline $ \#B_{t}(x) = \sum_{r = 0}^{t}\#S_{r}(x) $ \\ \hline \end{tabular}
+			\vspace{3mm}
+			\par $\therefore B_{t}(x) = \cup_{r = 0}^{t}S_{r}(x)$ y la unión es disjunta $\Rightarrow$ \begin{tabular}{|c|} \hline $ \#B_{t}(x) = \sum_{r = 0}^{t}\#S_{r}(x) $ \\ \hline \end{tabular}
 
-		\vspace{3mm}
-		\textbf{¿Cuánto vale $S_{r}(x)$?}
-		\begin{eqnarray}
-			\nonumber y \in S_{r}(x) & \Leftrightarrow & d(x, y) = r \\
-			\nonumber & \Leftrightarrow & \lvert x \oplus y \rvert = r \text{ donde defino } (x \oplus y) = \epsilon \\
-			\nonumber & \Leftarrow & \exists \underbrace{\epsilon : \lvert \epsilon \rvert = r}_{\in S_{r}(0)} : y = x \oplus \epsilon
-		\end{eqnarray}
+			\vspace{3mm}
+			\textbf{¿Cuánto vale $S_{r}(x)$?}
+			\begin{eqnarray}
+				\nonumber y \in S_{r}(x) & \Leftrightarrow & d(x, y) = r \\
+				\nonumber & \Leftrightarrow & \lvert x \oplus y \rvert = r \text{ donde defino } (x \oplus y) = \epsilon \\
+				\nonumber & \Leftarrow & \exists \underbrace{\epsilon : \lvert \epsilon \rvert = r}_{\in S_{r}(0)} : y = x \oplus \epsilon
+			\end{eqnarray}
+			\par $\therefore \; S_{r}(x) = x \oplus S_{r}(0) \Rightarrow \#S_{r}(x) = \#S_{r}(0)$
 
-		$\therefore \; S_{r}(x) = x \oplus S_{r}(0) \Rightarrow \#S_{r}(x) = \#S_{r}(0)$
+			\vspace{3mm}
+			\par Luego
+			\begin{eqnarray}
+				\nonumber \#S_{r}(x) &=& \#S_{r}(0) \\
+				\nonumber &=& \# \text{ vectores de longitud n con r unos } \\
+				\nonumber &=& {n \choose r}
+			\end{eqnarray}
 
-		\vspace{3mm}
-		Luego
-		\begin{eqnarray}
-			\nonumber \#S_{r}(x) &=& \#S_{r}(0) \\
-			\nonumber &=& \# \text{ vectores de longitud n con r unos } \\
-			\nonumber &=& {n \choose r}
-		\end{eqnarray}
+			\par Por lo tanto
+			\begin{eqnarray}
+				\nonumber \# A &=& \sum_{x \in C} \# B_{t}(x) \\
+				\nonumber &=& \sum_{x \in C} \; \sum_{r= 0}^{t} \#S_{r}(x) \\
+				\nonumber &=& \sum_{x \in C} \; \sum_{r = 0}^{t} {n \choose r} \\
+				\nonumber &=& \# C * \sum_{r = 0}^{t} {n \choose r}
+			\end{eqnarray}
 
-		Por lo tanto
+			\par Como $A \in Z_{2}^{n} \Rightarrow \# A \leq 2^{n}$, entonces:
+			\begin{eqnarray}
+				\nonumber \lvert \sum_{r = 0}^{t} {n \choose r} \rvert * \# C \leq 2^{n} \\
+				\nonumber \Rightarrow \# C \leq \frac{2^{n}}{\sum_{r = 0}^{t} {n \choose r}}
+			\end{eqnarray}
 
-		\begin{eqnarray}
-			\nonumber \# A &=& \sum_{x \in C} \# B_{t}(x) \\
-			\nonumber &=& \sum_{x \in C} \; \sum_{r= 0}^{t} \#S_{r}(x) \\
-			\nonumber &=& \sum_{x \in C} \; \sum_{r = 0}^{t} {n \choose r} \\
-			\nonumber &=& \# C * \sum_{r = 0}^{t} {n \choose r}
-		\end{eqnarray}
-
-		Como $A \in Z_{2}^{n} \Rightarrow \# A \leq 2^{n}$, entonces:
-
-		\begin{eqnarray}
-			\nonumber \sum_{r = 0}^{t} {n \choose r} * \# C \leq 2^{n} \\
-			\nonumber \Rightarrow \# C \leq \frac{2^{n}}{\sum_{r = 0}^{t} {n \choose r}}
-		\end{eqnarray}
 
 	\section{Teorema de la matriz de chequeo de códigos lineales}
 
