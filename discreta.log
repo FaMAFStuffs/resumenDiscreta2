@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  13 DEC 2016 12:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  13 DEC 2016 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -741,7 +741,7 @@ Cap\'{\i }tulo 1.
 [2
 
 ]
-Overfull \hbox (16.54886pt too wide) in alignment at lines 85--90
+Overfull \hbox (49.91821pt too wide) in alignment at lines 85--90
  [][][] []
  []
 
@@ -752,7 +752,12 @@ L/lmm/m/it/12 f[]$\OT1/lmr/m/n/12 , de la for-ma: $\OML/lmm/m/it/12 s \OT1/lmr/
 m/n/12 = \OML/lmm/m/it/12 z[];  z[];  []  z[];  z[] \OT1/lmr/m/n/12 =
  []
 
-[4] [5] [6] [7] [8]
+[4] [5]
+Overfull \hbox (27.06575pt too wide) in alignment at lines 271--275
+ [][][] []
+ []
+
+[6] [7] [8]
 Cap\'{\i }tulo 2.
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 420.
 
@@ -813,7 +818,7 @@ Here is how much of TeX's memory you used:
  7971 multiletter control sequences out of 15000+600000
  78491 words of font info for 66 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 33i,25n,30p,781b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,25n,30p,782b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rmsc.enc}{/usr
 /local/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/
 texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2
@@ -839,7 +844,7 @@ texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2016basic/texmf-
 dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2016basic/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016basic/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on discreta.pdf (29 pages, 361674 bytes).
+Output written on discreta.pdf (29 pages, 361757 bytes).
 PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  131 compressed objects within 2 object streams

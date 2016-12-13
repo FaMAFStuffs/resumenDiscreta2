@@ -83,8 +83,8 @@
 				\[ \# \textup{ Veces que un lado puede volverse crítico } = \mathcal{O}(n). \]
 
 			\begin{eqnarray}
-				\nonumber \; \therefore Complejidad(\langle E-K\rangle) &=& (\# pasos) * Compl(1 \; \textit{paso}) \\
-				\nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Compl(BFS) \\
+				\nonumber \; \therefore Complejidad(\langle E-K\rangle) &=& (\# pasos) * Complejidad(1 \; \textit{paso}) \\
+				\nonumber &=& (\# \textup{veces que un lado se vuelve crítico}) * (\# lados) * Complejidad(BFS) \\
 				\nonumber  &=& \mathcal{O}(n) * \mathcal{O}(m)* \mathcal{O}(m) \\
 				\nonumber &=& \mathcal{O}(nm^{2})
 			\end{eqnarray}
@@ -182,7 +182,7 @@
 		\textbf{\underline{Teorema:}} La complejidad del algoritmo de Dinic es $\mathcal{O}(n^{2}m)$.
 
 		\textbf{\underline{Prueba:}} Como Dinic es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n - 1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
-			\[ \textup{Complejidad(Dinic) } = \mathcal{O}(n) * \textup{ Complejidad(Paso Bloqueante)} \]
+			\[ \textup{Complejidad(Dinic) } = \mathcal{O}(n) * \textup{ Complejidad(Paso Bloqueante de Dinic)} \]
 			\par Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que la complejidad del paso bloqueante es $\mathcal{O}(nm)$.
 			\vspace{3mm}
 			\par Sea:
@@ -269,7 +269,7 @@
 
 			\par De (1) y (2):
 			\begin{eqnarray}
-				\nonumber \textup{Complejidad(Paso Bloqueante)} &=& \# \textup{ Cantidad de palabras} * \textup{ Complejidad de la palabra} \\
+				\nonumber \textup{Complejidad(Paso Bloqueante de Dinic)} &=& \# \textup{ Cantidad de palabras} * \textup{ Complejidad de la palabra} \\
 				\nonumber &=& m * \mathcal{O}(n) \\
 				\nonumber &=& \mathcal{O}(m*n)
 			\end{eqnarray}
@@ -280,7 +280,7 @@
 
 		\textbf{\underline{Prueba:}} Como Wave es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n - 1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
 			\begin{center}
-				Complejidad(Wave)$ = \mathcal{O}(n) *$ Compl(Paso bloqueante de Wave)
+				Complejidad(Wave)$ = \mathcal{O}(n) \; *$ Complejidad(Paso bloqueante de Wave)
 			\end{center}
 
 			\par Para probar que la complejidad de Wave es $\mathcal{O}(n^{3})$ debemos probar que complejidad del paso bloqueante es $\mathcal{O}(n^{2})$. El paso bloqueante de Wave consiste en una serie de:
@@ -290,12 +290,12 @@
 			\end{itemize}
 
 			\par Cada FB y BB es una sucesión de \textquotedblleft \textbf{buscar vecinos}\textquotedblright y \textquotedblleft \textbf{procesar}\textquotedblright el lado resultante. Estos "procesamientos" \; son complicados pero $ \mathcal{O}(1)$.
-			\[ \therefore \textup{ Compl(Paso Bloqueante) } = \# \textup{ \textquotedblleft procesamientos de lado\textquotedblright} \]
+			\[ \therefore \textup{ Complejidad(Paso Bloqueante de Wave) } = \# \textup{ \textquotedblleft procesamientos de lado\textquotedblright} \]
 
 			\par Los "procesamientos" de lados los podemos dividir en dos categorías:
 			\begin{enumerate}
-				\item Aquellos procesamientos que saturan o vacian el lado. Denotaremos \textquotedblleft T\textquotedblright \; al número de estos procesamientos.
-				\item Aquellos procesamientos que no saturan ni vacian el lado. Denotaremos \textquotedblleft Q\textquotedblright \; al número de estos procesamientos.
+				\item Denotaremos \textquotedblleft T\textquotedblright \; al número de procesamientos que saturan o vacian el lado.
+				\item Denotaremos \textquotedblleft Q\textquotedblright \; al número de procesamientos que no saturan ni vacian el lado.
 			\end{enumerate}
 			\par Por lo tanto queremos acotar $T + Q$.
 
@@ -303,11 +303,11 @@
 			\textbf{Complejidad de T:}
 			\begin{itemize}
 				\item ¿Puede un lado $\overrightarrow{xy}$ saturado volver a saturarse?
-					\par Para poder volver a \underline{saturarse} primero tiene que vaciarse auque sea un poco, es decir, antes de poder volver a saturarlo \textquotedblleft \textit{y}\textquotedblright \; debe devolver flujo a \textquotedblleft \textit{x}\textquotedblright \;, pero para que en Wave \textquotedblleft \textit{y}\textquotedblright \; le devuelva flujo a \textquotedblleft \textit{x}\textquotedblright \;  debe ocurrir que \textquotedblleft \textit{y}\textquotedblright \; este bloqueado (porque BB(y) solo se ejecuta si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado), pero si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado \textquotedblleft \textit{x}\textquotedblright \; no puede mandarle flujo nunca más.
+					\par Para poder volver a \underline{saturarse} primero tiene que vaciarse aunque sea un poco, es decir, antes de poder volver a saturarlo \textquotedblleft \textit{y}\textquotedblright \; debe devolver flujo a \textquotedblleft \textit{x}\textquotedblright \;, pero para que en Wave \textquotedblleft \textit{y}\textquotedblright \; le devuelva flujo a \textquotedblleft \textit{x}\textquotedblright \;  debe ocurrir que \textquotedblleft \textit{y}\textquotedblright \; este bloqueado (porque BB(y) solo se ejecuta si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado), pero si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado \textquotedblleft \textit{x}\textquotedblright \; no puede mandarle flujo nunca más.
 					\[ \therefore \overrightarrow{xy} \textup{ no puede resaturarse } \]
 					\par \underline{Conclusión 1:} Los lados se saturan solo una vez.
 				\item ¿Puede un lado $\overrightarrow{xy}$ vaciado completamente volver a vaciarse?
-					\par Para poder volver a \underline{vaciarse} como está vacío completamente, primero hay que mandar flujo, pero si lo vacié \textquotedblleft \textit{y}\textquotedblright \; está bloqueado por lo que \textquotedblleft \textit{x}\textquotedblright \; no puede mandar flujo.
+					\par Para poder volver a \underline{vaciarse} como está vacío completamente, primero hay que mandar flujo, pero si lo vacié, \textquotedblleft \textit{y}\textquotedblright \; está bloqueado por lo que \textquotedblleft \textit{x}\textquotedblright \; no puede mandar flujo.
 					\[ \therefore \overrightarrow{xy} \textup{ no puede volver a vaciarse } \]
 					\par \underline{Conclusión 2:} Los lados se vacían completamente a lo sumo una vez.
 
@@ -606,10 +606,10 @@
 
 					\par Luego como $\lvert S \rvert$ solo puede crecer $\mathcal{O}(n)$ veces, tenemos que hay a lo sumo \textit{n} \textbf{cambios de matriz} antes de extender el matching. Entonces:
 						\begin{center}
-							\par Complejidad(1 Extensión) $= \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Compl(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas }$ \\
+							\par Complejidad(1 Extensión) $= \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Complejidad(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas }$ \\
 
 							\vspace{5mm}
-							\par $\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching \; inicial} + \; (\underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Compl(extension)}) = \; \mathcal{O}(n^{4})$
+							\par $\therefore$ Complejidad(Húngaro) $= \underbrace{\mathcal{O}(n^{2})}_{Matching \; inicial} + \; (\underbrace{\mathcal{O}(n)}_{\#extensiones} * \underbrace{\mathcal{O}(n^{3})}_{Complejidad(extension)}) = \; \mathcal{O}(n^{4})$
 						\end{center}
 			\end{enumerate}
 
