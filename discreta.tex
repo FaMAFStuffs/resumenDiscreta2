@@ -715,65 +715,63 @@
 		\textbf{\underline{Teorema:}} Todo grafo regular bipartito tiene un matching perfecto.
 
 		\textbf{\underline{Prueba:}} Sea $G = (X \cup Y, E)$ bipartito regular, tal que $\forall W \subseteq V(G)$, definimos:
+			\begin{eqnarray}
+				\nonumber E_{W} &=& \left\lbrace xy \in E(G): x \in W \; o \ y \in W \right\rbrace \\
+				\nonumber &=& \lbrace \text{lados con un extremo en W} \rbrace
+			\end{eqnarray}
 
-		\begin{eqnarray}
-			\nonumber E_{W} &=& \left\lbrace xy \in E(G): x \in W \; o \ y \in W \right\rbrace \\
-			\nonumber &=& \text{lados con un extremo en W}
-		\end{eqnarray}
+			\par Supongamos que $W \subseteq X$ (de igual forma para $W \subseteq Y$). Además, como G es regular, $\exists \; \Delta  = \delta > 0 : d(z) = \Delta \; \; \forall z$.
+			\begin{eqnarray}
+				\nonumber \lvert E_{w} \rvert &=& \lvert \left\lbrace xy \in E: x \in W \right\rbrace \rvert \\
+				\nonumber &=& \sum_{x \in w} \lvert \left\lbrace y : xy \in E \right\rbrace \rvert \\
+				\nonumber &=& \sum_{x \in w} \; \underbrace{d(x)}_{\Delta} \\
+				\nonumber &=& \Delta * \lvert w \rvert
+			\end{eqnarray}
 
-		Supongamos que $W \subseteq X$ (de igual forma para $W \subseteq Y$). Además, como G es regular, $\exists \; \Delta > 0 : d(z) = \Delta \; \; \forall z$.
+			\par Es decir, a cada \textit{w} le corresponden $\Delta$ lados distintos. En particular:
+			\begin{eqnarray}
+				\nonumber \lvert E_{x} \rvert &=& \Delta * \lvert x \rvert \\
+				\nonumber \lvert E_{y} \rvert &=& \Delta * \lvert y \rvert
+			\end{eqnarray}
+			\par pero $E_{x} = E = E_{y}$ pues G es bipartito.
 
-		\begin{eqnarray}
-			\nonumber \lvert E_{w} \rvert &=& \lvert \left\lbrace xy \in E: x \in W \right\rbrace \rvert \\
-			\nonumber &=&\ \sum_{x \in w} \lvert \left\lbrace y : xy \in E \right\rbrace \rvert \\
-			\nonumber &=& \sum_{x \in w} \; \underbrace{d(x)}_{\Delta} \\
-			\nonumber &=& \Delta * \lvert w \rvert
-		\end{eqnarray}
+			\vspace{5mm}
+			\par Por lo tanto:
+			\begin{eqnarray}
+				\nonumber \lvert E_{x} \rvert = \lvert E_{y} \rvert &\Rightarrow & \Delta * \lvert x \rvert = \Delta * \lvert y \rvert \\
+				\nonumber &\Rightarrow & \lvert x \rvert = \lvert y \rvert \\
+				\nonumber &\Rightarrow & \textup{ Todo matching completo es perfecto}
+			\end{eqnarray}
 
-		Es decir, a cada \textit{w} le corresponden $\Delta$ lados distintos. En particular:
+			\vspace{3mm}
+			\par Basta ver que existe un matching completo de X a Y, es decir, que se cumple la condición de Hall.
 
-		\begin{eqnarray}
-		\nonumber \lvert E_{x} \rvert &=& \Delta * \lvert x \rvert \\
-		\nonumber \lvert E_{y} \rvert &=& \Delta * \lvert y \rvert
-		\end{eqnarray}
+			\vspace{5mm}
+			\par Sea $S \subseteq X$:
 
-		pero $E_{x} = E = E_{y}$ pues G es bipartito.
+			\begin{equation*}
+				\text{Sea}
+				\underbrace{xy}_{\begin{subarray}{l} \; x \in X \\
+				\; y \in Y \end{subarray}} \in E_{s} \Rightarrow
+				{\Huge \exists}
+	  		\left\lbrace
+	  		\begin{array}{l}
+	    			x \in S \\
+	     		  y \in \Gamma(x) \\
+	  		\end{array}
+	 			\right\rbrace
+	 			\Rightarrow y \in \Gamma(S) \Rightarrow xy \in E_{\Gamma(s)}
+			\end{equation*}
 
-		\vspace{5mm}
-		Por lo tanto:
+			\vspace{3mm}
+			\par Es decir, hemos probado que:
 
-		\vspace{3mm}
-		$ \lvert E_{x} \rvert = \lvert E_{y} \rvert \Rightarrow \Delta * \lvert x \rvert = \Delta * \lvert y \rvert \Rightarrow \lvert x \rvert = \lvert y \rvert \qquad \therefore$ Todo matching completo es perfecto.
-
-
-		Basta ver que existe un matching completo de X a Y, es decir, que se cumple la condición de Hall.
-
-		\vspace{5mm}
-		Sea $S \subseteq X$:
-
-		\begin{equation*}
-			\text{Sea}
-			\underbrace{xy}_{\begin{subarray}{l} \; x \in X \\
-			\; y \in Y \end{subarray}} \in E_{s} \Rightarrow
-			{\Huge \exists}
-  			\left\lbrace
-  			\begin{array}{l}
-    		 x \in S \\
-     		 y \in \Gamma(x) \\
-  			\end{array}
- 			 \right\rbrace
- 			 \Rightarrow y \in \Gamma(S) \Rightarrow xy \in E_{\Gamma(s)}
-		\end{equation*}
-
-		\vspace{3mm}
-		Es decir, hemos probado que:
-
-		\begin{eqnarray}
-			\nonumber E_{s} & \subseteq & E_{\Gamma(S)} \\
-			\nonumber \lvert E_{S} \rvert &\leq & \lvert E_{\Gamma(S)} \rvert \\
-			\nonumber \Delta \; \lvert S \rvert & \leq & \Delta \; \lvert \Gamma(S) \rvert \\
-			\nonumber \lvert S \rvert & \leq & \Gamma(S)
-		\end{eqnarray}
+			\begin{eqnarray}
+				\nonumber E_{s} &\subseteq & E_{\Gamma(S)} \\
+				\nonumber \lvert E_{S} \rvert &\leq & \lvert E_{\Gamma(S)} \rvert \\
+				\nonumber \Delta \; \lvert S \rvert &\leq & \Delta \; \lvert \Gamma(S) \rvert \\
+				\nonumber \lvert S \rvert &\leq & \Gamma(S)
+			\end{eqnarray}
 
 
 	\section{Todo grafo bipartito es $\Delta$ coloreable}
