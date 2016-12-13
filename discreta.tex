@@ -1242,208 +1242,205 @@
 
 
 	\section{3-COLOR es NP-Completo}
-		\underline{Teorema:} 3-COLOR es NP-Completo
+		\textbf{\underline{Teorema:}} 3-COLOR es NP-Completo
 
-		\underline{Prueba:} Veremos que $3-SAT \leq_{p} 3-Color$, es decir, dado B en CNF con 3 literales por disjunción, debemos crear un grafo G, tal que:
-
+		\textbf{\underline{Prueba:}} Veremos que $3-SAT \leq_{p} 3-Color$, es decir, dado B en CNF con 3 literales por disjunción, debemos crear un grafo G, tal que:
 			\[ \textup{B es satisfacible } \Leftrightarrow \chi(G) \leq 3 \]
+			\par Sea:
+				\begin{eqnarray}
+					\nonumber B &=& D_{1}, D_{2} \dotsc D_{m} \textup{ con variables } \lbrace x_{1} \dotsc x_{m} \rbrace \\
+					\nonumber D_{i} &=& l_{i, 1} \vee l_{i, 2} \vee l_{i, 3}
+				\end{eqnarray}
 
-		\par Sea:
-			\begin{eqnarray}
-				\nonumber B &=& D_{1}, D_{2} \dotsc D_{m} \textup{ con variables } \lbrace x_{1} \dotsc x_{m} \rbrace \\
-				\nonumber D_{i} &=& l_{i, 1} \vee l_{i, 2} \vee l_{i, 3}
-			\end{eqnarray}
-
-		\vspace{3mm}
-		\underline{Construcción del grafo:}
-			\begin{itemize}
-				\item Dado un literal \textit{l}, definimos:
-					\begin{equation*}
-						\psi(l) =
-  						\left \lbrace
-		  				\begin{array}{l}
-    				 	v_{k} \; \textup{ si } l = x_{k} \\
-    		 			w_{k} \textup{ si } l = \overline{x_{k}}
-		  				\end{array}
-  						\right.
-					\end{equation*}
-				\item Vértices:
-					\[ V(G) = \lbrace s, t \rbrace \cup \lbrace v_{1} \dotsc v_{n}, w_{1} \dotsc w_{n} \rbrace \; \cup \]
-					\[ \qquad \qquad \; \; \; \; \lbrace \mu_{i, 1}, \mu_{i, 2}, \mu_{i, 3}, b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace_{i = 1}^{m}  \]
+			\vspace{3mm}
+			\underline{Construcción del grafo:}
+				\begin{itemize}
+					\item Dado un literal \textit{l}, definimos:
+						\begin{equation*}
+							\psi(l) =
+	  					\left \lbrace
+			  			\begin{array}{l}
+	    				 	v_{k} \; \textup{ si } l = x_{k} \\
+	    		 			w_{k} \textup{ si } l = \overline{x_{k}}
+			  			\end{array}
+	  					\right.
+						\end{equation*}
+					\item Vértices:
+						\[ V(G) = \lbrace s, t \rbrace \cup \lbrace v_{1} \dotsc v_{n}, w_{1} \dotsc w_{n} \rbrace \; \cup \]
+						\[ \qquad \qquad \; \; \; \; \lbrace \mu_{i, 1}, \mu_{i, 2}, \mu_{i, 3}, b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace_{i = 1}^{m}  \]
 					\item Aristas:
-						\[ \lbrace s t \rbrace \cup \lbrace t v_{i}, t w_{i}, v_{i} w_{i} \rbrace_{i = 1}^{n} \; \cup \lbrace s \mu_{i, j} \rbrace_{i = 1, \; \; j = 1, 2, 3}^{m} \cup F \]
+						\[ E(G) = \lbrace s t \rbrace \cup \lbrace t v_{i}, t w_{i}, v_{i} w_{i} \rbrace_{i = 1}^{n} \; \cup \lbrace s \mu_{i, j} \rbrace_{i = 1, \; \; j = 1, 2, 3}^{m} \cup F \]
 						\[ \lbrace b_{i, 1} b_{i, 2}, b_{i, 1} b_{i, 3}, b_{i, 2} b_{i, 3}, b_{i, 1} \mu_{i, 1}, b_{i, 2}, \mu_{i, 2}, b_{i, 3} \mu_{i, 3} \rbrace_{i = 1}^{m}\]
 						\par Donde:
-							\[ F = \lbrace \mu_{i, j} \psi(l_{i, j}) \rbrace_{i = 1, \; \; j = 1, 2, 3}^{m}\]
-			\end{itemize}
+						\[ F = \lbrace \mu_{i, j} \psi(l_{i, j}) \rbrace_{i = 1, \; \; j = 1, 2, 3}^{m}\]
+				\end{itemize}
 
-			\begin{equation*}
-						\textup{ G tiene: }
-  						\left \lbrace
-		  				\begin{array}{l}
-    				 		2 + 2n + 6m \textup{ vertices} \\
-    				 		1 + 3n + 6m+ 3m + 3m \textup{ aristas}
-		  				\end{array}
-  						\right\rbrace
-  						\Rightarrow \textup{ G es polinomial}
-					\end{equation*}
-
-
-
-		\vspace{5mm}
-		\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
-
-			Como G tiene triángulos, si $\chi (G) \leq 3$, entonces debe ser $\chi (G) = 3$. Por lo tanto, existe un coloreo C de G con 3 colores.
-
-			Definición:
-			\begin{equation*}
-				b_{k} =
-  				\left \lbrace
-  				\begin{array}{l}
-    		 	1 \textup{ si } C(v_{k}) = C(s) \\
-    		 	0 \textup{ c.c}
-  				\end{array}
-  				\right.
-			\end{equation*}
-
-		Para probar $B(\overrightarrow{b}) = 1$ debemos probar que $D_{i}(\overrightarrow{b}) = \forall i$.
-
-		Sea $i \in \lbrace	1, 2, \dotsc m \rbrace$, como $ \lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace$ es un triángulo, entonces deben aparecer los 3 colores.
-		\par 	Por lo tanto: $\exists j : C(b_{i, j}) = C(s)$
-		\par Luego:
-			\begin{equation*}
-  			\left.
-  			\begin{array}{l}
-    		 	(1) \; \mu_{i, j} b_{i, j} \in E(G) \Rightarrow C(\mu_{i, j}) \neq C(b_{i, j}) = C(t) \\
-    		 	(2) \; \mu_{i, j} s \in E(G) \Rightarrow C(\mu_{i, j}) \neq C(s) \\
-    		 	(3) \; s t \in E(G) \Rightarrow C(s) \neq C(t)
-  			\end{array}
- 			 \right\rbrace
- 			 \Rightarrow C(\mu_{i, j}) = \textup{ TERCER COLOR}
-			\end{equation*}
-
-		\par Por otro lado:
-			\begin{equation*}
-  			\left.
-  			\begin{array}{l}
-    		 	(1) \; \mu_{i, j} \psi(l_{i, j}) \in E(G) \Rightarrow C(\psi(l_{i, j}) \neq \textup{ TERCER COLOR} \\
-    		 	(2) \; \psi(l_{i, j}) t \in E(G) \Rightarrow C(\psi(l_{i, j}) \neq C(t)
-  			\end{array}
- 			 \right\rbrace
- 			 \Rightarrow C(\psi(l_{i, j}) = C(s)
-			\end{equation*}
-
-		\begin{itemize}
-			\item Caso (1):
-				\begin{eqnarray}
-						\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} \\
-						\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}
-				\end{eqnarray}
-				\par Entonces:
-				\begin{eqnarray}
-						\nonumber C(v_{k}) &=& C(s) \Rightarrow b_{k} = 1 \\
-						\nonumber \therefore l_{i, j}(\overrightarrow{b}) &=& 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1
-				\end{eqnarray}
-			\item Caso (2):
-				\begin{eqnarray}
-						\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = 	\overline{b_{k}} \\
-						\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}
-				\end{eqnarray}
-				\par Entonces:
 				\begin{equation*}
-  					\left.
-  					\begin{array}{l}
-    		 			C(w_{k}) = C(s) \\
-    		 			v_{k} w_{k} \in E(G)
-  					\end{array}
- 			 		\right\rbrace
- 			 		\Rightarrow C(v_{k}) \neq C(s) \therefore b_{k} = 0
+					\textup{ G tiene: }
+	  				\left \lbrace
+			  		\begin{array}{l}
+	    				2 + 2n + 6m \textup{ vertices} \\
+	    				1 + 3n + 6m+ 3m + 3m \textup{ aristas}
+			  		\end{array}
+	  				\right\rbrace
+						\Rightarrow \textup{ G es polinomial}
 				\end{equation*}
-				\[ \therefore b_{k} = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \]
-		\end{itemize}
 
-		\vspace{5mm}
-		\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
-			\par Acá asumimos que $\exists \overrightarrow{b} : B(\overrightarrow{b}) = 1 \Rightarrow \forall i, \; D(\overrightarrow{b}) = 1 \Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \exists j : l_{i, j}(\overrightarrow{b}) = 1$ \\ \hline \end{tabular} $(\star)$. Debemos construir un coloreo propio con 3 colores.
-			\par Definimos:
-			 	\begin{equation*}
-  					\left.
-  					\begin{array}{l}
-    		 			C(s) = \textup{ BLANCO} \\
-    		 			C(t) = \textup{ AZUL}
-  					\end{array}
- 			 		\right\rbrace
- 			 		\Rightarrow s t \textup{ No Crea Problemas (NCP)}
+			\vspace{5mm}
+			\begin{tabular}{|c|} \hline $\Leftarrow$ \\\hline \end{tabular}
+				\par Como G tiene triángulos, si $\chi (G) \leq 3$, entonces debe ser $\chi (G) = 3$. Por lo tanto, existe un coloreo C de G con 3 colores.
+				\vspace{3mm}
+				\par Definición:
+				\begin{equation*}
+					b_{k} =
+		  		\left \lbrace
+		  		\begin{array}{l}
+		    		1 \textup{ si } C(v_{k}) = C(s) \\
+		    		0 \textup{ si } C(v_{k}) \neq C(s)
+		  		\end{array}
+		  		\right.
+				\end{equation*}
+				\par Para probar $B(\overrightarrow{b}) = 1$ debemos probar que $D_{i}(\overrightarrow{b}) = 1 \forall i$.
+				\par Sea $i \in \lbrace	1, 2, \dotsc m \rbrace$, como $ \lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace$ es un triángulo, entonces deben aparecer los 3 colores.
+				\vspace{3mm}
+				\par 	Por lo tanto: $\exists j : C(b_{i, j}) = C(s)$
+				\vspace{3mm}
+				\par Luego:
+				\begin{equation*}
+		  		\left.
+		  		\begin{array}{l}
+		    		(1) \; \mu_{i, j} b_{i, j} \in E(G) \Rightarrow C(\mu_{i, j}) \neq C(b_{i, j}) = C(t) \\
+		    		(2) \; \mu_{i, j} s \in E(G) \Rightarrow C(\mu_{i, j}) \neq C(s) \\
+		    		(3) \; s t \in E(G) \Rightarrow C(s) \neq C(t)
+		  		\end{array}
+		 			\right\rbrace
+		 			\Rightarrow C(\mu_{i, j}) = \textup{ TERCER COLOR}
+				\end{equation*}
+
+				\par Por otro lado:
+				\begin{equation*}
+		  		\left.
+		  		\begin{array}{l}
+		    	 	(1) \; \mu_{i, j} \psi(l_{i, j}) \in E(G) \Rightarrow C(\psi(l_{i, j}) \neq \textup{ TERCER COLOR} \\
+		    	 	(2) \; \psi(l_{i, j}) t \in E(G) \Rightarrow C(\psi(l_{i, j}) \neq C(t)
+		  		\end{array}
+		 		 	\right\rbrace
+		 			\Rightarrow C(\psi(l_{i, j}) = C(s)
+				\end{equation*}
+
+				\begin{itemize}
+					\item Caso (1):
+						\begin{eqnarray}
+							\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} \\
+							\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}
+						\end{eqnarray}
+						\par Entonces:
+						\begin{eqnarray}
+							\nonumber C(v_{k}) &=& C(s) \Rightarrow b_{k} = 1 \\
+							\nonumber \therefore l_{i, j}(\overrightarrow{b}) &=& 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1
+						\end{eqnarray}
+					\item Caso (2):
+						\begin{eqnarray}
+							\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = 	\overline{b_{k}} \\
+							\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}
+						\end{eqnarray}
+						\par Entonces:
+						\begin{equation*}
+		  				\left.
+		  				\begin{array}{l}
+		    		 		C(w_{k}) = C(s) \\
+		    		 		v_{k} w_{k} \in E(G)
+		  				\end{array}
+		 			 		\right\rbrace
+		 			 		\Rightarrow C(v_{k}) \neq C(s) \therefore b_{k} = 0
+						\end{equation*}
+						$\qquad\qquad\qquad\qquad\qquad$
+						$\therefore b_{k} = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1$
+				\end{itemize}
+
+			\vspace{5mm}
+			\begin{tabular}{|c|} \hline $\Rightarrow$ \\\hline \end{tabular}
+				\par Acá asumimos que $\exists \overrightarrow{b} : B(\overrightarrow{b}) = 1 \Rightarrow \forall i, \; D(\overrightarrow{b}) = 1 \Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \; \exists j : l_{i, j}(\overrightarrow{b}) = 1$ \\ \hline \end{tabular} $(\star)$. Debemos construir un coloreo propio con 3 colores.
+				\vspace{3mm}
+				\par Definimos:
+				\begin{equation*}
+		  		\left.
+		  		\begin{array}{l}
+		    		C(s) = \textup{ BLANCO} \\
+		    		C(t) = \textup{ AZUL}
+		  		\end{array}
+		 			\right\rbrace
+		 			\Rightarrow s t \textup{ No Crea Problemas (NCP)}
 				\end{equation*}
 				\begin{equation*}
 					C(v_{k}) =
-		  			\left\lbrace
-  					\begin{array}{l}
-    		 			\textup{BLANCO si } b_{k} = 1 \\
-    		 			\textup{AZUL si } b_{k} = 0
-  					\end{array}
- 			 		\right\rbrace
- 			 		\Rightarrow \underbrace{v_{k}}_{B \; o \; N} \underbrace{w_{k}}_{B \; o \; N} \textup{ NCP}
+					\left\lbrace
+		  		\begin{array}{l}
+		    		\textup{BLANCO \; si } b_{k} = 1 \\
+		    		\textup{NEGRO \; \; si } b_{k} = 0
+					\end{array}
+		 			\right\rbrace
+		 			\Rightarrow \underbrace{v_{k}}_{B \; o \; N} \underbrace{w_{k}}_{B \; o \; N} \textup{ NCP}
 				\end{equation*}
 				\begin{equation*}
 					C(w_{k}) =
-		  			\left\lbrace
-  					\begin{array}{l}
-    		 			\textup{NEGRO \; \, si } b_{k} = 1 \\
-    		 			\textup{BLANCO \; si } b_{k} = 0
-  					\end{array}
- 			 		\right\rbrace
- 			 		\Rightarrow v_{k} t  \textup { y } w_{k} t \textup{ NCP}
+		  		\left\lbrace
+					\begin{array}{l}
+	  		 		\textup{NEGRO \; \, si } b_{k} = 1 \\
+	  		 		\textup{BLANCO \; si } b_{k} = 0
+					\end{array}
+				 	\right\rbrace
+				 	\Rightarrow v_{k} t  \textup { y } w_{k} t \textup{ NCP}
 				\end{equation*}
 
-		\par Falta colorear las garras. Dado \textit{i}, tomemos el \textit{j} de $(\star )$ y definimos:
+				\par Falta colorear las garras. Dado \textit{i}, tomemos el \textit{j} de $(\star )$ y definimos:
 				\begin{equation*}
 					C(\mu_{i, r}) =
-		  			\left\lbrace
-  					\begin{array}{l}
-    		 			\textup{NEGRO \; \; si } r = j \\
-    		 			\textup{BLANCO \; si } r \neq j
-  					\end{array}
- 			 		\right\rbrace
- 			 		\Rightarrow \underbrace{\mu_{i, r}}_{N \; o \; A} \underbrace{s}_{B} \textup{ NCP } \forall r
+		  		\left\lbrace
+					\begin{array}{l}
+	  		 		\textup{NEGRO \; \; si } r = j \\
+	  		 		\textup{AZUL \; \; \; si } r \neq j
+					\end{array}
+				 	\right\rbrace
+				 	\Rightarrow \underbrace{\mu_{i, r}}_{N \; o \; A} \underbrace{s}_{B} \textup{ NCP } \forall r
 				\end{equation*}
 
-		\begin{itemize}
-			\item Caso $r \neq j : \qquad \underbrace{\mu_{i, r}}_{A} \underbrace{\psi(l_{i, r})}_{B \; o \, N} \Rightarrow$ NCP
-			\item Caso $r = j$:
 				\begin{itemize}
-			\item Caso (1):
-				\begin{eqnarray}
-						\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} = 1 \Rightarrow C(v_{k}) = \textup{ BLANCO} \\
-						\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{v_{k}}_{B} \textup{ NCP}
-				\end{eqnarray}
+					\item Caso $r \neq j : \qquad \underbrace{\mu_{i, r}}_{A} \underbrace{\psi(l_{i, r})}_{B \; o \, N} \Rightarrow$ NCP
+					\item Caso $r = j$:
+						\begin{itemize}
+							\item Caso (1):
+								\begin{eqnarray}
+									\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} = 1 \Rightarrow C(v_{k}) = \textup{ BLANCO} \\
+									\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{v_{k}}_{B} \textup{ NCP}
+								\end{eqnarray}
 
-			\item Caso (2):
-				\begin{eqnarray}
-						\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = \overline{b_{k}} = 1 \Rightarrow b_{k} = 0 \Rightarrow C(w_{k}) = \textup{ BLANCO} \\
-						\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{w_{k}}_{B} \textup{ NCP}
-				\end{eqnarray}
-			\end{itemize}
-		\end{itemize}
+							\item Caso (2):
+								\begin{eqnarray}
+										\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = \overline{b_{k}} = 1 \Rightarrow b_{k} = 0 \Rightarrow C(w_{k}) = \textup{ BLANCO} \\
+										\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{w_{k}}_{B} \textup{ NCP}
+								\end{eqnarray}
+						\end{itemize}
+				\end{itemize}
 
-	\par Quedan las bases:
-		\begin{equation*}
-			C(b_{i, r}) =
-		  	\left\lbrace
-  			\begin{array}{l}
-    		 	\textup{AZUL \qquad si } r = j \\
-    		 	\textup{BLANCO \; si } r \neq j \\
-    		 	\textup{NEGRO \; \; si } r \neq j
-  			\end{array}
- 			\right.
-		\end{equation*}
+				\par Quedan las bases:
+				\begin{equation*}
+					C(b_{i, r}) =
+				  \left\lbrace
+		  		\begin{array}{l}
+		    		\textup{AZUL \qquad si } r = j \\
+		    		\textup{BLANCO \; si } r \neq j \\
+		    		\textup{NEGRO \; \; si } r \neq j
+		  		\end{array}
+		 			\right.
+				\end{equation*}
 
-	Entonces:
-	\begin{itemize}
-		\item $\lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace \textup{ NCP}$
- 		\item $\underbrace{b_{i, j}}_{A} \underbrace{\mu_{i, j}}_{N} \textup{ NCP}$
- 		\item $\therefore \underbrace{b_{i, r}}_{B \; o \; N} \underbrace{\mu_{i, r}}_{A} \textup{ NCP}$
-	\end{itemize}
+				\par Entonces:
+				\begin{itemize}
+					\item $\lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace \textup{ NCP}$
+			 		\item $\underbrace{b_{i, j}}_{A} \underbrace{\mu_{i, j}}_{N} \textup{ NCP}$
+			 		\item $\therefore \underbrace{b_{i, r}}_{B \; o \; N} \underbrace{\mu_{i, r}}_{A} \textup{ NCP}$
+				\end{itemize}
 
 
 
