@@ -59,10 +59,10 @@
 				\nonumber &=& d_{k}(x) + b_{k}(y) + 1
 			\end{eqnarray}
 
-			\par Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{j} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y, x $\dotsb$ \textit{t} se usa para construir $f_{j}$.
+			\par Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{l} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y, x $\dotsb$ \textit{t} se usa para construir $f_{l}$.
 			\begin{eqnarray}
-				d_{j}(t) &=& d_{j}(x)+ b_{j}(x) \\
-				\nonumber &=& d_{j}(y)+1+b_{j}(x)
+				d_{l}(t) &=& d_{l}(x) + b_{l}(x) \\
+				\nonumber &=& d_{l}(y) + 1 + b_{l}(x)
 			\end{eqnarray}
 
 			\par Entonces:
@@ -71,19 +71,19 @@
 	  		\left \lbrace
 	  		\begin{array}{l}
 					d_{k}(y) = d_{k}(x) + 1 \; \; \star \\
-	    		d_{j}(x) = d_{j}(y) + 1 \; \; \dag
+	    		d_{l}(x) = d_{l}(y) + 1 \; \; \dag
 	  		\end{array}
 	  		\right.
 			\end{equation*}
 
 			\par Luego:
 			\begin{eqnarray}
-				\nonumber d_{j}(t) &=& d_{j}(x) + b_{j}(x) \\
-				\nonumber &=& d_{j}(y) + 1 + b_{j}(x) \qquad\qquad\qquad\text{Por } \dag \\
+				\nonumber d_{l}(t) &=& d_{l}(x) + b_{l}(x) \\
+				\nonumber &=& d_{l}(y) + 1 + b_{l}(x) \qquad\qquad\qquad\text{Por } \dag \\
 				\nonumber & \geq & d_{k}(y) + 1 + b_{k}(x) \qquad\qquad\qquad\text{Por} \circledast \\
 				\nonumber &=& d_{k}(x) + 1 + 1 + b_{k}(x) \;\qquad\qquad\text{Por} \star \\
 				\nonumber &=& d_{k}(\textit{t}) + 2 \\
-				\nonumber \Rightarrow d_{j}(\textit{t}) & \geq & d_{k}(\textit{t}) + 2
+				\nonumber \therefore d_{l}(\textit{t}) & \geq & d_{k}(\textit{t}) + 2
 			\end{eqnarray}
 
 			\vspace{5mm}
