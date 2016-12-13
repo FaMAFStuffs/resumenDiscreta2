@@ -55,19 +55,19 @@
 			\par Llamemos \textit{\underline{crítico}} a un lado disponible en el paso \textit{k} pero no disponible en el paso \textit{k + 1}. Es decir, si \textit{xy} es un lado $\Rightarrow$ \textit{xy} se satura ó \textit{yx} se vacía en el paso \textit{k}.
 			\par Supongamos que al construir $f_{k}$ el lado \textit{xy} se vuelve crítico, el camino: \textit{s} $\dotsc$ x, y $\dotsc$ \textit{t} se usa para construir $f_{k}$.
 			\begin{eqnarray}
-				d_{k}(\textit{t}) &=& d_{k}(x) + b_{k}(x) \\
+				\nonumber d_{k}(\textit{t}) &=& d_{k}(x) + b_{k}(x) \\
 				\nonumber &=& d_{k}(x) + b_{k}(y) + 1
 			\end{eqnarray}
 
-			\par Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección (\textit{i.e yx}). Sea \textit{l} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y, x $\dotsb$ \textit{t} se usa para construir $f_{l}$.
+			\par Para que \textit{xy} pueda ser \textit{crítico} nuevamente debe ser usado en la otra dirección. Sea \textit{l} el paso posterior a \textit{k} en el cual se usa el lado en la otra dirección, el camino \textit{s} $\dotsb$ y, x $\dotsb$ \textit{t} se usa para construir $f_{l}$.
 			\begin{eqnarray}
-				d_{l}(t) &=& d_{l}(x) + b_{l}(x) \\
+				\nonumber d_{l}(t) &=& d_{l}(x) + b_{l}(x) \\
 				\nonumber &=& d_{l}(y) + 1 + b_{l}(x)
 			\end{eqnarray}
 
 			\par Entonces:
 			\begin{equation*}
-				\textup{De (1) y (2)} \Rightarrow
+				\textup{Como estoy en } \langle E-K \rangle \Rightarrow
 	  		\left \lbrace
 	  		\begin{array}{l}
 					d_{k}(y) = d_{k}(x) + 1 \; \; \star \\
