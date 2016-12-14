@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  13 DEC 2016 22:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  13 DEC 2016 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -746,56 +746,56 @@ Overfull \hbox (49.91821pt too wide) in alignment at lines 85--90
  []
 
 [3]
-Overfull \hbox (2.84671pt too wide) in paragraph at lines 131--132
+Overfull \hbox (2.84671pt too wide) in paragraph at lines 132--133
 []\OT1/lmr/m/n/12 Entonces exis-te un ca-mino au-men-tan-te, re-la-ti-vo a $\OM
 L/lmm/m/it/12 f[]$\OT1/lmr/m/n/12 , de la for-ma: $\OML/lmm/m/it/12 s \OT1/lmr/
 m/n/12 = \OML/lmm/m/it/12 z[];  z[];  []  z[];  z[] \OT1/lmr/m/n/12 =
  []
 
-[4] [5]
-Overfull \hbox (18.9876pt too wide) in alignment at lines 273--277
+[4] [5] [6]
+Overfull \hbox (18.9876pt too wide) in alignment at lines 275--279
  [][][] []
  []
 
-[6] [7] [8] [9]
+[7] [8] [9]
 Cap\'{\i }tulo 2.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 426.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 428.
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 426.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 428.
  [10
 
 ] [11]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 554.
+(Font)              <17.28> on input line 556.
 
 [12] [13] [14] [15]
 
-LaTeX Font Warning: Command \huge invalid in math mode on input line 748.
+LaTeX Font Warning: Command \huge invalid in math mode on input line 750.
 
 [16]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 821
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 823
 .
  (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 821.
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 823.
  [17]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 835.
+(amsmath)                 on input line 837.
 
 [18] [19] [20] [21]
 Cap\'{\i }tulo 3.
 [22
 
 ] [23] [24] [25] [26] [27] [28]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 1449.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 1451.
 
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ulasy.fd
@@ -844,7 +844,7 @@ texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2016basic/texmf-
 dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2016basic/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016basic/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on discreta.pdf (30 pages, 364667 bytes).
+Output written on discreta.pdf (30 pages, 365061 bytes).
 PDF statistics:
  187 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams

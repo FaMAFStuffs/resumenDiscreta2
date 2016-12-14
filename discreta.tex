@@ -91,6 +91,7 @@
 
 		\QED
 
+	\pagebreak
 	\section{Las distancias de EDMONS-KARP no disminuyen en pasos sucesivos}
 		\textbf{\underline{Teorema:}} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \; la sucesión de flujos creados por $\langle E-K\rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
 
@@ -180,6 +181,7 @@
 
 		\QED
 
+	\pagebreak
 	\section{La complejidad de DINIC}
 		\textbf{\underline{Teorema:}} La complejidad del algoritmo de Dinic es $\mathcal{O}(n^{2}m)$.
 
@@ -278,6 +280,7 @@
 
 		\QED
 
+
 	\section{La complejidad de WAVE}
 		\textbf{\underline{Teorema:}} La complejidad del algoritmo de Wave es $\mathcal{O}(n^{3})$.
 
@@ -343,7 +346,6 @@
 
 		\QED
 
-	\pagebreak
 	\section{La distancia entre NA sucesivos aumenta}
 		\textbf{\underline{Teorema:}} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean $d(x)$ y $d^{*}(x)$ las distancias de \textit{s} a \textit{t} en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
 
@@ -351,23 +353,23 @@
 			\par Sea:
 			\[ s = x_{0}, x_{1}, \dotsc t = x_{r} \]
 			\par un camino dirigido en $A^{*}$.
-			\par Ese camino \begin{tabular}{|c|} \hline No existe \\\hline \end{tabular} en A ya que para pasar de A a $A^{*}$ debemos bloquear todos los caminos dirigidos de A. Por lo tanto si ese camino estuviese en A, Dinic lo habría bloqueado y no estaría en $A^{*}$.
+			\par Ese camino \begin{tabular}{|c|} \hline NO EXISTE \\\hline \end{tabular} en A ya que para pasar de A a $A^{*}$ debemos bloquear todos los caminos dirigidos de A. Por lo tanto si ese camino estuviese en A, Dinic lo habría bloqueado y no estaría en $A^{*}$.
 
 			\vspace{5mm}
 			\textbf{¿Cuáles son las razones posibles para que no esté en A?}
 				\begin{enumerate}
 					\item Puede faltar un vértice, es decir $\exists i : x_{i} \; \nexists \; V(A)$ entonces:
 						\begin{eqnarray}
-							\nonumber d(t) &\leq & d(x_{i}) \\
+							\nonumber d(t) &\leq & d(x_{i}) \; \; \textup{ Por def de } d_{k}(x), \; \nexists \infty \\
 							\nonumber &\leq & d^{*}(x_{i}) \; \; \textup { Por } \langle E-K \rangle \\
-							\nonumber &=& d^{*}(t) \; \; \; \; \textup{ Porque } x_{i} \textup{ esta antes que t}
+							\nonumber &\leq & d^{*}(t) \; \; \; \; \textup{ Porque } x_{i} \textup{ esta antes que t}
 						\end{eqnarray}
 						$\qquad\qquad\qquad\qquad\;$
 						\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\\hline \end{tabular}
 					\item Están todos los vértices pero falta una arista, es decir $\exists i : \overrightarrow{x_{i}x_{i + 1}} \; \notin E(A)$.
 						\begin{enumerate}[a)]
 							\item $\overrightarrow{x_{i}x_{i + 1}}$ no está porque corresponde a un lado vacío o saturado en NA, es decir $\overrightarrow{x_{i}x_{i + 1}}$ no está en el residual que dá origen a A pero si está en el residual que dá origen a $A^{*}$.
-								\par Para que esto pase se tiene que haber usado el lado $x_{i + 1}x_{i}$ en A. Luego podemos concluir, por la prueba de $\langle E-K\rangle$ que:
+								\par Para que esto pase se tiene que haber usado el lado $\overrightarrow{x_{i + 1}x_{i}}$ en A. Luego podemos concluir, por la prueba de $\langle E-K\rangle$ que:
 								\[ d^{*}(t) \geq d(t) + 2 > d(t) \]
 								$\qquad\qquad\qquad\qquad\qquad\qquad$
 								\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\\hline \end{tabular}
@@ -375,7 +377,7 @@
 								\begin{tabular}{|c|} \hline $d(x_{i+1}) \neq d(x_{i}) +1 $ \\ \hline \end{tabular} (1)
 
 								\vspace{5mm}
-								\par Pero como $x_{i}x_{i + 1}$ está en el residual entonces:
+								\par Pero como $\overrightarrow{x_{i}x_{i + 1}}$ está en el residual entonces:
 								\begin{tabular}{|c|} \hline $d(x_{i+1}) \leq d(x_{i}) +1 $ \\ \hline \end{tabular} (2)
 
 								\vspace{5mm}
