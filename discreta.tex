@@ -90,7 +90,7 @@
 			\end{eqnarray}
 
 
-	\section{Las distancias de Edmonds-Karp no disminuyen en pasos sucesivos}
+	\section{Las distancias de EDMONS-KARP no disminuyen en pasos sucesivos}
 		\textbf{\underline{Teorema:}} Sean: $f_{0}, f_{1}, f_{2}, \; \dotsc$ \; la sucesión de flujos creados por $\langle E-K\rangle$. Es decir, el paso \textit{k} crea $f_{k}$.
 
 			\vspace{5mm}
@@ -126,7 +126,7 @@
 				\item \underline{Caso Inductivo:} Supongamos ahora que vale H(\textit{i}), veamos que vale H(\textit{i + 1}).
 					\par Sea \textit{z} con $d_{k + 1}(z) \leq \textit{i+1}$, si $d_{k + 1}(z) \leq \textit{i}$ vale H(\textit{i}) para \textit{z}.
 					\par \begin{center} $\therefore \; d_{k}(z) \leq d_{k + 1}(z) $ \end{center}
-					\par Supongamos que \begin{tabular}{|c|} \hline $d_{k + 1}(z) = i + 1$ \\\hline \end{tabular}
+					\par Supongamos que \begin{tabular}{|c|} \hline $d_{k + 1}(z) = i + 1$ \\\hline \end{tabular} $\circledast$
 					\par Entonces existe un camino aumentante, relativo a $f_{k}$, de la forma: $s = z_{0}, \; z_{1}, \; \dotsc \; z_{i}, \; z_{i + 1} = z$.
 					\par Sea \begin{tabular}{|c|} \hline $x = z_{i}$ \\ \hline \end{tabular}
 
@@ -156,23 +156,23 @@
 
 				\underline{Conclusión:} En cualquiera de los dos casos tenemos:
 				\begin{center}
-					\begin{tabular}{|c|} \hline $d_{k}(z) \leq d_{k}(x) + 1$ \\\hline \end{tabular}
+					\begin{tabular}{|c|} \hline $d_{k}(z) \leq d_{k}(x) + 1$ \\\hline \end{tabular} $\star$
 				\end{center}
 
 				\par Ahora bien:
 				\begin{eqnarray}
 					\nonumber d_{k + 1}(x) &=& d_{k + 1}(z_{i}) \\
-					\nonumber &=& i \\
+					\nonumber &=& i \qquad (\dag) \\
 					\nonumber &\Rightarrow & \textup{H(\textit{i}) vale para x.} \\
 					\nonumber \therefore \; d_{k}(z) & \leq & d_{k + 1}(x)
 				\end{eqnarray}
 
 				\par Por lo tanto:
 				\begin{eqnarray}
-					\nonumber d_{k}(z) &\leq & d_{k}(x) + 1 \\
-					\nonumber &\leq & d_{k + 1}(x) + 1 \\
-					\nonumber &=& i + 1 \\
-					\nonumber &=& d_{k + 1}(z) \\
+					\nonumber d_{k}(z) &\leq & d_{k}(x) + 1 \qquad \qquad \textup{ Por } \star \\
+					\nonumber &\leq & d_{k + 1}(x) + 1 \qquad \; \; \; \; \textup{ Por HI} \\
+					\nonumber &=& i + 1 \qquad \qquad \qquad \textup{ Por } (\dag) \\
+					\nonumber &=& d_{k + 1}(z) \qquad \qquad \; \; \; \textup{ Por} \circledast \\
 					\nonumber & \Rightarrow & \textup{H(i + 1) vale.}
 				\end{eqnarray}
 			\end{enumerate}
@@ -340,7 +340,7 @@
 
 	\pagebreak
 	\section{La distancia entre NA sucesivos aumenta}
-		\textbf{\underline{Teorema:}} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean d(x) y $d^{*}(x)$ las distancias de \textit{s} a \textit{t} en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
+		\textbf{\underline{Teorema:}} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean $d(x)$ y $d^{*}(x)$ las distancias de \textit{s} a \textit{t} en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
 
 		\textbf{\underline{Prueba:}} Como A y $A^{*}$ se construyen con BFS sabemos que $d(t) \leq d^{*}(t)$ pero queremos ver el $<$.
 			\par Sea:
