@@ -263,13 +263,13 @@
 						\nonumber \Rightarrow Complejidad (\underbrace{A \; \dotsc \; A}_{j \; veces}X) &=& \underbrace{\mathcal{O}(j) + \mathcal{O}(n)}
 					\end{eqnarray}
 
-					\par Como cada Avanzar() mueve el pivote unnivel más cerca de \textit{t} entonces hay a lo sumo \textit{n} Avanzar() antes de un R o un I $\Rightarrow$ r $\leq$ n.
+					\par Como cada Avanzar() mueve el pivote un nivel más cerca de \textit{t} entonces hay a lo sumo \textit{n} Avanzar() antes de un R o un I $\Rightarrow j\leq$ n.
 					\[ \therefore \; Complejidad(A \dotsc AX) = \mathcal{O}(n) + \mathcal{O}(n) = \mathcal{O}(n)\]
 			\end{enumerate}
 
 			\par De (1) y (2):
 			\begin{eqnarray}
-				\nonumber \textup{Complejidad(Paso Bloqueante de Dinic)} &=& \# \textup{ Cantidad de palabras} * \textup{ Complejidad de la palabra} \\
+				\nonumber \textup{Complejidad(Paso Bloqueante de Dinic)} &=& \# \textup{ Cantidad de palabras } * (\textup{ Complejidad } A \dotsc A X) \\
 				\nonumber &=& m * \mathcal{O}(n) \\
 				\nonumber &=& \mathcal{O}(m*n)
 			\end{eqnarray}
