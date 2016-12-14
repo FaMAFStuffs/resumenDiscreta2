@@ -271,7 +271,7 @@
 
 			\par De (1) y (2):
 			\begin{eqnarray}
-				\nonumber \textup{Complejidad(Paso Bloqueante de Dinic)} &=& \# \textup{ Cantidad de palabras } * (\textup{ Complejidad } A \dotsc A X) \\
+				\nonumber \textup{Complejidad(Paso Bloqueante de Dinic)} &=& \# \textup{ Cantidad de palabras } * \textup{ Complejidad } (A \dotsc A X) \\
 				\nonumber &=& m * \mathcal{O}(n) \\
 				\nonumber &=& \mathcal{O}(m*n)
 			\end{eqnarray}
@@ -283,7 +283,7 @@
 
 		\textbf{\underline{Prueba:}} Como Wave es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n - 1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
 			\begin{center}
-				Complejidad(Wave)$ = \mathcal{O}(n) \; *$ Complejidad(Paso bloqueante de Wave)
+				Complejidad(Wave)$ = \mathcal{O}(n) \; *$ Complejidad(Paso Bloqueante de Wave)
 			\end{center}
 
 			\par Para probar que la complejidad de Wave es $\mathcal{O}(n^{3})$ debemos probar que complejidad del paso bloqueante es $\mathcal{O}(n^{2})$. El paso bloqueante de Wave consiste en una serie de:
@@ -297,8 +297,8 @@
 
 			\par Los "procesamientos" de lados los podemos dividir en dos categorías:
 			\begin{enumerate}
-				\item Denotaremos \textquotedblleft T\textquotedblright \; al número de procesamientos que saturan o vacian el lado.
-				\item Denotaremos \textquotedblleft Q\textquotedblright \; al número de procesamientos que no saturan ni vacian el lado.
+				\item Aquellos procesamientos que saturan o vacian el lado. Denotaremos \textquotedblleft T\textquotedblright \; al número de estos procesamientos.
+				\item Aquellos procesamientos que no saturan ni vacian el lado. Denotaremos \textquotedblleft Q\textquotedblright \; al número de estos procesamientos.
 			\end{enumerate}
 			\par Por lo tanto queremos acotar $T + Q$.
 
