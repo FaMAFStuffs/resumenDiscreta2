@@ -37,7 +37,7 @@
 				\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright \; entre x y \textit{t} en el paso \textit{k}, en caso de existir, si no $\infty$.
 			\end{itemize}
 
-			\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
+			\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante.
 
 			\vspace{5mm}
 			\par Sabemos que las distancias de $\langle E-K \rangle$ no disminuyen en pasos sucesivos, como esto será útil para esta demostración llamaremos $\circledast$ a la demostración de:
@@ -105,7 +105,7 @@
 				\item $b_{k}(x) =$ \textquotedblleft distancia\textquotedblright \; entre x y \textit{t} en el paso \textit{k} en caso de existir, si no $\infty$.
 			\end{itemize}
 
-			\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante entre dos vértices.
+			\textquotedblleft Distancia\textquotedblright: longitud del menor camino aumentante.
 
 			\vspace{5mm}
 			\par Queremos probar que:
@@ -124,7 +124,7 @@
 						\nonumber d_{k}(z) &=& d_{k}(s) \\
 						\nonumber &=& 0 \\
 						\nonumber &\leq & d_{k + 1}(s) \\
-						\nonumber &\leq & d_{k + 1}(z) \\
+						\nonumber &=& d_{k + 1}(z) \\
 						\nonumber \therefore d_{k}(z) & \leq & d_{k + 1}(z)
 					\end{eqnarray}
 				\item \underline{Caso Inductivo:} Supongamos ahora que vale H(\textit{i}), veamos que vale H(\textit{i + 1}).
@@ -160,22 +160,22 @@
 
 				\underline{Conclusión:} En cualquiera de los dos casos tenemos:
 				\begin{center}
-					\begin{tabular}{|c|} \hline $d_{k}(z) \leq d_{k}(x) + 1$ \\\hline \end{tabular} $\star$
+					\begin{tabular}{|c|} \hline $d_{k}(z) \leq d_{k}(x) + 1$ \\\hline \end{tabular} (1)
 				\end{center}
 
 				\par Ahora bien:
 				\begin{eqnarray}
 					\nonumber d_{k + 1}(x) &=& d_{k + 1}(z_{i}) \\
-					\nonumber &=& i \qquad (\dag) \\
+					\nonumber &=& i \qquad \qquad \; \; \; (2) \\
 					\nonumber &\Rightarrow & \textup{H(\textit{i}) vale para x.} \\
-					\nonumber \therefore \; d_{k}(z) & \leq & d_{k + 1}(x)
+					\nonumber \therefore \; d_{k}(x) & \leq & d_{k + 1}(x) \qquad (3)
 				\end{eqnarray}
 
 				\par Por lo tanto:
 				\begin{eqnarray}
-					\nonumber d_{k}(z) &\leq & d_{k}(x) + 1 \qquad \qquad \textup{ Por } \star \\
-					\nonumber &\leq & d_{k + 1}(x) + 1 \qquad \; \; \; \; \textup{ Por HI} \\
-					\nonumber &=& i + 1 \qquad \qquad \qquad \textup{ Por } (\dag) \\
+					\nonumber d_{k}(z) &\leq & d_{k}(x) + 1 \qquad \qquad \textup{ Por } (1) \\
+					\nonumber &\leq & d_{k + 1}(x) + 1 \qquad \; \; \; \; \textup{ Por (3)} \\
+					\nonumber &=& i + 1 \qquad \qquad \qquad \textup{ Por } (2) \\
 					\nonumber &=& d_{k + 1}(z) \qquad \qquad \; \; \; \textup{ Por} \circledast \\
 					\nonumber & \Rightarrow & \textup{H(i + 1) vale.}
 				\end{eqnarray}
@@ -238,6 +238,7 @@
 						\left[
 						\begin{array}{l}
 							P[i + 1] = \textup{algún elemento de } \Gamma^{+}(P[i]) \\
+							i = i + 1
 						\end{array}
 						\right.
 					\end{equation*}
@@ -248,6 +249,7 @@
 						\left[
 						\begin{array}{l}
 							\textup{Borrar } P[i - 1]P[i] \textup{ del NA} \\
+							i = i - 1
 						\end{array}
 						\right.
 					\end{equation*}
@@ -307,7 +309,7 @@
 			\end{enumerate}
 			\par Por lo tanto queremos acotar $T + Q$.
 
-			\vspace{5mm}
+			\pagebreak
 			\textbf{Complejidad de T:}
 			\begin{itemize}
 				\item ¿Puede un lado $\overrightarrow{xy}$ saturado volver a saturarse?
@@ -327,7 +329,7 @@
 				\[ \therefore Q \leq \# \textup{ Total de FB's y BB's} \]
 				\begin{itemize}
 					\item \# FB's en cada ola hacia adelante es $\leq$ \textit{n} (un FB por vértice)
-					\item \# BB's en cada ola hacia atrás es $\leq$ \textit{n}
+					\item \# BB's en cada ola hacia atrás es $\leq$ \textit{n} (un BB por vértice)
 
 					\vspace{5mm}
 					\par $\therefore$ Total de FB's y BB's $\leq 2 n \; \#$Total de ciclos de \textquotedblleft ola adelante $-$ ola hacia atrás\textquotedblright
@@ -349,11 +351,11 @@
 		\QED
 
 	\section{La distancia entre NA sucesivos aumenta}
-		\textbf{\underline{Teorema:}} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean $d(x)$ y $d^{*}(x)$ las distancias de \textit{s} a \textit{t} en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
+		\textbf{\underline{Teorema:}} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean $d(x)$ y $d^{*}(x)$ las distancias de \textit{s} a x en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
 
 		\textbf{\underline{Prueba:}} Como A y $A^{*}$ se construyen con BFS sabemos que $d(t) \leq d^{*}(t)$ pero queremos ver el $<$.
 			\par Sea:
-			\[ s = x_{0}, x_{1}, \dotsc t = x_{r} \]
+			\[ s = x_{0}, x_{1}, \dotsc x_{r} = t \]
 			\par un camino dirigido en $A^{*}$.
 			\par Ese camino \begin{tabular}{|c|} \hline NO EXISTE \\\hline \end{tabular} en A ya que para pasar de A a $A^{*}$ debemos bloquear todos los caminos dirigidos de A. Por lo tanto si ese camino estuviese en A, Dinic lo habría bloqueado y no estaría en $A^{*}$.
 
@@ -367,7 +369,7 @@
 							\nonumber &\leq & d^{*}(t) \; \; \; \; \textup{ Porque } x_{i} \textup{ esta antes que t}
 						\end{eqnarray}
 						$\qquad\qquad\qquad\qquad\;$
-						\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\\hline \end{tabular}
+						\begin{tabular}{|c|} \hline $\therefore \; d(t) \leq d^{*}(t)$ \\\hline \end{tabular}
 					\item Están todos los vértices pero falta una arista, es decir $\exists i : \overrightarrow{x_{i}x_{i + 1}} \; \notin E(A)$.
 						\begin{enumerate}[a)]
 							\item $\overrightarrow{x_{i}x_{i + 1}}$ no está porque corresponde a un lado vacío o saturado en NA, es decir $\overrightarrow{x_{i}x_{i + 1}}$ no está en el residual que dá origen a A pero si está en el residual que dá origen a $A^{*}$.
