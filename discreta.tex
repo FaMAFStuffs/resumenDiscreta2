@@ -366,10 +366,10 @@
 						\begin{eqnarray}
 							\nonumber d(t) &\leq & d(x_{i}) \; \; \textup{ Por def de } d_{k}(x), \; \nexists \infty \\
 							\nonumber &\leq & d^{*}(x_{i}) \; \; \textup { Por } \langle E-K \rangle \\
-							\nonumber &\leq & d^{*}(t) \; \; \; \; \textup{ Porque } x_{i} \textup{ esta antes que t}
+							\nonumber &< & d^{*}(t) \; \; \; \; \textup{ Porque } x_{i} \textup{ esta antes que t}
 						\end{eqnarray}
 						$\qquad\qquad\qquad\qquad\;$
-						\begin{tabular}{|c|} \hline $\therefore \; d(t) \leq d^{*}(t)$ \\\hline \end{tabular}
+						\begin{tabular}{|c|} \hline $\therefore \; d(t) < d^{*}(t)$ \\\hline \end{tabular}
 					\item Están todos los vértices pero falta una arista, es decir $\exists i : \overrightarrow{x_{i}x_{i + 1}} \; \notin E(A)$.
 						\begin{enumerate}[a)]
 							\item $\overrightarrow{x_{i}x_{i + 1}}$ no está porque corresponde a un lado vacío o saturado en NA, es decir $\overrightarrow{x_{i}x_{i + 1}}$ no está en el residual que dá origen a A pero si está en el residual que dá origen a $A^{*}$.
@@ -417,7 +417,7 @@
 
 			\vspace{5mm}
 			\par \textbf{Algoritmo:}
-			\par Por cada COMPONENTE CONEXA:
+			\par Por cada COMPONENTE CONEXA de G:
 				\begin{enumerate}
 					\item Elegir x
 					\item Correr BFS(x)
@@ -448,17 +448,17 @@
 							\par Sea:
 							\begin{itemize}
 								\item $x \dotsc z$ un camino en BFS(x), entre x y z.
-								\item $t = Nivel_{BFS(x)}(z)$.
 								\item $x \dotsc y$ un camino en BFS(x), entre x e y.
-								\item $r = Nivel_{BFS(x)}(y)$.
+								\item $t = Nivel_{BFS(x)}(z)$ y $r = Nivel_{BFS(x)}(y)$ ($t \equiv r$).
 								\item \textit{w} el vértice de mayor nivel tal que: $x \dotsc w$ sea prefijo común en $x \dotsc z$ y $x \dotsc y$. Es decir:
 									\begin{eqnarray}
 										\nonumber &x \dotsc w & \qquad \dotsc z \\
 										\nonumber &\underbrace{x \dotsc w}_{\textup{Camino Igual}}& \; \underbrace{\dotsc y}_{\textup{Camino distinto}}
 									\end{eqnarray}
+								\item $s = Nivel_{BFS(x)}(w)$
 							\end{itemize}
 
-						\par Considramos el ciclo: $w \dotsc z y \dotsc w$
+						\par Considramos el ciclo: $w \dotsc \overbrace{z y}^{Por \; Hipotesis} \dotsc w$
 						\begin{eqnarray}
 							\nonumber \textup{Longitud del ciclo } &=& (t - s) + 1 + (r - s) \\
 							\nonumber &=& (t+r) - 2s + 1 \\
