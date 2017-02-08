@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  6 FEB 2017 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  8 FEB 2017 16:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -596,27 +596,30 @@ LaTeX Warning: Label `Baz' multiply defined.
 
 LaTeX Warning: Label `Baz' multiply defined.
 
+
+LaTeX Warning: Label `Baz' multiply defined.
+
 )
 \openout1 = `discreta.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 23.
  (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \. on input line 22.
-LaTeX Info: Redefining \% on input line 22.
+LaTeX Info: Redefining \. on input line 23.
+LaTeX Info: Redefining \% on input line 23.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -687,34 +690,34 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 23.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 24.
  (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 23.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 24.
 
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 23.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 24.
 
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 23.
+(Font)              <14.4> on input line 24.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 23.
+(Font)              <10> on input line 24.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 23.
-LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+(Font)              <7> on input line 24.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 23.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -741,18 +744,11 @@ Cap\'{\i }tulo 1.
 [2
 
 ]
-Overfull \hbox (49.91821pt too wide) in alignment at lines 87--92
+Overfull \hbox (49.91821pt too wide) in alignment at lines 88--93
  [][][] []
  []
 
-[3]
-Overfull \hbox (2.84671pt too wide) in paragraph at lines 134--135
-[]\OT1/lmr/m/n/12 Entonces exis-te un ca-mino au-men-tan-te, re-la-ti-vo a $\OM
-L/lmm/m/it/12 f[]$\OT1/lmr/m/n/12 , de la for-ma: $\OML/lmm/m/it/12 s \OT1/lmr/
-m/n/12 = \OML/lmm/m/it/12 z[];  z[];  []  z[];  z[] \OT1/lmr/m/n/12 =
- []
-
-[4] [5] [6] [7] [8] [9]
+[3] [4] [5] [6] [7] [8] [9]
 Cap\'{\i }tulo 2.
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 433.
 
@@ -765,29 +761,30 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
 
 ] [11]
 [12] [13]
-Overfull \hbox (33.83913pt too wide) in alignment at lines 631--635
+Overfull \hbox (27.96007pt too wide) in alignment at lines 634--638
  [][][] []
  []
 
 [14] [15]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 786.
- [16]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 837
+(Font)              <17.28> on input line 789.
+ [16] [17]
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 844
 .
- (/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/ot1lmtt.fd
+
+(/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 837.
- [17] [18]
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 844.
+ [18]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 852.
+(amsmath)                 on input line 859.
 
 [19] [20]
-Overfull \hbox (5.579pt too wide) in paragraph at lines 1007--1008
+Overfull \hbox (5.579pt too wide) in paragraph at lines 1017--1018
 []\OT1/lmr/bx/n/12 b) \OT1/lmr/m/n/12 Re-cor-de-mos que si v(x) $\OMS/lmsy/m/n/
 12 2$ \OT1/lmr/m/n/12 C $\OMS/lmsy/m/n/12 ) 9 \OML/lmm/m/it/12 q\OT1/lmr/m/n/12
  (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 ) : \OML/lmm/m/it/12 v\OT1/lmr/m/n/12 (\OML
@@ -803,16 +800,30 @@ it/12 g\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 )) \OML/lmm/m/it/12 <
 Cap\'{\i }tulo 3.
 [23
 
-] [24] [25] [26] [27] [28] [29]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 1464.
+] [24] [25] [26]
+<./graphics/3color_npcomplete.jpg, id=106, 702.625pt x 504.88625pt>
+File: ./graphics/3color_npcomplete.jpg Graphic file (type jpg)
 
+<use ./graphics/3color_npcomplete.jpg>
+Package pdftex.def Info: ./graphics/3color_npcomplete.jpg used on input line 12
+87.
+(pdftex.def)             Requested size: 398.34544pt x 256.07875pt.
+ [27 <./graphics/3color_npcomplete.jpg>]
+[28] [29]
+LaTeX Font Info:    Try loading font information for U+lasy on input line 1493.
 
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ulasy.fd
+ (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [30
+)
+<graphics/github.png, id=116, 1204.5pt x 632.3625pt>
+File: graphics/github.png Graphic file (type png)
+ <use graphics/github.png>
+Package pdftex.def Info: graphics/github.png used on input line 1509.
+(pdftex.def)             Requested size: 28.45274pt x 14.93674pt.
 
-]
-(./discreta.aux
+[30
+
+ <./graphics/github.png (PNG copy)>] (./discreta.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -821,13 +832,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4756 strings out of 494447
- 66169 string characters out of 6166766
- 146230 words of memory out of 5000000
- 7972 multiletter control sequences out of 15000+600000
- 78491 words of font info for 66 fonts, out of 8000000 for 9000
+ 4779 strings out of 494447
+ 66544 string characters out of 6166766
+ 150230 words of memory out of 5000000
+ 7984 multiletter control sequences out of 15000+600000
+ 82490 words of font info for 71 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 33i,25n,30p,782b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,29n,30p,470b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rmsc.enc}{/usr
 /local/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/
 texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2
@@ -853,10 +864,10 @@ texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2016basic/texmf-
 dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2016basic/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016basic/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on discreta.pdf (31 pages, 364108 bytes).
+Output written on discreta.pdf (31 pages, 477784 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
+ 193 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

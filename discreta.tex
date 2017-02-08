@@ -19,6 +19,7 @@
 \title{Resumen de teoremas para el final \\ de Matemática Discreta  II}
 \date{2016}
 
+
 \begin{document}
 \maketitle
 \tableofcontents
@@ -73,7 +74,7 @@
 			\par Luego:
 			\begin{eqnarray}
 				\nonumber d_{l}(t) &=& d_{l}(x) + b_{l}(x) \\
-				\nonumber &=& d_{l}(y) + 1 + b_{l}(x) \qquad\qquad\qquad\text{Por } \dag \\
+				\nonumber &=& d_{l}(y) + 1 + b_{l}(x) \qquad\qquad\qquad\;\text{Por } \dag \\
 				\nonumber & \geq & d_{k}(y) + 1 + b_{k}(x) \qquad\qquad\qquad\text{Por} \circledast \\
 				\nonumber &=& d_{k}(x) + 1 + 1 + b_{k}(x) \;\qquad\qquad\text{Por} \star \\
 				\nonumber &=& d_{k}(\textit{t}) + 2 \\
@@ -131,17 +132,17 @@
 					\par Sea \textit{z} con $d_{k + 1}(z) \leq \textit{i+1}$, si $d_{k + 1}(z) \leq \textit{i}$ vale H(\textit{i}) para \textit{z}.
 					\par \begin{center} $\therefore \; d_{k}(z) \leq d_{k + 1}(z) $ \end{center}
 					\par Supongamos que \begin{tabular}{|c|} \hline $d_{k + 1}(z) = i + 1$ \\\hline \end{tabular} $\circledast$
-					\par Entonces existe un camino aumentante, relativo a $f_{k}$, de la forma: $s = z_{0}, \; z_{1}, \; \dotsc \; z_{i}, \; z_{i + 1} = z$.
+					\par Entonces existe un camino aumentante, relativo a $f_{k}$, de la forma: $s = z_{0},  \; \dotsc \; z_{i}, \; z_{i + 1} = z$.
 					\par Sea \begin{tabular}{|c|} \hline $x = z_{i}$ \\ \hline \end{tabular}
 
 					\begin{itemize}
-						\item \underline{Caso 1:} Existe algun camino aumentante, relativo a $f_{k - 1}$ de la forma $s, \; \dotsc \; x, \; z$.
+						\item \underline{Caso 1:} Existe algun camino aumentante, relativo a $f_{k - 1}$, de la forma $s, \; \dotsc \; x, \; z$.
 							\begin{center}
 								$\therefore d_{k}(z) \leq d_{k}(x) + 1$
 							\end{center}
 
 							\vspace{2mm}
-							\par Pues al haber un camino $\underbrace{s, \; \dotsc \; x,}_{d_{k}(x)} \; z$, llamemosle A, de longitud $d_{k}(x) + 1$ entre \textit{s} y \textit{z}, sabemos que el mínimo de todos los caminos de \textit{s} a \textit{z} será $\leq$ A.
+							\par Pues al haber un camino $\underbrace{s, \; \dotsc \; x,}_{d_{k}(x)} \; z$, llamemosle A, de longitud $d_{k}(x) + 1$ entre \textit{s} y \textit{z}, sabemos que el mínimo de todos los caminos de \textit{s} a \textit{z} serán $\leq$ A.
 						\item \underline{Caso 2:} No existe un camino aumentante, relativo a $f_{k - 1}$, pero si existe un camino aumentante relativo a $f_{k}$. Por lo tanto el lado \textit{xz} no esta \textquotedblleft disponible\textquotedblright \; en el paso \textit{k}, ya que \textit{xz} está saturado, o bien \textit{zx} está vacío relativo a $f_{k - 1}$. Es decir:
 							\vspace{5mm}
 							\begin{enumerate}[1)]
@@ -191,8 +192,7 @@
 		\textbf{\underline{Prueba:}} Como Dinic es un algoritmo que trabaja con networks auxiliares y vimos que la distancia entre \textit{s} y \textit{t} en networks auxiliares consecutivos aumenta y puede ir a lo sumo entre 1 y $n - 1$ entonces hay a lo sumo $\mathcal{O}(n)$ networks auxiliares.
 			\[ \textup{Complejidad(Dinic) } = \mathcal{O}(n) * \textup{ Complejidad(Paso Bloqueante de Dinic)} \]
 			\par Para probar que la complejidad de Dinic es $\mathcal{O}(n^{2}m)$ debemos probar que la complejidad del paso bloqueante es $\mathcal{O}(nm)$.
-			\vspace{3mm}
-			\par Sea:
+			\par Sean:
 			\begin{itemize}
 				\item A $=$ Avanzar()
 				\item R $=$ Retroceder()
@@ -214,9 +214,8 @@
 		  	\right\rbrace
 		  	\textup{ Sea X = I o R}
 			\end{equation*}
-
 			\par \textbf{Nota:} el número de A's puede ser 0.
-			\vspace{5mm}
+			\vspace{1.5mm}
 			\par Debemos determinar:
 			\begin{enumerate}
 				\item \textbf{Cantidad de subpalabras}
@@ -269,7 +268,7 @@
 					\par Luego:
 					\begin{eqnarray}
 						\nonumber Complejidad(X) &=& \mathcal{O}(n) \\
-						\nonumber \Rightarrow Complejidad (\underbrace{A \; \dotsc \; A}_{j \; veces}X) &=& \underbrace{\mathcal{O}(j) + \mathcal{O}(n)}
+						\nonumber \therefore Complejidad (\underbrace{A \; \dotsc \; A}_{j \; veces}X) &=&\mathcal{O}(j) + \mathcal{O}(n)
 					\end{eqnarray}
 
 					\par Como cada Avanzar() mueve el pivote un nivel más cerca de \textit{t} entonces hay a lo sumo \textit{n} Avanzar() antes de un R o un I $\Rightarrow j\leq$ n.
@@ -278,7 +277,7 @@
 
 			\par De (1) y (2):
 			\begin{eqnarray}
-				\nonumber \textup{Complejidad(Paso Bloqueante de Dinic)} &=& \# (A \dotsc A X) * \textup{ Complejidad } (A \dotsc A X) \\
+				\nonumber \textup{Complejidad(Paso Bloqueante de Dinic)} &=& \# (A \dotsc A X) * \textup{Complejidad} (A \dotsc A X) \\
 				\nonumber &=& m * \mathcal{O}(n) \\
 				\nonumber &=& \mathcal{O}(m*n)
 			\end{eqnarray}
@@ -300,10 +299,10 @@
 				\item Olas hacia atrás: Sucesión de \textbf{backwardbalance} (BB)
 			\end{itemize}
 
-			\par Cada FB y BB es una sucesión de \textquotedblleft \textbf{buscar vecinos}\textquotedblright y \textquotedblleft \textbf{procesar}\textquotedblright el lado resultante. Estos "procesamientos" \; son complicados pero $ \mathcal{O}(1)$.
+			\par Cada FB y BB es una sucesión de \textquotedblleft \textbf{buscar vecinos}\textquotedblright \; y \textquotedblleft \textbf{procesar}\textquotedblright \; el lado resultante. Estos "procesamientos" \; son complicados pero $ \mathcal{O}(1)$.
 			\[ \therefore \textup{ Complejidad(Paso Bloqueante de Wave) } = \# \textup{ \textquotedblleft procesamientos de lado\textquotedblright} \]
 
-			\par Los "procesamientos" de lados los podemos dividir en dos categorías:
+			\par Los \textquotedblleft procesamientos\textquotedblright \; de lados los podemos dividir en dos categorías:
 			\begin{enumerate}
 				\item Aquellos procesamientos que saturan o vacian el lado. Denotaremos \textquotedblleft T\textquotedblright \; al número de estos procesamientos.
 				\item Aquellos procesamientos que no saturan ni vacian el lado. Denotaremos \textquotedblleft Q\textquotedblright \; al número de estos procesamientos.
@@ -314,11 +313,11 @@
 			\textbf{Complejidad de T:}
 			\begin{itemize}
 				\item ¿Puede un lado $\overrightarrow{xy}$ saturado volver a saturarse?
-					\par Para poder volver a \underline{saturarse} primero tiene que vaciarse aunque sea un poco, es decir, antes de poder volver a saturarlo \textquotedblleft \textit{y}\textquotedblright \; debe devolver flujo a \textquotedblleft \textit{x}\textquotedblright \;, pero para que en Wave \textquotedblleft \textit{y}\textquotedblright \; le devuelva flujo a \textquotedblleft \textit{x}\textquotedblright \;  debe ocurrir que \textquotedblleft \textit{y}\textquotedblright \; este bloqueado (porque BB(y) solo se ejecuta si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado), pero si \textquotedblleft \textit{y}\textquotedblright \; está bloqueado \textquotedblleft \textit{x}\textquotedblright \; no puede mandarle flujo nunca más.
+					\par Para poder volver a \underline{saturarse} primero tiene que vaciarse aunque sea un poco, es decir, antes de poder volver a saturarlo \textit{y} debe devolver flujo a \textit{x}, pero para que en Wave \textit{y} le devuelva flujo a \textit{x} debe ocurrir que \textit{y} esté bloqueado (porque BB(y) solo se ejecuta si \textit{y} está bloqueado), pero si \textit{y} está bloqueado \textit{x} no puede mandarle flujo nunca más.
 					\[ \therefore \overrightarrow{xy} \textup{ no puede resaturarse } \]
 					\par \underline{Conclusión 1:} Los lados se saturan solo una vez.
 				\item ¿Puede un lado $\overrightarrow{xy}$ vaciado completamente volver a vaciarse?
-					\par Para poder volver a \underline{vaciarse} como está vacío completamente, primero hay que mandar flujo, pero si lo vacié, \textquotedblleft \textit{y}\textquotedblright \; está bloqueado por lo que \textquotedblleft \textit{x}\textquotedblright \; no puede mandar flujo.
+					\par Para poder volver a \underline{vaciarse} como está vacío completamente, primero hay que mandar flujo, pero si lo vacié, \textit{y} está bloqueado por lo que \textit{x} no puede mandar flujo.
 					\[ \therefore \overrightarrow{xy} \textup{ no puede volver a vaciarse } \]
 					\par \underline{Conclusión 2:} Los lados se vacían completamente a lo sumo una vez.
 
@@ -326,6 +325,7 @@
 			\end{itemize}
 
 			\textbf{Complejidad de Q:}
+				\vspace{3mm}
 				\par En cada FB a lo sumo un lado no se satura y en cada BB a lo sumo un lado no se vacía completamente.
 				\[ \therefore Q \leq \# \textup{ Total de FB's y BB's} \]
 				\begin{itemize}
@@ -336,7 +336,7 @@
 					\par $\therefore$ Total de FB's y BB's $\leq 2 n \; \#$Total de ciclos de \textquotedblleft ola adelante $-$ ola hacia atrás\textquotedblright
 	 			\end{itemize}
 
-				\par Ahora bien, en cada ola hacia adelante, pueden o no, bloquearse algunos vértices. Si no se bloquea ningún vértice entonces todos los vértices ($\neq$ \textit{s, t}) quedan balaceados por lo que estamos en la última ola. Luego en toda ola que no sea la última se bloquea al menos un vértice ($\neq$ \textit{s, t}).
+				\par Ahora bien, en cada ola hacia adelante, pueden o no, bloquearse algunos vértices. Si no se bloquea ningún vértice, entonces todos los vértices ($\neq$ \textit{s, t}) quedan balaceados por lo que estamos en la última ola. Luego en toda ola que no sea la última se bloquea al menos un vértice ($\neq$ \textit{s, t}).
 				\begin{center}
 					$\therefore \; \#$ Total de ciclos es $\leq (n - 2) + 1 = n - 1$ \\
 					\vspace{3mm}
@@ -354,7 +354,7 @@
 	\section{La distancia entre NA sucesivos aumenta}
 		\textbf{\underline{Teorema:}} Sea A un NA (network auxiliar) y sea $A^{*}$ el siguiente NA. Sean $d(x)$ y $d^{*}(x)$ las distancias de \textit{s} a x en A y $A^{*}$ respectivamente, entonces: $d(t) < d^{*}(t)$.
 
-		\textbf{\underline{Prueba:}} Como A y $A^{*}$ se construyen con BFS sabemos que $d(t) \leq d^{*}(t)$ pero queremos ver el $<$.
+		\textbf{\underline{Prueba:}} Por la prueba de $\langle E-K \rangle$ sabemos que $d(t) \leq d^{*}(t)$ pero queremos ver el $<$.
 			\par Sea:
 			\[ s = x_{0}, x_{1}, \dotsc x_{r} = t \]
 			\par un camino dirigido en $A^{*}$.
@@ -365,7 +365,7 @@
 				\begin{enumerate}
 					\item Puede faltar un vértice, es decir $\exists i : x_{i} \; \nexists \; V(A)$ entonces:
 						\begin{eqnarray}
-							\nonumber d(t) &\leq & d(x_{i}) \; \; \textup{ Por def de } d_{k}(x), \; \nexists \infty \\
+							\nonumber d(t) &\leq & d(x_{i}) \; \; \; \textup{ Por def de } d_{k}(x), \; \nexists \; \infty \\
 							\nonumber &\leq & d^{*}(x_{i}) \; \; \textup { Por } \langle E-K \rangle \\
 							\nonumber &< & d^{*}(t) \; \; \; \; \textup{ Porque } x_{i} \textup{ esta antes que t}
 						\end{eqnarray}
@@ -431,26 +431,26 @@
 				\item \underline{Complejidad Polinomial:}
 					\begin{itemize}
 						\item (1) es $\mathcal{O}(1)$.
-						\item (2) + (3) es $\mathcal{O}(m)$ (recorrer todas las aristas).
+						\item (2) + (3) es $\mathcal{O}(m + a)$ recorrer todas las aristas, donde $a = \#$vertices aislados.
 						\item (4) es $\mathcal{O}(m)$ ya que chequear que un coloreo es propio, es recorrer todos los lados comprobando que los vértices tengan distintos colores.
 					\end{itemize}
 				\item \underline{Correctitud:}
 					\begin{itemize}
 						\item Cuando dice \textquotedblleft SI\textquotedblright: Obviamente dice \textquotedblleft SI\textquotedblright, solo si el coloreo es propio y si el coloreo es propio, $\chi(G) \leq 2$.
-						\item Cuando dice \textquotedblleft NO\textquotedblright: Tenemos que ver que cuando dice \textquotedblleft NO\textquotedblright ningún coloreo propio con 2 colores existe.
+						\item Cuando dice \textquotedblleft NO\textquotedblright: Tenemos que ver que cuando dice \textquotedblleft NO\textquotedblright \; ningún coloreo propio con 2 colores existe.
 
 							\vspace{5mm}
 							\par Por otro teorema visto en clase, si existe un ciclo impar $C_{2k + 1} \subseteq G \Rightarrow \chi(G) \geq 3$. Por lo que bastaría ver que si el algoritmo dice \textquotedblleft NO\textquotedblright, entonces exista un ciclo impar en G.
 
 							\vspace{5mm}
-							\par Si el algoritmo dice \textquotedblleft NO\textquotedblright $\Rightarrow \exists y, z : yz \in E(G) \textup{ y } C(y) = C(z) \Rightarrow Nivel_{BFS(x)}(y) = Nivel_{BFS(x)}(z)$
+							\par Si el algoritmo dice \textquotedblleft NO\textquotedblright $\Rightarrow \exists y, z : yz \in E(G) \textup{ y } C(y) = C(z) \Rightarrow Nivel_{BFS(x)}(y) \equiv Nivel_{BFS(x)}(z) (2)$.
 
 							\vspace{5mm}
 							\par Sea:
 							\begin{itemize}
 								\item $x \dotsc y$ un camino en BFS(x), entre x e y.
 								\item $x \dotsc z$ un camino en BFS(x), entre x y z.
-								\item $s = Nivel_{BFS(x)}(y)$ y $t = Nivel_{BFS(x)}(z)$ ($s \equiv t$).
+								\item $s = Nivel_{BFS(x)}(y)$ y $t = Nivel_{BFS(x)}(z)$ ($s \equiv t \; (2)$).
 								\item \textit{w} el vértice de mayor nivel tal que: $x \dotsc w$ sea prefijo común en $x \dotsc y$ y $x \dotsc z$. Es decir:
 									\begin{eqnarray}
 										\nonumber &x \dotsc w & \qquad \dotsc y \\
@@ -493,11 +493,11 @@
 					\nonumber &=& Cap(S)
 				\end{eqnarray}
 
-
 			\textbf{b) V(\textit{f}) $=$ Cap(S) $\Rightarrow$ \textit{f} es maximal y S es minimal.}
 
 				\vspace{2mm}
 				\par Supongamos que V(\textit{f}) $=$ Cap(S). Sea \textit{g} un flujo cualquiera y T un corte cualquiera.
+				\pagebreak
 				\begin{itemize}
 					\item $V(g) \stackbin{Por \; a)}{\leq} Cap(S) = V(f) \Rightarrow$ f es maximal.
 					\item $Cap(T) \stackbin{Por \; a)}{\geq} V(f) = Cap(S) \Rightarrow$ S es minimal.
@@ -507,7 +507,7 @@
 			\textbf{c) \textit{f} es maximal $\Rightarrow \exists$ S con V(\textit{f}) $=$ Cap(S).}
 
 				\vspace{2mm}
-				\par Sea $S = \{s\} \cup \{x : \exists \;$ camino aumentante realtivo a \textit{f} entre \textit{s} y \textit{x}$\}$
+				\par Sea $S = \{s\} \cup \{x : \exists \;$ camino aumentante, realtivo a \textit{f}, entre \textit{s} y \textit{x}$\}$
 
 				\vspace{5mm}
 				\begin{tabular}{|c|} \hline ¿$t \in S$? \\\hline \end{tabular}
@@ -521,7 +521,8 @@
 						\nonumber \Rightarrow V(g) &>& V(f) \textup{ Absurdo! pues f es maximal} \\
 						\nonumber \therefore t &\notin & S \Rightarrow \textup{ S es corte.}
 					\end{eqnarray}
-					\[ \textup{Solo resta ver que: } V(f) = Cap(S) \]
+					\par $\textup{Solo resta ver que: } V(f) = Cap(S)$
+					\vspace{3mm}
 					\par Por $(\star): \; V(f) =  \underbrace{f(S, \overline{S})}_{(1)} - \underbrace{f(\overline{S}, S)}_{(2)}$
 
 					\vspace{2mm}
@@ -548,8 +549,10 @@
 							\par $y \in S \Rightarrow \exists$ camino aumentante $ s \dotsc y$.
 							\par En particular $s \dotsc y \dotsc x$ no es camino aumentante $\Rightarrow f(\overrightarrow{xy}) = 0  \; \forall x \in \overline{S}, \forall y \in S : \overrightarrow{xy} \in E$.
 
-							\vspace{3mm}
-							\par $\therefore$ \begin{tabular}{|c|} \hline $ f(\overline{S}, S) = 0 $ \\\hline \end{tabular}
+							\begin{center}
+								\par $\therefore$ \begin{tabular}{|c|} \hline $ f(\overline{S}, S) = 0 $ \\\hline \end{tabular}
+							\end{center}
+
 					\end{enumerate}
 
 					\par Luego de (1) y (2):
@@ -566,10 +569,10 @@
 
 		\textbf{\underline{Prueba:}}
 			\begin{enumerate}
-				\item La complejidad del matching inicial es $\mathcal{O}(n^{2})$, ya que:
+				\item La complejidad del MI (matching inicial) es $\mathcal{O}(n^{2})$, ya que:
 					\par Restar mínimo de cada fila:
 					\begin{center}
-						$(\underbrace{\mathcal{O}(n)}_{calcular \; min} + \underbrace{\mathcal{O}(n)}_{restar \; min}) * \underbrace{n}_{\# filas} = \mathcal{O}(n^{2})$
+						$(\underbrace{\mathcal{O}(n)}_{\textup{calcular min}} + \underbrace{\mathcal{O}(n)}_{\textup{restar min}}) * \underbrace{n}_{\# \textup{filas}} = \mathcal{O}(n^{2})$
 					\end{center}
 					\par Idem para las columnas.
 				\item Llamemos \textbf{extender} el matching, a incrementar su número de filas en 1, es decir, agregar una fila más al matching.
@@ -612,7 +615,7 @@
 						\end{itemize}
 
 						\par Al restar $\textit{m} = \min S$ x $\overline{\Gamma(S)}$ de las filas de S, habrá un nuevo cero en alguna fila \textit{i} ($\in S$) y columna \textit{j} ($\in \overline{\Gamma(S)}$) entonces la columna se etiquetará con \textit{i} y se revisará.
-						Tenemos dos resultados posible:
+						Tenemos dos resultados posibles:
 						\begin{enumerate}
 							\item \textit{j} está libre (i.e no forma parte del matching) $\Rightarrow$ extendemos el matching.
 							\item \textit{j} forma parte de matching $\Rightarrow \exists$ fila \textit{k} matcheada con \textit{j}. En este caso, la fila \textit{k} se etiquetará con \textit{j}, por lo que el "nuevo" $\; S \geq S \cup \{\textit{k}\}$.
@@ -624,12 +627,12 @@
 
 					\par Luego como $\lvert S \rvert$ solo puede crecer $\mathcal{O}(n)$ veces, tenemos que hay a lo sumo \textit{n} \textbf{cambios de matriz} antes de extender el matching. Entonces:
 						\[
-							\textup{Complejidad(1 extensión)} = \underbrace{\mathcal{O}(n)}_{\# CM} * \underbrace{\mathcal{O}(n^{2})}_{Complejidad(CM)} + \underbrace{\mathcal{O}(n^{2})}_{Busqueda \; \textit{n} \; filas \; x \; \textit{n} \; columnas } \\
+							\textup{Complejidad(1 extensión)} = \underbrace{\mathcal{O}(n)}_{\# \textup{CM}} * \underbrace{\mathcal{O}(n^{2})}_{\textup{Complejidad(CM)}} + \underbrace{\mathcal{O}(n^{2})}_{\textup{Búsqueda \textit{n} filas x \textit{n} columnas}} \\
 						\]
 
 					\vspace{5mm}
 					\begin{eqnarray}
-						\nonumber \therefore \textup{Complejidad(Hungaro)} &=& \textup{Compl(Matching inicial)} + (\# \textup{extensiones} * \textup{Compl(1 extensión)}) \\
+						\nonumber \therefore \textup{Complejidad(Húngaro)} &=& \textup{Complejidad(MI)} + (\# \textup{extensiones}) * \textup{Complejidad(1 extensión)} \\
 						\nonumber &=& \mathcal{O}(n^{2}) + (\mathcal{O}(n) * \mathcal{O}(n^{3})) \\
 						\nonumber &=& \mathcal{O}(n^{4})
 					\end{eqnarray}
@@ -640,7 +643,7 @@
 	\section{Teorema de Hall}
 		\textbf{\underline{Teorema:}} Sea G = (X $\cup$ Y, E) grafo bipartito, entonces $\exists$ matching completo de:
 		\[
-			X \textup{ a } Y \Leftrightarrow \; \lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall S \subseteq X
+			X \textup{ a } Y \Leftrightarrow \; \lvert S \rvert \leq \lvert \Gamma(S) \rvert \; \forall \; \textup{S} \subseteq X
 		\]
 
 		\vspace{3mm}
@@ -687,7 +690,7 @@
 			\vspace{5mm}
 			\underline{Observaciones:}
 			\begin{enumerate}
-				\item $\lvert S_{j} \rvert = \lvert T_{j} \rvert$, pues $S_{j}$ son las filas matcheadas con $T_{j}$.
+				\item $\lvert S_{i} \rvert = \lvert T_{i} \rvert$, pues $S_{i}$ son las filas matcheadas con $T_{i}$.
 				\item Por construcción, los $S_{i}$ y $T_{i}$ son todos distintos.
 				\item $\Gamma(S_{0} \cup S_{1} \cup \dotsc S_{j}) = T_{1} \cup T_{2} \cup \dotsc T_{j+1}$
 					\par \underline{Por inducción en \textit{j}:}
@@ -723,7 +726,7 @@
 	\section{Teorema del matrimonio}
 		\textbf{\underline{Teorema:}} Todo grafo bipartito regular tiene un matching perfecto.
 
-		\textbf{\underline{Prueba:}} Sea $G = (X \cup Y, E)$ bipartito regular con $E \neq \emptyset $, tal que $\forall W \subseteq V(G)$, definimos:
+		\textbf{\underline{Prueba:}} Sea $G = (X \cup Y, E)$ bipartito regular con $E \neq \emptyset $, tal que $\forall \; W \subseteq V(G)$, definimos:
 			\begin{eqnarray}
 				\nonumber E_{W} &=& \left\lbrace xy \in E(G): x \in W \; o \ y \in W \right\rbrace \\
 				\nonumber &=& \lbrace \text{lados con un extremo en W} \rbrace
@@ -749,7 +752,7 @@
 			\begin{eqnarray}
 				\nonumber \lvert E_{x} \rvert = \lvert E_{y} \rvert &\Rightarrow & \Delta * \lvert x \rvert = \Delta * \lvert y \rvert \\
 				\nonumber &\Rightarrow & \lvert x \rvert = \lvert y \rvert \\
-				\nonumber &\Rightarrow & \textup{ Todo matching completo es perfecto}
+				\nonumber &\Rightarrow & \textup{ Todo matching completo es perfecto.}
 			\end{eqnarray}
 
 			\vspace{3mm}
@@ -787,7 +790,7 @@
 		\textbf{\underline{Teorema:}} Si G es bipartito $\Rightarrow \chi '(G) = \Delta $
 
 		\textbf{\underline{Prueba:}}
-
+			
 			\vspace{3mm}
 			\underline{\textbf{Lema Interno:}} Todo grafo bipartito es subgrafo de un grafo bipartito regular con el mismo $\Delta$, es decir:
 				\begin{center}
@@ -798,7 +801,7 @@
 					\begin{itemize}
 						\item $G = (V = X \cup Y, E)$ grafo bipartito
 						\item $G^{\star} = (V^{\star}, E^{\star})$ una copia de G
-						\item $E^{\dag} = \left\lbrace vv^{\star} : d_{G} < \Delta(G) \right\rbrace$
+						\item $E^{\dag} = \left\lbrace vv^{\star} : d_{G}(v) < \Delta(G) \right\rbrace$
 						\item $\overline{G} = (\overline{V}, \overline{E})$ con:
 							\begin{itemize}
 								\item $\overline{V} = V \cup V^{\star}$
@@ -811,17 +814,21 @@
 						\item $\overline{G}$ es bipartito, sus partes son:
 							\begin{itemize}
 								\item $X \cup Y^{\star}$
-								\item $X^{\dag} \cup Y$
+								\item $X^{\star} \cup Y$
 							\end{itemize}
 							\par No existen lados entre $x \leftrightarrow x, \; y^{\star} \leftrightarrow y^{\star}, \; x \leftrightarrow y^{\star}$.
 
-						\item Sea v $\in$ V tal que $d_{G}(v) = \Delta = \Delta(G)$ entonces V no es parte de ningún lado de $E^{\dag}$.
-							\par $\Rightarrow d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star}) = \Delta$
+						\item Sea v $\in$ V tal que $d_{G}(v) = \Delta = \Delta(G) \Rightarrow v$ no es parte de ningún lado de $E^{\dag}$.
+							\[
+								\therefore d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star}) = \Delta
+							\]
 
 							\vspace{5mm}
-							\par Sea v $\in$ V tal que $d_{G}(v) < \Delta \Rightarrow$ forma parte de un nuevo lado.
-							\par $\therefore d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star)} = d_{G}(v) + 1$
-
+							\par Sea v $\in$ V tal que $d_{G}(v) < \Delta \Rightarrow v$ forma parte de un lado de $E^{\dag}$.
+							\[
+								\therefore d_{\overline{G}}(v) = d_{\overline{G}}(v^{\star)} = d_{G}(v) + 1
+							\]
+							
 							\vspace{5mm}
 							\par \underline{Conclusión:}
 							\begin{eqnarray}
@@ -832,12 +839,12 @@
 					\end{enumerate}
 			\par 	\textbf{Fin del Lema Interno}
 
-			\vspace{5mm}
+			\pagebreak
 			\begin{itemize}
-				\item Sea H bipartito regular con $G \subseteq H$ y $\Delta(G) = \Delta(H)$. Como H es bipartito regular $\Rightarrow \exists$ un matching perfecto en H, llamado M. Coloreemos todos los lados de M con \textbf{\texttt{Color 1}}.
-				\item Sea $H_{1} = H - $ los lados del matching M. Como M es matching perfecto, $H_{1}$ sigue siendo regular y $\delta_{H_{1}}(x) = \delta_{H}(x) - 1 = \Delta - 1$. Como $H_{1}$ es bipartito regular $\Rightarrow \exists$ un matching perfecto en $H_{1}$, llamado $M_{1}$. Coloreemos todos los lados de $M_{1}$ con \textbf{\texttt{Color 2}}.
-				\item Sea $H_{2} = H_{1} - $ los lados del matching $M_{1}$. Luego $\delta_{H_{2}}(x) = \delta_{H_{1}}(x) - 1 = \Delta - 2$.
-					\par Siguiendo así $H_{\Delta - 1}$ seguirá siendo regular con $ \delta_{H_{\Delta - 1}}(x) = 1$. En total obtuvimos $ \Delta $ matchings y $ \Delta $ colores. $\therefore \chi '(H) = \Delta$
+				\item Sea H bipartito regular con $G \subseteq H$ y $\Delta(G) = \Delta(H)$. Como H es bipartito regular $\Rightarrow \exists$ un matching perfecto en H, llamado M. Coloreamos todos los lados de M con \textbf{\texttt{Color 1}}.
+				\item Sea $H_{1} = H - \lbrace$lados del matching M$\rbrace$. Como M es matching perfecto, $H_{1}$ sigue siendo regular y $\delta_{H_{1}}(x) = \delta_{H}(x) - 1 = \Delta - 1$. Como $H_{1}$ es bipartito regular $\Rightarrow \exists$ un matching perfecto en $H_{1}$, llamado $M_{1}$. Coloreamos todos los lados de $M_{1}$ con \textbf{\texttt{Color 2}}.
+				\item Sea $H_{2} = H_{1} - \lbrace$los lados del matching $M_{1} \rbrace$. Luego $\delta_{H_{2}}(x) = \delta_{H_{1}}(x) - 1 = \Delta - 2$.
+					\par Siguiendo así $H_{\Delta - 1}$ seguirá siendo regular con $ \delta_{H_{\Delta - 1}}(x) = 1$. En total obtuvimos $ \Delta $ matchings y $ \Delta $ colores. $\; \; \therefore \chi '(H) = \Delta$
 					\begin{center}
 						$\Rightarrow \chi ' (G) = \Delta$ pues $G \subseteq H$.
 					\end{center}
@@ -871,7 +878,7 @@
 			\textbf{¿Cuánto vale $S_{r}(x)$?}
 			\begin{eqnarray}
 				\nonumber y \in S_{r}(x) & \Leftrightarrow & d(x, y) = r \\
-				\nonumber & \Leftrightarrow & \lvert x \oplus y \rvert = r \text{ donde defino } (x \oplus y) = \epsilon \\
+				\nonumber & \Leftrightarrow & \lvert x \oplus y \rvert = r \text{ como } y = x \oplus \underbrace{(x \oplus y)}_{\epsilon} \\
 				\nonumber & \Leftrightarrow & \exists \underbrace{\epsilon : \lvert \epsilon\rvert = r}_{\in S_{r}(0)} : y = x \oplus \epsilon
 			\end{eqnarray}
 			\par $\therefore \; S_{r}(x) = x \oplus S_{r}(0) \Rightarrow \lvert S_{r}(x)\rvert = \lvert S_{r}(0)\rvert $
@@ -910,15 +917,14 @@
 		\textbf{\underline{Prueba:}} Sean:
 			\begin{itemize}
 				\item $w = \min \; \#$columnas LD de H.
-				\item $e_{i} = 000 \dotsc \underbrace{1}_{i} 0 \dotsc 0$
+				\item $e_{i} = 0 \dotsc 0 \underbrace{1}_{i} 0 \dotsc 0$
 			\end{itemize}
 
 			\textbf{a)} 
 			
-			\begin{tabular}{|c|} \hline $w \leq \delta \; $ \\\hline \end{tabular} Sea $v \in C , v \neq 0 \; y \; \lvert v \rvert = \delta \Rightarrow v$ tiene $\delta$ unos.
-
+			\begin{tabular}{|c|} \hline $w \leq \delta \; $ \\\hline \end{tabular}
 			\vspace{3mm}
-			\par Es decir; $\exists j_{1}, j_{2} \dotsc j_{\delta}$ tal que:
+			\par Sea $v \in C , v \neq 0 \; y \; \lvert v \rvert = \delta \Rightarrow v$ tiene $\delta$ unos. Es decir; $\exists j_{1}, j_{2} \dotsc j_{\delta}$ tal que:
 			\begin{eqnarray}
 				\nonumber v = e_{j_{1}} + e_{j_{2}} + \dotsc e_{j_{\delta}}
 			\end{eqnarray}
@@ -932,13 +938,17 @@
 			\par $\therefore \left\lbrace H^{j_{1}}, H^{j_{2}}, \dotsc H^{j_{\delta}} \right\rbrace$ es LD $\Rightarrow w \leq \delta$.
 
 			\vspace{3mm}
-			\begin{tabular}{|c|} \hline $w \geq \delta $ \\\hline \end{tabular} Sea ahora $\left\lbrace H^{i_{1}}, H^{i_{2}}, \dotsc H^{i_{w}} \right\rbrace$ un conjunto LD, entonces $\exists$ constantes $c_{w} \in Z_{2}^{n}$ no todas nulas, tales que:
+			\begin{tabular}{|c|} \hline $w \geq \delta $ \\\hline \end{tabular}
+			\vspace{3mm}
+			\par Sea ahora $\left\lbrace H^{i_{1}}, H^{i_{2}}, \dotsc H^{i_{w}} \right\rbrace$ un conjunto LD, entonces $\exists$ constantes $c_{w} \in Z_{2}^{n}$ no todas nulas, tales que:
 
 			\begin{eqnarray}
 				\nonumber c_{1} H^{i_{1}} + c_{2} H^{i_{2}} + \dotsc c_{w} H^{i_{w}} = 0
 			\end{eqnarray}
 
-			\par Sea $v = c_{1} e_{i_{1}} + c_{2} e_{i_{2}} + \dotsc c_{w} e_{i_{w}} , \; v \neq 0$ ya que dijimos que no todos los $c_{i}$ eran nulos.
+			\par Sea $v = c_{1} e_{i_{1}} + c_{2} e_{i_{2}} + \dotsc c_{w} e_{i_{w}} , \; v \neq 0$ ya que dijimos que no todos los $c_{w}$ eran nulos.
+
+			\vspace{3mm}			
 			\par Luego:
 			\begin{eqnarray}
 				\nonumber H v^{t} &=& H (c_{1} e_{i_{1}}^{t} + c_{2} e_{i_{2}}^{t} + \dotsc c_{w} e_{i_{w}}^{t}) \\
@@ -963,7 +973,7 @@
 		\QED
 
 	\section{Teorema del polinomio generador de códigos cíclicos}
-		\textbf{\underline{Teorema:}} Sea C un código cíclico de dimensión \textit{k} y longitud \textit{n} y sea $g(x)$ su polinomio generador, entonces:
+		\textbf{\underline{Teorema:}} Sea C un código cíclico de longitud \textit{n} y  dimensión \textit{k} y sea $g(x)$ su polinomio generador, entonces:
 			\begin{itemize}
 				\item[a)] C está formado por los múltiplos de $g(x)$ de grado menor a \textit{n}.
 				\item[b)] El grado de $g(x)$ es $n - k$.
@@ -974,31 +984,31 @@
 			\par \textbf{a)} Sea v(x) $\in$ C, dividamos v(x) por g(x). Entonces $\exists$ q(x) y r(x) con $gr(r(x)) < gr(g(x))$ tal que:
 			\begin{eqnarray}
 				\nonumber v(x) &=& q(x) g(x) + r(x) \\
-				\nonumber & \Rightarrow & \begin{tabular}{|c|} \hline $q(x) g(x) = v(x) + r(x) $ \\ \hline \end{tabular} (1)
+				\nonumber & \Rightarrow & \begin{tabular}{|c|} \hline $q(x) g(x) = v(x) + r(x) $ \\ \hline \end{tabular} \; (1)
 			\end{eqnarray}.
 
-			\par Como v(x) $\in$ C $\Rightarrow gr(v(x)) < n$ y $gr(r(x)) < gr(g(x)) \underbrace{<}_{g(x) \; \in \; C} n $ con lo que concluimos que:
+			\par Como v(x) $\in$ C $\Rightarrow gr(v(x)) < n$ y $gr(r(x)) < gr(g(x)) \underbrace{<}_{g(x) \; \in \; C} n $, concluimos que:
 			\begin{center}
-				\begin{tabular}{|c|} \hline $gr(v(x) + r(x)) < n $ \\ \hline \end{tabular} (2).
+				\begin{tabular}{|c|} \hline $gr(v(x) + r(x)) < n $ \\ \hline \end{tabular} (2)
 			\end{center}
-			\par Luego de (1) y (2) deducimos: \begin{tabular}{|c|} \hline $gr(q(x) \; g(x)) < n $ \\ \hline \end{tabular}.
+			\par Luego de (1) y (2) deducimos: \begin{tabular}{|c|} \hline $gr(q(x) \; g(x)) < n $ \\ \hline \end{tabular}
 
 			\vspace{3mm}
-			\par Recordemos que si $p(x) \in$ C y $gr(p(x)) < n$ entonces: \begin{tabular}{|c|} \hline $p(x) \; mod (1+ x^{n}) = p(x)$ \\\hline \end{tabular}.
+			\par Recordemos que si $p(x) \in$ C y $gr(p(x)) < n$ entonces: \begin{tabular}{|c|} \hline $p(x) \; mod (1+ x^{n}) = p(x)$ \\\hline \end{tabular}
 
 			\vspace{3mm}
 			\par Por lo tanto:
 			\begin{center}
 				$ q(x) \; g(x) \; mod \; (1 + x^{n}) = q(x) \; g(x) $ \\
 				\vspace{3mm}
-				i.e \begin{tabular}{|c|} \hline $ q(x) \odot g(x) = q(x) \; g(x) $ \\\hline \end{tabular} (A).
+				i.e \begin{tabular}{|c|} \hline $ q(x) \odot g(x) = q(x) \; g(x) $ \\\hline \end{tabular} (A)
 			\end{center}
-			\par Además como $g(x) \in$ C $\Rightarrow$ \begin{tabular}{|c|} \hline $q(x) \odot g(x) \in$ C \\ \hline \end{tabular} (B).
+			\par Además como $g(x) \in$ C $\Rightarrow$ \begin{tabular}{|c|} \hline $q(x) \odot g(x) \in$ C \\ \hline \end{tabular} (B)
 
 			\vspace{3mm}
-			\par De (A) y (B) resuta que $q(x) \; g(x) \in$ C $\Rightarrow v(x) + r(x) \in C$. Además dijimos que v(x) $\in$ C y como C es lineal $\Rightarrow$ \begin{tabular}{|c|} \hline r(x) $\in C$ \\\hline \end{tabular} $(\dag)$.
+			\par De (A) y (B) resuta que $q(x) \; g(x) \in$ C $\Rightarrow v(x) + r(x) \in C$. Además dijimos que v(x) $\in$ C y como C es lineal $\Rightarrow$ \begin{tabular}{|c|} \hline r(x) $\in C$ \\\hline \end{tabular} $(\dag)$
 			\vspace{3mm}
-			\par Llamemos \begin{tabular}{|c|} \hline $gr(r(x)) < gr(g(x))$ \\ \hline \end{tabular} $(\star)$.
+			\par Llamemos \begin{tabular}{|c|} \hline $gr(r(x)) < gr(g(x))$ \\ \hline \end{tabular} $(\star)$
 
 			\vspace{5mm}
 			\par De $(\dag)$ y $(\star)$ deducimos $r(x) = 0 \Rightarrow v(x) = q(x) \; g(x)$.
@@ -1007,9 +1017,9 @@
 			\textbf{b)} Recordemos que si v(x) $\in$ C $\Rightarrow \exists \; q(x) : v(x) = q(x) g(x)$. Entonces para que $gr(q(x) g(x)) < n$ debe darse que $gr(q(x)) + gr(g(x)) < n$, es decir, $gr(q(x)) < n - gr(g(x))$.
 
 			\vspace{3mm}
-			\par Sea
+			\par Sea:
 			\begin{eqnarray}
-				\nonumber C = \left\lbrace v(x) : \exists \; q(x), gr(q(x)) < n - gr(g(x)), \; v(x) = q(x) g(x) \right\rbrace
+				\nonumber C = \left\lbrace v(x) : \exists \; q(x), \; gr(q(x)) < n - gr(g(x)), \; v(x) = q(x) g(x) \right\rbrace
 			\end{eqnarray}
 
 			\par Entonces existe una biyección entre C y el conjunto: $\left\lbrace q(x) :  gr(q(x)) < n - gr(g(x)) \right\rbrace$.
@@ -1044,7 +1054,7 @@
 			\end{equation*}
 			
 			\[
-				\therefore g(x) \; | \; 1 + x^{n}
+				\therefore \; g(x) \; | \; 1 + x^{n}
 			\]
 
 		\QED
@@ -1063,99 +1073,109 @@
 			\par Sean:
 			\begin{eqnarray}
 				\nonumber A_{i} &=& x_{i, 1} \vee x_{i, 2} \vee x_{i, 3} \vee x_{i, 4}  \\
-				\nonumber A &=& A_{1} \wedge A_{2} \wedge \dotsc A_{n}
+				\nonumber A &=& A_{1} \wedge A_{2} \wedge \dotsc A_{n} \\
+				\nonumber Q_{i, h, j, r} &=& \overline{x_{i, j}} \vee \overline{x_{h, r}}  \qquad i, h = 1 \dotsc n \qquad j, r = 1, 2, 3, 4 \\
+				\nonumber D_{i} &=& Q_{i, i, 1, 2} \wedge Q_{i, i, 1, 3} \wedge Q_{i, i, 1, 4} \wedge Q_{i, i, 2, 3} \wedge Q_{i, i, 2, 4} \wedge Q_{i, i, 3, 4} \\
+				\nonumber D &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \\
+				\nonumber F_{i, h} &=& Q_{i, h, 1, 1} \wedge Q_{i, h, 2, 2} \wedge Q_{i, h, 3, 3} \wedge Q_{i, h, 4, 4} \\
+				\nonumber F &=& \wedge_{\begin{subarray}{l} \; i, h \\ \; v_{i} v_{h} \in E(G) \end{subarray}} F_{i, h} \\
+				\nonumber B &=& A \wedge D \wedge F
 			\end{eqnarray}
 
-			\par Defino:
-			\begin{eqnarray}
-				Q_{i, j, k, l} &=& \overline{x_{i, j}} \vee \overline{x_{k, l}}  \qquad i, k = 1 \dotsc n \qquad j, l = 1, 2, 3, 4 \\
-				D_{i} &=& Q_{i, i, 1, 2} \wedge Q_{i, i, 1, 3} \wedge Q_{i, i, 1, 4} \wedge Q_{i, i, 2, 3} \wedge Q_{i, i, 2, 4} \wedge Q_{i, i, 3, 4} \\
-				D &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \\
-				F_{i, k} &=& Q_{i, k, 1, 1} \wedge Q_{i, k, 2, 2} \wedge Q_{i, k, 3, 3} \wedge Q_{i, k, 4, 4} \\
-				F &=& \wedge_{\begin{subarray}{l} \; i, k \\ \; v_{i} v_{k} \in E(G) \end{subarray}} F_{i, k}
-			\end{eqnarray}
-
-			\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular}
-				\vspace{3mm}
-
-				\par Sea C un coloreo propio de G, con a lo sumo 4 colores. Debemos dar un asignamiento de valores a las variables $x_{i, j}$ que satisfagan B, es decir, un elemento $\overrightarrow{b} \in \mathbb{Z}^{4n}_{2}$ tal que $B(\overrightarrow{b}) = 1$.
+			\vspace{5mm}
+			\begin{tabular}{|c|} \hline $\Rightarrow$ \\ \hline \end{tabular} Supongamos que $\chi(G) \leq 4 \Rightarrow$ existe un coloreo propio de G, llamemosle C, con a lo sumo 4 colores. Debemos dar un asignamiento de valores a las variables $x_{i, j}$ que satisfagan B, es decir, un elemento $\overrightarrow{b} \in \mathbb{Z}^{4n}_{2}$ definido por:
 
 				\vspace{5mm}
-				\par Definimos
 				\begin{equation*}
-					b_{i, j}
+					b_{i, j} = 
 		  			\left \lbrace
 		  			\begin{array}{l}
-		    		 1 \textup{ si } C(v_{i}) = j \\
-		     		 0 \; c.c \\
+		    			1 \textup{ si } C(v_{i}) = j \\
+		     		 	0 \textup{ si } C(v_{i}) \neq j
 		  			\end{array}
 		  			\right.
 				\end{equation*}
-				\par Debemos probar $B(\overrightarrow{b}) = 1$, es decir, (1) $A(\overrightarrow{b}) = 1$, (2) $D(\overrightarrow{b}) = 1$ y (3) $F(\overrightarrow{b}) = 1$.
 
-				\vspace{3mm}
+				\par Debemos probar $B(\overrightarrow{b}) = 1$, es decir:
+				\begin{equation*}
+					B(\overrightarrow{b}) = 1 \Leftrightarrow
+		  			\left \lbrace
+		  			\begin{array}{l}
+		    			A(\overrightarrow{b}) = 1 \qquad (1) \\
+		    			D(\overrightarrow{b}) = 1 \qquad (2) \\
+		    			F(\overrightarrow{b}) = 1 \qquad (3)
+		  			\end{array}
+		  			\right.
+				\end{equation*}
+
+				\pagebreak
 				(1) \begin{tabular}{|c|} \hline $A(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
-					\par Debemos ver que $A_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir, hay que probar:
-					\[ b_{i, 1} \vee b_{i, 2} \vee b_{i, 3} \vee b_{i, 4} = 1 \]
-					pero
-					\[ C(v_{i}) \in \lbrace 1, 2, 3, 4 \rbrace \Rightarrow \exists j \in \lbrace 1, 2, 3, 4 \rbrace \textup{ tal que } C(v_{i}) = j \Rightarrow b_{i, j} = 1\]
-
+					\begin{eqnarray}
+						\nonumber A(\overrightarrow{b}) = 1 &\Leftrightarrow & A_{i}(\overrightarrow{b}) = 1 \; \forall i \\
+						\nonumber &\Leftrightarrow & b_{i, 1} \vee b_{i, 2} \vee b_{i, 3} \vee b_{i, 4} = 1 \; \forall i
+					\end{eqnarray}
+					
+					\par pero $C(v_{i}) \in \lbrace 1, 2, 3, 4 \rbrace \Rightarrow \exists j \in \lbrace 1, 2, 3, 4 \rbrace$ tal que: $\qquad C(v_{i}) = j \; \Rightarrow$ \begin{tabular}{|c|} \hline $b_{i, j} = 1$ \\ \hline \end{tabular}
+					
 				\vspace{3mm}
 				(2) \begin{tabular}{|c|} \hline $D(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
-					\par Debemos ver que $D_{i}(\overrightarrow{b}) = 1 \; \forall i$, es decir,
-					\[ Q_{i, j, j, l}(\overrightarrow{b}) = 1 \; \forall i, j, l,  j < l \] es decir:
-
-					\[ \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1 \; \forall i, j, l, j <  l\]
-					por el absurdo, supongamos que no:
 					\begin{eqnarray}
-						\nonumber &\Rightarrow & \exists i, j, l, j < l \; : \; \overline{b_{i, j}} \vee \overline{b_{i, l}} = 0 \\
-						\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{i, l}} = 0 \\
-						\nonumber &\Rightarrow & b_{i, j} = b_{i, l} = 1 \\
-						\nonumber &\Rightarrow & C(v_{i}) = j, \; C(v_{i}) = l, \; pero \; j \neq l \; \textup{Absurdo!}
+						\nonumber D(\overrightarrow{b}) = 1 &\Leftrightarrow & D_{i}(\overrightarrow{b}) = 1 \; \forall i \\
+						\nonumber &\Leftrightarrow & Q_{i, i, j, r}(\overrightarrow{b}) = 1 \; \forall i, j, r : j < r \\
+						\nonumber &\Leftrightarrow & \overline{b_{i, j}} \vee \overline{b_{i, r}} = 1 \; \forall i, j, r : j <  r
 					\end{eqnarray}
-					\par Luego, el absurdo vino de suponer que $\overline{b_{i, j}} \vee \overline{b_{i, l}} = 0$
 
-					\vspace{3mm}
-					$\therefore \overline{b_{i, j}} \vee \overline{b_{i, l}} = 1$
-
+					\par Por el absurdo, supongamos que no:
+					\begin{eqnarray}
+						\nonumber &\Rightarrow & \exists i, j, r : j < r \; : \; \overline{b_{i, j}} \vee \overline{b_{i, r}} = 0 \\
+						\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{i, r}} = 0 \\
+						\nonumber &\Rightarrow & b_{i, j} = b_{i, r} = 1 \\
+						\nonumber &\Rightarrow & C(v_{i}) = j, \; C(v_{i}) = r, \textup{ pero } j \neq r \textup{ Absurdo!}
+					\end{eqnarray}
+					\par Luego, el absurdo vino de suponer que $\overline{b_{i, j}} \vee \overline{b_{i, r}} = 0 \Rightarrow$ \begin{tabular}{|c|} \hline $\overline{b_{i, j}} \vee \overline{b_{i, r}} = 1$\\ \hline \end{tabular}
+				
 				\vspace{3mm}
 				(3) \begin{tabular}{|c|} \hline $F(\overrightarrow{b}) = 1$ \\ \hline \end{tabular}
 				\vspace{3mm}
 
 					\par Por el absurdo, supongamos que no:
 					\begin{eqnarray}
-						\nonumber &\Rightarrow & \exists i, k \; : \; v_{i} v_{k} \in E(G) \textup{ tal que } F_{i, k}(\overrightarrow{b}) = 0 \\
-						\nonumber &\Rightarrow & \exists j \; \in \lbrace 1, 2, 3, 4 \rbrace : Q_{i, k, j, j}(\overrightarrow{b}) = 0 \\
-						\nonumber &\Rightarrow & \overline{b_{i, j}} \vee \overline{b_{k, j}} = 0 \\
-						\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{k, j}} = 0 \\
-						\nonumber &\Rightarrow & b_{i, j} = b_{k, j} = 1 \\
-						\nonumber &\Rightarrow & C(v_{i}) = 1\; y \; C(v_{k}) = 1\\
-						\nonumber &\Rightarrow & C(v_{i}) = C(v_{k}) \; (= j) \; \textup{Absurdo!}
+						\nonumber &\Rightarrow & \exists i, h \; : \; v_{i} v_{h} \in E(G) \textup{ tal que } F_{i, h}(\overrightarrow{b}) = 0 \\
+						\nonumber &\Rightarrow & \exists j \; \in \lbrace 1, 2, 3, 4 \rbrace : Q_{i, h, j, j}(\overrightarrow{b}) = 0 \\
+						\nonumber &\Rightarrow & \overline{b_{i, j}} \vee \overline{b_{h, j}} = 0 \\
+						\nonumber &\Rightarrow & \overline{b_{i, j}} = \overline{b_{h, j}} = 0 \\
+						\nonumber &\Rightarrow & b_{i, j} = b_{h, j} = 1 \\
+						\nonumber &\Rightarrow & C(v_{i}) = 1\; y \; C(v_{h}) = 1\\
+						\nonumber &\Rightarrow & C(v_{i}) = C(v_{h}) \; (= j) \; \textup{Absurdo!}
 					\end{eqnarray}
-					\par Pues, el coloreo C es propio y $v_{i} v_{k} \in E(G)$. El absurdo vino de suponer que $F(\overrightarrow{b}) = 0$
+					\par Pues, el coloreo C es propio y $v_{i} v_{h} \in E(G)$. El absurdo vino de suponer que $F(\overrightarrow{b}) = 0$
 
 					\vspace{3mm}
-					\par $\therefore F(\overrightarrow{b}) = 1$
+					\begin{center}
+						\begin{tabular}{|c|} \hline $\therefore F(\overrightarrow{b}) = 1$\\ \hline \end{tabular}
+					\end{center}
 
-			\vspace{5mm}
-			\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular}
-
-				\par Ahora sabemos que existe un $\overrightarrow{b}$ con $B(\overrightarrow{b}) = 1$ y debemos construir un coloreo propio, con al menos 4 colores.
+			\vspace{3mm}
+			\begin{tabular}{|c|} \hline $\Leftarrow$ \\ \hline \end{tabular} Ahora sabemos que existe un $\overrightarrow{b}$ con $B(\overrightarrow{b}) = 1$ y debemos construir un coloreo propio, con a lo sumo 4 colores.
 				\begin{equation*}
 					B(\overrightarrow{b}) = 1\Rightarrow
 		  			\left \lbrace
 		  			\begin{array}{l}
-		    		 A(\overrightarrow{b}) = 1 \Rightarrow A_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (1) \; \forall i \; \exists j : b_{i, j}  = 1 \\
-		     		 D(\overrightarrow{b}) = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  (2) \;  \forall i \; \nexists j \neq l : b_{i, j}  = 1 = b_{i, l} \\
-		     		 F(\overrightarrow{b}) = 1 \Rightarrow \forall i, j \in E(G), C(v_{i}) \neq C(v_{j}) \Rightarrow \textup{C es propio}
+		    		 A(\overrightarrow{b}) = 1 \Rightarrow A_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow \textup{\begin{tabular}{|c|} \hline $\forall i \; \exists j : b_{i, j}  = 1$ \\ \hline \end{tabular}} \; (1) \\
+		     		 D(\overrightarrow{b}) = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \; \forall i \Rightarrow  \textup{\begin{tabular}{|c|} \hline $\forall i \; \nexists j \neq r : b_{i, j} = b_{i, r} = 1$ \\ \hline \end{tabular}} \; (2) \\
+		     		 F(\overrightarrow{b}) = 1 \Rightarrow \textup{\begin{tabular}{|c|} \hline $F_{i, h}(\overrightarrow{b}) = 1 \; \forall i, h : v_{i} v_{h} \in E(G)$ \\ \hline \end{tabular}} \; (3)
 		  			\end{array}
 		  			\right.
 				\end{equation*}
 				\par De (1) y (2) $\Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \; \exists ! j : b_{i, j} = 1$ \\ \hline \end{tabular}
 
-				\vspace{3mm}
-				\par Luego, definimos:
-				\[ C(v_{i}) = \textup{unico j con } b_{i, j} = 1\]
+				\vspace{2mm}
+				\par Luego, definimos: 
+				\begin{center}
+					\begin{tabular}{|c|} \hline $C(v_{i}) = \textup{unico j con } b_{i, j} = 1$ \\ \hline \end{tabular} $(\star)$
+				\end{center}
+				\vspace{1mm}
+				\par Por (3) y $(\star) \Rightarrow \nexists j : b_{i, j}  = b_{h, j} = 1 \Rightarrow C(v_{i}) \neq C(v_{j}) \; \therefore$ C es propio.
 
 		\QED
 
@@ -1165,13 +1185,11 @@
 		\textbf{\underline{Prueba:}} Probaremos que SAT $\leq_{p}$ 3-SAT, pues 3-SAT es NP Completo.
 
 			\vspace{3mm}
-			\par Sea
+			\par Sean:
 			\begin{eqnarray}
-				B &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \textup{ con variables } x_{1}, \dotsc x_{n} \\
-				\nonumber \\
-				D_{i} &=& L_{i, 1} \vee L_{i, 2} \dotsc \vee L_{i, k_{i}} \\
-				\nonumber \\
-				l_{i, j} &=& \textup{literales}
+				\nonumber B &=& D_{1} \wedge D_{2} \dotsc \wedge D_{n} \textup{ con variables } x_{1}, \dotsc x_{n} \\
+				\nonumber D_{i} &=& l_{i, 1} \vee l_{i, 2} \dotsc \vee l_{i, k_{i}} \\
+				\nonumber l_{i, j} &=& \textup{literales}
 			\end{eqnarray}
 			\par Para cada $D_{i}$ construiremos $E_{i}$, que serán conjunciones de disyunciones de 3 literales, con variables extras, y luego tomaremos:
 			\[ B' = E_{1} \wedge E_{2} \dotsc \wedge E_{n} \]
@@ -1183,38 +1201,35 @@
 					\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \wedge (l_{i, 1} \vee l_{i, 2} \vee \overline{y_{i, 1}}) \]
 				\item Si D tiene 1 literales, es decir, $K_{i} = 1 \Rightarrow$ tomo dos variables extras $y_{i, 1}$ y $y_{i, 2}$ y defino:
 					\[ E_{i} = (l_{i, 1} \vee y_{i, 1} \vee y_{i, 2}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \wedge (l_{i, 1} \vee y_{i, 1} \vee \overline{y_{i, 2}}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee \overline{y_{i, 2}}) \]
-				\item Si D tiene más de 3 literales, es decir, $K_{i} > 4 \Rightarrow$ agrego $k_{i-3}$ variables extras y defino:
+				\item Si D tiene más de 3 literales, es decir, $K_{i} > 3 \Rightarrow$ agrego $k_{i} - 3$ variables extras y defino:
 					\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \; \wedge \; (l_{i, 3} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \; \wedge \; (l_{i, 4} \vee \overline{y_{i, 2}} \vee y_{i, 3}) \; \wedge \]
-					\[ \dotsc (l_{i, k_{i-2}} \vee \overline{y_{i, k_{i-4}}} \vee y_{i, k_{i-3}}) \wedge (l_{i, k_{i-1}} \vee l_{i, k_{i}} \vee \overline{i, k_{i-3}}) \]
+					\[ \dotsc (l_{i, k_{i-2}} \vee \overline{y_{i, k_{i-4}}} \vee y_{i, k_{i-3}}) \wedge (l_{i, k_{i-1}} \vee l_{i, k_{i}} \vee \overline{y_{i, k_{i-3}}}) \]
 			\end{itemize}
 			\par Queremos ver:
 			\[ B(\overrightarrow{b}) = 1 \Leftrightarrow \exists \overrightarrow{a} : B'(\overrightarrow{b}, \overrightarrow{a}) = 1 \]
 
 			\vspace{5mm}
 			\begin{tabular}{|c|} \hline $\Leftarrow$ \\\hline \end{tabular}
-				\par Por el absurdo. Supongamos que no, entonces $B(\overrightarrow{b}, \overrightarrow{a}) = 1$ pero $B(\overrightarrow{b}) = 0$.
-				\par Si $B(\overrightarrow{b}) = 0 \Rightarrow \exists i : D_{i}(\overrightarrow{b}) = 0$ pero $E_{i}(\overrightarrow{b}, \overrightarrow{a}) = 1$.
+				\par Supongamos que $B(\overrightarrow{b}, \overrightarrow{a}) = 1$, debemos ver que $B(\overrightarrow{b}) = 1$. Supongamos, para llegar a un absurdo, que $B(\overrightarrow{b}) = 0 \Rightarrow \exists i : D_{i}(\overrightarrow{b}) = 0$ pero $E_{i}(\overrightarrow{b}, \overrightarrow{a}) = 1$.
 
 				\vspace{3mm}
 				\underline{Casos:}
 					\begin{itemize}
-						\item si $k_{i} = 3$ Absurdo! pues $D_{i} = E_{i}$
-						\item si $k_{i} = 2$
+						\item si \underline{$k_{i} = 3$:} Absurdo! pues $D_{i} = E_{i}$
+						\item si \underline{$k_{i} = 2$:} $\; D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2} (\overrightarrow{b}) = 0$.
 							\begin{eqnarray}
 								\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
 								\nonumber &=& (\underbrace{l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b})}_{= 0} \vee a_{i, 1}) \wedge (\underbrace{l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b})}_{= 0} \vee \overline{a_{i, 1}}) \\
 								\nonumber &=& a_{i, 1} \wedge \overline{a_{i, 1}} \\
 								\nonumber &=& 0 \textup{ Absurdo! }
 							\end{eqnarray}
-						\item si $k_{i} = 1$
+						\item si \underline{$k_{i} = 1$:} $\; D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, 1}(\overrightarrow{b}) = 0$.
 							\begin{eqnarray}
 								\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
 								\nonumber &=& (a_{i, 1} \vee a_{i, 2}) \wedge (\overline{a_{i, 1}} \vee a_{i, 2}) \wedge (a_{i, 1} \vee \overline{a_{i, 2}}) \wedge (\overline{a_{i, 1}} \vee \overline{a_{i, 2}}) \\
 								\nonumber &=& 0 \textup{ Absurdo! }
 							\end{eqnarray}
-						\item si $k_{i} > 4$
-
-							$D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, j}(\overline{b}) = 0 \; \forall j$.
+						\item si \underline{$k_{i} > 3$:} $\; D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, j}(\overrightarrow{b}) = 0 \; \forall j$.
 
 							\begin{eqnarray}
 								\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
@@ -1224,6 +1239,7 @@
 
 							\par Pues tendría $a_{i, 1} = a_{i, 2} = \dotsc a_{i, k_{i-3}} = 1$ pero $\overline{a_{i, k_{i-3}}} = 1$.
 					\end{itemize}
+				\par En cualquier caso, llegamos a una contradicción. Luego, debe ser $B(\overrightarrow{b}) = 1$
 
 			\vspace{5mm}
 			\begin{tabular}{|c|} \hline $\Rightarrow$ \\\hline \end{tabular}
@@ -1231,9 +1247,8 @@
 					\vspace{3mm}
 					\underline{Casos:}
 					\begin{itemize}
-						\item Si $k_{i} = 3 \Rightarrow E_{i}(\overrightarrow{b}, \overrightarrow{a}) = D_{i}(\overrightarrow{b}) = 1$
-						\item Si $k_{i} = 1 \textup{ ó } k_{i} = 2 \textup{ defino } a_{i, j} = 0, \textup{ luego } E_{i}(\overrightarrow{b}, 0) = 1$
-						\item Si $k_{i} > 4 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \Rightarrow \exists j : l_{i, j}(\overrightarrow{b}) = 1$
+						\item Si $k_{i} = 1 \textup{ ó } k_{i} = 2 \textup{ defino } a_{i, j} = 0, \textup{ luego } E_{i}(\overrightarrow{b}, \overrightarrow{a}) = 1$
+						\item Si $k_{i} > 3 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \Rightarrow \exists j : l_{i, j}(\overrightarrow{b}) = 1$
 
 							\par Definimos
 								\[ a_{i, 1} = a_{i, 2} = \dotsc a_{i, j-2} = 1 \]
@@ -1241,15 +1256,15 @@
 
 							\par Luego
 							\begin{eqnarray}
-								\nonumber E_{i}(\overrightarrow{b}, \overrightarrow{a}) &=& (l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b}) \vee a_{i, 1}) \\
-								\nonumber &\wedge & (l_{i, 3}(\overrightarrow{b}) \vee \overline{a_{i, 1}} \vee a_{i, 2}) \\
+								\nonumber E_{i}(\overrightarrow{b}, \overrightarrow{a}) &=& (l_{i, 1}(\overrightarrow{b}) \vee l_{i, 2}(\overrightarrow{b}) \vee \underbrace{a_{i, 1}}_{= 1}) \\
+								\nonumber &\wedge & (l_{i, 3}(\overrightarrow{b}) \vee \overline{a_{i, 1}} \vee \underbrace{a_{i, 2}}_{=1}) \\
 								\nonumber &\vdotswithin{\ldots}& \\
-								\nonumber &\wedge & (l_{i, j-1}(\overrightarrow{b}) \vee \overline{a_{i, j-3}} \vee a_{i, j-2}) \\
-								\nonumber &\wedge & (l_{i, j}(\overrightarrow{b}) \vee \overline{a_{i, j-2}} \vee a_{i, j-1}) \\
-								\nonumber &\wedge & (l_{i, j+1}(\overrightarrow{b}) \vee \overline{a_{i, j-1}} \vee a_{i, j}) \\
+								\nonumber &\wedge & (l_{i, j-1}(\overrightarrow{b}) \vee \overline{a_{i, j-3}} \vee \underbrace{a_{i, j-2}}_{=1}) \\
+								\nonumber &\wedge & (\underbrace{l_{i, j}(\overrightarrow{b})}_{=1} \vee \; \overline{a_{i, j-2}} \vee a_{i, j-1}) \\
+								\nonumber &\wedge & (l_{i, j+1}(\overrightarrow{b}) \vee \underbrace{\overline{a_{i, j-1}}}_{=1} \vee a_{i, j}) \\
 								\nonumber &\vdotswithin{\ldots}& \\
-								\nonumber &\wedge & (l_{i, k_{i-1}}(\overrightarrow{b}) \vee l_{i, k_{i}}(\overrightarrow{b}) \vee \overline{a_{i, k_{i-3}}}) \\
-								\nonumber &\therefore & E_{i} = 1
+								\nonumber &\wedge & (l_{i, k_{i-1}}(\overrightarrow{b}) \vee l_{i, k_{i}}(\overrightarrow{b}) \vee \underbrace{\overline{a_{i, k_{i-3}}}}_{=1}) \\
+								\nonumber &=& 1
 							\end{eqnarray}
 					\end{itemize}
 
@@ -1258,13 +1273,19 @@
 	\section{3-COLOR es NP-Completo}
 		\textbf{\underline{Teorema:}} 3-COLOR es NP-Completo
 
-		\textbf{\underline{Prueba:}} Veremos que $3-SAT \leq_{p} 3-Color$, es decir, dado B en CNF con 3 literales por disjunción, debemos crear un grafo G, tal que:
+		\textbf{\underline{Prueba:}} Veremos que $3-SAT \leq_{p}$ 3-Color, es decir, dado B en CNF con 3 literales por disyunción, debemos crear un grafo G, tal que:
 			\[ \textup{B es satisfacible } \Leftrightarrow \chi(G) \leq 3 \]
 			\par Sea:
 				\begin{eqnarray}
 					\nonumber B &=& D_{1}, D_{2} \dotsc D_{m} \textup{ con variables } \lbrace x_{1} \dotsc x_{m} \rbrace \\
 					\nonumber D_{i} &=& l_{i, 1} \vee l_{i, 2} \vee l_{i, 3}
 				\end{eqnarray}
+			
+			\par Nuestro G será un $G_{1} = (V, E \cup F)$, es decir, $G = (V, E)$ con lados extra F, determinados según B. Este es G:
+			
+			\begin{center}
+        			\includegraphics[width=14cm, height=9cm]{./graphics/3color_npcomplete.jpg}
+			\end{center}
 
 			\vspace{3mm}
 			\underline{Construcción del grafo:}
@@ -1284,7 +1305,7 @@
 						\[ \qquad \qquad \; \; \; \; \lbrace \mu_{i, 1}, \mu_{i, 2}, \mu_{i, 3}, b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace_{i = 1}^{m}  \]
 					\item Aristas:
 						\[ E(G) = \lbrace s t \rbrace \cup \lbrace t v_{i}, t w_{i}, v_{i} w_{i} \rbrace_{i = 1}^{n} \; \cup \lbrace s \mu_{i, j} \rbrace_{i = 1, \; \; j = 1, 2, 3}^{m} \cup F \]
-						\[ \lbrace b_{i, 1} b_{i, 2}, b_{i, 1} b_{i, 3}, b_{i, 2} b_{i, 3}, b_{i, 1} \mu_{i, 1}, b_{i, 2}, \mu_{i, 2}, b_{i, 3} \mu_{i, 3} \rbrace_{i = 1}^{m}\]
+						\[ \cup \; \lbrace b_{i, 1} b_{i, 2}, b_{i, 1} b_{i, 3}, b_{i, 2} b_{i, 3}, b_{i, 1} \mu_{i, 1}, b_{i, 2}, \mu_{i, 2}, b_{i, 3} \mu_{i, 3} \rbrace_{i = 1}^{m}\]
 						\par Donde:
 						\[ F = \lbrace \mu_{i, j} \psi(l_{i, j}) \rbrace_{i = 1, \; \; j = 1, 2, 3}^{m}\]
 				\end{itemize}
@@ -1293,16 +1314,16 @@
 					\textup{ G tiene: }
 	  				\left \lbrace
 			  		\begin{array}{l}
-	    				2 + 2n + 6m \textup{ vertices} \\
-	    				1 + 3n + 6m+ 3m + 3m \textup{ aristas}
+	    				2 + 2n + 6m \textup{ vértices} \\
+	    				1 + 3n + 3m+ 3m + 6m \textup{ aristas}
 			  		\end{array}
 	  				\right\rbrace
 						\Rightarrow \textup{ G es polinomial}
 				\end{equation*}
 
-			\vspace{5mm}
+			\pagebreak
 			\begin{tabular}{|c|} \hline $\Leftarrow$ \\\hline \end{tabular}
-				\par Como G tiene triángulos, si $\chi (G) \leq 3$, entonces debe ser $\chi (G) = 3$. Por lo tanto, existe un coloreo C de G con 3 colores.
+				\par Suponemos $\chi(G) \leq 3$ y construiremos un $\overrightarrow{b}$ tal que $B(\overrightarrow{b}) = 1$. Como G tiene triángulos, si $\chi (G) \leq 3$, entonces debe ser $\chi (G) = 3$. Por lo tanto, existe un coloreo C de G con 3 colores.
 				\vspace{3mm}
 				\par Definición:
 				\begin{equation*}
@@ -1314,10 +1335,8 @@
 		  		\end{array}
 		  		\right.
 				\end{equation*}
-				\par Para probar $B(\overrightarrow{b}) = 1$ debemos probar que $D_{i}(\overrightarrow{b}) = 1 \forall i$.
-				\par Sea $i \in \lbrace	1, 2, \dotsc m \rbrace$, como $ \lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace$ es un triángulo, entonces deben aparecer los 3 colores.
-				\vspace{3mm}
-				\par 	Por lo tanto: $\exists j : C(b_{i, j}) = C(s)$
+				\par Para probar $B(\overrightarrow{b}) = 1$ debemos probar que $D_{i} = (\overrightarrow{b}) = l_{i, 1} \vee l_{i, 2} \vee l_{i, 3} = 1 \; \forall \; i$.
+				\par Sea $i \in \lbrace	1, 2, \dotsc m \rbrace$, como $ \lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace$ es un triángulo, entonces deben aparecer los 3 colores. Es decir, $\exists j : C(b_{i, j}) = C(t)$
 				\vspace{3mm}
 				\par Luego:
 				\begin{equation*}
@@ -1335,7 +1354,7 @@
 				\begin{equation*}
 		  		\left.
 		  		\begin{array}{l}
-		    	 	(1) \; \mu_{i, j} \psi(l_{i, j}) \in E(G) \Rightarrow C(\psi(l_{i, j}) \neq \textup{ TERCER COLOR} \\
+		    	 	(1) \; \mu_{i, j} \psi(l_{i, j}) \in E(G) \Rightarrow C(\psi(l_{i, j})) \neq \textup{ TERCER COLOR} \\
 		    	 	(2) \; \psi(l_{i, j}) t \in E(G) \Rightarrow C(\psi(l_{i, j}) \neq C(t)
 		  		\end{array}
 		 		 	\right\rbrace
@@ -1343,7 +1362,7 @@
 				\end{equation*}
 
 				\begin{itemize}
-					\item Caso (1):
+					\item \underline{Caso (1):}
 						\begin{eqnarray}
 							\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} \\
 							\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}
@@ -1353,7 +1372,7 @@
 							\nonumber C(v_{k}) &=& C(s) \Rightarrow b_{k} = 1 \\
 							\nonumber \therefore l_{i, j}(\overrightarrow{b}) &=& 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1
 						\end{eqnarray}
-					\item Caso (2):
+					\item \underline{Caso (2):}
 						\begin{eqnarray}
 							\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = 	\overline{b_{k}} \\
 							\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}
@@ -1369,10 +1388,10 @@
 		 			 		\Rightarrow C(v_{k}) \neq C(s) \therefore b_{k} = 0
 						\end{equation*}
 						$\qquad\qquad\qquad\qquad\qquad$
-						$\therefore b_{k} = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1$
+						$\therefore \overline{b_{k}} = 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1$
 				\end{itemize}
 
-			\vspace{5mm}
+			\pagebreak
 			\begin{tabular}{|c|} \hline $\Rightarrow$ \\\hline \end{tabular}
 				\par Acá asumimos que $\exists \overrightarrow{b} : B(\overrightarrow{b}) = 1 \Rightarrow \forall i, \; D(\overrightarrow{b}) = 1 \Rightarrow$ \begin{tabular}{|c|} \hline $\forall i \; \exists j : l_{i, j}(\overrightarrow{b}) = 1$ \\ \hline \end{tabular} $(\star)$. Debemos construir un coloreo propio con 3 colores.
 				\vspace{3mm}
@@ -1404,7 +1423,7 @@
 	  		 		\textup{BLANCO \; si } b_{k} = 0
 					\end{array}
 				 	\right\rbrace
-				 	\Rightarrow v_{k} t  \textup { y } w_{k} t \textup{ NCP}
+				 	\Rightarrow \underbrace{v_{k}}_{B o N} \underbrace{t}_{A}  \textup { y } \underbrace{w_{k}}_{B o N} \underbrace{t}_{A} \textup{ NCP}
 				\end{equation*}
 
 				\par Falta colorear las garras. Dado \textit{i}, tomemos el \textit{j} de $(\star )$ y definimos:
@@ -1413,27 +1432,37 @@
 		  		\left\lbrace
 					\begin{array}{l}
 	  		 		\textup{NEGRO \; \; si } r = j \\
-	  		 		\textup{AZUL \; \; \; si } r \neq j
+	  		 		\textup{AZUL \qquad si } r \neq j
 					\end{array}
 				 	\right\rbrace
 				 	\Rightarrow \underbrace{\mu_{i, r}}_{N \; o \; A} \underbrace{s}_{B} \textup{ NCP } \forall r
 				\end{equation*}
 
 				\begin{itemize}
-					\item Caso $r \neq j : \qquad \underbrace{\mu_{i, r}}_{A} \underbrace{\psi(l_{i, r})}_{B \; o \, N} \Rightarrow$ NCP
-					\item Caso $r = j$:
+					\item \underline{Caso $r \neq j$:} $\qquad \underbrace{\mu_{i, r}}_{A} \underbrace{\psi(l_{i, r})}_{B \; o \, N} \Rightarrow$ NCP
+					\item \underline{Caso $r = j$:}
 						\begin{itemize}
 							\item Caso (1):
-								\begin{eqnarray}
-									\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} = 1 \Rightarrow C(v_{k}) = \textup{ BLANCO} \\
-									\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{v_{k}}_{B} \textup{ NCP}
-								\end{eqnarray}
+								\begin{equation*}
+									l_{i, j} = x_{k} \Rightarrow
+		  							\left\lbrace
+									\begin{array}{l}
+	  		 							l_{i, j}(\overrightarrow{b}) = b_{k} = 1 \Rightarrow C(v_{k}) = \textup{ BLANCO} \\
+	  		 							\psi(l_{i, j}) = v_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{v_{k}}_{B} \textup{ NCP}
+									\end{array}
+									\right.
+								\end{equation*}
 
 							\item Caso (2):
-								\begin{eqnarray}
-										\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = \overline{b_{k}} = 1 \Rightarrow b_{k} = 0 \Rightarrow C(w_{k}) = \textup{ BLANCO} \\
-										\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{w_{k}}_{B} \textup{ NCP}
-								\end{eqnarray}
+								\begin{equation*}
+									l_{i, j} = \overline{x_{k}} \Rightarrow
+		  							\left\lbrace
+									\begin{array}{l}
+	  		 							l_{i, j}(\overrightarrow{b}) = \overline{b_{k}} = 1 \Rightarrow b_{k} = 0 \Rightarrow C(w_{k}) = \textup{ BLANCO} \\
+										\psi(l_{i, j}) = w_{k}	\Rightarrow \mu_{i, j} \psi(l_{i, j}) = \underbrace{\mu_{i, j}}_{N} \underbrace{w_{k}}_{B} \textup{ NCP}
+									\end{array}
+									\right.
+								\end{equation*}
 						\end{itemize}
 				\end{itemize}
 
@@ -1442,18 +1471,18 @@
 					C(b_{i, r}) =
 				  \left\lbrace
 		  		\begin{array}{l}
-		    		\textup{AZUL \qquad si } r = j \\
-		    		\textup{BLANCO \; si } r \neq j \\
-		    		\textup{NEGRO \; \; si } r \neq j
+		    		\textup{AZUL \qquad \qquad\qquad \; \; \; si } r = j \\
+		    		\textup{BLANCO o NEGRO \; \; si } r \neq j \\
+		    		\textup{NEGRO o BLANCO \; \; si } r \neq j
 		  		\end{array}
 		 			\right.
 				\end{equation*}
 
-				\par Entonces:
+				\par Es decir, le damos el color AZUL al $b_{i, j}$ y los otros dos los coloreamos uno NEGRO y uno BLANCO, de modo que:
 				\begin{itemize}
 					\item $\lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace \textup{ NCP}$
 			 		\item $\underbrace{b_{i, j}}_{A} \underbrace{\mu_{i, j}}_{N} \textup{ NCP}$
-			 		\item $\therefore \underbrace{b_{i, r}}_{B \; o \; N} \underbrace{\mu_{i, r}}_{A} \textup{ NCP}$
+			 		\item $\underbrace{b_{i, r}}_{B \; o \; N} \underbrace{\mu_{i, r}}_{A} \textup{ NCP}$
 				\end{itemize}
 
 		\QED
@@ -1466,9 +1495,18 @@
 \bibitem{Baz} \textsc{Lucia Pappaterra},
 <<Resumen de Discreta II, 2014>>,
 \textit{FaMAF, UNC}.
+\bibitem{Baz} \textsc{Marcos Modenesi},
+<<Resumen de Discreta II, 2016>>,
+\textit{FaMAF, UNC}.
 \bibitem{Baz} \textsc{Agustín Curto},
 <<Carpeta de Clase, 2016>>,
 \textit{FaMAF, UNC}.
 \end{thebibliography}
 
+\vspace{\fill}
+\begin{center}
+Por favor, mejorá este documento en github
+\includegraphics[width=1cm]{graphics/github.png} \\
+https://github.com/ResumenesFaMAF/resumenDiscreta2
+\end{center}
 \end{document}
