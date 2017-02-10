@@ -1196,12 +1196,12 @@
 
 			\underline{Construcción:}
 			\begin{itemize}
-				\item Si D tiene 3 literales, es decir, $K_{i} = 3 \Rightarrow E_{i} = D_{i}$
-				\item Si D tiene 2 literales, es decir, $K_{i} = 2 \Rightarrow$ tomo una variable extra $y_{i, 1}$ y defino:
+				\item Si \underline{$k_{i} = 3$} $\Rightarrow E_{i} = D_{i}$
+				\item Si \underline{$k_{i} = 2$} $\Rightarrow$ tomo una variable extra $y_{i, 1}$ y defino:
 					\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \wedge (l_{i, 1} \vee l_{i, 2} \vee \overline{y_{i, 1}}) \]
-				\item Si D tiene 1 literales, es decir, $K_{i} = 1 \Rightarrow$ tomo dos variables extras $y_{i, 1}$ y $y_{i, 2}$ y defino:
+				\item Si \underline{$k_{i} = 1$} $\Rightarrow$ tomo dos variables extras $y_{i, 1}$ e $y_{i, 2}$ y defino:
 					\[ E_{i} = (l_{i, 1} \vee y_{i, 1} \vee y_{i, 2}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \wedge (l_{i, 1} \vee y_{i, 1} \vee \overline{y_{i, 2}}) \wedge (l_{i, 1} \vee \overline{y_{i, 1}} \vee \overline{y_{i, 2}}) \]
-				\item Si D tiene más de 3 literales, es decir, $K_{i} > 3 \Rightarrow$ agrego $k_{i} - 3$ variables extras y defino:
+				\item Si \underline{$k_{i} > 3$} $\Rightarrow$ agrego $k_{i} - 3$ variables extras y defino:
 					\[ E_{i} = (l_{i, 1} \vee l_{i, 2} \vee y_{i, 1}) \; \wedge \; (l_{i, 3} \vee \overline{y_{i, 1}} \vee y_{i, 2}) \; \wedge \; (l_{i, 4} \vee \overline{y_{i, 2}} \vee y_{i, 3}) \; \wedge \]
 					\[ \dotsc (l_{i, k_{i-2}} \vee \overline{y_{i, k_{i-4}}} \vee y_{i, k_{i-3}}) \wedge (l_{i, k_{i-1}} \vee l_{i, k_{i}} \vee \overline{y_{i, k_{i-3}}}) \]
 			\end{itemize}
@@ -1210,7 +1210,7 @@
 
 			\vspace{5mm}
 			\begin{tabular}{|c|} \hline $\Leftarrow$ \\\hline \end{tabular}
-				\par Supongamos que $B(\overrightarrow{b}, \overrightarrow{a}) = 1$, debemos ver que $B(\overrightarrow{b}) = 1$. Supongamos, para llegar a un absurdo, que $B(\overrightarrow{b}) = 0 \Rightarrow \exists i : D_{i}(\overrightarrow{b}) = 0$ pero $E_{i}(\overrightarrow{b}, \overrightarrow{a}) = 1$.
+				\par Supongamos que $B'(\overrightarrow{b}, \overrightarrow{a}) = 1$, debemos ver que $B(\overrightarrow{b}) = 1$. Supongamos, para llegar a un absurdo, que $B(\overrightarrow{b}) = 0 \Rightarrow \exists i : D_{i}(\overrightarrow{b}) = 0$ pero $E_{i}(\overrightarrow{b}, \overrightarrow{a}) = 1$.
 
 				\vspace{3mm}
 				\underline{Casos:}
@@ -1229,7 +1229,7 @@
 								\nonumber &=& (a_{i, 1} \vee a_{i, 2}) \wedge (\overline{a_{i, 1}} \vee a_{i, 2}) \wedge (a_{i, 1} \vee \overline{a_{i, 2}}) \wedge (\overline{a_{i, 1}} \vee \overline{a_{i, 2}}) \\
 								\nonumber &=& 0 \textup{ Absurdo! }
 							\end{eqnarray}
-						\item si \underline{$k_{i} > 3$:} $\; D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, j}(\overrightarrow{b}) = 0 \; \forall j$.
+						\item si \underline{$k_{i} > 3$:} $\; D_{i}(\overrightarrow{b}) = 0 \Rightarrow l_{i, j}(\overrightarrow{b}) = 0 \; \; \forall j$.
 
 							\begin{eqnarray}
 								\nonumber 1 &=& E_{i}(\overrightarrow{b}, \overrightarrow{a}) \\
