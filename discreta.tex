@@ -816,7 +816,7 @@
 								\item $X \cup Y^{\star}$
 								\item $X^{\star} \cup Y$
 							\end{itemize}
-							\par No existen lados entre $x \leftrightarrow x, \; y^{\star} \leftrightarrow y^{\star}, \; x \leftrightarrow y^{\star}$.
+							\par No existen lados entre $x \leftrightarrow x, \; y^{\star} \leftrightarrow y^{\star}, \; x \leftrightarrow y^{\star}, x^{\star} \leftrightarrow x^{\star}, \; y \leftrightarrow y, \; x^{\star} \leftrightarrow y^{\star}$.
 
 						\item Sea v $\in$ V tal que $d_{G}(v) = \Delta = \Delta(G) \Rightarrow v$ no es parte de ningún lado de $E^{\dag}$.
 							\[
@@ -1251,8 +1251,8 @@
 						\item Si $k_{i} > 3 \Rightarrow D_{i}(\overrightarrow{b}) = 1 \Rightarrow \exists j : l_{i, j}(\overrightarrow{b}) = 1$
 
 							\par Definimos
-								\[ a_{i, 1} = a_{i, 2} = \dotsc a_{i, j-2} = 1 \]
-								\[ a_{i, j-1} = a_{i, j} = \dotsc a_{i, k-3} = 0 \]
+								\[ a_{i, 1} = a_{i, 2} = \dotsc a_{i, j - 2} = 1 \]
+								\[ a_{i, j - 1} = a_{i, j} = \dotsc a_{i, k_{i} - 3} = 0 \]
 
 							\par Luego
 							\begin{eqnarray}
@@ -1273,7 +1273,7 @@
 	\section{3-COLOR es NP-Completo}
 		\textbf{\underline{Teorema:}} 3-COLOR es NP-Completo
 
-		\textbf{\underline{Prueba:}} Veremos que $3-SAT \leq_{p}$ 3-Color, es decir, dado B en CNF con 3 literales por disyunción, debemos crear un grafo G, tal que:
+		\textbf{\underline{Prueba:}} Veremos que 3-SAT $\leq_{p}$ 3-COLOR, es decir, dado B en CNF con 3 literales por disyunción, debemos crear un grafo G, tal que:
 			\[ \textup{B es satisfacible } \Leftrightarrow \chi(G) \leq 3 \]
 			\par Sea:
 				\begin{eqnarray}
@@ -1335,7 +1335,7 @@
 		  		\end{array}
 		  		\right.
 				\end{equation*}
-				\par Para probar $B(\overrightarrow{b}) = 1$ debemos probar que $D_{i} = (\overrightarrow{b}) = l_{i, 1} \vee l_{i, 2} \vee l_{i, 3} = 1 \; \forall \; i$.
+				\par Para probar $B(\overrightarrow{b}) = 1$ debemos probar que $D_{i}(q\overrightarrow{b}) = l_{i, 1} \vee l_{i, 2} \vee l_{i, 3} = 1 \; \forall \; i$.
 				\par Sea $i \in \lbrace	1, 2, \dotsc m \rbrace$, como $ \lbrace b_{i, 1}, b_{i, 2}, b_{i, 3} \rbrace$ es un triángulo, entonces deben aparecer los 3 colores. Es decir, $\exists j : C(b_{i, j}) = C(t)$
 				\vspace{3mm}
 				\par Luego:
@@ -1363,20 +1363,32 @@
 
 				\begin{itemize}
 					\item \underline{Caso (1):}
-						\begin{eqnarray}
-							\nonumber l_{i, j} = x_{k} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = b_{k} \\
-							\nonumber &\Rightarrow& \psi(l_{i, j}) = v_{k}
-						\end{eqnarray}
+						\begin{equation*}
+							l_{i, j} = x_{k} \Rightarrow
+		  					\left\lbrace
+							\begin{array}{l}
+	  		 					l_{i, j}(\overrightarrow{b}) = b_{k} \\
+								\psi(l_{i, j}) = v_{k}
+							\end{array}
+							\right.
+						\end{equation*}
+						
 						\par Entonces:
 						\begin{eqnarray}
 							\nonumber C(v_{k}) &=& C(s) \Rightarrow b_{k} = 1 \\
 							\nonumber \therefore l_{i, j}(\overrightarrow{b}) &=& 1 \Rightarrow D_{i}(\overrightarrow{b}) = 1
 						\end{eqnarray}
 					\item \underline{Caso (2):}
-						\begin{eqnarray}
-							\nonumber l_{i, j} = \overline{x_{k}} &\Rightarrow & l_{i, j}(\overrightarrow{b}) = 	\overline{b_{k}} \\
-							\nonumber &\Rightarrow& \psi(l_{i, j}) = w_{k}
-						\end{eqnarray}
+						\begin{equation*}
+							l_{i, j} = \overline{x_{k}} \Rightarrow
+		  					\left\lbrace
+							\begin{array}{l}
+	  		 					l_{i, j}(\overrightarrow{b}) = 	\overline{b_{k}} \\
+								\psi(l_{i, j}) = w_{k}
+							\end{array}
+							\right.
+						\end{equation*}
+
 						\par Entonces:
 						\begin{equation*}
 		  				\left.
