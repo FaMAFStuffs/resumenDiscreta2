@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  14 FEB 2017 08:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.5)  24 APR 2017 17:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**discreta.tex
-(./discreta.tex
+**lenguajes.tex
+(./lenguajes.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 22 language(s) loaded.
 (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/report.cls
@@ -586,21 +586,15 @@ LaTeX Warning: You have requested, on input line 40, version
 
 )
 \c@neq=\count110
- (./discreta.aux
+ (./lenguajes.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 
 
 LaTeX Warning: Label `Baz' multiply defined.
 
-
-LaTeX Warning: Label `Baz' multiply defined.
-
-
-LaTeX Warning: Label `Baz' multiply defined.
-
 )
-\openout1 = `discreta.aux'.
+\openout1 = `lenguajes.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
@@ -724,106 +718,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2016basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./discreta.toc
+(./lenguajes.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 3.
 )
 \tf@toc=\write3
-\openout3 = `discreta.toc'.
+\openout3 = `lenguajes.toc'.
 
  [1
 
 ]
-Cap\'{\i }tulo 1.
-[2
+LaTeX Font Info:    Try loading font information for U+lasy on input line 29.
 
-]
-Overfull \hbox (49.91821pt too wide) in alignment at lines 88--93
- [][][] []
- []
-
-[3] [4] [5] [6] [7] [8] [9]
-Cap\'{\i }tulo 2.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 433.
-
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 433.
- [10
-
-] [11]
-[12] [13]
-Overfull \hbox (27.96007pt too wide) in alignment at lines 634--638
- [][][] []
- []
-
-[14] [15]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 789.
- [16] [17]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 844
-.
-
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/lm/ot1lmtt.fd
-File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 844.
- [18]
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 859.
-
-[19] [20]
-Overfull \hbox (5.579pt too wide) in paragraph at lines 1017--1018
-[]\OT1/lmr/bx/n/12 b) \OT1/lmr/m/n/12 Re-cor-de-mos que si v(x) $\OMS/lmsy/m/n/
-12 2$ \OT1/lmr/m/n/12 C $\OMS/lmsy/m/n/12 ) 9 \OML/lmm/m/it/12 q\OT1/lmr/m/n/12
- (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 ) : \OML/lmm/m/it/12 v\OT1/lmr/m/n/12 (\OML
-/lmm/m/it/12 x\OT1/lmr/m/n/12 ) = \OML/lmm/m/it/12 q\OT1/lmr/m/n/12 (\OML/lmm/m
-/it/12 x\OT1/lmr/m/n/12 )\OML/lmm/m/it/12 g\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\
-OT1/lmr/m/n/12 )$. En-ton-ces pa-ra que $\OML/lmm/m/it/12 gr\OT1/lmr/m/n/12 (\O
-ML/lmm/m/it/12 q\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 )\OML/lmm/m/
-it/12 g\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 )) \OML/lmm/m/it/12 <
-
- []
-
-[21] [22]
-Cap\'{\i }tulo 3.
-[23
-
-] [24] [25] [26]
-<./graphics/3color_npcomplete.jpg, id=106, 702.625pt x 504.88625pt>
-File: ./graphics/3color_npcomplete.jpg Graphic file (type jpg)
-
-<use ./graphics/3color_npcomplete.jpg>
-Package pdftex.def Info: ./graphics/3color_npcomplete.jpg used on input line 12
-87.
-(pdftex.def)             Requested size: 398.34544pt x 256.07875pt.
- [27 <./graphics/3color_npcomplete.jpg>]
-[28] [29]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 1505.
-
- (/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ulasy.fd
+(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-<graphics/github.png, id=116, 1204.5pt x 632.3625pt>
+<graphics/github.png, id=12, 1204.5pt x 632.3625pt>
 File: graphics/github.png Graphic file (type png)
  <use graphics/github.png>
-Package pdftex.def Info: graphics/github.png used on input line 1521.
+Package pdftex.def Info: graphics/github.png used on input line 39.
 (pdftex.def)             Requested size: 28.45274pt x 14.93674pt.
 
-[30
+[2
 
- <./graphics/github.png (PNG copy)>] (./discreta.aux
+ <./graphics/github.png (PNG copy)>] (./lenguajes.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -832,42 +750,25 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4779 strings out of 494447
- 66544 string characters out of 6166766
- 150230 words of memory out of 5000000
- 7984 multiletter control sequences out of 15000+600000
- 82490 words of font info for 71 fonts, out of 8000000 for 9000
+ 4641 strings out of 494447
+ 64485 string characters out of 6166766
+ 133242 words of memory out of 5000000
+ 7871 multiletter control sequences out of 15000+600000
+ 35103 words of font info for 38 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 33i,29n,30p,470b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rmsc.enc}{/usr
-/local/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/
-texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2
-016basic/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2016ba
-sic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2016basic/t
-exmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2016basic/texmf-
-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/local/texlive/2016ba
-sic/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2016basic/t
-exmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2016basic/texmf
--dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2016basic/texmf-dis
-t/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2016basic/texmf-dist/fon
-ts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/ty
-pe1/public/lm/lmmi6.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/type1/pu
-blic/lm/lmmi8.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/l
-m/lmr12.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/lm/lmr1
-7.pfb></usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/lm/lmr6.pfb><
-/usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/lo
-cal/texlive/2016basic/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/t
-exlive/2016basic/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/local/texlive
-/2016basic/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2016
-basic/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2016basic/
-texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2016basic/texmf-
-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2016basic/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016basic/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on discreta.pdf (31 pages, 477823 bytes).
+ 33i,6n,30p,243b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/l
+ocal/texlive/2016basic/texmf-dist/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/local/te
+xlive/2016basic/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></us
+r/local/texlive/2016basic/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/loc
+al/texlive/2016basic/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/t
+exlive/2016basic/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive
+/2016basic/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2016b
+asic/texmf-dist/fonts/type1/public/lm/lmri12.pfb>
+Output written on lenguajes.pdf (3 pages, 140602 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
+ 41 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
